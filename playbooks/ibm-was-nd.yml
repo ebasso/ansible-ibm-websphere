@@ -1,0 +1,118 @@
+# Install WebSphere Application Server - Network Deployment
+#
+# Variables used in this playbook that can be setup at hosts file.
+#
+# HTTP server that has installation Files
+#   was_repository_url:    http://172.17.202.237/was/8.5.5
+#
+# was_repository_url:    http://172.17.202.237/was/8.5.5
+# was_bin_file01:        "WAS_ND_V8.5.5_1_OF_3.zip"
+# was_bin_file01_sha256: "b1333962ba4b25c8632c7e4c82b472350337e99febac8f70ffbd551ca3905e83"
+# was_bin_file02:        "WAS_ND_V8.5.5_2_OF_3.zip"
+# was_bin_file02_sha256: "440b7ed82089d43b1d45c1e908bf0a1951fed98f2542b6d37c8b5e7274c6b1c9"
+# was_bin_file03:        "WAS_ND_V8.5.5_3_OF_3.zip"
+# was_bin_file03_sha256: "b73ae070656bed6399a113c2db9fb0abaf5505b0d41c564bf2a58ce0b1e0dcd2"
+---
+- name:                     Install IBM WebSphere Applicaton Server
+  hosts:                    was-servers
+  become:                   true
+  vars:
+    __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/was"
+    __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+    __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+    __was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+    __imshared_location:    "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
+    __now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+    __response_file:        "{{ __logs_dir }}/was_nd.rsp"
+    __log_file:             "{{ __logs_dir }}/was_nd_install.{{ __now }}.log"
+    __template_file:        "/etc/ansible/playbooks/was_nd.rsp.j2"
+
+  tasks:
+    - name:                 Install pre-requisites
+      yum:                  name={{item}} state=present
+      with_items:
+        - unzip
+        - tar
+        - wget
+      when:                 (ansible_distribution == "RedHat") or (ansible_distribution == "CentOS")
+
+    - name:                 Check Variables
+      debug:
+        msg="was_repository_url={{ was_repository_url }} was_bin_file01={{ was_bin_file01 }} was_bin_file01_sha256={{ was_bin_file01_sha256 }}"
+
+    - name:                 Create Binaries directory
+      file:                 path={{ __tmp_dir }} state=directory mode=0755
+
+    - name:                 Create Logs directory
+      file:                 path={{ __logs_dir }} state=directory mode=0755
+
+    - name:                 Download {{ was_bin_file01 }}
+      get_url:
+        url:                "{{ was_repository_url }}/{{ was_bin_file01 }}"
+        dest:               "{{ __tmp_dir }}/{{ was_bin_file01 }}"
+        mode:               0755
+        checksum:           sha256:{{ was_bin_file01_sha256 }}
+
+    - name:                 Download {{ was_bin_file02 }}
+      get_url:
+        url:                "{{ was_repository_url }}/{{ was_bin_file02 }}"
+        dest:               "{{ __tmp_dir }}/{{ was_bin_file02 }}"
+        mode:               0755
+        checksum:           sha256:{{ was_bin_file02_sha256 }}
+
+    - name:                 Download {{ was_bin_file03 }}
+      get_url:
+        url:                "{{ was_repository_url }}/{{ was_bin_file03 }}"
+        dest:               "{{ __tmp_dir }}/{{ was_bin_file03 }}"
+        mode:               0755
+        checksum:           sha256:{{ was_bin_file03_sha256 }}
+
+    - name:                 Extract {{ was_bin_file01 }}
+      unarchive:
+        src:                "{{ __tmp_dir }}/{{ was_bin_file01 }}"
+        dest:               "{{ __tmp_dir }}/"
+        copy:               no
+
+    - name:                 Extract {{ was_bin_file02 }}
+      unarchive:
+        src:                "{{ __tmp_dir }}/{{ was_bin_file02 }}"
+        dest:               "{{ __tmp_dir }}/"
+        copy:               no
+
+    - name:                 Extract {{ was_bin_file03 }}
+      unarchive:
+        src:                "{{ __tmp_dir }}/{{ was_bin_file03 }}"
+        dest:               "{{ __tmp_dir }}/"
+        copy:               no
+
+    - name:                 Generate WAS Response file
+      template:
+        src:                "{{ __template_file }}"
+        dest:               "{{ __response_file }}"
+
+    - name:                 Install IBM WAS Software
+      command:
+        chdir={{ __tmp_dir }}
+        {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __response_file }}
+        creates={{ __was_install_location }}
+      register:             install
+      changed_when:         install.rc != 0
+
+    - name:                 Cleanup Binaries directory
+      file:
+        state:              absent
+        path:               "{{ __tmp_dir }}"
+
+# installed.xml:    <package kind='offering' name='IBM® Installation Manager' id='com.ibm.cic.agent' version='1.8.6000.20161118_1611'>
+#<package kind='offering' name='IBM WebSphere Application Server Network Deployment' id='com.ibm.websphere.ND.v85' version='8.5.5000.20130514_1044'>
+    #PROD_ROOT=`egrep "location id" /var/ibm/InstallationManager/installed.xml | grep "$PROD_NAME" | sed "s,.*path='\([^']*\)'.*,\1,"`
+    #if [ "X$PROD_ROOT" = "X" ]; then
+    #   log_debug "is_product_installed : [$PROD_ROOT] no location"
+    #   return 1
+    #fi
+
+    #PROD_VERSION=`egrep "package kind='offering" /var/ibm/InstallationManager/installed.xml | grep "$PKG_ID" | sed "s,.*version='\([^']*\)'.*,\1,"`
+    #if [ "X$PROD_VERSION" = "X" ]; then
+    #   log_debug "is_product_installed : [$PROD_VERSION] no version"
+    #   return 1
+    #fi
