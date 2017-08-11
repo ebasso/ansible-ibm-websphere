@@ -48,13 +48,35 @@ was_fixes_bin_file01_sha256=bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db
 was_fixes_bin_file02=8.5.5-WS-WAS-FP011-part2.zip
 was_fixes_bin_file02_sha256=0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c
 ```
+## Cloning ansible-ibm-websphere from git
 
-## Authors
+```
+cd /etc/ansible
 
-* **Enio Basso - *Initial work* - [My Repository](https://github.com/ebasso)
+git clone https://github.com/ebasso/ansible-ibm-websphere.git
+```
+
+## Running playbooks
+
+```
+cd /etc/ansible
+
+ansible-playbooks ansible-ibm-websphere/playbooks/ibm-installation-manager.yml
+
+ansible-playbooks ansible-ibm-websphere/playbooks/ibm-was-nd.yml
+
+```
+
+
+## Running
+
+# Authors
+
+* **Enio Basso** - *Initial work* - [My Repository](https://github.com/ebasso)
+
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
