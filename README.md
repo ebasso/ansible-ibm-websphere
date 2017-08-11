@@ -1,9 +1,9 @@
 # ansible-ibm-websphere
 Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
-## Getting start
+# Getting start
 
-### Prerequisites
+## Prerequisites
 
 1) Download installation files:
 
@@ -20,6 +20,8 @@ generate sha256 hashes.
 Example: sha256sum  WAS_ND_V8.5.5_1_OF_3.zip
 ```
 and set variables:
+
+## Configure Ansible hosts file
 
 4) Change you ansible host file like
 
