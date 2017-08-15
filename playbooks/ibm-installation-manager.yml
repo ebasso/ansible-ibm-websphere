@@ -3,15 +3,12 @@
 # Variables used in this playbook that can be setup at hosts file.
 #
 # HTTP server that has installation Files
-#   iim_repository_url:    http://172.17.202.237/installation
+#   iim_repository_url:     http://192.168.1.1/installation
 #
 # For 1.8.6000
 #   iim_bin_file=agent.installer.linux.gtk.x86_64_1.8.6000.20161118_1611.zip
 #   iim_bin_file_sha256=b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3
 #
-# For 1.8.4001
-#  iim_bin_file=agent.installer.linux.gtk.x86_64_1.8.4001.20160217_1716.zip
-#  iim_bin_file_sha256=c1cab8bf2c4c2d15f350fc4c7a564c248acc3227a5705406f9d94e6e0f108555
 ---
 - name:                     Install IBM Installation Manager
   hosts:                    was-servers
@@ -20,6 +17,8 @@
     __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/iim"
     __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
     __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+    __bin_file:             "{{ iim_bin_file | default('agent.installer.linux.gtk.x86_64_1.8.6000.20161118_1611.zip') }}"
+    __bin_file_sha256:      "{{ iim_bin_file_sha256 | default('b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3') }}"
   tasks:
     - name:                 Install pre-requisites
       yum:                  name={{item}} state=present
@@ -31,7 +30,7 @@
 
     - name:                 Check Variables
       debug:
-        msg="iim_repository_url={{ iim_repository_url }} iim_bin_file={{ iim_bin_file }} iim_bin_file_sha256={{ iim_bin_file_sha256 }}"
+        msg="iim_repository_url={{ iim_repository_url }} __bin_file={{ __bin_file }} __bin_file_sha256={{ __bin_file_sha256 }}"
 
     - name:                 Create Binaries directory
       file:                 path={{ __tmp_dir }} state=directory mode=0755
@@ -41,14 +40,14 @@
 
     - name:                 Download IBM Installation Manager
       get_url:
-        url:                "{{ iim_repository_url }}/{{ iim_bin_file }}"
-        dest:               "{{ __tmp_dir }}/{{ iim_bin_file }}"
+        url:                "{{ iim_repository_url }}/{{ __bin_file }}"
+        dest:               "{{ __tmp_dir }}/{{ __bin_file }}"
         mode:               0755
-        checksum:           sha256:{{ iim_bin_file_sha256 }}
+        checksum:           sha256:{{ __bin_file_sha256 }}
 
     - name:                 Extract IBM Installation Manager
       unarchive:
-        src:                "{{ __tmp_dir }}/{{ iim_bin_file }}"
+        src:                "{{ __tmp_dir }}/{{ __bin_file }}"
         dest:               "{{ __tmp_dir }}/"
         copy:               no
 
