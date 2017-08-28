@@ -10,8 +10,7 @@
     <data key='cic.selector.arch' value='x86'/>
   </profile>
   <install>
-    <!-- IBM WebSphere Application Server Network Deployment 8.5.5.8 -->
-    <offering profile='IBM WebSphere Application Server V8.5' id='com.ibm.websphere.ND.v85' version='{{ __was_version}}' features='com.ibm.sdk.6_64bit,core.feature,ejbdeploy,embeddablecontainer,thinclient'/>
+    <offering profile='IBM WebSphere Application Server V8.5' id='com.ibm.websphere.ND.v85' version='{{ __this_version }}' features='com.ibm.sdk.6_64bit,core.feature,ejbdeploy,embeddablecontainer,thinclient'/>
   </install>
   <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='{{ __imshared_location }}'/>
   <preference name='offering.service.repositories.areUsed' value='false'/>

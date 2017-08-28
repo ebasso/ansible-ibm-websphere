@@ -7,11 +7,11 @@
   hosts:          dmgr, was-nodes
   become:         true
   vars:
-    _profile_name: "{{ profile_name | default('AppSrv01') }}"
+    __profile_name: "{{ profile_name }}"  # | default('AppSrv01') }}"
   tasks:
     - name: "Collect Files: SystemErr_*.log, SystemOut_*.log, trace_*.log, startServer.log, *.txt"
       find:
-        paths:    /opt/IBM/WebSphere/AppServer/profiles/{{ _profile_name }}/logs
+        paths:    /opt/IBM/WebSphere/AppServer/profiles/{{ __profile_name }}/logs
         patterns: "SystemErr_*.log,SystemOut_*.log,trace_*.log,startServer.log,*.txt"
         recurse:  yes
       register:   files_to_delete
@@ -24,11 +24,11 @@
 
     - name: "Collect Files: SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
       find:
-        paths:    /opt/IBM/WebSphere/AppServer/profiles/{{ _profile_name }}/logs
+        paths:    /opt/IBM/WebSphere/AppServer/profiles/{{ __profile_name }}/logs
         patterns: "SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
         recurse:  yes
       register:   files_to_truncate
 
-    - name: "Delete Files: SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
+    - name: "Truncate Files: SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
       shell:      echo '' > "{{ item.path }}"
       with_items: "{{ files_to_truncate.files }}"

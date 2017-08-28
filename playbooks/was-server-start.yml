@@ -1,0 +1,32 @@
+# How to Run
+#
+# ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/was-profile-cleanup-temps.yml
+#
+---
+- name:                     Start WAS Servers
+  hosts:                    was-nodes
+  serial:                   1  # run sequentially
+  become:                   true
+  vars:
+    __profile_name:         "{{ profile_name }}"
+    __was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+  tasks:
+    - name:                 Verify if pid file
+      shell:                "cat {{ __was_install_location }}/profiles/{{ __profile_name }}/logs/nodeagent/nodeagent.pid"
+      register:             mycmd
+      ignore_errors:        true
+      failed_when:          mycmd.rc != 0   # process is running
+    - debug:                var=mycmd
+
+    - name:                 Verify if process is running
+      shell:                ps `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/nodeagent/nodeagent.pid"`
+      register:             ps_cmd
+      failed_when:          ps_cmd.rc == 0   # process is running
+      #ignore_errors:        true
+
+    - name:                 "Start Node Agent"
+      command:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/startNode.sh"
+      #args:
+      #    creates:          "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/nodeagent/nodeagent.pid"
+      register:             process_status
+      changed_when:         process_status.rc != 0

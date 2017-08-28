@@ -1,0 +1,22 @@
+# How to Run
+#
+# ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/was-profile-cleanup-temps.yml
+#
+---
+- name:           Cleanup and Truncate files on Log directory
+  hosts:          was-nodes
+  serial:         1  # run sequentially
+  become:         true
+  vars:
+    __profile_name: "{{ profile_name }}"
+  tasks:
+    - name: "Cleanup temp directories"
+      file:
+        path:    /opt/IBM/WebSphere/AppServer/profiles/{{ __profile_name }}/{{ item }}
+        state:    absent
+      with_items:
+        - temp
+        - wstemp
+        - config/temp
+        - tranlog
+        - logs

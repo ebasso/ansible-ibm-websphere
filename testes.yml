@@ -1,0 +1,26 @@
+---
+- name:                     Valida script
+  hosts:                    testes
+  become:                   true
+  vars:
+    #iim_repository_url:    http://172.17.202.237/installation
+    #iim_bin_file:          agent.installer.linux.gtk.x86_64_1.8.4001.20160217_1716.zip
+    #iim_bin_file_sha256:   c1cab8bf2c4c2d15f350fc4c7a564c248acc3227a5705406f9d94e6e0f108555
+    __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/iim"
+    __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+    __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+
+  tasks:
+
+    #- name:                     "Ajustando o zabbix_agentd.conf"
+    #  lineinfile:
+    #    dest:                    /usr/local/etc/zabbix_agentd.conf
+    #    regexp:                  "{{ item.regexp }}"
+    #    line:                    "{{ item.line }}"
+    #    with_items:
+    #    - { regexp: '# LogFileSize=1' , line: 'LogFileSize=1024' }
+    #    - { regexp: '# DebugLevel=3'  , line: 'DebugLevel=3' }
+    #    - { regexp: 'Server=127.0.0.1', line: 'Server={{zabbix_server}}' }
+    #    - { regexp: 'ServerActive=127.0.0.1' , line: 'ServerActive={{zabbix_server}}' }
+    #    - { regexp: 'Hostname=Zabbix server' , line: 'Hostname={{ansible_hostname}}' }
+    #    tags:                     conf
