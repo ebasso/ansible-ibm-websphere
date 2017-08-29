@@ -1,6 +1,15 @@
 # ansible-ibm-websphere
 Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
+# Playbooks
+
+| Playbook name               |            Description                                                  |
+|-----------------------------|-------------------------------------------------------------------------|
+| ibm-installation-manager.yml| Install IBM Installation Manager   |
+| ibm-was-nd.yml| Install IBM WebSphere Application Server    |
+| ibm-was-nd-fixes.yml| Install IBM Installation Manager   |
+
+
 # Getting start
 
 ## Prerequisites
@@ -42,9 +51,13 @@ git clone https://github.com/ebasso/ansible-ibm-websphere.git
 ```
 cd /etc/ansible
 
-ansible-playbooks ansible-ibm-websphere/playbooks/ibm-installation-manager.yml
+ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-installation-manager.yml
 
-ansible-playbooks ansible-ibm-websphere/playbooks/ibm-was-nd.yml
+ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-was-nd.yml
+
+ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-was-nd-fixes.yml
+
+ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-was-java.yml
 
 ```
 
