@@ -3,7 +3,7 @@
 # ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/was-server-start.yml
 #
 ---
-- name:                     Start WAS Servers
+- name:                     Stop WAS Servers
   hosts:                    was-servers
   serial:                   1  # run sequentially
   become:                   true
@@ -13,27 +13,15 @@
     __servers:              "{{ servers }}"
   tasks:
     - name:                 Verify if pid file
-      shell:                ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/nodeagent/nodeagent.pid"`
-      register:             nodeagent_is_running
-      ignore_errors:        true
-
-    - name:                 "Start Node Agent"
-      command:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/startNode.sh"
-      register:             start
-      changed_when:         start.rc == 0
-      #changed_when:        ( start.stdout.find('open for e-business') != -1)
-      when:                 nodeagent_is_running.rc != 0
-
-    - name:                 Verify if pid file
       shell:                ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/{{ item }}/{{ item }}.pid"`
       register:             server_is_running
       ignore_errors:        true
       with_items:           "{{ __servers }}"
 
     #- debug: var=server_is_running
-    - name:                 "Start Servers"
-      command:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/startServer.sh {{ item.item }}"
+    - name:                 "Stop Servers"
+      command:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/stopServer.sh {{ item.item }} -username {{ was_user }} -password {{ was_password }}"
       register:             start
       changed_when:         start.rc == 0
-      when:                 item.rc != 0
+      when:                 item.rc == 0
       with_items:           "{{ server_is_running.results }}"

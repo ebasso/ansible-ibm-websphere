@@ -1,0 +1,23 @@
+# How to Run
+#
+# ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/was-server-start.yml
+#
+---
+- name:                     Start Deployment Manager
+  hosts:                    dmgr
+  become:                   true
+  vars:
+    __profile_name:         "{{ profile_name | default('Dmgr01') }}"
+    __was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+  tasks:
+    - name:                 Verify if pid file
+      shell:                ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid"`
+      register:             dmgr_is_running
+      ignore_errors:        true
+
+    - name:                 "Start Dmgr"
+      command:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/startManager.sh"
+      register:             start
+      changed_when:         start.rc == 0
+      #changed_when:        ( start.stdout.find('open for e-business') != -1)
+      when:                 dmgr_is_running.rc != 0
