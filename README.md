@@ -36,14 +36,20 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 3) Change you ansible host file like
 
 ```
-[was-servers]
+[dmgr]
 was1.company.com
+
+[was-servers]
+was2.company.com
+
+[dmgr:vars]
+iim_repository_url=http://192.168.1.1/installation
+was_repository_url=http://192.168.1.1/was/8.5.5
+was_fixes_repository_url=http://192.168.1.1/was/8.5.5
 
 [was-servers:vars]
 iim_repository_url=http://192.168.1.1/installation
-#
 was_repository_url=http://192.168.1.1/was/8.5.5
-#
 was_fixes_repository_url=http://192.168.1.1/was/8.5.5
 ```
 
@@ -88,9 +94,7 @@ was1.company.com
 
 [was-servers:vars]
 iim_repository_url=http://192.168.1.1/installation
-#
 was_repository_url=http://192.168.1.1/was/8.5.5
-#
 was_fixes_repository_url=http://192.168.1.1/was/8.5.5
 was_version="8.5.5009.20160225_0435"
 ```
