@@ -13,7 +13,7 @@
 #      - { bf: 8.5.5-WS-WAS-FP011-part2.zip, bfs: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
 ---
 - name:                     Install IBM WAS ND Fixes
-  hosts:                    was-servers
+  hosts:                    dmgr,was-servers
   become:                   true
   vars:
     __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/was_fixes"

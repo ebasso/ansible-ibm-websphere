@@ -3,11 +3,20 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 # Playbooks
 
-| Playbook name               |            Description                                                  |
-|-----------------------------|-------------------------------------------------------------------------|
-| ibm-installation-manager.yml| Install IBM Installation Manager   |
-| ibm-was-nd.yml| Install IBM WebSphere Application Server    |
-| ibm-was-nd-fixes.yml| Install IBM Installation Manager   |
+| Playbook name                |            Description                                                  |
+|------------------------------|-------------------------------------------------------------------------|
+| ibm-installation-manager.yml | Install IBM Installation Manager   |
+| ibm-was-nd.yml               | Install IBM WebSphere Application Server - Network Deployment - 8.5.5  |
+| ibm-was-nd-fixes.yml         | Install IBM WAS ND Fixes  |
+| ibm-was-java.yml             | Install IBM Java for WAS  |
+| was-dmgr-start.yml           | Start Deployment Manager |
+| was-dmgr-stop.yml            | Stop Deployment Manager |
+| was-nodeagent-start.yml      | Start Node Agent |
+| was-nodeagent-stop.yml       | Stop Node Agent |
+| was-server-start.yml         | Start Applications Servers |
+| was-server-stop.yml          | Stop Applications Servers |
+| was-profile-cleanup-logs.yml | Delete and truncate log files for Application Servers|
+| was-profile-cleanup-temps.yml| Delete temp files on WAS Profile (server must be stopped) |
 
 
 # Getting start
