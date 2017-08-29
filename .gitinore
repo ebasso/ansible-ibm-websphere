@@ -1,7 +1,0 @@
-hosts
-testes.yml
-testes2.yml
-hosts.c60
-hosts.c55
-playbooks/was-profile-cleanup-logs.yml
-*.retry
