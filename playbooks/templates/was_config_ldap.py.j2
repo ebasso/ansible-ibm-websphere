@@ -1,0 +1,26 @@
+#Create LDAP Repository
+AdminTask.createIdMgrLDAPRepository('[-default true -id {{ ldap_repo }} -adapterClassName com.ibm.ws.wim.adapter.ldap.LdapAdapter -ldapServerType IDS -sslConfiguration -certificateMapMode exactdn -supportChangeLog none -certificateFilter -loginProperties uid]')
+#Add LDAP Server
+AdminTask.addIdMgrLDAPServer('[-id {{ ldap_repo }} -host {{ ldap_server }} -bindDN {{ ldap_bind_user }} -bindPassword {{ ldap_bind_pass }} -referal ignore -sslEnabled true -ldapServerType IDS -sslConfiguration -certificateMapMode exactdn -certificateFilter -authentication simple -port 636]')
+
+AdminTask.addIdMgrRepositoryBaseEntry('[-id {{ ldap_repo }} -name {{ ldap_realm }} -nameInRepository {{ ldap_realm }}]')
+AdminTask.addIdMgrRealmBaseEntry('[-name defaultWIMFileBasedRealm -baseEntry {{ ldap_realm }}]')
+
+#Tuning
+AdminTask.updateIdMgrLDAPRepository('[-id {{ ldap_repo }} -searchTimeLimit 30000 -searchCountLimit 100]')
+AdminTask.updateIdMgrLDAPServer('[-id {{ ldap_repo }} -host {{ ldap_server }} -connectTimeout 20]')
+AdminTask.updateIdMgrLDAPServer('[-id {{ ldap_repo }} -host {{ ldap_server }} -connectionPool true]')
+AdminTask.setIdMgrLDAPContextPool('[-id {{ ldap_repo }} -enabled true -initPoolSize 1 -maxPoolSize 20 -prefPoolSize 3 -poolTimeOut 120]')
+AdminTask.setIdMgrLDAPAttrCache('[-id {{ ldap_repo }} -enabled true -cacheSize 40000 -cacheDistPolicy none -cacheTimeOut 1200]')
+AdminTask.setIdMgrLDAPSearchResultCache('[-id {{ ldap_repo }} -enabled true -cacheSize 40000 -cacheDistPolicy none -cacheTimeOut 1200]')
+#Update Group objects for TDS
+AdminTask.updateIdMgrLDAPEntityType('[-id {{ ldap_repo }} -name Group -objectClasses groupOfUniqueNames -searchBases -searchFilter ]')
+AdminTask.addIdMgrLDAPGroupMemberAttr('[-id {{ ldap_repo }} -name uniquemember -objectClass groupOfUniqueNames -scope direct]')
+#Enable dynamic groups
+AdminTask.deleteIdMgrLDAPGroupMemberAttr('[-id {{ ldap_repo }} -name member]')
+AdminTask.setIdMgrLDAPGroupConfig('[-id {{ ldap_repo }} -name ibm-allGroups -scope direct]')
+
+#Save and Synchronise
+AdminConfig.save()
+AdminNodeManagement.syncActiveNodes()
+# End of File
