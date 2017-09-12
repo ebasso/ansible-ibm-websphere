@@ -81,9 +81,7 @@ and set variables:
 was1.company.com
 
 [was-servers:vars]
-iim_repository_url=http://192.168.1.1/installation
-was_repository_url=http://192.168.1.1/was/8.5.5
-was_fixes_repository_url=http://192.168.1.1/was/8.5.5
+...
 was_version="8.5.5009.20160225_0435"
 ```
 
@@ -92,7 +90,7 @@ was_version="8.5.5009.20160225_0435"
 * **Enio Basso** - *Initial work* - [My Repository](https://github.com/ebasso)
 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/ebasso/ansible-ibm-websphere/graphs/contributors) who participated in this project.
 
 # License
 
