@@ -17,6 +17,11 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 | was-server-stop.yml          | Stop Applications Servers |
 | was-profile-cleanup-logs.yml | Delete and truncate log files for Application Servers|
 | was-profile-cleanup-temps.yml| Delete temp files on WAS Profile (server must be stopped) |
+| was-create-dmgr-profile.yml  | Create a profile for Deployment Manager |
+| was-profile-create.yml       | Create a profile for WAS Servers |
+| was-profile-delete-all.yml   | Delete all profiles on WAS Servers |
+| was-import-tls-cert.yml      | Add TLS Signer Certificate to Cell Default Trust Store |
+| was-config-ldap.yml          | Configure LDAP Repository (server must be stopped) |
 
 
 # Getting start
@@ -33,25 +38,8 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 ## Configure Ansible hosts file
 
-3) Change you ansible host file like
+3) Change you ansible host file like **hosts.example**
 
-```
-[dmgr]
-was1.company.com
-
-[was-servers]
-was2.company.com
-
-[dmgr:vars]
-iim_repository_url=http://192.168.1.1/installation
-was_repository_url=http://192.168.1.1/was/8.5.5
-was_fixes_repository_url=http://192.168.1.1/was/8.5.5
-
-[was-servers:vars]
-iim_repository_url=http://192.168.1.1/installation
-was_repository_url=http://192.168.1.1/was/8.5.5
-was_fixes_repository_url=http://192.168.1.1/was/8.5.5
-```
 
 ## Cloning ansible-ibm-websphere from git
 
