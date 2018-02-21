@@ -1,0 +1,8 @@
+{
+    "code": "200",
+    "data": [
+    ],
+    "href": "\/api\/traveler\/pushstatus?page=1&pm=1",
+    "message": "OK",
+    "totalRecords": "0"
+}

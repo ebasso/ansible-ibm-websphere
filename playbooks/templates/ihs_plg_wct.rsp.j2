@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<agent-input>
+  <variables>
+    <variable name='sharedLocation' value='{{ __imshared_location }}'/>
+  </variables>
+  <server>
+    <repository location='{{ __tmp_dir }}'/>
+  </server>
+  <profile id='IBM HTTP Server V8.5' installLocation='{{ __ihs_install_location }}'>
+    <data key='cic.selector.arch' value='x86'/>
+    <data key='user.ihs.http.server.service.name' value='none'/>
+    <data key='user.ihs.httpPort' value='80'/>
+    <data key='user.ihs.installHttpService' value='false'/>
+  </profile>
+  <install>
+    <!-- IBM HTTP Server for WebSphere Application Server 8.5.5.0 -->
+    <offering profile='IBM HTTP Server V8.5' id='com.ibm.websphere.IHS.v85' version='{{ __this_version }}' features='core.feature,arch.64bit'/>
+  </install>
+  <profile id='Web Server Plug-ins for IBM WebSphere Application Server V8.5' installLocation='{{ __plg_install_location }}'>
+    <data key='cic.selector.arch' value='x86'/>
+  </profile>
+  <install>
+    <!-- Web Server Plug-ins for IBM WebSphere Application Server 8.5.5.0 -->
+    <offering profile='Web Server Plug-ins for IBM WebSphere Application Server V8.5' id='com.ibm.websphere.PLG.v85' version='{{ __this_version }}' features='core.feature,com.ibm.jre.6_64bit'/>
+  </install>
+  <profile id='WebSphere Customization Toolbox V8.5' installLocation='{{ __wct_install_location }}'>
+    <data key='cic.selector.arch' value='x86'/>
+  </profile>
+  <install>
+    <!-- WebSphere Customization Toolbox  8.5.5.0 -->
+    <offering profile='WebSphere Customization Toolbox V8.5' id='com.ibm.websphere.WCT.v85' version='{{ __this_version }}' features='core.feature,pct'/>
+  </install>
+  <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='${sharedLocation}'/>
+  <preference name='offering.service.repositories.areUsed' value='false'/>
+</agent-input>

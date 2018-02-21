@@ -1,45 +1,40 @@
-# Install WebSphere Application Server - Network Deployment
+# Install IBM HTTP Server Fixes
 #
-# Variables used in this playbook that can be setup at hosts file.
-#
-# HTTP server that has installation Files
-#   was_fixes_repository_url: http://192.168.1.1/was/8.5.5
-#
-# vars:
-#       # you can use both sintaxes
-#    __was_files:
-#      - bf:                8.5.5-WS-WAS-FP011-part1.zip
-#        bfs:               bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66
-#      - { bf: 8.5.5-WS-WAS-FP011-part2.zip, bfs: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
+# Variables used in this playbook that can be setup at hosts fil
 ---
-- name:                     Install IBM WAS ND Fixes
-  hosts:                    dmgr,was-servers
+- name:                     Install IBM HTTP Server Fixes
+  hosts:                    ihs-servers
   become:                   true
   vars:
-    __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/was_fixes"
+    __repository_url:       "{{ ihs_repository_url }}"
+    __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/wassup_fixes"
     __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
     __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
-    __was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+    __ihs_install_location: "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"
+    __plg_install_location: "{{ plg_install_location  | default('/opt/IBM/WebSphere/Plugins') }}"
+    __wct_install_location: "{{ wct_install_location  | default('/opt/IBM/WebSphere/Toolbox') }}"
     __imshared_location:    "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
     __now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
-    __rsp_file:             "{{ __logs_dir }}/was_nd_fixes.rsp"
-    __log_file:             "{{ __logs_dir }}/was_nd_fixes_install.{{ __now }}.log"
-    __tpl_file:             "was_nd_fixes.rsp.j2"
+    __rsp_file:             "{{ __logs_dir }}/ihs_plg_wct_fixes.rsp"
+    __log_file:             "{{ __logs_dir }}/ihs_fixes_install.{{ __now }}.log"
+    __tpl_file:             "ihs_plg_wct_fixes.rsp.j2"
 
-    __this_version:         "{{ was_version | default('8.5.5011.20161206_1434') }}"
+    __this_version:         "{{ ihs_version | default('8.5.5011.20161206_1434') }}"
     __this_files:
-      - { bf: 8.5.5-WS-WAS-FP011-part1.zip, bfs: bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66 }
-      - { bf: 8.5.5-WS-WAS-FP011-part2.zip, bfs: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
-    __version_check:        "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
-    __product_id:           "\"id='com.ibm.websphere.ND.v85' version='{{ __this_version }}'\""
+      - { bf: 8.5.5-WS-WASSupplements-FP011-part1.zip, bfs: 4a8f560c3b546321a7e67facc5c25255ecd11c6b29e3fed0a38f203dd339a771 }
+      - { bf: 8.5.5-WS-WASSupplements-FP011-part2.zip, bfs: 6fec8b763020c72693a5a98ecba37c5f7778ab9bcf44b7089a9edb3dc51cb84c }
+      - { bf: 8.5.5-WS-WASSupplements-FP011-part3.zip, bfs: fe0cbc3ad678c21bb43c588bcc80242d8556b80ca2f4c237e5cc97b271eeffc7 }
+    __version_check:        "Updated to com.ibm.websphere.IHS.v85_{{ __this_version }}"
+    __product_id:           "\"id='com.ibm.websphere.IHS.v85' version='{{ __this_version }}'\""
 
-    __was_version_fp9:      "8.5.5009.20160225_0435"
-    __was_files_fp9:
-      - { bf: 8.5.5-WS-WAS-FP0000009-part1.zip, bfs: bf0817f50472c7f1ad0c50863ff0e7a07fb73f69f09a60bfad798d2b3cc1e3ae }
-      - { bf: 8.5.5-WS-WAS-FP0000009-part2.zip, bfs: c5501a75da3ab78887fa0208f26d7d81517e39a0c7e184bf36d28fbc93acbe22 }
+    __ihs_version_fp9:      "8.5.5009.20160225_0435"
+    __ihs_files_fp9:
+      - { bf: 8.5.5-WS-WASSupplements-FP0000009-part1.zip, bfs: 736b3e13b3f38289aee4367c62b19ffcea06cf2ae4058fdb0197a3e1ec07fb27 }
+      - { bf: 8.5.5-WS-WASSupplements-FP0000009-part2.zip, bfs: 1728f184c38306e86e2e4102f153008f3b38af5c98089324b0fa4921affa2c2e }
+
 
     __iim_product_id:       "\"id='com.ibm.cic.agent\""
-    __was_product_id:       "\"id='com.ibm.websphere.ND.v85'\""
+    __ihs_product_id:       "\"id='com.ibm.websphere.IHS.v85'\""
 
   tasks:
     - name:                 Install pre-requisites
@@ -50,20 +45,13 @@
         - wget
       when:                 (ansible_distribution == "RedHat") or (ansible_distribution == "CentOS")
 
-    - name:                 Use Fix Pack 9?
-      set_fact:
-        __this_files:       "{{ __was_files_fp9 }}"
-        __version_check:    "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
-        __product_id:       "\"id='com.ibm.websphere.ND.v85' version='{{ __this_version }}'\""
-      when:                 ( __this_version == __was_version_fp9 )
-
     - name:                 Is IIM Installed?
       command:              "egrep {{ __iim_product_id }} /var/ibm/InstallationManager/installed.xml"
       register:             iim_already_installed
 
-    - name:                 Is WAS ND Installed?
-      command:              "egrep {{ __was_product_id }} /var/ibm/InstallationManager/installed.xml"
-      register:             was_already_installed
+    - name:                 Is IHS Installed?
+      command:              "egrep {{ __ihs_product_id }} /var/ibm/InstallationManager/installed.xml"
+      register:             ihs_already_installed
 
     - name:                 Is Product already Installed?
       command:              "egrep {{ __product_id }} /var/ibm/InstallationManager/installed.xml"
@@ -83,16 +71,22 @@
       file:                 path={{ __logs_dir }} state=directory mode=0755
       when:                 version_already_installed.rc != 0
 
-    - name:                 Download WAS Fixes
+    - name:                 Use Fix Pack 9?
+      set_fact:
+        __this_files:       "{{ __ihs_files_fp9 }}"
+        __version_check:    "Updated to com.ibm.websphere.IHS.v85_{{ __this_version }}"
+      when:                 ( __this_version == __ihs_version_fp9 )
+
+    - name:                 Download WAS Supplements Fixes
       get_url:
-        url:                "{{ was_repository_url }}/{{ item.bf }}"
+        url:                "{{ __repository_url }}/{{ item.bf }}"
         dest:               "{{ __tmp_dir }}/{{ item.bf }}"
         mode:               0755
         checksum:           sha256:{{ item.bfs }}
       with_items:           "{{ __this_files }}"
       when:                 version_already_installed.rc != 0
 
-    - name:                 Extract WAS Fixes
+    - name:                 Extract WAS Supplements Fixes
       unarchive:
         src:                "{{ __tmp_dir }}/{{ item.bf }}"
         dest:               "{{ __tmp_dir }}/"
@@ -100,7 +94,7 @@
       with_items:           "{{ __this_files }}"
       when:                 version_already_installed.rc != 0
 
-    - name:                 Generate WAS Response file
+    - name:                 Generate Response file
       template:
         src:                "{{ __tpl_file }}"
         dest:               "{{ __rsp_file }}"
@@ -114,18 +108,16 @@
         backup:             yes
       ignore_errors:        true
 
-    - name:                 Install IBM WAS ND Fixes Software
+    - name:                 Install IBM HTTP Server Fixes Software
       command:
         chdir={{ __tmp_dir }}
         {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}
       register:             cout
-      changed_when:        ( cout.stdout.find(__version_check) != -1)
+      changed_when:        (cout.stdout.find(__version_check) != -1)
       when:                 version_already_installed.rc != 0
 
-    #- debug:                var=cout
+    - debug:                var=cout
 
     - name:                 Cleanup Binaries directory
-      file:
-        state:              absent
-        path:               "{{ __tmp_dir }}"
+      file:                 path={{ __tmp_dir }} state=absent
       when:                 version_already_installed.rc != 0

@@ -11,7 +11,7 @@
 #
 ---
 - name:                     Install IBM Installation Manager
-  hosts:                    dmgr,was-servers
+  hosts:                    dmgr,was-servers,ihs-servers
   become:                   true
   vars:
     __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/iim"
@@ -20,6 +20,7 @@
     __bin_file:             "{{ iim_bin_file | default('agent.installer.linux.gtk.x86_64_1.8.7000.20170706_2137.zip') }}"
     __bin_file_sha256:      "{{ iim_bin_file_sha256 | default('0808503fae69956ffea5f8ca4d9f994111b35b0af1216fb5464f6483f8700c45') }}"
     __this_version:         "{{ iim_version | default('1.8.7000.20170706_2137') }}"
+    __product_id:           "\"id='com.ibm.cic.agent' version='{{ __this_version }}'\""
   tasks:
     - name:                 Install pre-requisites
       yum:                  name={{item}} state=present
@@ -31,7 +32,7 @@
 
     # <package kind='offering' name='IBM® Installation Manager' id='com.ibm.cic.agent' version='1.8.7000.20170706_2137
     - name:                 Is Product already Installed?
-      command:              egrep {{ __this_version }} /var/ibm/InstallationManager/installed.xml
+      command:              egrep {{ __product_id }} /var/ibm/InstallationManager/installed.xml
       register:             version_already_installed
       ignore_errors:        true
 
@@ -70,7 +71,5 @@
     #- debug:                msg={{ cout }}
 
     - name:                 Cleanup Binaries directory
-      file:
-        state:              absent
-        path:               "{{ __tmp_dir }}"
+      file:                 path={{ __tmp_dir }} state=absent
       when:                 version_already_installed.rc != 0

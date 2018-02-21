@@ -39,6 +39,11 @@
       register:             version_already_installed
       ignore_errors:        true
 
+    - name:                 Cleanup Binaries directory
+      file:                 path={{ __tmp_dir }} state=absent
+      when:                 version_already_installed.rc != 0
+      ignore_errors:        true
+
     - name:                 Create Binaries directory
       file:                 path={{ __tmp_dir }} state=directory mode=0755
       when:                 version_already_installed.rc != 0
@@ -89,7 +94,5 @@
     #- debug:                var=cout
 
     - name:                 Cleanup Binaries directory
-      file:
-        state:              absent
-        path:               "{{ __tmp_dir }}"
+      file:                 path={{ __tmp_dir }} state=absent
       when:                 version_already_installed.rc != 0

@@ -1,37 +1,31 @@
-# Install WebSphere Application Server - Network Deployment
+# Install IBM HTTP Server
 #
 # Variables used in this playbook that can be setup at hosts file.
-#
-# HTTP server that has installation Files
-#   was_repository_url:     http://192.168.1.1/was/8.5.5
-#
-#    __was_files:
-#      - bf:                WAS_ND_V8.5.5_1_OF_3.zip
-#        bfs:               b1333962ba4b25c8632c7e4c82b472350337e99febac8f70ffbd551ca3905e83
-#      - { bf: WAS_ND_V8.5.5_2_OF_3.zip, bfs: 440b7ed82089d43b1d45c1e908bf0a1951fed98f2542b6d37c8b5e7274c6b1c9 }
-#      - { bf: WAS_ND_V8.5.5_3_OF_3.zip, bfs: b73ae070656bed6399a113c2db9fb0abaf5505b0d41c564bf2a58ce0b1e0dcd2 }
-#    __this_version:        "{{ was_version | default('8.5.5000.20130514_1044') }}"
 ---
-- name:                     Install IBM WebSphere Applicaton Server
-  hosts:                    dmgr,was-servers
+- name:                     Install IBM HTTP Server - Plugin - WCT
+  hosts:                    ihs-servers
   become:                   true
   vars:
-    __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/was"
+    __repository_url:       "{{ ihs_repository_url }}"
+    __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/wassup"
     __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
     __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
-    __was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+    __ihs_install_location: "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"
+    __plg_install_location: "{{ plg_install_location  | default('/opt/IBM/WebSphere/Plugins') }}"
+    __wct_install_location: "{{ wct_install_location  | default('/opt/IBM/WebSphere/Toolbox') }}"
     __imshared_location:    "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
     __now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
-    __rsp_file:             "{{ __logs_dir }}/was_nd.rsp"
-    __log_file:             "{{ __logs_dir }}/was_nd_install.{{ __now }}.log"
-    __tpl_file:             "was_nd.rsp.j2"
-    __was_files:
-      - { bf: WAS_ND_V8.5.5_1_OF_3.zip, bfs: b1333962ba4b25c8632c7e4c82b472350337e99febac8f70ffbd551ca3905e83 }
-      - { bf: WAS_ND_V8.5.5_2_OF_3.zip, bfs: 440b7ed82089d43b1d45c1e908bf0a1951fed98f2542b6d37c8b5e7274c6b1c9 }
-      - { bf: WAS_ND_V8.5.5_3_OF_3.zip, bfs: b73ae070656bed6399a113c2db9fb0abaf5505b0d41c564bf2a58ce0b1e0dcd2 }
-    __this_version:         "{{ was_version | default('8.5.5000.20130514_1044') }}"
-    __product_id:           "\"id='com.ibm.websphere.ND.v85'\""
-    __version_check:        "Installed com.ibm.websphere.ND.v85_8.5.5000"
+    __rsp_file:             "{{ __logs_dir }}/ihs_plg_wct.rsp"
+    __log_file:             "{{ __logs_dir }}/ihs_install.{{ __now }}.log"
+    __tpl_file:             "ihs_plg_wct.rsp.j2"
+    __this_files:
+      - { bf: WAS_V8.5.5_SUPPL_1_OF_3.zip, bfs: d63c59de4a5548e3d26e71fefb76193d41ac7585bc450c1e504287e0a6f746c9 }
+      - { bf: WAS_V8.5.5_SUPPL_2_OF_3.zip, bfs: ac00e7ab43cc528fe7f3ccd69aeb6564a2e738e7bc6e30e71fd2e0d4bd64f39e }
+      - { bf: WAS_V8.5.5_SUPPL_3_OF_3.zip, bfs: 94e3d9b70b139ad5fa0578da6857b295c5d2370c1b6ecb544c1e5757406fec90 }
+    __this_version:         "8.5.5000.20130514_1044"
+    __product_id:           "\"id='com.ibm.websphere.IHS.v85'\""
+    __version_check:   "Installed com.ibm.websphere.IHS.v85_8.5.5000"
+
     __iim_product_id:       "\"id='com.ibm.cic.agent\""
 
   tasks:
@@ -57,7 +51,7 @@
       when:                 version_already_installed.rc != 0
       ignore_errors:        true
 
-    #-  debug:              var=version_already_installed
+    #-  debug:               var=version_already_installed
     - name:                 Create Binaries directory
       file:                 path={{ __tmp_dir }} state=directory mode=0755
       when:                 version_already_installed.rc != 0
@@ -66,24 +60,24 @@
       file:                 path={{ __logs_dir }} state=directory mode=0755
       when:                 version_already_installed.rc != 0
 
-    - name:                 Download WAS ND V8.5.5 Files
+    - name:                 Download IBM HTTP Server Files
       get_url:
-        url:                "{{ was_repository_url }}/{{ item.bf }}"
+        url:                "{{ __repository_url }}/{{ item.bf }}"
         dest:               "{{ __tmp_dir }}/{{ item.bf }}"
         mode:               0755
         checksum:           sha256:{{ item.bfs }}
-      with_items:           "{{ __was_files }}"
+      with_items:           "{{ __this_files }}"
       when:                 version_already_installed.rc != 0
 
-    - name:                 Extract WAS ND V8.5.5 Files
+    - name:                 Extract IBM HTTP Server Files
       unarchive:
         src:                "{{ __tmp_dir }}/{{ item.bf }}"
         dest:               "{{ __tmp_dir }}/"
         copy:               no
-      with_items:           "{{ __was_files }}"
+      with_items:           "{{ __this_files }}"
       when:                 version_already_installed.rc != 0
 
-    - name:                 Generate WAS Response file
+    - name:                 Generate Response file
       template:
         src:                "{{ __tpl_file }}"
         dest:               "{{ __rsp_file }}"
@@ -94,11 +88,13 @@
         chdir={{ __tmp_dir }}
         {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}
       register:             cout
-      changed_when:         ( cout.stdout.find({{ __version_check }}) != -1)
+      changed_when:         ( cout.stdout.find(__version_check) != -1)
       when:                 version_already_installed.rc != 0
 
-    #- debug:               var=cout
+    #- debug:                var=cout
 
     - name:                 Cleanup Binaries directory
-      file:                 path={{ __tmp_dir }} state=absent
+      file:
+        state:              absent
+        path:               "{{ __tmp_dir }}"
       when:                 version_already_installed.rc != 0
