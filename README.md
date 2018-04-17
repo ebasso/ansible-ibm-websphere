@@ -54,13 +54,11 @@ git clone https://github.com/ebasso/ansible-ibm-websphere.git
 ```
 cd /etc/ansible
 
-ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-installation-manager.yml
+ansible-playbooks -i environments/hosts.development -k playbooks/ibm-was-nd/ibm-was-nd-complete.yml
 
-ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-was-nd.yml
+ansible-playbooks -i environments/hosts.development -k playbooks/ibm-was-nd/ibm-installation-manager.yml
 
-ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-was-nd-fixes.yml
-
-ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/ibm-was-java.yml
+ansible-playbooks -i environments/hosts.development -k playbooks/ibm-was-nd/ibm-was-nd.yml
 
 ```
 
