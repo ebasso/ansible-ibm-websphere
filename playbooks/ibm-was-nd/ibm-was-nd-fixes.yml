@@ -1,0 +1,34 @@
+# Install WebSphere Application Server - Network Deployment
+#
+# Variables used in this playbook that can be setup at hosts file.
+#
+# HTTP server that has installation Files
+#   was_fixes_repository_url: http://192.168.1.1/was/8.5.5
+#
+# vars:
+#       # you can use both sintaxes
+#    __was_files:
+#      - bf:                8.5.5-WS-WAS-FP011-part1.zip
+#        bfs:               bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66
+#      - { bf: 8.5.5-WS-WAS-FP011-part2.zip, bfs: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
+---
+- hosts:                    dmgr,was-servers
+  become:                   true
+  vars:
+    #tmp_dir:              "/opt/IBM/Binaries/was_fixes"
+    #iim_install_location: "/opt/IBM/InstallationManager"
+    #was_install_location: "/opt/IBM/WebSphere/AppServer"
+    #imshared_location:    "/opt/IBM/IMShared"
+
+    #was_version: "8.5.5011.20161206_1434"
+    #__this_files:
+    #  - { bf: 8.5.5-WS-WAS-FP011-part1.zip, bfs: bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66 }
+    #  - { bf: 8.5.5-WS-WAS-FP011-part2.zip, bfs: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
+
+    #__was_version_fp9:      "8.5.5009.20160225_0435"
+    #__was_files_fp9:
+    #  - { bf: 8.5.5-WS-WAS-FP0000009-part1.zip, bfs: bf0817f50472c7f1ad0c50863ff0e7a07fb73f69f09a60bfad798d2b3cc1e3ae }
+    #  - { bf: 8.5.5-WS-WAS-FP0000009-part2.zip, bfs: c5501a75da3ab78887fa0208f26d7d81517e39a0c7e184bf36d28fbc93acbe22 }
+
+  roles:
+    - roles/was-nd-fix-install

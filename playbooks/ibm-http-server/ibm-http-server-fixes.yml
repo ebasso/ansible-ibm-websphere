@@ -1,0 +1,26 @@
+# Install IBM HTTP Server Fixes
+#
+# Variables used in this playbook that can be setup at hosts fil
+---
+- name:                    Install IBM HTTP Server Fixes
+  hosts:                   ihs-servers
+  become:                  true
+  vars:
+    __repository_url:      "{{ ihs_repository_url }}"
+    #tmp_dir:              "/opt/IBM/Binaries/wassup_fixes"
+    #iim_install_location: "/opt/IBM/InstallationManager"
+    #ihs_install_location: "/opt/IBM/HTTPServer"
+    #plg_install_location: "/opt/IBM/WebSphere/Plugins"
+    #wct_install_location: "/opt/IBM/WebSphere/Toolbox"
+    #imshared_location:    "/opt/IBM/IMShared"
+    #__this_version:       "{{ ihs_version | default('8.5.5011.20161206_1434') }}"
+    #__this_files:
+    #  - { bf: 8.5.5-WS-WASSupplements-FP011-part1.zip, bfs: 4a8f560c3b546321a7e67facc5c25255ecd11c6b29e3fed0a38f203dd339a771 }
+    #  - { bf: 8.5.5-WS-WASSupplements-FP011-part2.zip, bfs: 6fec8b763020c72693a5a98ecba37c5f7778ab9bcf44b7089a9edb3dc51cb84c }
+    #  - { bf: 8.5.5-WS-WASSupplements-FP011-part3.zip, bfs: fe0cbc3ad678c21bb43c588bcc80242d8556b80ca2f4c237e5cc97b271eeffc7 }
+    #__ihs_version_fp9:    "8.5.5009.20160225_0435"
+    #__ihs_files_fp9:
+    #  - { bf: 8.5.5-WS-WASSupplements-FP0000009-part1.zip, bfs: 736b3e13b3f38289aee4367c62b19ffcea06cf2ae4058fdb0197a3e1ec07fb27 }
+    #  - { bf: 8.5.5-WS-WASSupplements-FP0000009-part2.zip, bfs: 1728f184c38306e86e2e4102f153008f3b38af5c98089324b0fa4921affa2c2e }
+  roles:
+    - ibm-http-server-fix-install

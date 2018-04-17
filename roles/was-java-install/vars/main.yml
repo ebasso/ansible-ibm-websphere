@@ -1,0 +1,15 @@
+---
+__tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/was_fixes"
+__logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+__iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__imshared_location:    "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
+__now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__rsp_file:             "{{ __logs_dir }}/was_java.rsp"
+__log_file:             "{{ __logs_dir }}/was_java_install.{{ __now }}.log"
+__tpl_file:             "was_java.rsp.j2"
+
+__this_version:         "{{ was_java_version | default('8.0.2010.20160224_1829') }}"
+__this_files:
+  - { bf: 8.0.2.10-WS-IBMWASJAVA-Linux.zip, bfs: 7338d90d760596d95eb9622aa6a5ceb21c5604cece702abeeb8565c331f2aaa1 }
+__version_check:        "Installed com.ibm.websphere.IBMJAVA.v80_{{ __this_version }}"

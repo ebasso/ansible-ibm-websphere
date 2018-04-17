@@ -1,0 +1,22 @@
+---
+__repository_url:       "{{ ihs_repository_url }}"
+__tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/wassup"
+__logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+__iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+__ihs_install_location: "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"
+__plg_install_location: "{{ plg_install_location  | default('/opt/IBM/WebSphere/Plugins') }}"
+__wct_install_location: "{{ wct_install_location  | default('/opt/IBM/WebSphere/Toolbox') }}"
+__imshared_location:    "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
+__now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__rsp_file:             "{{ __logs_dir }}/ihs_plg_wct.rsp"
+__log_file:             "{{ __logs_dir }}/ihs_install.{{ __now }}.log"
+__tpl_file:             "ihs_plg_wct.rsp.j2"
+__this_files:
+  - { bf: WAS_V8.5.5_SUPPL_1_OF_3.zip, bfs: d63c59de4a5548e3d26e71fefb76193d41ac7585bc450c1e504287e0a6f746c9 }
+  - { bf: WAS_V8.5.5_SUPPL_2_OF_3.zip, bfs: ac00e7ab43cc528fe7f3ccd69aeb6564a2e738e7bc6e30e71fd2e0d4bd64f39e }
+  - { bf: WAS_V8.5.5_SUPPL_3_OF_3.zip, bfs: 94e3d9b70b139ad5fa0578da6857b295c5d2370c1b6ecb544c1e5757406fec90 }
+__this_version:         "8.5.5000.20130514_1044"
+__product_id:           "\"id='com.ibm.websphere.IHS.v85'\""
+__version_check:        "Installed com.ibm.websphere.IHS.v85_8.5.5000"
+
+__iim_product_id:       "\"id='com.ibm.cic.agent\""

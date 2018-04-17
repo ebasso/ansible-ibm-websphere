@@ -1,0 +1,10 @@
+---
+- name:                 "Delete WAS Profile"
+  command:              "{{ __was_install_location }}/bin/manageprofiles.sh -deleteAll"
+  register:             cout
+  changed_when:         ( cout.stdout.find('INSTCONFSUCCESS') != -1)
+
+- name:                  "Cleanup Profiles directories"
+  file:
+    path:                "{{ __was_install_location }}/profiles"
+    state:               absent

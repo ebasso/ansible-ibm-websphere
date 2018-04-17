@@ -1,0 +1,13 @@
+# How to Run
+#
+# ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/was-server-start.yml
+#
+---
+- name:                     Stop Nodeagent
+  hosts:                    was-servers
+  become:                   true
+  vars:
+    #__profile_name:         "{{ profile_name | default('AppSrv01') }}"
+    #__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+  roles:
+    - was-nodeagent-stop

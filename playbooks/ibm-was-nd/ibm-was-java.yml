@@ -1,0 +1,20 @@
+# Install Java SDK for WebSphere Application Server - Network Deployment
+#
+# Variables used in this playbook that can be setup at hosts file.
+#
+# HTTP server that has installation Files
+#   was_fixes_repository_url:  http://192.168.1.1/was/8.5.5
+#
+---
+- hosts:                       dmgr,was-servers
+  become:                      true
+  vars:
+    #tmp_dir:                   "/opt/IBM/Binaries/was_fixes"
+    #iim_install_location:      "/opt/IBM/InstallationManager"
+    #was_install_location:      "/opt/IBM/WebSphere/AppServer"
+    #imshared_location:         "/opt/IBM/IMShared"
+    #was_java_version:          "8.0.2010.20160224_1829"
+    #__this_files:
+    #  - { bf: 8.0.2.10-WS-IBMWASJAVA-Linux.zip, bfs: 7338d90d760596d95eb9622aa6a5ceb21c5604cece702abeeb8565c331f2aaa1 }
+  roles:
+    - was-java-install

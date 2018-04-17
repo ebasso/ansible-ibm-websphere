@@ -1,0 +1,24 @@
+---
+- name: "Collect Files:  SystemErr_*.log, SystemOut_*.log, trace_*.log, startServer.log, *.txt"
+  find:
+    paths:               "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs"
+    patterns:            "SystemErr_*.log,SystemOut_*.log,trace_*.log,startServer.log,*.txt"
+    recurse:             yes
+  register:              files_to_delete
+
+- name: "Delete Files:   SystemErr_*.log, SystemOut_*.log, trace_*.log, startServer.log, *.txt"
+  file:
+    path:                "{{ item.path }}" #correction code
+    state:               absent
+  with_items:            "{{ files_to_delete.files }}"
+
+- name: "Collect Files:  SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
+  find:
+    paths:               "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs"
+    patterns:            "SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
+    recurse:             yes
+  register:              files_to_truncate
+
+- name: "Truncate Files: SystemOut.log,SystemErr.log,native_stdout.log,native_stderr.log,*_exception.log"
+  shell:                 echo '' > "{{ item.path }}"
+  with_items:            "{{ files_to_truncate.files }}"

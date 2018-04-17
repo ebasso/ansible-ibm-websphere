@@ -1,0 +1,12 @@
+---
+__profile_name:         "{{ profile_name | default('AppSrv01') }}"
+__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__was_nodename:         "{{ was_nodename }}"
+__was_hostname:         "{{ inventory_hostname }}"
+__was_username:         "{{ was_username }}"
+__was_password:         "{{ was_password }}"
+__now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__logs_dir:             "{{ __was_install_location }}/logs"
+__rsp_file:             "{{ __logs_dir }}/was_profile_node.rsp"
+__tpl_file:             "was_profile_node_managed.rsp.j2"
+__is_standalone:        "{{ is_standalone | default(false) }}"

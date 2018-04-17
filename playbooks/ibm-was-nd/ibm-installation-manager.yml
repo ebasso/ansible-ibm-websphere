@@ -1,0 +1,22 @@
+# Install Installation Manager
+#
+# Variables used in this playbook that can be setup at hosts file.
+#
+# HTTP server that has installation Files
+#   iim_repository_url:    http://192.168.1.1/installation
+#
+# For 1.8.6000
+#   iim_bin_file=agent.installer.linux.gtk.x86_64_1.8.6000.20161118_1611.zip
+#   iim_bin_file_sha256=b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3
+#
+---
+- hosts:                   dmgr,was-servers,ihs-servers
+  become:                  true
+  vars:
+    #tmp_dir:              "/opt/IBM/Binaries/iim"
+    #iim_install_location: "/opt/IBM/InstallationManager"
+    #iim_bin_file:         "agent.installer.linux.gtk.x86_64_1.8.7000.20170706_2137.zip"
+    #iim_bin_file_sha256:  "0808503fae69956ffea5f8ca4d9f994111b35b0af1216fb5464f6483f8700c45"
+    #iim_version:          "1.8.7000.20170706_2137"
+  roles:
+  - roles/installation-manager-install

@@ -1,0 +1,3 @@
+---
+__profile_name:         "{{ profile_name | default('Dmgr01') }}"
+__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"

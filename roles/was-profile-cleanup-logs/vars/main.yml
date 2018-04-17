@@ -1,0 +1,8 @@
+# How to Run
+#
+# ansible-playbooks -i hosts.development -k ansible-ibm-websphere/playbooks/was-profile-cleanup-logs.yml
+#
+---
+__profile_name:          "{{ profile_name | default('AppSrv01') }}"
+#__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__was_install_location:  "/opt/IBM/WebSphere/AppServer"

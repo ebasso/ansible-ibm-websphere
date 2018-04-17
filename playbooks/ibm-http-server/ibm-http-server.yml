@@ -1,0 +1,22 @@
+# Install IBM HTTP Server
+#
+# Variables used in this playbook that can be setup at hosts file.
+---
+- name:                     Install IBM HTTP Server - Plugin - WCT
+  hosts:                    ihs-servers
+  become:                   true
+  vars:
+    __repository_url:       "{{ ihs_repository_url }}"
+    #tmp_dir:              "/opt/IBM/Binaries/wassup"
+    #iim_install_location: "/opt/IBM/InstallationManager"
+    #ihs_install_location: "/opt/IBM/HTTPServer"
+    #plg_install_location: "/opt/IBM/WebSphere/Plugins"
+    #wct_install_location: "/opt/IBM/WebSphere/Toolbox"
+    #imshared_location:    "/opt/IBM/IMShared"
+    #__this_files:
+    #  - { bf: WAS_V8.5.5_SUPPL_1_OF_3.zip, bfs: d63c59de4a5548e3d26e71fefb76193d41ac7585bc450c1e504287e0a6f746c9 }
+    #  - { bf: WAS_V8.5.5_SUPPL_2_OF_3.zip, bfs: ac00e7ab43cc528fe7f3ccd69aeb6564a2e738e7bc6e30e71fd2e0d4bd64f39e }
+    #  - { bf: WAS_V8.5.5_SUPPL_3_OF_3.zip, bfs: 94e3d9b70b139ad5fa0578da6857b295c5d2370c1b6ecb544c1e5757406fec90 }
+    #__this_version:         "8.5.5000.20130514_1044"
+  roles:
+    - ibm-http-server-install

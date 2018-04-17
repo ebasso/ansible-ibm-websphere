@@ -1,0 +1,10 @@
+---
+__profile_name:         "{{ profile_name | default('Dmgr01') }}"
+__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__was_nodename:         "{{ was_nodename }}"
+__was_username:         "{{ was_username }}"
+__was_password:         "{{ was_password }}"
+__now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__bin_dir:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin"
+__rsp_file:             "{{ __bin_dir }}/was_config_ldap.py"
+__tpl_file:             "was_config_ldap.py.j2"
