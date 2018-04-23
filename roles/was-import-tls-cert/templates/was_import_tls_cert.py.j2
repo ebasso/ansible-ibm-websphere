@@ -1,0 +1,9 @@
+# Start of File
+cellID=AdminControl.getCell()
+#Add TLS Signer Certificate for AD to Cell Default Trust Store
+AdminTask.retrieveSignerFromPort('[-keyStoreName CellDefaultTrustStore -keyStoreScope (cell):'+cellID+' -host {{ ldap_server }} -port 636 -certificateAlias {{ ldap_alias }} -sslConfigName CellDefaultSSLSettings -sslConfigScopeName (cell):'+cellID+' ]')
+
+#Save and Synchronise
+AdminConfig.save()
+AdminNodeManagement.syncActiveNodes()
+# End of File
