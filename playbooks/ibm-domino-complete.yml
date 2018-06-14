@@ -1,0 +1,48 @@
+# Install Domino Servers
+#
+# Variables used in this playbook that can be setup at hosts file.
+#
+# HTTP server that has installation Files
+#   domino_repository_url:      http://192.168.1.1/was/8.5.5
+#
+---
+- hosts:                        domino-servers
+  become:                       true
+  vars:
+    #tmp_dir:                   "/opt/Binaries/domino"
+    #domino_install_location:   "/opt/ibm/domino"
+    #domino_notesdata:          "/domino/notesdata"
+    #domino_group:              "notes"
+    #domino_user:               "notes"
+
+    #domino_version:            "901FP10"
+
+    #domino_bin_file:           "DOMINO_9.0.1_64_BIT_LIN_XS_EN.tar"
+    #domino_bin_file_sha256:    "9f5f941ec43ca268197cb1250a2677630789a4efeca73d38d69ebecd7d32870a"
+
+    #domino_fp_bin_file:        "domino901FP9_linux64_x86.tar"
+    #domino_fp_bin_file_sha256: "25020ea0640dbf9b8cd98c7ef82a5019e93a86cdc64d27f3ae15d277957bd306"
+
+    #domino_hf_bin_file:        "901FP10HF48-linux64.tar"
+    #domino_hf_bin_file_sha256: "7f0f1768b142f01c7ae0b320e2532dd62a785d40034824240d4b5f8d57c481d9"
+
+    #domino_lp_version:         "BP"
+    #domino_lp_bin_file:        "DOMINO_9.0.1_LP_AIX_Lix_BP.tar"
+    #domino_lp_bin_file_sha256: "9b1ba1c9e29e186a13db507835643cf30e8555e543d784d4721dc5272ab5cd18"
+
+    __list_domino_versions:
+      - { version: "10",           rel: 1000, fp: 0,  hf: 0}
+      - { version: "9.0.1",        rel: 900,  fp: 0,  hf: 0}
+      - { version: "901FP10",      rel: 900,  fp: 10, hf: 0}
+      - { version: "901FP10HF48",  rel: 900,  fp: 10, hf: 48}
+      - { version: "901FP9",       rel: 900,  fp: 9,  hf: 0}
+      - { version: "901FP9HF140",  rel: 900,  fp: 9,  hf: 140}
+
+  roles:
+#  - roles/domino-stop-server
+    - roles/domino-install
+    #- roles/domino-fp-install
+    #- roles/domino-hf-install
+#   - roles/domino-lp-install
+#   - roles/domino-verse-install
+#   - roles/domino-start-server
