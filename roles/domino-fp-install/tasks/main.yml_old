@@ -1,0 +1,59 @@
+---
+- name:          Is Domino already Installed?
+  command:       "egrep 'rev = {{ domino_version }}' {{ __dom_install_location }}/.install.dat"
+  register:      __release_version
+  ignore_errors: true
+
+- name:          Is Fix Pack already Installed?
+  command:       "egrep 'rev = \"' {{ __dom_install_location }}/.install.dat"
+  register:      __fp_hf_version
+  ignore_errors: true
+
+
+- name:          Is Fix Pack already Installed?
+  command:       "cat {{ __dom_install_location }}/.install.dat"
+  register:      __fp_hf_version
+  ignore_errors: true
+
+- set_fact:
+    __release:   "{{ __release_version.stdout | regex_replace('.* = (\\d*).*','\\1') }}"
+
+- set_fact:
+    __fp:        "{{ __fp_hf_version.stdout | regex_replace('.* = \"(FP\\d*).*','\\1') }}"
+  when:          __fp_hf_version.stdout is search("FP")
+
+- set_fact:
+    __hf:        "{{ __fp_hf_version.stdout | regex_replace('.*(HF\\d*).*','\\1') }}"
+  when:          __fp_hf_version.stdout is search("HF")
+
+-  debug:        var=__release_version
+
+-  debug:        var=__fp_hf_version
+
+-  debug:        var=__release
+
+-  debug:        var=__fp
+
+-  debug:        var=__hf
+
+#vars:
+#  domino_version_installed: "http://example.com/users/foo/resources/bar"
+
+#tasks:
+#    - debug:
+#        msg:    "matched pattern 1"
+#      when:     url is match("http://example.com/users/.*/resources/.*")
+#
+#    - debug:
+#        msg:    "matched pattern 2"
+#      when:     url is search("/users/.*/resources/.*")
+
+# TODO:          STOP DOMINO
+#- include:      domino-server-stop.yml
+#  when:         version_already_installed.rc != 0
+
+#- include:      inst-domino-fp.yml
+#  when:         version_already_installed.rc != 0
+
+#- include:      domino-server-start.yml
+#  when:         version_already_installed.rc != 0

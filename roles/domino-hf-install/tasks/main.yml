@@ -1,0 +1,8 @@
+---
+#-  debug:       var=version_already_installed
+# TODO: STOP DOMINO
+#- include:       domino-server-stop.yml
+#  when:          version_already_installed.rc != 0
+
+- include:       inst-domino-hf.yml
+#  when:          version_already_installed.rc != 0

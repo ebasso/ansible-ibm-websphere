@@ -3,25 +3,35 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 # Playbooks
 
-| Playbook name                |            Description                                                  |
-|------------------------------|-------------------------------------------------------------------------|
-| ibm-installation-manager.yml | Install IBM Installation Manager   |
-| ibm-was-nd.yml               | Install IBM WebSphere Application Server - Network Deployment - 8.5.5  |
-| ibm-was-nd-fixes.yml         | Install IBM WAS ND Fixes  |
-| ibm-was-java.yml             | Install IBM Java for WAS  |
-| was-dmgr-start.yml           | Start Deployment Manager |
-| was-dmgr-stop.yml            | Stop Deployment Manager |
-| was-nodeagent-start.yml      | Start Node Agent |
-| was-nodeagent-stop.yml       | Stop Node Agent |
-| was-server-start.yml         | Start Applications Servers |
-| was-server-stop.yml          | Stop Applications Servers |
-| was-profile-cleanup-logs.yml | Delete and truncate log files for Application Servers|
-| was-profile-cleanup-temps.yml| Delete temp files on WAS Profile (server must be stopped) |
-| was-create-dmgr-profile.yml  | Create a profile for Deployment Manager |
-| was-profile-create.yml       | Create a profile for WAS Servers |
-| was-profile-delete-all.yml   | Delete all profiles on WAS Servers |
-| was-import-tls-cert.yml      | Add TLS Signer Certificate to Cell Default Trust Store |
-| was-config-ldap.yml          | Configure LDAP Repository (server must be stopped) |
+| Playbook name                 | Status         |           Description                                        |
+|-------------------------------|----------------|--------------------------------------------------------------|
+| ibm-was-nd-complete.yml       | Complete       | Install IBM HTTP Server - 8.5.5.11  |
+| ibm-http-server-complete.yml  | Complete       | Install IBM WebSphere Application Server - Network Deployment - 8.5.5.11  |
+| ibm-connections6.yml          | In Development | Install IBM Connections 6   |
+
+# Roles
+
+| Role name                       |            Description of Role                                          |
+|---------------------------------|-------------------------------------------------------------------------|
+| installation-manager.yml        | Install IBM Installation Manager   |
+| was-nd-install.yml              | Install IBM WebSphere Application Server - Network Deployment - 8.5.5  |
+| was-nd-fixes-install.yml        | Install IBM WAS ND Fixes  |
+| was-java-install.yml            | Install IBM Java for WAS  |
+| was-config-ldap.yml             | Configure LDAP Repository (server must be stopped) |
+| was-create-dmgr-profile.yml     | Create a profile for Deployment Manager |
+| was-dmgr-start.yml              | Start Deployment Manager |
+| was-dmgr-stop.yml               | Stop Deployment Manager |
+| was-import-tls-cert.yml         | Add TLS Signer Certificate to Cell Default Trust Store |
+| was-nodeagent-start.yml         | Start Node Agent |
+| was-nodeagent-stop.yml          | Stop Node Agent |
+| was-profile-cleanup-logs.yml    | Delete and truncate log files for Application Servers|
+| was-profile-cleanup-temps.yml   | Delete temp files on WAS Profile (server must be stopped) |
+| was-profile-create.yml          | Create a profile for WAS Servers |
+| was-profile-delete-all.yml      | Delete all profiles on WAS Servers |
+| was-server-start.yml            | Start Applications Servers |
+| was-server-stop.yml             | Stop Applications Servers |
+| ibm-http-server-install.yml     | Install IBM HTTP Server |
+| ibm-http-server-fix-install.yml | Install IBM HTTP Server Fixes |
 
 
 # Getting start
@@ -54,13 +64,21 @@ git clone https://github.com/ebasso/ansible-ibm-websphere.git
 ```
 cd /etc/ansible
 
-ansible-playbooks -i environments/hosts.development -k playbooks/ibm-was-nd/ibm-was-nd-complete.yml
-
-ansible-playbooks -i environments/hosts.development -k playbooks/ibm-was-nd/ibm-installation-manager.yml
-
-ansible-playbooks -i environments/hosts.development -k playbooks/ibm-was-nd/ibm-was-nd.yml
+ansible-playbooks -i environments/hosts.development -u <username> -k playbooks/ibm-was-nd-complete.yml
 
 ```
+
+## Running specific Playbooks
+
+```
+cd /etc/ansible
+
+ansible-playbooks -i environments/hosts.development -u <username> -k playbooks/ibm-was-nd/ibm-installation-manager.yml
+
+ansible-playbooks -i environments/hosts.development -u <username> -k playbooks/ibm-was-nd/ibm-was-nd.yml
+
+```
+
 
 # For other versions of IIM, WAS and WAS fixes
 

@@ -1,0 +1,19 @@
+---
+__repository_url:             "{{ domino_hf_repository_url }}"
+__tmp_dir:                    "{{ tmp_dir | default('/opt/Binaries') }}/domino_hf"
+__logs_dir:                   "{{ tmp_dir | default('/opt/Binaries') }}/logs"
+
+__dom_install_location:       "{{ domino_install_location | default('/opt/ibm/domino') }}"
+__dom_notesdata:              "{{ domino_notesdata | default('/domino/notesdata') }}"
+__dom_user:                   "{{ domino_user      | default('notes') }}"
+__dom_group:                  "{{ domino_group     | default('notes') }}"
+
+__bin_file:                   "{{ domino_hf_bin_file | default('agent.installer.linux.gtk.x86_64_1.8.7000.20170706_2137.zip') }}"
+__bin_file_sha256:            "{{ domino_hf_bin_file_sha256 | default('aaa') }}"
+__this_version:               "{{ domino_hf_version | default('9.0.1') }}"
+
+__now:                        "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__rsp_file:                   "{{ __logs_dir }}/domino_hf_install.rsp"
+__log_file:                   "{{ __logs_dir }}/domino_hf_install.{{ __now }}.log"
+__tpl_file:                   "domino_hf_install.rsp.j2"
+__os:                         "{{ ansible_system | lower }}64"

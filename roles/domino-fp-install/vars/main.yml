@@ -1,0 +1,20 @@
+---
+__repository_url:        "{{ domino_fp_repository_url }}"
+__tmp_dir:               "{{ tmp_dir | default('/opt/Binaries') }}/domino_fp"
+__logs_dir:              "{{ tmp_dir | default('/opt/Binaries') }}/logs"
+
+__dom_install_location:  "{{ domino_install_location | default('/opt/ibm/domino') }}"
+__dom_notesdata:         "{{ domino_notesdata | default('/domino/notesdata') }}"
+__dom_user:              "{{ domino_user      | default('notes') }}"
+__dom_group:             "{{ domino_group     | default('notes') }}"
+
+__bin_file:              "{{ domino_fp_bin_file | default('domino901FP9_linux64_x86.tar') }}"
+__bin_file_sha256:       "{{ domino_fp_bin_file_sha256 | default('25020ea0640dbf9b8cd98c7ef82a5019e93a86cdc64d27f3ae15d277957bd306') }}"
+__this_version:          "{{ domino_fp_version | default('901FP9') }}"
+__this_fp_version:       "{{ domino_fp_version | default('9') }}"
+
+__now:                   "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__rsp_file:              "{{ __logs_dir }}/domino_fp_install.rsp"
+__log_file:              "{{ __logs_dir }}/domino_fp_install.{{ __now }}.log"
+__tpl_file:              "domino_fp_install.rsp.j2"
+__os:                    "{{ ansible_system | lower }}64"
