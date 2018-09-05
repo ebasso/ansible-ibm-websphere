@@ -1,0 +1,66 @@
+---
+- name:              Cleanup Binaries directory
+  file:              path={{ __tmp_dir }} state=absent
+  ignore_errors:     true
+
+- name:              Create Binaries directory
+  file:              path={{ __tmp_dir }} state=directory mode=0755
+
+- name:              Create Logs directory
+  file:              path={{ __logs_dir }} state=directory mode=0755
+
+- name:              Download Installer
+  get_url:
+    url:             "{{ repository_url }}/{{ item.file_name }}"
+    dest:            "{{ __tmp_dir }}/{{ item.file_name }}"
+    mode:            0755
+    checksum:        sha256:{{ item.check_sum }}
+  with_items:        "{{ __this_files }}"
+
+- name:              Extract Installer
+  unarchive:
+    src:             "{{ __tmp_dir }}/{{ item.file_name }}"
+    dest:            "{{ __tmp_dir }}/"
+    copy:            no
+  with_items:        "{{ __this_files }}"
+
+- name:              Encode WAS Password
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }}"
+  register:          __was_encoded_password
+  changed_when:      ( __was_encoded_password.rc == 0)
+
+- name:              Encode DB Password
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ db_password }}"
+  register:          __db_encoded_password
+  changed_when:      ( __db_encoded_password.rc == 0)
+  when:              ('system-console' in group_names)
+
+- name:              Generate Response file
+  template:
+    src:             "{{ __tpl_file }}"
+    dest:            "{{ __rsp_file }}"
+
+- name:              Disable Repository on Installation Manager
+  replace:
+    path:            /var/ibm/InstallationManager/.settings/com.ibm.cic.agent.core.prefs
+    regexp:          '(\s*)RepositoryIsOpen=true(\s*)'
+    replace:         '\1RepositoryIsOpen=false\2'
+    backup:          yes
+  ignore_errors:     true
+
+- name:              Create Sametime Temporary directory
+  file:              path={{ __sametime_tmp_dir }} state=directory mode=0755
+
+#- name:              Install IBM Sametime Software
+#  command:
+#    chdir={{ __tmp_dir }}
+#    {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}
+#  register:          cout
+#  changed_when:      ( cout.stdout.find(__version_check) != -1)
+#
+##- debug:            var=cout
+#
+#- name:              Cleanup Binaries directory
+#  file:
+#    state:           absent
+#    path:            "{{ __tmp_dir }}"

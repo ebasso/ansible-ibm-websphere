@@ -1,0 +1,7 @@
+# check_vars.yml
+---
+- name: was_fixes_repository_url should be defined
+  assert:
+    that:
+    - was_fixes_repository_url is defined and was_fixes_repository_url != ''
+    msg: "Set the value of 'was_fixes_repository_url' in the inventory file."

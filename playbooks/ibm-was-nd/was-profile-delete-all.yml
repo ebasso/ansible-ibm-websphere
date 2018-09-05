@@ -1,10 +1,10 @@
 # How to Run
 #
-# ansible-playbook -i hosts.development -k ansible-ibm-websphere/playbooks/was-create-dmgr-profile.yml
+# ansible-playbook -i hosts.development -k ansible-ibm-websphere/playbooks/was-dmgr-create-profile.yml
 #
 ---
 - name:                     DeleteAll WAS Profile
-  hosts:                    was-servers
+  hosts:                    dmgr,was-servers
   become:                   true
   vars:
     #__profile_name:         "{{ profile_name | default('AppSrv01') }}"

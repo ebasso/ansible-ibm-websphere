@@ -1,0 +1,9 @@
+---
+- name:          "Verifiy if Profile already exists"
+  stat:
+    path:        "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr"
+  register:      profile_already_exists
+
+- name:          "Create DMGR Profile"
+  include_tasks: create_profile.yml
+  when:          profile_already_exists.stat.exists != true

@@ -1,0 +1,9 @@
+---
+- name:          Is IIM Installed?
+  command:       "egrep {{ __iim_product_id }} /var/ibm/InstallationManager/installed.xml"
+  register:      iim_already_installed
+
+- name:          Is Product already Installed?
+  command:       "egrep {{ __product_id }} /var/ibm/InstallationManager/installed.xml"
+  register:      version_already_installed
+  ignore_errors: true

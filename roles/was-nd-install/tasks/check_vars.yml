@@ -1,0 +1,7 @@
+# check_openshift.yml
+---
+- name: was_repository_url should be defined
+  assert:
+    that:
+    - was_repository_url is defined and was_repository_url != ''
+    msg: "Set the value of 'was_repository_url' in the inventory file."

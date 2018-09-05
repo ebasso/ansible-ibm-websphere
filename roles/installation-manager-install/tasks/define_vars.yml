@@ -1,0 +1,5 @@
+---
+- name:          Is Product already Installed?
+  command:       egrep {{ __this_version }} /var/ibm/InstallationManager/installed.xml
+  register:      version_already_installed
+  ignore_errors: true

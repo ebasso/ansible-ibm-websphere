@@ -1,0 +1,41 @@
+---
+- name:          Cleanup Binaries directory
+  file:          path={{ __tmp_dir }} state=absent
+  ignore_errors: true
+
+#-  debug:       var=version_already_installed
+- name:          Create Binaries directory
+  file:          path={{ __tmp_dir }} state=directory mode=0755
+
+- name:          Create Logs directory
+  file:          path={{ __logs_dir }} state=directory mode=0755
+
+- name:          Download WAS ND V8.5.5 Files
+  get_url:
+    url:         "{{ was_repository_url }}/{{ item.file_name }}"
+    dest:        "{{ __tmp_dir }}/{{ item.file_name }}"
+    mode:        0755
+    checksum:    sha256:{{ item.check_sum }}
+  with_items:    "{{ __was_files }}"
+
+- name:          Extract WAS ND V8.5.5 Files
+  unarchive:
+    src:         "{{ __tmp_dir }}/{{ item.file_name }}"
+    dest:        "{{ __tmp_dir }}/"
+    copy:        no
+  with_items:    "{{ __was_files }}"
+
+- name:          Generate WAS Response file
+  template:
+    src:         "{{ __tpl_file }}"
+    dest:        "{{ __rsp_file }}"
+
+- name:          Install IBM WAS Software
+  command:
+    chdir={{ __tmp_dir }}
+    {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}
+  register:      cout
+  changed_when:  ( cout.stdout.find( __version_check ) != -1)
+
+- name:          Cleanup Binaries directory
+  file:          path={{ __tmp_dir }} state=absent

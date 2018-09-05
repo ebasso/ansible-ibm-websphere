@@ -5,8 +5,8 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 | Playbook name                 | Status         |           Description                                        |
 |-------------------------------|----------------|--------------------------------------------------------------|
-| ibm-was-nd-complete.yml       | Complete       | Install IBM HTTP Server - 8.5.5.11  |
-| ibm-http-server-complete.yml  | Complete       | Install IBM WebSphere Application Server - Network Deployment - 8.5.5.11  |
+| ibm-was-nd-complete.yml       | Complete       | Install IBM HTTP Server - 8.5.5.14  |
+| ibm-http-server-complete.yml  | Complete       | Install IBM WebSphere Application Server - Network Deployment - 8.5.5.14  |
 | ibm-connections6.yml          | In Development | Install IBM Connections 6   |
 
 # Roles
@@ -17,11 +17,12 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 | was-nd-install.yml              | Install IBM WebSphere Application Server - Network Deployment - 8.5.5  |
 | was-nd-fixes-install.yml        | Install IBM WAS ND Fixes  |
 | was-java-install.yml            | Install IBM Java for WAS  |
-| was-config-ldap.yml             | Configure LDAP Repository (server must be stopped) |
-| was-create-dmgr-profile.yml     | Create a profile for Deployment Manager |
+| was-dmgr-config-ldap.yml        | Configure LDAP Repository (Server must be started) |
+| was-dmgr-create-profile.yml     | Create a profile for Deployment Manager |
+| was-dmgr-import-tls-cert.yml    | Add TLS Signer Certificate to Cell Default Trust Store (Server must be started)|
+| was-dmgr-restart.yml            | Restart Deployment Manager |
 | was-dmgr-start.yml              | Start Deployment Manager |
 | was-dmgr-stop.yml               | Stop Deployment Manager |
-| was-import-tls-cert.yml         | Add TLS Signer Certificate to Cell Default Trust Store |
 | was-nodeagent-start.yml         | Start Node Agent |
 | was-nodeagent-stop.yml          | Stop Node Agent |
 | was-profile-cleanup-logs.yml    | Delete and truncate log files for Application Servers|

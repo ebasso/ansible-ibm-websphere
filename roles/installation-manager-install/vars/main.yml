@@ -2,7 +2,14 @@
 __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/iim"
 __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
 __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
-__bin_file:             "{{ iim_bin_file | default('agent.installer.linux.gtk.x86_64_1.8.7000.20170706_2137.zip') }}"
-__bin_file_sha256:      "{{ iim_bin_file_sha256 | default('0808503fae69956ffea5f8ca4d9f994111b35b0af1216fb5464f6483f8700c45') }}"
-__this_version:         "{{ iim_version | default('1.8.7000.20170706_2137') }}"
+__bin_file:             "{{ iim_bin_file | default('agent.installer.linux.gtk.x86_64_1.8.9001.20180709_1302.zip') }}"
+__bin_file_sha256:      "{{ iim_bin_file_sha256 | default('238b13d73449402ff00f697062af80a299c6155c95c527f4ce67d0c1f266c911') }}"
+__this_version:         "{{ iim_version | default('1.8.9001.20180709_1302') }}"
 __product_id:           "\"id='com.ibm.cic.agent' version='{{ __this_version }}'\""
+
+
+
+
+#__bin_file:             "{{ iim_bin_file | default('agent.installer.linux.gtk.x86_64_1.8.7000.20170706_2137.zip') }}"
+#__bin_file_sha256:      "{{ iim_bin_file_sha256 | default('0808503fae69956ffea5f8ca4d9f994111b35b0af1216fb5464f6483f8700c45') }}"
+#__this_version:         "{{ iim_version | default('1.8.7000.20170706_2137') }}"

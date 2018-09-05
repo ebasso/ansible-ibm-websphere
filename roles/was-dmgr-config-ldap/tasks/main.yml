@@ -1,0 +1,30 @@
+---
+- name:                 "Verifiy if Profile already exists"
+  stat:
+    path:               "{{ __was_install_location }}/profiles/{{ __profile_name }}"
+  register:             profile_already_exists
+
+- name:                 Verify if pid file
+  shell:                ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid"`
+  register:             dmgr_is_running
+  ignore_errors:        true
+
+- name:                 "Verifiy if LDAP is already configured"
+  stat:
+    path:               "{{ __rsp_file }}"
+  register:             ldap_already_configured
+  when:                 profile_already_exists.stat.exists == true
+
+- name:                 "Generate Response file"
+  template:
+    src:                "{{ __tpl_file }}"
+    dest:               "{{ __rsp_file }}"
+  when:                 ldap_already_configured.stat.exists == false
+
+- name:                 "Configure LDAP"
+  command:
+    chdir={{ __bin_dir }}
+    {{ __bin_dir }}/wsadmin.sh -lang jython -port 8879 -username {{ __was_username }} -password {{ __was_password }} -f {{ __rsp_file }}
+  register:             cout
+  changed_when:         cout.rc == 0
+  when:                 ldap_already_configured.stat.exists == false

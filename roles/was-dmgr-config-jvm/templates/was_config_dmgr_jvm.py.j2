@@ -1,0 +1,5 @@
+#Configure Applicaton Security
+AdminTask.setJVMProperties('[-nodeName {{ __was_nodename }} -serverName dmgr -verboseModeGarbageCollection true -initialHeapSize 2048 -maximumHeapSize 2048 ]')
+#Save and Synchronise
+AdminConfig.save()
+# End of File

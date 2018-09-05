@@ -1,0 +1,17 @@
+---
+__tmp_dir:                    "{{ tmp_dir | default('/opt/IBM/Binaries') }}/temp"
+__logs_dir:                   "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+__iim_install_location:       "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+__was_install_location:       "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__imshared_location:          "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
+__now:                        "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+
+__sametime_install_location:  "{{ sametime_install_location  | default('/opt/IBM/SametimeServer') }}"
+__sametime_tmp_dir:           "{{ sametime_tmp_dir  | default('/opt/IBM/STTempDir') }}"
+
+
+# Must ben defined to work with set_fact
+#__this_version:              ""
+#__this_files:                "{{ was_fp_files | default( __was_fp_files_fp11 ) }}"
+#__version_check:             "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
+#__product_id:                "\"id='com.ibm.websphere.ND.v85' version='{{ __this_version }}'\""

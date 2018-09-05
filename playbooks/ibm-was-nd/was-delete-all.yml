@@ -1,0 +1,17 @@
+# Delete directories - BE CAREFULL
+#
+# ansible-playbook -i environments/hosts.development -u <username> -k playbooks/was-delete-all.yml
+---
+- hosts:                    dmgr,was-servers
+  become:                   true
+  tasks:
+    - name:                  "Cleanup All directories"
+      file:
+        path:                "{{ item }}"
+        state:               absent
+      with_items:
+      - /var/ibm
+      - /opt/IBM/Binaries
+      - /opt/IBM/InstallationManager
+      - /opt/IBM/WebSphere
+      - /opt/IBM/IMShared

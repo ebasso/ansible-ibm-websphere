@@ -1,0 +1,81 @@
+# check_openshift.yml
+---
+- name: repository_url should be defined
+  assert:
+    that:
+    - repository_url is defined and repository_url != ''
+    msg: "Set the value of 'repository_url' in the inventory file."
+
+- name: ssc_hostname should be defined
+  assert:
+    that:
+    - ssc_hostname is defined and ssc_hostname != ''
+    msg: "Set the value of 'ssc_hostname' in the inventory file."
+
+- name: was_username should be defined
+  assert:
+    that:
+    - was_username is defined and was_username != ''
+    msg: "Set the value of 'was_username' in the inventory file."
+
+- name: was_password should be defined
+  assert:
+    that:
+    - was_password is defined and was_password != ''
+    msg: "Set the value of 'was_password' in the inventory file."
+
+- name: db_username should be defined
+  assert:
+    that:
+    - db_username is defined and db_username != ''
+    msg: "Set the value of 'db_username' in the inventory file."
+  when: "'system-console' in group_names"
+
+- name: db_password should be defined
+  assert:
+    that:
+    - db_password is defined and db_password != ''
+    msg: "Set the value of 'db_password' in the inventory file."
+  when: "'system-console' in group_names"
+
+- name: system_console_version should be defined
+  assert:
+    that:
+    - system_console_version is defined and system_console_version != ''
+    msg: "Set the value of 'system_console_version' in the inventory file."
+  when: "'system-console' in group_names"
+
+- name: system_console_files should be defined
+  assert:
+    that:
+    - system_console_files is defined and system_console_files != ''
+    msg: "Set the value of 'system_console_files' in the inventory file."
+  when: "'system-console' in group_names"
+
+- name: proxy_version should be defined
+  assert:
+    that:
+    - proxy_version is defined and proxy_version != ''
+    msg: "Set the value of 'proxy_version' in the inventory file."
+  when: "'proxy_version-servers' in group_names"
+
+- name: proxy_version_files should be defined
+  assert:
+    that:
+    - proxy_version_files is defined and proxy_version_files != ''
+    msg: "Set the value of 'proxy_version_files' in the inventory file."
+  when: "'proxy_version-servers' in group_names"
+
+- name: media_manager_version should be defined
+  assert:
+    that:
+    - media_manager_version is defined and media_manager_version != ''
+    msg: "Set the value of 'media_manager_version' in the inventory file."
+  when: "'media-manager-servers' in group_names"
+
+- name: media_manager_files should be defined
+  assert:
+    that:
+    - media_manager_files is defined and media_manager_files != ''
+    msg: "Set the value of 'media_manager_files' in the inventory file."
+  when: "'media-manager-servers' in group_names"

@@ -1,0 +1,16 @@
+# Install Sametime Componentes that use WebSphere Applications Server, see below:
+# - Sametime Proxy,
+# - Sametime Meetings,
+# - Sametime Media Manager
+# - Sametime Video Manager
+#
+# Variables used in this playbook that can be setup at hosts file.
+#
+---
+- hosts:                    media-manager-servers
+  become:                   true
+  #serial:                   1
+  roles:
+    - roles/sametime-was-server-install
+  vars:
+    #tmp_dir:              "/opt/IBM/Binaries"

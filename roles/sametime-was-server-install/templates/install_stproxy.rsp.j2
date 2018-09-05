@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This sample response file if for a SSC based install of the Sametime Proxy Server -->
+
+<!--The "acceptLicense" attribute has been deprecated. Use "-acceptLicense" command line option to accept license agreements.-->
+<agent-input temporary='true' clean='true'  acceptLicense='false'>
+
+<server>
+<!-- When the repository location is specified as a relative path, the path is interpreted relative to the location of this response file -->
+<repository location='{{ __tmp_dir }}/SametimeProxyServer/STProxy/repository.config'/>
+</server>
+
+<!--
+	This installLocation attribute is directory in which you would like to install the Sametime Servers
+	e.g. on Windows this might be C:/Program Files/IBM/WebSphere
+
+	This directory must be empty before you begin the install unless this is an upgrade.
+	By convention all of the installed files will be installed into sub-directories of this path,
+	but this is not necessary (see further directory choices below).
+
+	Unless you specify to place other content in sub-directories the only files placed in this
+	directory will be some message files related to the install/uninstall utilities
+
+	The id attribute should not be altered or the installer won't work.
+	In the profile name the ® character is represented by &#xAE;
+	This representation is safer if the file is edited with a tool which does not support Unicode properly
+-->
+<profile installLocation='{{ __sametime_install_location }}' id='IBM&#xAE; Sametime&#xAE; Server Platform'>
+
+<!--
+	The files which are installed in the directory specified by the value of the
+	user.installlocation relate to WAS installer code.
+
+	If the specified directory exists prior to running the installer it must be empty.
+	Therefore, if you are installing upon an existing copy of WebSphere,
+	you will probably need to change it from the default value.
+-->
+<data key='user.installlocation' value='{{ __sametime_install_location }}'/>
+
+<!--
+	If this attribute set to FALSE, a new copy of WebSphere Application Server will be installed
+	if it is set to TRUE the installer will use an existing WebSphere Application Server.
+	The attribute is case-sensitive and the only valid values are TRUE and FALSE
+-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.existingWAS' value='TRUE'/>
+
+<!--
+	If user.com.ibm.lotus.sametime.proxyserver.existingWAS is set to FALSE, this attribute specifies where WAS will be installed.
+	If user.com.ibm.lotus.sametime.proxyserver.existingWAS is set to TRUE it should point to location where the existing
+	WebSphere Application Server is already installed.
+
+	In either case, the WAS profiles will be stored in a profiles sub-directory of this location
+-->
+<data key='user.was.installlocation' value='{{ __was_install_location }}'/>
+
+<!--
+	This is the Language code for the language version you wish to install
+	e.g. de for German, zh for Simplified Chinese
+-->
+<data key='cic.selector.nl' value='en'/>
+
+<!--
+	*** CHANGEME ***
+	The fully qualified hostname of the Sametime System console server
+-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.SSChostname' value='{{ ssc_hostname }}'/>
+
+<!--
+	Port to use to connect to the System console server.
+	If SSL is enabled on the SSC server the default is 9443, otherwise the default is 9080
+-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.SSCportnumber' value='9443'/>
+
+<!--
+	*** CHANGEME ***
+	User id and password for the administrator of the Sametime System console server.
+
+	For security reasons you do not store the password in plain text. Instead you can use
+	the generateEncodedPassword utility contained in the kit to generated an encoded
+	form of the password
+	For example 'zN39fpCc9SqIryGJM7+02A==' is equivalent to a password of 'wasadmin'
+
+-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.SSCusername' value='{{ was_username }}'/>
+<data key='user.com.ibm.lotus.sametime.proxyserver.SSCpassword' value='{{ __was_encoded_password.stdout }}'/>
+
+<!--set the following attribute value to true or
+ false  depending on if secured connection is required or not-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.SSC_SSLEnabled' value='true'/>
+
+<!--
+	*** CHANGEME ***
+	The name of the deployment plan name you created on the SSC server
+-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.SSCdepname' value='{{ deploy_name }}'/>
+
+<!--
+	This attribute specified is we are doing an upgrade or a fresh install
+	It is case-sensitive and valid values are 'INSTALL' or 'UPDATE'.
+-->
+<data key='user.com.ibm.lotus.sametime.proxyserver.job' value='INSTALL'/>
+
+
+</profile>
+
+<install modify='false'>
+
+<!--
+	The features parameter of the offering element identifies what features are to be installed.
+	If installing with SSC, it should be set to 'CEMain,nossc,ssc'
+	If installing without SSC, it should be set to 'CEMain,nossc'
+
+	The id parameter should not be altered of the installer won't work
+	In the profile name the ® character is represented by &#xAE;
+	This representation is safer if the file is edited with a tool which does not support Unicode properly
+-->
+<offering profile='IBM&#xAE; Sametime&#xAE; Server Platform' features='CEMain,nossc,ssc' id='com.ibm.lotus.sametime.proxyserver'/>
+
+</install>
+
+<!--
+	This next parameter specifies the location of the temporary cache where
+	Installation Manager stores files during install e.g. C:/Program Files/IBM/IMShared
+-->
+<preference value='{{ __imshared_location }}' name='com.ibm.cic.common.core.preferences.eclipseCache'/>
+
+<!--
+	This parameter specifies whether or not the installer should search for possible updates on the web at ibm.com
+	Since Sametime does not maintain a fix repository on the web this should always be set to false because if there is no
+	connection to the Internet and it is set to true users may get error messages when it looks for the repository
+	(and the repository will not contain fixes anyway)
+-->
+<preference value='false' name='offering.service.repositories.areUsed'/>
+
+</agent-input>

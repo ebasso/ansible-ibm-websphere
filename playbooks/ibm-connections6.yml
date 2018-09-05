@@ -1,45 +1,50 @@
-# Install WebSphere Application Server - Network Deployment
-#
-# Variables used in this playbook that can be setup at hosts file.
-#
-# HTTP server that has installation Files
-#   was_repository_url:     http://192.168.1.1/was/8.5.5
-#
+# Install Connections 6
 ---
-- hosts:                    dmgr,was-servers
-  become:                   true
-  serial:                   1
-  vars:
-    #tmp_dir:              "/opt/IBM/Binaries/was"
-    #iim_install_location: "/opt/IBM/InstallationManager"
-    #was_install_location: "/opt/IBM/WebSphere/AppServer"
-    #imshared_location:    "/opt/IBM/IMShared"
-
-    #was_files:
-    #  - { bf: WAS_ND_V8.5.5_1_OF_3.zip, bfs: b1333962ba4b25c8632c7e4c82b472350337e99febac8f70ffbd551ca3905e83 }
-    #  - { bf: WAS_ND_V8.5.5_2_OF_3.zip, bfs: 440b7ed82089d43b1d45c1e908bf0a1951fed98f2542b6d37c8b5e7274c6b1c9 }
-    #  - { bf: WAS_ND_V8.5.5_3_OF_3.zip, bfs: b73ae070656bed6399a113c2db9fb0abaf5505b0d41c564bf2a58ce0b1e0dcd2 }
-    #was_version: "8.5.5000.20130514_1044"
-
-    #was_fp_version: "8.5.5011.20161206_1434"
-    #was_fp_files:
-    #  - { bf: 8.5.5-WS-WAS-FP011-part1.zip, bfs: bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66 }
-    #  - { bf: 8.5.5-WS-WAS-FP011-part2.zip, bfs: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
-
-    #was_java_version:          "8.0.2010.20160224_1829"
-    #was_java_files:
-    #  - { bf: 8.0.2.10-WS-IBMWASJAVA-Linux.zip, bfs: 7338d90d760596d95eb9622aa6a5ceb21c5604cece702abeeb8565c331f2aaa1 }
+#- name:                    Install WAS Servers
+#  hosts:                   dmgr,was-servers
+#  become:                  true
+#  roles:
+#    - roles/installation-manager-install
+#    - roles/was-nd-install
+#    - roles/was-nd-fix-install
+#    - roles/was-java-install
+#
+#- name:                    Install HTTP Servers
+#  hosts:                   ihs-servers
+#  become:                  true
+#  roles:
+#    - roles/installation-manager-install
+#    - roles/ibm-http-server-install
+#    - roles/ibm-http-server-fix-install
+#    #- roles/ibm-http-config
+#
+- name:                    Setup DMGR
+  hosts:                   dmgr
+  become:                  true
   roles:
-    - roles/installation-manager-install
-    - roles/was-nd-install
-    - roles/was-nd-fix-install
-    - roles/was-java-install
-    #- roles/was-create-dmgr-profile
-    #- roles/was-import-tls-cert
-    #- roles/was-config-ldap
-    #- roles/was-dmgr-stop
-    #- roles/was-dmgr-start
-    #- roles/was-profile-create
-    #- roles/was-nodeagent-stop
-    #- roles/was-nodeagent-start
-    #- roles/connections-install
+    - roles/was-dmgr-create-profile
+    - roles/was-dmgr-start
+    - roles/was-dmgr-import-tls-cert
+    - roles/was-dmgr-config-ldap
+    - roles/was-dmgr-config-jvm
+    - roles/was-dmgr-restart
+#
+#- name:                    Setup WAS Nodes
+#  hosts:                   was-servers
+#  serial:                  1
+#  become:                  true
+#  roles:
+#    - roles/was-profile-create
+#    - roles/was-nodeagent-start
+#
+- name:                    Install HTTP Servers
+  hosts:                   ihs-servers
+  become:                  true
+  roles:
+    #- roles/ibm-http-config
+#
+#- name:                    Setup Connections
+#  hosts:                   dmgr
+#  become:                  true
+#  roles:
+#    - roles/connections-install

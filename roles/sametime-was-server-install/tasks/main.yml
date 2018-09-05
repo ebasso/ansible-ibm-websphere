@@ -1,0 +1,11 @@
+---
+#- name:         show the groups the host(s) are in
+#  debug:        msg="{{group_names}}"
+- name:          Check Vars
+  include_tasks: check_vars.yml
+
+- name:          Define Vars
+  include_tasks: define_vars.yml
+
+- include_tasks: install_sametime_was.yml
+  when:          version_already_installed.rc != 0

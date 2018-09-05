@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent-input temporary='true' clean='true'  acceptLicense='true'>
+
+<server>
+<!-- When the repository location is specified as a relative path, the path is interpreted relative to the location of this response file -->
+<repository location='{{ __tmp_dir }}/SametimeSystemConsole/SSC/repository.config'/>
+</server>
+
+<!--
+	This installLocation attribute is directory in which you would like to install the Sametime SW
+	e.g. on Windows this might be C:/Program Files/IBM/WebSphere
+
+	This directory must be empty before you begin the install unless this is an upgrade.
+	By convention all of the installed files will be installed into sub-directories of this path,
+	but this is not necessary (see further directory choices below).
+
+	Unless you specify to place other content in sub-directories the only files placed in this
+	directory will be some message files related to the install/uninstall utilities
+
+	The id attribute should not be altered or the installer won't work.
+	In the profile name the ® character is represented by &#xAE;
+	This representation is safer if the file is edited with a tool which does not support Unicode properly
+-->
+<profile installLocation='{{ __sametime_install_location }}' id='IBM&#xAE; Sametime&#xAE; Server Platform'>
+
+<!--
+	This attribute defines the type of WAS profile(s) you wish to create.
+	This attribute is case-sensitive and Valid options are:
+	'Cell' - (default) create a cell consisting of a Deployment manager and a managed node
+	'PN' - create a stand-alone primary node  federated to an existing SSC Deployment manager
+	'SN' - create a secondary node federated to an existing Deployment manager
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.installtype' value='Cell'/>
+
+<!--
+	The files which are installed in the directory specified by the value of the
+	user.installlocation relate to WAS installer code.
+
+	If the specified directory exists prior to running the installer it must be empty.
+-->
+<data key='user.installlocation' value='{{ __sametime_install_location }}'/>
+
+<!-- This attribute specifies where WebSphere Application Server is already installed. -->
+<data key='user.was.installlocation' value='{{ __was_install_location }}'/>
+
+<!--
+	This location is the path we will install the offering to i.e. the files used for creating
+	Sametime WAS server profiles.
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.offering.installlocation' value='/opt/IBM/WebSphere/STSCServerCell'/>
+
+<!--
+	These are the names that will be assigned to the WAS profiles created by this installer
+	It is safe to simply use the default values or to change them to anything you want so long
+	as the profile names are unique
+ -->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.serverprofile' value='STSCAppProfile'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.dmprofile' value='STSCDMgrProfile'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.snserverprofile' value='STSCSNAppProfile'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.appserver' value='STConsoleServer'/>
+
+<!--Port the Deployment Manager will run on. This should not be changed from the default of 8700 -->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.dmport' value='8700'/>
+
+<!--Port the Deployment Manager will use for SOAP connections (the default is 8703) -->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.dm.soapport' value='8703'/>
+
+<!--
+	The default is to name the WAS cell <HOSTSHORTNAME>SSCCell
+	and to name the WAS node <HOSTSHORTNAME>SSCNode
+	but you can over-ride the defaults by un-commenting the following parameters
+
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.cellname' value='SametimeCell'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.nodename' value='{{ ansible_hostname.split('.')[0] }}SSCNode'/>
+
+<!--DO NOT change the value of user.SSCEnabled or the installer won't work -->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.SSCEnabled' value='FALSE'/>
+
+<!--
+	This attribute specified is we are doing an upgrade or a fresh install
+	It is case-sensitive and valid values are 'INSTALL' or 'UPDATE'.
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.job' value='INSTALL'/>
+
+<!-- version of Sametime to install, 9.0.0.0
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.offVersion' value='9.0.0.0'/>
+-->
+<!--
+	Uncomment this attribute if you wish the WAS profile to use a hostname other than the default for this machine
+	if you do specify a hostname it should be the fully qualified domain name (e.g. "servername.domain.com" not "servername")
+
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.hostname' value='{{ ssc_hostname }}'/>
+
+<!--
+	If you specified that you wish to install a WAS secondary node profile,
+	you must edit this attribute to match the host name of the Deployment manager you wish
+	to have your WAS profile managed by
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.dmhost' value='{{ ssc_hostname }}'/>
+
+<!--
+	The WAS profiles created by the installer will be protected by File based security
+	for the System Console. The following two XML elements specify the username & password
+	that can be used to login to the WAS System Console.It is not allowed to omit these elements.
+
+	For security reasons you do not store the password in plain text. Instead you can use
+	the generateEncodedPassword utility contained in the kit to generated an encoded form of the password
+	For example 'zN39fpCc9SqIryGJM7+02A==' is equivalent to a password of 'wasadmin'
+
+	It is not possible to choose LDAP security during install, but this can be
+	configured after install
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.adminid' value='{{ was_username }}'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.was.password' value='{{ __was_encoded_password.stdout }}'/>
+
+<!--
+	You must specify the DB2 Administrator ID and password to use with the SSC Database server
+
+	For security reasons you do not store the password in plain text. Instead you can use
+	the generateEncodedPassword utility contained in the kit to generated an encoded form of the password
+	For example 'Mz0u5sV29wTMCJuZhVzHEw==' is equivalent to a password of 'db2admin'
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.dbuser_ssc' value='{{ db_user }}'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.dbpass_ssc' value='{{ __db_encoded_password.stdout }}'/>
+
+<!--The port to use on the DB2 server (default is 50000)-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.dbport_ssc' value='{{ db_port }}'/>
+
+<!-- The name of the System Console Database (default is STSC) -->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.dbname_ssc' value='{{ db_dbname }}'/>
+
+<!--
+	*** CHANGEME ***
+	The fully qualified host name of the Server where DB2 database is
+-->
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.dbhostname_ssc' value='{{ db_hostname }}'/>
+
+
+<!--
+	On non-windows platforms this attribute should point to a temporary directory that
+	can be used for storage of files used by the installer. I needs to be on a disk with
+	greater than 1GB of free space
+-->
+<data key='user.nonWin.temp' value='{{ __sametime_tmp_dir }}'/>
+
+<!--
+	This is the Language code for the language version you wish to install
+	e.g. de for German, zh for Simplified Chinese
+-->
+<data key='cic.selector.nl' value='en'/>
+
+</profile>
+
+<install modify='false'>
+<!--
+	The features parameter of the offering element identifies what features are to be installed.
+	If installing with SSC, it should be set to 'CEMain,nossc,ssc'
+	If installing without SSC, it should be set to 'CEMain,nossc'
+
+	The id parameter should not be altered of the installer won't work
+	In the profile name the ® character is represented by &#xAE;
+	This representation is safer if the file is edited with a tool which does not support Unicode properly
+-->
+<offering profile='IBM&#xAE; Sametime&#xAE; Server Platform' features='CEMain,nossc' id='com.ibm.lotus.sametime.systemconsoleserver'/>
+</install>
+
+<!--
+	This next parameter specifies the location of the temporary cache where
+	Installation Manager stores files during install e.g. C:/Program Files/IBM/IMShared
+-->
+<preference value='{{ __imshared_location }}' name='com.ibm.cic.common.core.preferences.eclipseCache'/>
+
+<!--
+	This parameter specifies whether or not the installer should search for possible updates on the web at ibm.com
+	Since Sametime does not maintain a fix repository on the web this should always be set to false because if there is no
+	connection to the Internet and it is set to true users may get error messages when it looks for the repository
+	(and the repository will not contain fixes anyway)
+-->
+<preference value='false' name='offering.service.repositories.areUsed'/>
+
+</agent-input>

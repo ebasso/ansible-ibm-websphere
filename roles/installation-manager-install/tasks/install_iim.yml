@@ -1,0 +1,31 @@
+---
+- name:          Create Binaries directory
+  file:          path={{ __tmp_dir }} state=directory mode=0755
+
+- name:          Create Logs directory
+  file:          path={{ __logs_dir }} state=directory mode=0755
+
+- name:          Download IBM Installation Manager
+  get_url:
+    url:         "{{ iim_repository_url }}/{{ __bin_file }}"
+    dest:        "{{ __tmp_dir }}/{{ __bin_file }}"
+    mode:        0755
+    checksum:    sha256:{{ __bin_file_sha256 }}
+
+- name:          Extract IBM Installation Manager
+  unarchive:
+    src:         "{{ __tmp_dir }}/{{ __bin_file }}"
+    dest:        "{{ __tmp_dir }}/"
+    copy:        no
+
+- name:          Install/Update IBM Installation Manager
+  command:
+    chdir={{ __tmp_dir }}
+    {{ __tmp_dir }}/tools/imcl install com.ibm.cic.agent -acceptLicense -installationDirectory {{ __iim_install_location }} -repositories {{ __tmp_dir }} -log {{ __logs_dir }}/iim_install.{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}.log
+  register:      cout
+  changed_when:  (cout.stdout.find('Installed com.ibm.cic.agent') != -1) or (cout.stdout.find('Updated to com.ibm.cic.agent') != -1)
+
+#- debug:        msg={{ cout }}
+
+- name:          Cleanup Binaries directory
+  file:          path={{ __tmp_dir }} state=absent

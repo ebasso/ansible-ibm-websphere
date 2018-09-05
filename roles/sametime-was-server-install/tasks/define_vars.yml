@@ -1,0 +1,38 @@
+---
+- name:             Is Sametime Console?
+  set_fact:
+    __rsp_file:     "{{ __logs_dir }}/install_stconsole.rsp"
+    __log_file:     "{{ __logs_dir }}/install_stconsole.{{ __now }}.log"
+    __tpl_file:     "install_stconsole.rsp.j2"
+    __this_version: "{{ system_console_version }}"
+    __this_files:   "{{ system_console_files }}"
+    __product_id:   "\"id='com.ibm.lotus.sametime.systemconsoleserver' version='{{ system_console_version }}'\""
+  when:             "'system-console' in group_names"
+
+- name:             Is Sametime Proxy?
+  set_fact:
+    __rsp_file:     "{{ __logs_dir }}/install_stproxy.rsp"
+    __log_file:     "{{ __logs_dir }}/install_stproxy.{{ __now }}.log"
+    __tpl_file:     "install_stproxy.rsp.j2"
+    __this_version: "{{ proxy_version }}"
+    __this_files:   "{{ proxy_version_files }}"
+    __product_id:   "\"id='com.ibm.lotus.sametime.proxyserver' version='{{ proxy_version }}'\""
+  when:             "'proxy-servers' in group_names"
+
+- name:             Is Sametime Media Manager?
+  set_fact:
+    __rsp_file:     "{{ __logs_dir }}/install_stmedia.rsp"
+    __log_file:     "{{ __logs_dir }}/install_stmedia.{{ __now }}.log"
+    __tpl_file:     "install_stmedia.rsp.j2"
+    __this_version: "{{ media_manager_version }}"
+    __this_files:   "{{ media_manager_files }}"
+    __product_id:   "\"id='com.ibm.lotus.sametime.mediaserver' version='{{ media_manager_version }}'\""
+  when:             "'media-manager-servers' in group_names"
+
+- debug: var=__this_version
+#__version_check:   "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
+
+- name:              Is Product already Installed?
+  command:           "egrep {{ __product_id }} /var/ibm/InstallationManager/installed.xml"
+  register:          version_already_installed
+  ignore_errors:     true

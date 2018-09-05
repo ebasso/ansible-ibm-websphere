@@ -1,12 +1,11 @@
 ---
-- name:                 "Verify if pid file"
-  shell:                "ps -p `cat '{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid'`"
-  register:             dmgr_is_running
-  ignore_errors:        true
+- name:          "Dmgr is Running?"
+  shell:         "ps -p `cat '{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid'`"
+  register:      dmgr_is_running
+  ignore_errors: true
 
-- name:                 "Stop Dmgr"
-  command:              "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/stopManager.sh  -username {{ was_username }} -password {{ was_password }}"
-  register:             cout
-  changed_when:         cout.rc == 0
-  #changed_when:        ( start.stdout.find('open for e-business') != -1)
-  when:                 dmgr_is_running.rc == 0
+- name:          "Stop Dmgr"
+  command:       "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin/stopManager.sh  -username {{ was_username }} -password {{ was_password }}"
+  register:      cout
+  changed_when:  cout.rc == 0
+  when:          dmgr_is_running.rc == 0

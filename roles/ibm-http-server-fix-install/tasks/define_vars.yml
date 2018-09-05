@@ -1,0 +1,27 @@
+---
+- name:              Use Fix Pack 11?
+  set_fact:
+    __this_files:    "{{ __ihs_files_fp11 }}"
+    __version_check: "Updated to com.ibm.websphere.IHS.v85_{{ __this_version }}"
+    __product_id:    "\"id='com.ibm.websphere.IHS.v85' version='{{ __this_version }}'\""
+  when:              ( __this_version == __ihs_version_fp11 )
+
+- name:              Use Fix Pack 9?
+  set_fact:
+    __this_files:    "{{ __ihs_files_fp9 }}"
+    __version_check: "Updated to com.ibm.websphere.IHS.v85_{{ __this_version }}"
+    __product_id:    "\"id='com.ibm.websphere.IHS.v85' version='{{ __this_version }}'\""
+  when:              ( __this_version == __ihs_version_fp9 )
+
+- name:              Is IIM Installed?
+  command:           "egrep {{ __iim_product_id }} /var/ibm/InstallationManager/installed.xml"
+  register:          iim_already_installed
+
+- name:              Is IHS Installed?
+  command:           "egrep {{ __ihs_product_id }} /var/ibm/InstallationManager/installed.xml"
+  register:          ihs_already_installed
+
+- name:              Is Product already Installed?
+  command:           "egrep {{ __product_id }} /var/ibm/InstallationManager/installed.xml"
+  register:          version_already_installed
+  ignore_errors:     true
