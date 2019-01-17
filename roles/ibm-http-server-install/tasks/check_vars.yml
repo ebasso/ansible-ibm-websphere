@@ -1,4 +1,4 @@
-# check_openshift.yml
+# check defined variables
 ---
 - name: ihs_repository_url should be defined
   assert:

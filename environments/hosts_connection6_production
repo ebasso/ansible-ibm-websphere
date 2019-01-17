@@ -3,13 +3,13 @@
 #
 # ansible-playbook -i environments/hosts_connections6_production -u <USERNAME> -k playbooks/ibm-connections6.yml
 [dmgr]
-srv000.company.com was_nodename=srv000Node
+srv000.company.com
 
 [was-servers]
-srv001.company.com was_nodename=srv001Node
-srv002.company.com was_nodename=srv002Node
-srv003.company.com was_nodename=srv003Node
-srv004.company.com was_nodename=srv004Node
+srv001.company.com
+srv002.company.com
+srv003.company.com
+srv004.company.com
 
 [connections6-pink]
 srv005.company.com
@@ -31,6 +31,8 @@ was_password=<CHANGE_PASSWORD>
 #
 dmgr_hostname=srv000.company.com
 domain_name=.company.com
+#
+ihs_password=<CHANGE_PASSWORD>
 
 [dmgr:vars]
 was_cellname=ConnectionsCell

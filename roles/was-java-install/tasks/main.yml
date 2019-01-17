@@ -5,14 +5,6 @@
 - name:          Define Vars
   include_tasks: define_vars.yml
 
-- name:          Install pre-requisites
-  yum:           name={{item}} state=present
-  with_items:
-    - unzip
-    - tar
-    - wget
-  when:          (ansible_distribution == "RedHat") or (ansible_distribution == "CentOS")
-
 - name:          Install Java
   include_tasks: install_java.yml
   when:          version_already_installed.rc != 0

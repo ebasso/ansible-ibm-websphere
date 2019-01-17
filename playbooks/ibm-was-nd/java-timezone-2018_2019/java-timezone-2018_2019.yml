@@ -1,0 +1,70 @@
+# Install Connections 6
+#
+# ansible-playbook -i environments/hosts.local -u <usuario> -k playbooks/java-timezone-2018_2019.yml
+#
+---
+- name:             Atualiza Java Time Zone Table
+  hosts:            dmgr,was-servers
+  become:           true
+  gather_facts:     no
+  vars:
+    repository_url: "https://colabrepo.servicos.bb.com.br/was/"
+    #repository_url: "http://172.17.202.237/was/"
+    file_name:      "jtzu-1.7.18e.zip"
+    __tmp_dir:      "/tmp"
+
+  tasks:
+    - name:          Create Temp directory
+      file:
+        path:       "{{ __tmp_dir }}/jtzu-1.7.18e/"
+        state:      directory
+        mode:       0755
+
+    - name:         Download Files
+      get_url:
+        url:        "{{ repository_url }}/{{ file_name }}"
+        dest:       "{{ __tmp_dir }}/{{ file_name }}"
+        mode:       0755
+        checksum:   sha256:9b599bbcd5bdc690c3d97a93da134a7eab1fca62a8a0ce47e54b376359160234
+
+    - name:         Extract Files
+      unarchive:
+        src:        "{{ __tmp_dir }}/{{ file_name }}"
+        dest:       "{{ __tmp_dir }}/jtzu-1.7.18e/"
+        copy:       no
+        mode:       0755
+
+    - name:         "Generate DirectorySearch.txt"
+      template:
+        src:        "DirectorySearch.txt.j2"
+        dest:       "{{ __tmp_dir }}/jtzu-1.7.18e/DirectorySearch.txt"
+
+    - name:         "Generate runjtzuenv_discover_only"
+      template:
+        src:        "runjtzuenv_discover_only.sh.j2"
+        dest:       "{{ __tmp_dir }}/jtzu-1.7.18e/runjtzuenv.sh"
+
+    - name:         "Run runjtzu.sh"
+      command:
+        chdir={{ __tmp_dir }}/jtzu-1.7.18e
+        {{ __tmp_dir }}/jtzu-1.7.18e/runjtzu.sh
+      register:     cout
+
+    #- debug:       msg={{ cout }}
+
+    - name:         "Generate runjtzuenv_apply_fix"
+      template:
+        src:        "runjtzuenv_apply_fix.sh.j2"
+        dest:       "{{ __tmp_dir }}/jtzu-1.7.18e/runjtzuenv.sh"
+      #changed_when: (cout.stdout.find('tzdata2018e') != -1)
+
+    - name:         "Run runjtzu.sh"
+      shell:        "{{ __tmp_dir }}/jtzu-1.7.18e/runjtzu.sh"
+      args:
+        chdir:      "{{ __tmp_dir }}/jtzu-1.7.18e"
+      register:     cout
+      changed_when:  cout.rc == 0
+      failed_when:   cout.rc != 0
+      #changed_when: (cout.stdout.find('tzdata2018e') != -1)
+
+    - debug:       msg={{ cout }}

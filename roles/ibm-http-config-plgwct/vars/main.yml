@@ -1,0 +1,17 @@
+---
+__logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+__imshared_location:    "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
+__iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+__ihs_install_location: "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"
+__plg_install_location: "{{ plg_install_location  | default('/opt/IBM/WebSphere/Plugins') }}"
+__wct_install_location: "{{ wct_install_location  | default('/opt/IBM/WebSphere/Toolbox') }}"
+__now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+
+__ihs_admin_port:        "{{ ihs_admin_port | default('8085') }}"
+__ihs_username:          "{{ ihs_username | default('ihsadmin') }}"
+__ihs_admins_group:      "{{ ihs_admins_group | default('ihsadmins') }}"
+__ihs_arch:              "{{ ihs_arch  | default('linux') }}"
+__ihs_hostname:          "{{ inventory_hostname_short }}"
+
+__rsp_file:             "{{ __logs_dir }}/config_plugin_wct.rsp"
+__tpl_file:             "config_plugin_wct.rsp.j2"

@@ -30,7 +30,7 @@
     src:         "{{ __tpl_file }}"
     dest:        "{{ __rsp_file }}"
 
-- name:          Install IBM WAS Software
+- name:          Install IBM HTTP Server Software
   command:
     chdir={{ __tmp_dir }}
     {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}

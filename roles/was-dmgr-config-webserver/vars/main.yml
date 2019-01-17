@@ -1,0 +1,15 @@
+---
+__profile_name:          "{{ profile_name | default('Dmgr01') }}"
+__was_install_location:  "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__was_username:          "{{ was_username }}"
+__was_password:          "{{ was_password }}"
+__now:                   "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__bin_dir:               "{{ __was_install_location }}/profiles/{{ __profile_name }}/bin"
+
+__ihs_install_location:  "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"
+__plg_install_location:  "{{ plg_install_location  | default('/opt/IBM/WebSphere/Plugins') }}"
+
+__ihs_admin_port:        "{{ ihs_admin_port | default('8085') }}"
+__ihs_username:          "{{ ihs_username | default('ihsadmin') }}"
+__ihs_admins_group:      "{{ ihs_admins_group | default('ihsadmins') }}"
+__ihs_arch:              "{{ ihs_arch  | default('linux') }}"

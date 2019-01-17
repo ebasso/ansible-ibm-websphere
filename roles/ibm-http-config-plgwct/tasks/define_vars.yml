@@ -1,0 +1,6 @@
+---
+# Verify if httpd.conf is already configured checking if hostname is already defined.
+- name:                 "Verifiy if Plugin already configured"
+  stat:
+    path:               "{{__plg_install_location}}/config/{{ __ihs_hostname }}/plugin-cfg.xml"
+  register:             plugin_already_configured

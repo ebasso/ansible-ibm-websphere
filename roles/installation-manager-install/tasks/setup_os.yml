@@ -1,0 +1,28 @@
+---
+- name:          Install pre-requisites Apt
+  apt:
+    name: ['unzip', 'tar', 'wget'] 
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name:          Install pre-requisites Zypper
+  zypper:
+    name: ['unzip', 'tar', 'wget'] 
+    state: present
+  when: ansible_os_family == "Suse"
+
+- name:          Install pre-requisites Yum
+  yum:
+    name: ['unzip', 'tar', 'wget'] 
+    state: present
+  when:
+    - ansible_os_family == "RedHat"
+    - (ansible_distribution == "RedHat" or ansible_distribution == "CentOS" or ansible_distribution == "Amazon")
+
+#- name:          Install pre-requisites Dnf
+#  dnf:
+#    name: ['unzip', 'tar', 'wget'] 
+#    state: present
+#  when:
+#    - ansible_os_family == "RedHat"
+#    - (ansible_distribution != "CentOS" or ansible_distribution != "Amazon")

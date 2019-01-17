@@ -1,0 +1,21 @@
+---
+- name:          Check Vars
+  include_tasks: check_vars.yml
+
+- name:          Define Vars
+  include_tasks: define_vars.yml
+
+- name:                 "Generate Response file"
+  template:
+    src:                "{{ __tpl_file }}"
+    dest:               "{{ __rsp_file }}"
+  when:                 plugin_already_configured.stat.exists == false
+
+- name:                 "Configure WebSphere Plugin"
+  command:
+    chdir={{ __wct_install_location }}
+    {{ __wct_install_location }}/WCT/wctcmd.sh -tool pct -createDefinition -defLocName {{ __plg_install_location }} -defLocPathname {{ __plg_install_location }} -response {{ __rsp_file }}
+  register:             cout
+  changed_when:         cout.rc == 0
+  #changed_when:         ( cout.stdout.find('INSTCONFSUCCESS') != -1)
+  when:                 plugin_already_configured.stat.exists == false

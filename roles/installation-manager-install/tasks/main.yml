@@ -1,13 +1,8 @@
 ---
 - include_tasks: check_vars.yml
 
-- name:          Install pre-requisites
-  yum:           name={{item}} state=present
-  with_items:
-    - unzip
-    - tar
-    - wget
-  when:          (ansible_distribution == "RedHat") or (ansible_distribution == "CentOS")
+- name:          Setup Operating System
+  include_tasks: setup_os.yml
 
 - name:          Define Vars
   include_tasks: define_vars.yml

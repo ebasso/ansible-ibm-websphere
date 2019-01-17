@@ -8,6 +8,8 @@ __now:                        "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
 
 __sametime_install_location:  "{{ sametime_install_location  | default('/opt/IBM/SametimeServer') }}"
 __sametime_tmp_dir:           "{{ sametime_tmp_dir  | default('/opt/IBM/STTempDir') }}"
+__sametime_hostname:          "{{ inventory_hostname_short }}"
+## {{ ansible_hostname.split('.')[0] }}SSCNode
 
 
 # Must ben defined to work with set_fact

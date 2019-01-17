@@ -1,0 +1,32 @@
+---
+- name:          Check Vars
+  include_tasks: check_vars.yml
+  
+- name:                 "Verifiy if Profile already exists"
+  stat:
+    path:               "{{ __was_install_location }}/profiles/{{ __profile_name }}"
+  register:             profile_already_exists
+
+- name:                 Verify if pid file
+  shell:                ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid"`
+  register:             dmgr_is_running
+  ignore_errors:        true
+
+- name:                 "Add WebServer to DMGR"
+  command:
+    chdir={{ __bin_dir }}
+    {{ __bin_dir }}/wsadmin.sh -port 8879 -username {{ __was_username }} -password {{ __was_password }} \
+      -f {{ __bin_dir }}/configureWebserverDefinition.jacl {{ item.split('.')[0] }} IHS {{ __ihs_install_location }} \
+      {{ __ihs_install_location }}/conf/httpd.conf 80 MAP_ALL {{ __plg_install_location }} unmanaged \
+      {{ item.split('.')[0] }}_node {{ item }} {{ __ihs_arch }} {{ __ihs_admin_port }} \
+      {{ __ihs_username }} {{ ihs_password }}
+  register:             cout
+  changed_when:         cout.rc == 0
+#  when:                 dmgr_is_running.stat.exists == false
+  loop:                 "{{ groups['ihs-servers'] }}"
+
+
+#/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wsadmin.sh -username wsadmin -password gecin22 \
+# -f /opt/IBM/WebSphere/AppServer/bin/configureWebserverDefinition.jacl dxl1scb00107 IHS /opt/IBM/HTTPServer85 \
+# /opt/IBM/HTTPServer85/conf/httpd.conf 80 MAP_ALL /opt/IBM/WebSphere/Plugins unmanaged \
+# dxl1scb00107Node dxl1scb00107.company.com linux 8085 ihsadmin gecin22

@@ -72,7 +72,7 @@
 
 -->
 <data key='user.com.ibm.lotus.sametime.systemconsoleserver.cellname' value='SametimeCell'/>
-<data key='user.com.ibm.lotus.sametime.systemconsoleserver.nodename' value='{{ ansible_hostname.split('.')[0] }}SSCNode'/>
+<data key='user.com.ibm.lotus.sametime.systemconsoleserver.nodename' value='{{ __sametime_hostname }}SSCNode'/>
 
 <!--DO NOT change the value of user.SSCEnabled or the installer won't work -->
 <data key='user.com.ibm.lotus.sametime.systemconsoleserver.SSCEnabled' value='FALSE'/>
