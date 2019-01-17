@@ -1,0 +1,50 @@
+# Install Connections 6
+---
+- name:                    Install WAS Servers
+  hosts:                   dmgr,was-servers
+  become:                  true
+  roles:
+    - roles/installation-manager-install
+    - roles/was-nd-install
+    - roles/was-nd-fix-install
+    - roles/was-java-install
+
+- name:                    Install HTTP Servers
+  hosts:                   ihs-servers
+  become:                  true
+  roles:
+    - roles/installation-manager-install
+    - roles/ibm-http-server-install
+    - roles/ibm-http-server-fix-install
+    - roles/ibm-http-config-plgwct
+
+- name:                    Setup DMGR
+  hosts:                   dmgr
+  become:                  true
+  roles:
+    - roles/was-dmgr-create-profile
+    - roles/was-dmgr-start
+    - roles/was-dmgr-import-tls-cert
+    - roles/was-dmgr-config-ldap
+    - roles/was-dmgr-config-jvm
+    - roles/was-dmgr-restart
+
+- name:                    Setup WAS Nodes
+  hosts:                   was-servers
+  serial:                  1
+  become:                  true
+  roles:
+    - roles/was-profile-create
+    - roles/was-nodeagent-start
+
+- name:                    Install HTTP Servers
+  hosts:                   ihs-servers
+  become:                  true
+  roles:
+    - roles/was-dmgr-config-webserver
+
+#- name:                    Setup Connections
+#  hosts:                   dmgr
+#  become:                  true
+#  roles:
+#    - roles/connections-install
