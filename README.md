@@ -13,26 +13,30 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 | Role name                       |            Description of Role                                          |
 |---------------------------------|-------------------------------------------------------------------------|
-| installation-manager.yml        | Install IBM Installation Manager   |
-| was-nd-install.yml              | Install IBM WebSphere Application Server - Network Deployment - 8.5.5  |
-| was-nd-fixes-install.yml        | Install IBM WAS ND Fixes  |
-| was-java-install.yml            | Install IBM Java for WAS  |
-| was-dmgr-config-ldap.yml        | Configure LDAP Repository (Server must be started) |
-| was-dmgr-create-profile.yml     | Create a profile for Deployment Manager |
-| was-dmgr-import-tls-cert.yml    | Add TLS Signer Certificate to Cell Default Trust Store (Server must be started)|
-| was-dmgr-restart.yml            | Restart Deployment Manager |
-| was-dmgr-start.yml              | Start Deployment Manager |
-| was-dmgr-stop.yml               | Stop Deployment Manager |
-| was-nodeagent-start.yml         | Start Node Agent |
-| was-nodeagent-stop.yml          | Stop Node Agent |
-| was-profile-cleanup-logs.yml    | Delete and truncate log files for Application Servers|
-| was-profile-cleanup-temps.yml   | Delete temp files on WAS Profile (server must be stopped) |
-| was-profile-create.yml          | Create a profile for WAS Servers |
-| was-profile-delete-all.yml      | Delete all profiles on WAS Servers |
-| was-server-start.yml            | Start Applications Servers |
-| was-server-stop.yml             | Stop Applications Servers |
-| ibm-http-server-install.yml     | Install IBM HTTP Server |
-| ibm-http-server-fix-install.yml | Install IBM HTTP Server Fixes |
+| ibm-http-config-plgwct          | Configure HTTP Plugin |
+| ibm-http-server-fix-install     | Install IBM HTTP Server Fixes |
+| ibm-http-server-install         | Install IBM HTTP Server |
+| installation-manager-install    | Install IBM Installation Manager   |
+| was-dmgr-config-jvm             | Tune Java Virtual Machine of DMGR |
+| was-dmgr-config-ldap            | Configure LDAP Repository (Server must be started) |
+| was-dmgr-config-webserver       | Configure WebServers on DMGR |
+| was-dmgr-create-profile         | Create a profile for Deployment Manager |
+| was-dmgr-import-tls-cert        | Add TLS Signer Certificate to Cell Default Trust Store (Server must be started)|
+| was-dmgr-restart                | Restart Deployment Manager |
+| was-dmgr-start                  | Start Deployment Manager |
+| was-dmgr-stop                   | Stop Deployment Manager |
+| was-java-install                | Install IBM Java for WAS  |
+| was-nd-fix-install              | Install IBM WAS ND Fixes  |
+| was-nd-install                  | Install IBM WebSphere Application Server - Network Deployment - 8.5.5  |
+| was-nodeagent-start             | Start Node Agent |
+| was-nodeagent-stop              | Stop Node Agent |
+| was-profile-cleanup-logs        | Delete and truncate log files for Application Servers|
+| was-profile-cleanup-temps       | Delete temp files on WAS Profile (server must be stopped) |
+| was-profile-create              | Create a profile for WAS Servers |
+| was-profile-delete-all          | Delete all profiles on WAS Servers |
+| was-server-start                | Start Applications Servers |
+| was-server-stop                 | Stop Applications Servers |
+
 
 
 # Getting start
