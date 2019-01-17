@@ -45,9 +45,9 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 1) Download installation files:
 
-* IBM Installation Manager 1.8.7
+* IBM Installation Manager 1.8.9.1 (agent.installer.linux.gtk.x86_64_1.8.9001.20180709_1302.zip)
 * IBM WebSphere Application Server 8.5.5
-* IBM WebSphere Application Server 8.5.5 Fix Pack 11
+* IBM WebSphere Application Server 8.5.5 Fix Pack 14
 
 2) Copy files to Web Server
 
@@ -87,11 +87,11 @@ ansible-playbooks -i environments/hosts.development -u <username> -k playbooks/i
 
 # For other versions of IIM, WAS and WAS fixes
 
-1) If you are using a different Fix Pack than FP 11, you must change
+1) If you are using a different Fix Pack than FP 14, you must change
 generate sha256 hashes.
 
 ```
-Example: sha256sum  WAS_ND_V8.5.5_1_OF_3.zip
+Example: sha256sum  8.5.5-WS-WAS-FP09-part1.zip
 ```
 and set variables:
 
