@@ -1,12 +1,19 @@
 ---
-- name:              Use Fix Pack 11?
+- name:              Use Fix Pack 8.5.5.12?
+  set_fact:
+    __this_files:    "{{ __was_fp_files_fp12 }}"
+    __version_check: "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
+    __product_id:    "\"id='com.ibm.websphere.ND.v85' version='{{ __this_version }}'\""
+  when:              ( __this_version == __was_fp_version_fp12 )
+
+- name:              Use Fix Pack 8.5.5.11?
   set_fact:
     __this_files:    "{{ __was_fp_files_fp11 }}"
     __version_check: "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
     __product_id:    "\"id='com.ibm.websphere.ND.v85' version='{{ __this_version }}'\""
   when:              ( __this_version == __was_fp_version_fp11 )
 
-- name:              Use Fix Pack 9?
+- name:              Use Fix Pack 8.5.5.9?
   set_fact:
     __this_files:    "{{ __was_fp_files_fp9 }}"
     __version_check: "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"

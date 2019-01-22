@@ -1,6 +1,6 @@
 #Configure Applicaton Security
 AdminTask.setJVMProperties('[-nodeName {{ __was_nodename }} -serverName dmgr -verboseModeGarbageCollection true -initialHeapSize 2048 -maximumHeapSize 2048  -genericJvmArguments "-Duser.language=en -Duser.region=US"]')
 #Save and Synchronise
-#AdminConfig.create('Property', '(cells/{{ __was_cellname }}/nodes/{{ __was_nodename }}/servers/dmgr|server.xml#JavaVirtualMachine_1)', '[[validationExpression ""] [name "java.net.preferIPv4Stack"] [description ""] [value "true"] [required "false"]]') 
+AdminConfig.create('Property', '(cells/{{ __was_cellname }}/nodes/{{ __was_nodename }}/servers/dmgr|server.xml#JavaVirtualMachine_1)', '[[validationExpression ""] [name "java.net.preferIPv4Stack"] [description ""] [value "true"] [required "false"]]') 
 AdminConfig.save()
 # End of File

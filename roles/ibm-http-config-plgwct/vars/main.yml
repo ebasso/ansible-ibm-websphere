@@ -12,6 +12,7 @@ __ihs_username:          "{{ ihs_username | default('ihsadmin') }}"
 __ihs_admins_group:      "{{ ihs_admins_group | default('ihsadmins') }}"
 __ihs_arch:              "{{ ihs_arch  | default('linux') }}"
 __ihs_hostname:          "{{ inventory_hostname_short }}"
+__ihs_hostname_fqdn:     "{{ inventory_hostname }}"
 
 __rsp_file:             "{{ __logs_dir }}/config_plugin_wct.rsp"
 __tpl_file:             "config_plugin_wct.rsp.j2"

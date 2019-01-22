@@ -5,6 +5,13 @@
 - hosts:                    dmgr,was-servers
   become:                   true
   tasks:
+    - name:          KillAll Java
+      command:       killall -9 java
+      register:      cout
+      #with_items:
+      #- "{{ __ibm_dir }}/Connections"
+      ignore_errors: true
+
     - name:                  "Cleanup All directories"
       file:
         path:                "{{ item }}"

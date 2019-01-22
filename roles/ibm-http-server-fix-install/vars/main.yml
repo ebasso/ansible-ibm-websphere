@@ -28,6 +28,13 @@ __ihs_product_id:       "\"id='com.ibm.websphere.IHS.v85'\""
 
 
 # Old Versions
+__ihs_version_fp12:      "8.5.5012.20170627_1018"
+__ihs_files_fp12:
+  - { file_name: 8.5.5-WS-WASSupplements-FP012-part1.zip, check_sum: 64f9a15dbc04df19010dab0d89d7097c4cab29d7e46648f233fd712638a91b3a }
+  - { file_name: 8.5.5-WS-WASSupplements-FP012-part2.zip, check_sum: a569afabef483fe62fdd9a2fa74fc59d77cbdc946fb8f16d939b1f5a8d0eadb3 }
+  - { file_name: 8.5.5-WS-WASSupplements-FP012-part3.zip, check_sum: fac3682336d396253f17d28ca2998ce0a5f61bc9a9b4bcc805c25cee710d10d8 }
+
+
 __ihs_version_fp11:      "8.5.5011.20161206_1434"
 __ihs_files_fp11:
   - { file_name: 8.5.5-WS-WASSupplements-FP011-part1.zip, check_sum: 4a8f560c3b546321a7e67facc5c25255ecd11c6b29e3fed0a38f203dd339a771 }

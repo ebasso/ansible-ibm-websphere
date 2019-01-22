@@ -24,6 +24,12 @@ __iim_product_id:       "\"id='com.ibm.cic.agent\""
 __was_product_id:       "\"id='com.ibm.websphere.ND.v85'\""
 
 ## Old Versions
+__was_fp_version_fp12:  "8.5.5012.20170627_1018"
+__was_fp_files_fp12:
+  - { file_name: 8.5.5-WS-WAS-FP012-part1.zip, check_sum: 149483f668dc4617982e5d8fda98e686e7903510bcc13d562f41979bc1e93e68 }
+  - { file_name: 8.5.5-WS-WAS-FP012-part2.zip, check_sum: d46ee7d33c3bfd0061b300ad4af88a742595eda5e2a53bae4051b502aac8c544 }
+  - { file_name: 8.5.5-WS-WAS-FP012-part3.zip, check_sum: c53826d6b602e036ed5b9dc8f5485da7d9067ef0ef57bf9766e8861baa06f64e }
+
 __was_fp_version_fp11:  "8.5.5011.20161206_1434"
 __was_fp_files_fp11:
   - { file_name: 8.5.5-WS-WAS-FP011-part1.zip, check_sum: bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66 }
