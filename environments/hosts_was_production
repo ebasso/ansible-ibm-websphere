@@ -35,7 +35,6 @@ domain_name=.company.com
 ihs_password=<CHANGE_PASSWORD>
 
 [dmgr:vars]
-was_cellname=ConnectionsCell
 ldap_server=ldapserver.company.com
 ldap_alias=ldapserver
 ldap_repo=LDAP_PRODUCTION

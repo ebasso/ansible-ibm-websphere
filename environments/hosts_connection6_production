@@ -11,14 +11,23 @@ srv002.company.com
 srv003.company.com
 srv004.company.com
 
+[ihs-servers]
+srv010.company.com
+srv011.company.com
+
 [connections6-pink]
 srv005.company.com
 srv006.company.com
 srv007.company.com
 
-[ihs-servers]
-srv010.company.com
-srv011.company.com
+[forms-servers]
+srv003.company.com
+
+[docs-conversion-servers]
+srv004.company.com
+
+[docs-viewer-servers]
+srv004.company.com
 
 [all:vars]
 iim_repository_url=http://192.168.1.150/installation
@@ -35,7 +44,6 @@ domain_name=.company.com
 ihs_password=<CHANGE_PASSWORD>
 
 [dmgr:vars]
-was_cellname=ConnectionsCell
 ldap_server=ldapserver.company.com
 ldap_alias=ldapserver
 ldap_repo=LDAP_PRODUCTION

@@ -10,12 +10,9 @@
     - "{{ __bkp_dir }}/InstallationManager"
     - "{{ __bkp_dir }}/IMShared"
     - "{{ __bkp_dir }}/WebSphere"
-
-- name:          Create Backup Connections directory
-  file:          path={{item}} state=directory mode=0755
-  with_items:
+    - "{{ __bkp_dir }}/var/ibm"
+    - "{{ __bkp_dir }}/etc/.ibm"
     - "{{ __bkp_dir }}/Connections"
-  ignore_errors: true
 
 - name:          Backup Directories
   command:       cp -R {{item}} {{ __bkp_dir }}/
@@ -24,6 +21,8 @@
   - "{{ __ibm_dir }}/InstallationManager"
   - "{{ __ibm_dir }}/IMShared"
   - "{{ __ibm_dir }}/WebSphere"
+  - "/var/ibm"
+  - "/etc/.ibm"
 
 - name:          Backup Connections Directories
   command:       cp -R {{item}} {{ __bkp_dir }}/

@@ -15,10 +15,10 @@
 - name:                 "Add WebServer to DMGR"
   command:
     chdir={{ __bin_dir }}
-    {{ __bin_dir }}/wsadmin.sh -port 8879 -username {{ __was_username }} -password {{ __was_password }} \
-      -f {{ __bin_dir }}/configureWebserverDefinition.jacl {{ item.split('.')[0] }} IHS {{ __ihs_install_location }} \
+    {{ __bin_dir }}/wsadmin.sh -port 8879 -username {{ __was_username }} -password {{ __was_password }} -f \
+      {{ __bin_dir }}/configureWebserverDefinition.jacl {{ item.split('.')[0] }} IHS {{ __ihs_install_location }} \
       {{ __ihs_install_location }}/conf/httpd.conf 80 MAP_ALL {{ __plg_install_location }} unmanaged \
-      {{ item.split('.')[0] }}_node {{ item }} {{ __ihs_arch }} {{ __ihs_admin_port }} \
+      {{ item.split('.')[0] }}-node {{ item }} {{ __ihs_arch }} {{ __ihs_admin_port }} \
       {{ __ihs_username }} {{ ihs_password }}
   register:             cout
   changed_when:         cout.rc == 0
