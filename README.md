@@ -13,10 +13,18 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 | Role name                       |            Description of Role                                          |
 |---------------------------------|-------------------------------------------------------------------------|
+| ibm-http-adminctl-restart       | Restart IHS Admin Servers |
+| ibm-http-adminctl-start         | Start IHS Admin Servers |
+| ibm-http-adminctl-stop          | Stop IHS Admin Servers |
 | ibm-http-config-plgwct          | Configure HTTP Plugin |
 | ibm-http-server-fix-install     | Install IBM HTTP Server Fixes |
 | ibm-http-server-install         | Install IBM HTTP Server |
+| ibm-http-server-restart         | Restart IBM HTTP Server Servers |
+| ibm-http-server-start           | Start IBM HTTP Server Servers |
+| ibm-http-server-stop            | Stop IBM HTTP Server Servers |
 | installation-manager-install    | Install IBM Installation Manager   |
+| sametime-server-install         | DRAFT: Install Sametime WAS Servers   |
+| was-backup-dir-pre-fixes        | Backup WAS directories before apply a fix|
 | was-dmgr-config-jvm             | Tune Java Virtual Machine of DMGR |
 | was-dmgr-config-ldap            | Configure LDAP Repository (Server must be started) |
 | was-dmgr-config-webserver       | Configure WebServers on DMGR |
