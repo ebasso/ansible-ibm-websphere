@@ -8,8 +8,13 @@
 - name:                 "Configure WebSphere Plugin"
   command:
     chdir={{ __wct_install_location }}
-    {{ __wct_install_location }}/WCT/wctcmd.sh -tool pct -createDefinition -defLocName {{ __ihs_hostname }} -defLocPathname {{ __plg_install_location }} -response {{ __rsp_file }}
+    {{ __wct_install_location }}/WCT/wctcmd.sh -tool pct -createDefinition -defLocName {{ __ihs_hostname }} -defLocPathname {{ __plg_install_location }} -response {{ __rsp_file }}  -logLevel 7
   register:             cout
   changed_when:         cout.rc == 0
-  #changed_when:         ( cout.stdout.find('INSTCONFSUCCESS') != -1)
+  when:                 plugin_already_configured.stat.exists == false
+
+- name:                 "Change admin.passwd"
+  command:              "{{ __ihs_install_location }}/bin/htpasswd -cm {{ __ihs_install_location }}/conf/admin.passwd {{ __ihs_username }} {{ ihs_password }}"
+  register:             cout
+  changed_when:         cout.rc == 0
   when:                 plugin_already_configured.stat.exists == false

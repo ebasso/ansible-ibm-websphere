@@ -7,4 +7,3 @@
 
 - name:          Config Plugin WCT
   include_tasks: config_plgwct.yml
-

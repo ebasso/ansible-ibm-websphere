@@ -7,12 +7,12 @@
   file:          path={{item}} state=directory mode=0755
   with_items:
     - "{{ __bkp_dir }}"
-    - "{{ __bkp_dir }}/InstallationManager"
-    - "{{ __bkp_dir }}/IMShared"
-    - "{{ __bkp_dir }}/WebSphere"
-    - "{{ __bkp_dir }}/var/ibm"
-    - "{{ __bkp_dir }}/etc/.ibm"
-    - "{{ __bkp_dir }}/Connections"
+#    - "{{ __bkp_dir }}/InstallationManager"
+#    - "{{ __bkp_dir }}/IMShared"
+#    - "{{ __bkp_dir }}/WebSphere"
+#    - "{{ __bkp_dir }}/var/ibm"
+#    - "{{ __bkp_dir }}/etc/.ibm"
+#    - "{{ __bkp_dir }}/Connections"
 
 - name:          Backup Directories
   command:       cp -R {{item}} {{ __bkp_dir }}/

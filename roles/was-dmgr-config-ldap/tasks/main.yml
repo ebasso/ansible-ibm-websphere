@@ -11,7 +11,8 @@
 
 - name:                 "Verifiy if LDAP is already configured"
   stat:
-    path:               "{{ __rsp_file }}"
+    #path:               "{{ __rsp_file }}"
+    path:               "{{ __success_file }}"
   register:             ldap_already_configured
   when:                 profile_already_exists.stat.exists == true
 
@@ -28,3 +29,8 @@
   register:             cout
   changed_when:         cout.rc == 0
   when:                 ldap_already_configured.stat.exists == false
+
+- name:                 "Create was-dmgr-config-ldap.success file"
+  file:
+    path:             "{{ __success_file }}"
+    state:            touch

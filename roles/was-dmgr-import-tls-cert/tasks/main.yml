@@ -11,7 +11,7 @@
 
 - name:                 "Verifiy if TLS is already configured"
   stat:
-    path:               "{{ __rsp_file }}"
+    path:               "{{ __success_file }}"
   register:             tls_already_configured
   when:                 profile_already_exists.stat.exists == true
 
@@ -29,3 +29,10 @@
   changed_when:         cout.rc == 0
   #changed_when:         ( cout.stdout.find('INSTCONFSUCCESS') != -1)
   when:                 tls_already_configured.stat.exists == false
+
+- name:                 "Create was-dmgr-import-tls-cert.success file"
+  file:
+    path:               "{{ __success_file }}"
+    state:              touch
+
+    

@@ -1,0 +1,2 @@
+---
+__ihs_install_location: "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"

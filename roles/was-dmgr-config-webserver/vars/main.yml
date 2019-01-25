@@ -13,3 +13,5 @@ __ihs_admin_port:        "{{ ihs_admin_port | default('8085') }}"
 __ihs_username:          "{{ ihs_username | default('ihsadmin') }}"
 __ihs_admins_group:      "{{ ihs_admins_group | default('ihsadmins') }}"
 __ihs_arch:              "{{ ihs_arch  | default('linux') }}"
+
+__success_file:         "{{ __bin_dir }}/was-dmgr-config-webserver.success"

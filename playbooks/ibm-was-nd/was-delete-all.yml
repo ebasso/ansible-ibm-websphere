@@ -23,3 +23,27 @@
       - /opt/IBM/WebSphere
       - /opt/IBM/IMShared
       - /etc/.ibm
+
+- hosts:                    ihs-servers
+  become:                   true
+  tasks:
+    - name:          KillAll Java
+      command:       killall -9 httpd
+      register:      cout
+      #with_items:
+      #- "{{ __ibm_dir }}/Connections"
+      ignore_errors: true
+
+    - name:                  "Cleanup All directories"
+      file:
+        path:                "{{ item }}"
+        state:               absent
+      with_items:
+      - /var/ibm
+      - /opt/IBM/Binaries
+      - /opt/IBM/InstallationManager
+      - /opt/IBM/HTTPServer
+      - /opt/IBM/WebSphere
+      - /opt/IBM/IMShared
+      - /etc/.ibm
+      - /root/.ibm

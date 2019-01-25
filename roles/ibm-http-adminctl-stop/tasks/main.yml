@@ -1,0 +1,11 @@
+---
+- name:          "Is AdminCtl Running?"
+  shell:         ps -p `cat "{{ __ihs_install_location }}/logs/admin.pid"`
+  register:      ihs_is_running
+  ignore_errors: true
+
+- name:          "Stop AdminCtl"
+  command:       "{{ __ihs_install_location }}/bin/adminctl stop"
+  register:      cout
+  changed_when:  cout.rc == 0
+  when:          ihs_is_running.rc == 0

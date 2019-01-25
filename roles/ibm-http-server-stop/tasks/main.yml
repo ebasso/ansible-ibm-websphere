@@ -1,0 +1,11 @@
+---
+- name:          "Is IHS Running?"
+  shell:         ps -p `cat "{{ __ihs_install_location }}/logs/httpd.pid"`
+  register:      ihs_is_running
+  ignore_errors: true
+
+- name:          "Stop IHS"
+  command:       "{{ __ihs_install_location }}/bin/apachectl stop"
+  register:      cout
+  changed_when:  cout.rc == 0
+  when:          ihs_is_running.rc == 0

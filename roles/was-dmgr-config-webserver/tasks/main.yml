@@ -25,6 +25,10 @@
 #  when:                 dmgr_is_running.stat.exists == false
   loop:                 "{{ groups['ihs-servers'] }}"
 
+- name:                 "Create was-dmgr-config-webserver.success file"
+  file:
+    path:             "{{ __success_file }}"
+    state:            touch
 
 #/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wsadmin.sh -username wsadmin -password gecin22 \
 # -f /opt/IBM/WebSphere/AppServer/bin/configureWebserverDefinition.jacl dxl1scb00107 IHS /opt/IBM/HTTPServer85 \
