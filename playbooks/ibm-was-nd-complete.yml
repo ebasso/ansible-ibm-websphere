@@ -43,7 +43,7 @@
 
 - name:                    Install WAS Servers
   hosts:                   dmgr,was-servers
-  serial:                  2
+#  serial:                  2
   become:                  true
   roles:
     - roles/installation-manager-install
