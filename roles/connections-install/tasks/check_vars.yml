@@ -1,0 +1,58 @@
+# check_openshift.yml
+---
+- name: cnx_repository_url should be defined
+  assert:
+    that:
+    - cnx_repository_url is defined and cnx_repository_url != ''
+    msg: "Set the value of 'cnx_repository_url' in the inventory file."
+
+- name: dmgr_hostname should be defined
+  assert:
+    that:
+    - dmgr_hostname is defined and dmgr_hostname != ''
+    msg: "Set the value of 'dmgr_hostname' in the inventory file."
+
+- name: was_username should be defined
+  assert:
+    that:
+    - was_username is defined and was_username != ''
+    msg: "Set the value of 'was_username' in the inventory file."
+
+- name: was_password should be defined
+  assert:
+    that:
+    - was_password is defined and was_password != ''
+    msg: "Set the value of 'was_password' in the inventory file."
+
+#- name: db_username should be defined
+#  assert:
+#    that:
+#    - db_username is defined and db_username != ''
+#    msg: "Set the value of 'db_username' in the inventory file."
+#  when: "'system-console' in group_names"
+#
+#- name: db_password should be defined
+#  assert:
+#    that:
+#    - db_password is defined and db_password != ''
+#    msg: "Set the value of 'db_password' in the inventory file."
+#  when: "'system-console' in group_names"
+
+- name: cnx_domainname should be defined
+  assert:
+    that:
+    - cnx_domainname is defined and cnx_domainname != ''
+    msg: "Set the value of 'cnx_domainname' in the inventory file."
+
+- name: cnx_domainname should be defined
+  assert:
+    that:
+    - cnx_domainname is defined and cnx_domainname != ''
+    msg: "Set the value of 'cnx_domainname' in the inventory file."
+
+- name: smtp_hostname should be defined
+  assert:
+    that:
+    - smtp_hostname is defined and smtp_hostname != ''
+    msg: "Set the value of 'smtp_hostname' in the inventory file."
+    

@@ -1,0 +1,4 @@
+- name:              Generate Response file
+  template:
+    src:             "{{ __tpl_file }}"
+    dest:            "{{ __rsp_file }}"
