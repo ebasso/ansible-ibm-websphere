@@ -1,0 +1,29 @@
+# Start of File
+cellName=AdminControl.getCell()
+for clusterName in sys.argv :
+
+	##############################################################################
+	# Identify the ClusterMgr MBean and assign it to the clusterMgr variable.
+	##############################################################################
+	clusterMgr = AdminControl.completeObjectName('cell='+cellName+',type=ClusterMgr,*')
+
+	##############################################################################
+	# Refresh the list of clusters.
+	##############################################################################
+	AdminControl.invoke(clusterMgr, 'retrieveClusters')
+
+	##############################################################################
+	# Identify the Cluster MBean and assign it to the cluster variable.
+	#############################################################################
+	cluster = AdminControl.completeObjectName('cell='+cellName+',type=Cluster,name='+clusterName+',*')
+
+	if cluster == '':
+		continue
+
+	##############################################################################
+	# Stop cluster.
+	#############################################################################
+	print "stopping cluster" + cluster
+	AdminControl.invoke(cluster, 'stop')
+	print "finish."
+# End of File

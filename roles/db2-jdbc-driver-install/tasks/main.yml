@@ -1,0 +1,24 @@
+---
+- name: jdbc_repository_url should be defined
+  assert:
+    that:
+    - jdbc_repository_url is defined and jdbc_repository_url != ''
+    msg: "Set the value of 'jdbc_repository_url' in the inventory file."
+
+- name:          "Verifiy if jdbc already exists"
+  stat:
+    path:        "{{ __jdbc_location }}/"
+  register:      jdbc_already_exists
+
+- name:          "Create JDBC directory"
+  file:          path={{ __jdbc_location }} state=directory mode=0755
+  when:          jdbc_already_exists.stat.exists != true
+
+- name:          Download WAS Java
+  get_url:
+    url:         "{{ jdbc_repository_url }}/{{ item.file_name }}"
+    dest:        "{{ __jdbc_location }}/{{ item.file_name }}"
+    mode:        0755
+    checksum:    sha256:{{ item.check_sum }}
+  with_items:    "{{ __files_latest }}"
+  when:          jdbc_already_exists.stat.exists != true

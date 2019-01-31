@@ -14,7 +14,8 @@
   when:                 plugin_already_configured.stat.exists == false
 
 - name:                 "Change admin.passwd"
-  command:              "{{ __ihs_install_location }}/bin/htpasswd -cm {{ __ihs_install_location }}/conf/admin.passwd {{ __ihs_username }} {{ ihs_password }}"
+  command:              "{{ __ihs_install_location }}/bin/htpasswd -bcm {{ __ihs_install_location }}/conf/admin.passwd {{ __ihs_username }} {{ ihs_password }}"
   register:             cout
   changed_when:         cout.rc == 0
+#  failed_when:          cout.rc != 0
   when:                 plugin_already_configured.stat.exists == false

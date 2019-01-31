@@ -1,0 +1,6 @@
+---
+__jdbc_location:        "{{ jdbc_location  | default('/opt/IBM/db2/V11.1/java') }}"
+
+__files_latest:
+  - { file_name: db2jcc4.jar, check_sum: 2107521ae05bd66260ed2bc89f393015d5ea8f3927bcdf0cffdb9a09ad8298dc }
+

@@ -24,6 +24,13 @@
       - /opt/IBM/IMShared
       - /etc/.ibm
 
+    - name:        Delete Connections directory
+      command:       killall -9 java
+      register:      cout
+      with_items:
+      - "/opt/IBM/Connections"
+      ignore_errors: true
+
 - hosts:                    ihs-servers
   become:                   true
   tasks:

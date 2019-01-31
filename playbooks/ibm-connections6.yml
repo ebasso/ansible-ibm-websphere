@@ -9,6 +9,7 @@
     - roles/was-nd-install
     - roles/was-nd-fix-install
     - roles/was-java-install
+    - roles/db2-jdbc-driver-install
 
 - name:                    Install HTTP Servers
   hosts:                   ihs-servers
@@ -30,6 +31,7 @@
     - roles/was-dmgr-import-tls-cert
     - roles/was-dmgr-config-ldap
     - roles/was-dmgr-config-jvm
+    - roles/was-dmgr-enable-app-sec
     - roles/was-dmgr-restart
 
 - name:                    Setup WAS Nodes

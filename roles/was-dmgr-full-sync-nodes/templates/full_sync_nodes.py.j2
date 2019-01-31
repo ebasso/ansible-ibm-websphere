@@ -1,0 +1,21 @@
+# Start of File
+######################################################################
+# Sync all the nodes.
+######################################################################
+nodes = AdminConfig.list('Node')
+nodeList = nodes.splitlines()
+for node in nodeList:
+        nodeName = AdminConfig.showAttribute(node, 'name')
+        ######################################################################
+        # Set the variable for node synchronization.
+        ######################################################################
+        sync = AdminControl.completeObjectName('type=NodeSync,node='+nodeName+',*')
+
+        if sync == '' :
+                continue
+
+        ######################################################################
+        # Synchronize the node by issuing the following command:
+        ######################################################################
+        AdminControl.invoke(sync,'sync')
+# End of File
