@@ -1,6 +1,6 @@
 ---
 - name:          "Is dmgr Running?"
-  shell:         ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid"`
+  shell:         "ps -p `cat '{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid'` > /dev/null"
   register:      dmgr_is_running
   ignore_errors: true
 
@@ -12,7 +12,7 @@
   when:          dmgr_is_running.rc != 0
 
 - name:          "Is dmgr Running?"
-  shell:         ps -p `cat "{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid"`
+  shell:         "ps -p `cat '{{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid'` > /dev/null"
   register:      cout
   ignore_errors: true
   when:          (dmgr_start.rc is defined) and (dmgr_start.rc == 0)
