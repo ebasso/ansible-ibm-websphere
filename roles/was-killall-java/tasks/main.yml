@@ -1,0 +1,4 @@
+---
+- name:          KillAll Java
+  command:       "killall -9 java"
+  ignore_errors: true

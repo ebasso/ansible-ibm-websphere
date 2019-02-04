@@ -3,30 +3,32 @@
 # Variables used in this playbook that can be setup at hosts file.
 #
 ---
-- hosts:                    dmgr
-  become:                   true
-  vars:
-    was_fp_version:       "8.5.5012.20170627_1018"
-    #__this_files:
-    #  - { file_name: 8.5.5-WS-WAS-FP011-part1.zip, check_sum: bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66 }
-    #  - { file_name: 8.5.5-WS-WAS-FP011-part2.zip, check_sum: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
-  roles:
-    - roles/was-dmgr-stop
-    - roles/was-profile-cleanup-temps
-    #- roles/was-backup-dir-pre-fixes.yml
-    #- roles/was-nd-fix-install
-    - roles/was-dmgr-start
+#- hosts:                    dmgr
+#  become:                   true
+#  vars:
+#    was_fp_version:       "8.5.5012.20170627_1018"
+#    #__this_files:
+#    #  - { file_name: 8.5.5-WS-WAS-FP011-part1.zip, check_sum: bd9b51bd6a8522da8a6a19fcb0cf0ccc9980b13f5da2a1bcd4db2242ae555a66 }
+#    #  - { file_name: 8.5.5-WS-WAS-FP011-part2.zip, check_sum: 0ab936b38ebee485471ce9f6fdbf5c0a609f0ffa837247fb81db6935f5cc061c }
+#  roles:
+#    - roles/was-dmgr-stop
+#    - roles/was-killall-java
+#    - roles/was-profile-cleanup-temps
+#    - roles/was-backup-dir-pre-fixes
+#    - roles/was-nd-fix-install
+#    - roles/was-dmgr-start
 
 - hosts:                    was-servers
   become:                   true
-  #serial:                   1
+  serial:                   1
   vars:
     was_fp_version:       "8.5.5012.20170627_1018"
   roles:
     - roles/was-server-stop
     - roles/was-nodeagent-stop
+    - roles/was-killall-java
     - roles/was-profile-cleanup-temps
-    #- roles/was-backup-dir-pre-fixes.yml
-    #- roles/was-nd-fix-install
+    - roles/was-backup-dir-pre-fixes
+    - roles/was-nd-fix-install
     - roles/was-nodeagent-start
     - roles/was-server-start
