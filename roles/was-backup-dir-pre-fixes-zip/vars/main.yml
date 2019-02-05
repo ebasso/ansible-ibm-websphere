@@ -1,0 +1,9 @@
+# Backup WAS before Fix
+#
+# How to run:
+#  ansible-playbook -i hosts.connections -u <USER> -k ansible-ibm-websphere/playbooks/was-backup-dir-pre-fixes.yml
+---
+__ibm_dir:       "{{ ibm_dir | default('/opt/IBM') }}"
+__bkp_dir:       "{{ bkp_dir | default('/opt/IBM/Backup') }}"
+__now_tmp:       "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__now:           "{{ __now_tmp }}"

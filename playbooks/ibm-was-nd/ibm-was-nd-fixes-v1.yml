@@ -3,12 +3,6 @@
 # Variables used in this playbook that can be setup at hosts file.
 #
 ---
-- hosts:                    dmgr,was-servers
-  become:                   true
-  roles:
-    - roles/was-profile-cleanup-logs
-    - roles/was-backup-dir-pre-fixes-zip
-
 - hosts:                    dmgr
   become:                   true
   vars:
@@ -20,12 +14,13 @@
     - roles/was-dmgr-stop
     - roles/was-killall-java
     - roles/was-profile-cleanup-temps
+    - roles/was-backup-dir-pre-fixes
     - roles/was-nd-fix-install
     - roles/was-dmgr-start
 
 - hosts:                    was-servers
   become:                   true
-  serial:                   2
+  serial:                   1
   vars:
     was_fp_version:       "8.5.5012.20170627_1018"
   roles:
@@ -33,6 +28,7 @@
     - roles/was-nodeagent-stop
     - roles/was-killall-java
     - roles/was-profile-cleanup-temps
+    - roles/was-backup-dir-pre-fixes
     - roles/was-nd-fix-install
     - roles/was-nodeagent-start
     - roles/was-server-start

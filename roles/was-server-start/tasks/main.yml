@@ -10,7 +10,7 @@
   changed_when:  cout.rc == 0
   when:          nodeagent_is_running.rc != 0
 
-- name:          Wait 60 seconds for DMGR to activate
+- name:          Wait 60 seconds for NODEAGENT to activate
   pause:
     seconds:     60
   when:          nodeagent_is_running.rc != 0
@@ -29,6 +29,6 @@
   when:          item.rc != 0
   with_items:    "{{ server_is_running.results }}"
 
-- name:          Wait 60 seconds for DMGR to activate
+- name:          Wait 30 seconds for SERVER to activate
   pause:
-    seconds:     60
+    seconds:     30
