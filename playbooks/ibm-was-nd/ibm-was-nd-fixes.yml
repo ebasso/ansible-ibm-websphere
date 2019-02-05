@@ -19,7 +19,7 @@
   roles:
     - roles/was-dmgr-stop
     - roles/was-killall-java
-    - roles/was-profile-cleanup-logs
+    - roles/was-profile-cleanup-temps
     - roles/was-nd-fix-install
     - roles/was-dmgr-start
 
