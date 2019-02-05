@@ -1,0 +1,34 @@
+# How to run
+#
+# ansible --list-hosts was-nodes
+#
+# ansible -k was-nodes -m ping
+#
+# ansible-playbook -i hosts.c55.hm -k ansible-ibm-websphere/playbooks/was-profile-cleanup-logs.yml
+
+[dmgr]
+hxl1scb00101.dispositivos.bb.com.br 
+
+[was-servers]
+hxl1scb00102.dispositivos.bb.com.br servers="['clCommon_server2','clNews_server2','clHomepage_server2','clWidgets_server2','clRTE_server2','clSearch_server2','clMetrics_server2','clActivities_server2','clBlogs_server2','clForum_server2','clDogear_server2','clCommunities_server2','clWikis_server2','clMobile_server2','clModeration_server2']"
+hxl1scb00103.dispositivos.bb.com.br servers="['clCommon_server3','clNews_server3','clHomepage_server3','clWidgets_server3','clRTE_server3','clSearch_server3','clMetrics_server3','clActivities_server3','clBlogs_server3','clForum_server3','clDogear_server3','clCommunities_server3','clWikis_server3','clMobile_server3','clModeration_server3']"
+hxl1scb00104.dispositivos.bb.com.br servers="['clProfiles_server4','clFiles_server4','clViewer_server4','clCCM_server4']"
+hxl1scb00105.dispositivos.bb.com.br servers="['clProfiles_server5','clFiles_server5','clViewer_server5','clCCM_server5']"
+#hxl1scb00106.dispositivos.bb.com.br servers="['cogserver']"
+hxl1scb00107.dispositivos.bb.com.br servers="['febserver']"
+
+[dmgr:vars]
+iim_repository_url=http://172.17.202.237/installation
+was_repository_url=http://172.17.202.237/was/8.5.5
+was_fixes_repository_url=http://172.17.202.237/was/8.5.5
+was_version="8.5.5012.20170627_1018"
+was_username=wsadmin
+was_password=gesit174
+
+[was-servers:vars]
+iim_repository_url=http://172.17.202.237/installation
+was_repository_url=http://172.17.202.237/was/8.5.5
+was_fixes_repository_url=http://172.17.202.237/was/8.5.5
+was_version="8.5.5012.20170627_1018"
+was_username=wsadmin
+was_password=gesit174
