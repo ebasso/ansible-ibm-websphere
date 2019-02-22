@@ -1,0 +1,34 @@
+---
+- name:              Cleanup Binaries directory
+  file:              path={{ __tmp_dir }} state=absent
+  ignore_errors:     true
+
+- name:              Create Binaries directory
+  file:              path={{ __tmp_dir }} state=directory mode=0755
+
+- name:              Create Logs directory
+  file:              path={{ __logs_dir }} state=directory mode=0755
+
+- name:              Download Installer
+  get_url:
+    url:             "{{ cnx_repository_url }}/{{ item.file_name }}"
+    dest:            "{{ __tmp_dir }}/{{ item.file_name }}"
+    mode:            0755
+    checksum:        sha256:{{ item.check_sum }}
+  with_items:        "{{ __cnx_files }}"
+
+- name:              Extract Installer
+  unarchive:
+    src:             "{{ __tmp_dir }}/{{ item.file_name }}"
+    dest:            "{{ __tmp_dir }}/"
+    copy:            no
+  with_items:        "{{ __cnx_files }}"
+
+- name:              Download Installer CCM
+  get_url:
+    url:             "{{ cnx_repository_url }}/{{ item.file_name }}"
+    dest:            "{{ __tmp_dir }}/{{ item.file_name }}"
+    mode:            0755
+    checksum:        sha256:{{ item.check_sum }}
+  with_items:        "{{ __ccm_files }}"
+  changed_when:      (ccm_install is defined)

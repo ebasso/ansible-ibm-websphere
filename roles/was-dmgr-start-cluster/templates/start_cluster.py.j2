@@ -27,3 +27,13 @@ for clusterName in sys.argv :
 	AdminControl.invoke(cluster, 'start')
 	print "finish."
 # End of File
+
+####
+#import sys
+#import lcapp
+#
+#cell = lcapp.Cell()
+#for cname in sys.argv:
+#    print "start cluster:", cname
+#    for cluster in cell.clusters(cname):
+#        cluster.start()

@@ -9,12 +9,12 @@
   register:             dmgr_is_running
   ignore_errors:        true
 
-- name:                 "Verifiy if JVM is already configured"
+- name:                 "Verifiy if Application Security is already configured"
   stat:
     path:               "{{ __success_file }}"
   register:             app_sec_already_configured
   when:                 profile_already_exists.stat.exists == true
 
-- name:                 "Install IBM HTTP Server"
+- name:                 "Enable Application Security"
   include_tasks:        enable_app_sec.yml
   when:                 app_sec_already_configured.stat.exists == false

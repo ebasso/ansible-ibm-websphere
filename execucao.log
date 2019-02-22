@@ -1,0 +1,2160 @@
+ansible-playbook 2.7.7
+  config file = None
+  configured module search path = ['/Users/ebasso/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.7.2 (default, Feb 12 2019, 08:15:36) [Clang 10.0.0 (clang-1000.11.45.5)]
+No config file found; using defaults
+/Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/environments/hosts.c60.dev did not meet host_list requirements, check plugin documentation if this is unexpected
+/Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/environments/hosts.c60.dev did not meet script requirements, check plugin documentation if this is unexpected
+/Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/environments/hosts.c60.dev did not meet yaml requirements, check plugin documentation if this is unexpected
+Parsed /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/environments/hosts.c60.dev inventory source with ini plugin
+
+PLAYBOOK: ibm-connections6.yml ***********************************************************************************************************************************
+1 plays in playbooks/ibm-connections6.yml
+
+PLAY [Setup Connections] *****************************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/playbooks/ibm-connections6.yml:51
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270 `" && echo ansible-tmp-1550846830.389052-35959862734270="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/system/setup.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp_s0jbkdu TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270/AnsiballZ_setup.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270/AnsiballZ_setup.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-eaudqtpkpuchgebbounxaodxkcixdeuv; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270/AnsiballZ_setup.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846830.389052-35959862734270/ > /dev/null 2>&1 && sleep 0'
+ok: [dxl1scb00153.dispositivos.bb.com.br]
+META: ran handlers
+
+TASK [connections-install : Check Vars] **************************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/main.yml:2
+included: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml for dxl1scb00153.dispositivos.bb.com.br
+
+TASK [connections-install : cnx_repository_url should be defined] ************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:3
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : dmgr_hostname should be defined] *****************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:9
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : was_username should be defined] ******************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:15
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : was_password should be defined] ******************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:21
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : cnx_domainname should be defined] ****************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:41
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : cnx_domainname should be defined] ****************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:47
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : smtp_hostname should be defined] *****************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/check_vars.yml:53
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [connections-install : Setup Operating System] **************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/main.yml:5
+included: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/setup_os.yml for dxl1scb00153.dispositivos.bb.com.br
+
+TASK [connections-install : Install pre-requisites Yum] **********************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/setup_os.yml:14
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847 `" && echo ansible-tmp-1550846845.328167-1569629578847="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/packaging/os/yum.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpop_q5r7g TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847/AnsiballZ_yum.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847/AnsiballZ_yum.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-tftmcxtovtwwhuqhwzhxeodxgfssgvjc; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847/AnsiballZ_yum.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846845.328167-1569629578847/ > /dev/null 2>&1 && sleep 0'
+ok: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "allow_downgrade": false,
+            "autoremove": false,
+            "bugfix": false,
+            "conf_file": null,
+            "disable_excludes": null,
+            "disable_gpg_check": false,
+            "disable_plugin": [],
+            "disablerepo": [],
+            "download_only": false,
+            "enable_plugin": [],
+            "enablerepo": [],
+            "exclude": [],
+            "install_repoquery": true,
+            "installroot": "/",
+            "list": null,
+            "name": [
+                "nfs-utils"
+            ],
+            "releasever": null,
+            "security": false,
+            "skip_broken": false,
+            "state": "present",
+            "update_cache": false,
+            "update_only": false,
+            "use_backend": "auto",
+            "validate_certs": true
+        }
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "1:nfs-utils-1.3.0-0.61.el7.x86_64 providing nfs-utils is already installed"
+    ]
+}
+
+TASK [connections-install : Define Vars] *************************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/main.yml:8
+included: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/define_vars.yml for dxl1scb00153.dispositivos.bb.com.br
+
+TASK [connections-install : Is Product already Installed?] *******************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/define_vars.yml:17
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778 `" && echo ansible-tmp-1550846847.180423-180963915514778="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpvbdewxex TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-yfbmasmrfplehgkzaqbjtfadvbkbprzj; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846847.180423-180963915514778/ > /dev/null 2>&1 && sleep 0'
+fatal: [dxl1scb00153.dispositivos.bb.com.br]: FAILED! => {
+    "changed": true,
+    "cmd": [
+        "egrep",
+        "id='com.ibm.connections'",
+        "/var/ibm/InstallationManager/installed.xml"
+    ],
+    "delta": "0:00:00.107522",
+    "end": "2019-02-22 11:47:28.385215",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "egrep \"id='com.ibm.connections'\" /var/ibm/InstallationManager/installed.xml",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "msg": "non-zero return code",
+    "rc": 1,
+    "start": "2019-02-22 11:47:28.277693",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "",
+    "stdout_lines": []
+}
+...ignoring
+
+TASK [connections-install : include_tasks] ***********************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/main.yml:14
+included: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml for dxl1scb00153.dispositivos.bb.com.br
+
+TASK [connections-install : Encode WAS Password] *****************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:2
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327 `" && echo ansible-tmp-1550846848.8275552-24608419881327="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpf54em82b TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-hylgbssiifldssavdlipdrrqyeqsugpz; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846848.8275552-24608419881327/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "GesitE33"
+    ],
+    "delta": "0:00:05.677336",
+    "end": "2019-02-22 11:47:35.456134",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString GesitE33",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:47:29.778798",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "31Ce4oFsC0Qsch6I33VxhQ==",
+    "stdout_lines": [
+        "31Ce4oFsC0Qsch6I33VxhQ=="
+    ]
+}
+
+TASK [connections-install : Encode DB Passwords] *****************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:7
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760 `" && echo ansible-tmp-1550846855.906256-151115501937760="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpdw_ewwrw TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-aiyczzjozmkihnetzyamtlygrkishknz; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846855.906256-151115501937760/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'activities', 'name': 'OPNACT', 'server': 'bdhdb2-d2con-opnact.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.408432",
+    "end": "2019-02-22 11:47:42.267429",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "activities",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "OPNACT",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-opnact.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:47:36.858997",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768 `" && echo ansible-tmp-1550846862.462826-248577263377768="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp1wxw3utn TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-jbwbbvoujkbfknpeznawdtaikermblxa; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846862.462826-248577263377768/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'blogs', 'name': 'BLOGS', 'server': 'bdhdb2-d2con-blogs.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.608493",
+    "end": "2019-02-22 11:47:48.876108",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "blogs",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "BLOGS",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-blogs.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:47:43.267615",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415 `" && echo ansible-tmp-1550846869.034944-12714042188415="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpgjq1t3hm TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-xcngmdxfxnmdszvtrnwqwshjxuuotqsd; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846869.034944-12714042188415/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'communities', 'name': 'SNCOMM', 'server': 'bdhdb2-d2con-sncomm.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.771183",
+    "end": "2019-02-22 11:47:55.636551",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "communities",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "SNCOMM",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-sncomm.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:47:49.865368",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698 `" && echo ansible-tmp-1550846875.839922-2505497895698="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp68xu8svz TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-rubnngrtouuqfwcaxlmrhstzwhpzrxor; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846875.839922-2505497895698/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'dogear', 'name': 'DOGEAR', 'server': 'bdhdb2-d2con-dogear.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.657987",
+    "end": "2019-02-22 11:48:02.307591",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "dogear",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "DOGEAR",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-dogear.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:47:56.649604",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961 `" && echo ansible-tmp-1550846882.472212-137243542770961="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp0416_pva TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-rmopyafaclidsariokcisadwrphrycyt; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846882.472212-137243542770961/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'files', 'name': 'FILES', 'server': 'bdhdb2-d2con-files.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.585217",
+    "end": "2019-02-22 11:48:08.870251",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "files",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "FILES",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-files.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:03.285034",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112 `" && echo ansible-tmp-1550846889.062861-239327498817112="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp9ch1m72e TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-kavyyysusmpligcsqohgfgenlvaytrfo; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846889.062861-239327498817112/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'forums', 'name': 'FORUMS', 'server': 'bdhdb2-d2con-forums.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.773457",
+    "end": "2019-02-22 11:48:15.653470",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "forums",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "FORUMS",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-forums.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:09.880013",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810 `" && echo ansible-tmp-1550846895.8568-54159069288810="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp_v98ipb8 TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-dldemhtbjugdzyosseuebznfletaolmi; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846895.8568-54159069288810/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'homepage', 'name': 'HOMEPAGE', 'server': 'bdhdb2-d2con-homepage.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.769176",
+    "end": "2019-02-22 11:48:22.446346",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "homepage",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "HOMEPAGE",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-homepage.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:16.677170",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991 `" && echo ansible-tmp-1550846902.643289-140385113192991="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp7bxqeiym TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ktckdnphgndkgjxlflnahflctryprclw; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846902.643289-140385113192991/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'metrics', 'name': 'METRICS', 'server': 'bdhdb2-d2con-metrics.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.754407",
+    "end": "2019-02-22 11:48:29.178274",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "metrics",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "METRICS",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-metrics.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:23.423867",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228 `" && echo ansible-tmp-1550846909.374572-227474514685228="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpksrz9qzy TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-uqkrkujywpzfudobacpfhrfwidkbffyv; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846909.374572-227474514685228/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'mobile', 'name': 'MOBILE', 'server': 'bdhdb2-d2con-mobile.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.840681",
+    "end": "2019-02-22 11:48:36.081578",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "mobile",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "MOBILE",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-mobile.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:30.240897",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384 `" && echo ansible-tmp-1550846916.2849762-228076478882384="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmponkralqj TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-nrzqcvazaznadhuzpndmuwfaxgeamhwx; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846916.2849762-228076478882384/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'news', 'name': 'HOMEPAGE', 'server': 'bdhdb2-d2con-homepage.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.626418",
+    "end": "2019-02-22 11:48:42.759208",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "news",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "HOMEPAGE",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-homepage.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:37.132790",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702 `" && echo ansible-tmp-1550846922.960565-99441432117702="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpovmg9jb6 TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-brtvkntstdhprcanifasnfmlbzqnquvs; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846922.960565-99441432117702/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'profiles', 'name': 'PEOPLEDB', 'server': 'bdhdb2-d2con-peopledb.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.919211",
+    "end": "2019-02-22 11:48:49.671286",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "profiles",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "PEOPLEDB",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-peopledb.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:43.752075",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516 `" && echo ansible-tmp-1550846929.875402-23869217892516="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp4m10923y TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-yteitrqblxwnacbfmakiqzfpcmxdiank; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846929.875402-23869217892516/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'pushNotification', 'name': 'PNS', 'server': 'bdhdb2-d2con-pns.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.788734",
+    "end": "2019-02-22 11:48:56.521516",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "pushNotification",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "PNS",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-pns.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:50.732782",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058 `" && echo ansible-tmp-1550846936.728279-280810705931058="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpt_m2efas TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-gocxslealcgbdunybbwovtamdjtqgqep; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846936.728279-280810705931058/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'search', 'name': 'HOMEPAGE', 'server': 'bdhdb2-d2con-homepage.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.802459",
+    "end": "2019-02-22 11:49:03.313989",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "search",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "HOMEPAGE",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-homepage.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:48:57.511530",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211 `" && echo ansible-tmp-1550846943.509944-231901925464211="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpa2ii_yfn TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ttlbespgrircgpzaeedjmgbkegrpjpgk; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846943.509944-231901925464211/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'icec', 'name': 'XCC', 'server': 'bdhdb2-d2con-xcc.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.752904",
+    "end": "2019-02-22 11:49:10.108751",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "icec",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "XCC",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-xcc.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:49:04.355847",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073 `" && echo ansible-tmp-1550846950.285641-240681318102073="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpby2t0myi TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ueqpiagvfzpwusytqtvliyqnaburnhve; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846950.285641-240681318102073/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'wikis', 'name': 'WIKIS', 'server': 'bdhdb2-d2con-wikis.servicos.bb.com.br', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'}) => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imutilsc",
+        "encryptString",
+        "lcuser"
+    ],
+    "delta": "0:00:05.830424",
+    "end": "2019-02-22 11:49:16.981677",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imutilsc encryptString lcuser",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "item": {
+        "app": "wikis",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "WIKIS",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "bdhdb2-d2con-wikis.servicos.bb.com.br",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "rc": 0,
+    "start": "2019-02-22 11:49:11.151253",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Ic+oBXTL1AVDKcKWUi+o1g==",
+    "stdout_lines": [
+        "Ic+oBXTL1AVDKcKWUi+o1g=="
+    ]
+}
+
+TASK [connections-install : Encode CCM Password] *****************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:13
+skipping: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [connections-install : Encode DB Passwords for CCM] *********************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:19
+skipping: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'ccm.gcd', 'name': 'FNGCD', 'server': 'dbsrv.company.com', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'})  => {
+    "changed": false,
+    "item": {
+        "app": "ccm.gcd",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "FNGCD",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "dbsrv.company.com",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "skip_reason": "Conditional result was False"
+}
+skipping: [dxl1scb00153.dispositivos.bb.com.br] => (item={'app': 'ccm.objstore', 'name': 'FNOS', 'server': 'dbsrv.company.com', 'port': '50000', 'jdbc_file': '/opt/IBM/db2/V11.1/java', 'type': 'DB2', 'user': 'LCUSER', 'pw': 'lcuser'})  => {
+    "changed": false,
+    "item": {
+        "app": "ccm.objstore",
+        "jdbc_file": "/opt/IBM/db2/V11.1/java",
+        "name": "FNOS",
+        "port": "50000",
+        "pw": "lcuser",
+        "server": "dbsrv.company.com",
+        "type": "DB2",
+        "user": "LCUSER"
+    },
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [connections-install : Generate Response file] **************************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:25
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870 `" && echo ansible-tmp-1550846957.6146932-58468199139870="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/files/stat.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpuiqzv70f TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/AnsiballZ_stat.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/AnsiballZ_stat.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-utgvrhjjuxkyavsxhzziodzijxxyhuow; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/AnsiballZ_stat.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpvczmnhay/LC.rsp.j2 TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/source
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/source && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/files/copy.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpbzwyjcau TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/AnsiballZ_copy.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/AnsiballZ_copy.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-gvbtjgbzppohaqimjjbteocrrpiaeklq; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/AnsiballZ_copy.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "changed": true,
+    "checksum": "16640a76f0a7dfa72a466ca3507499d95645ce25",
+    "dest": "/opt/IBM/Binaries/logs/connections_install.rsp",
+    "diff": [],
+    "gid": 0,
+    "group": "root",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "LC.rsp.j2",
+            "attributes": null,
+            "backup": false,
+            "checksum": "16640a76f0a7dfa72a466ca3507499d95645ce25",
+            "content": null,
+            "delimiter": null,
+            "dest": "/opt/IBM/Binaries/logs/connections_install.rsp",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": null,
+            "owner": null,
+            "regexp": null,
+            "remote_src": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/source",
+            "unsafe_writes": null,
+            "validate": null
+        }
+    },
+    "md5sum": "73b0037ef959dd7da25a4c2820b6c6d2",
+    "mode": "0644",
+    "owner": "root",
+    "size": 28148,
+    "src": "/home/c1257184/.ansible/tmp/ansible-tmp-1550846957.6146932-58468199139870/source",
+    "state": "file",
+    "uid": 0
+}
+
+TASK [connections-install : Disable Repository on Installation Manager] ******************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:30
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870 `" && echo ansible-tmp-1550846960.051428-255117464526870="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/files/replace.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmpwxxf80pk TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870/AnsiballZ_replace.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870/AnsiballZ_replace.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-ttnaywdqsvyjgyewsmctevuewscvgbke; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870/AnsiballZ_replace.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846960.051428-255117464526870/ > /dev/null 2>&1 && sleep 0'
+changed: [dxl1scb00153.dispositivos.bb.com.br] => {
+    "backup_file": "/var/ibm/InstallationManager/.settings/com.ibm.cic.agent.core.prefs.73673.2019-02-22@11:49:21~",
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "after": null,
+            "attributes": null,
+            "backup": true,
+            "before": null,
+            "content": null,
+            "delimiter": null,
+            "directory_mode": null,
+            "encoding": "utf-8",
+            "follow": false,
+            "force": null,
+            "group": null,
+            "mode": null,
+            "owner": null,
+            "path": "/var/ibm/InstallationManager/.settings/com.ibm.cic.agent.core.prefs",
+            "regexp": "(\\s*)RepositoryIsOpen=true(\\s*)",
+            "remote_src": null,
+            "replace": "\\1RepositoryIsOpen=false\\2",
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "unsafe_writes": null,
+            "validate": null
+        }
+    },
+    "msg": "1 replacements made"
+}
+
+TASK [connections-install : Install Connections Software] ********************************************************************************************************
+task path: /Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/roles/connections-install/tasks/install_connections.yml:38
+<dxl1scb00153.dispositivos.bb.com.br> ESTABLISH PARAMIKO SSH CONNECTION FOR USER: c1257184 on PORT 22 TO dxl1scb00153.dispositivos.bb.com.br
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'echo ~c1257184 && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538 `" && echo ansible-tmp-1550846961.804868-198360462072538="` echo /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538 `" ) && sleep 0'
+Using module file /usr/local/Cellar/ansible/2.7.7/libexec/lib/python3.7/site-packages/ansible/modules/commands/command.py
+<dxl1scb00153.dispositivos.bb.com.br> PUT /Users/ebasso/.ansible/tmp/ansible-local-5313qj4uaxsl/tmp_9joqk6e TO /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538/AnsiballZ_command.py
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'chmod u+x /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538/ /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538/AnsiballZ_command.py && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'sudo -H -S -n -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-gbkmgxzsksppvfkuqehtduzjqyfokwih; /usr/bin/python /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538/AnsiballZ_command.py'"'"' && sleep 0'
+<dxl1scb00153.dispositivos.bb.com.br> EXEC /bin/sh -c 'rm -f -r /home/c1257184/.ansible/tmp/ansible-tmp-1550846961.804868-198360462072538/ > /dev/null 2>&1 && sleep 0'
+fatal: [dxl1scb00153.dispositivos.bb.com.br]: FAILED! => {
+    "changed": true,
+    "cmd": [
+        "/opt/IBM/InstallationManager/eclipse/tools/imcl",
+        "-acceptLicense",
+        "-sVP",
+        "-log",
+        "/opt/IBM/Binaries/logs/cnx6_install.20190222114921.log",
+        "input",
+        "/opt/IBM/Binaries/logs/connections_install.rsp"
+    ],
+    "delta": "0:09:19.315048",
+    "end": "2019-02-22 11:58:42.083160",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "/opt/IBM/InstallationManager/eclipse/tools/imcl -acceptLicense -sVP -log /opt/IBM/Binaries/logs/cnx6_install.20190222114921.log input /opt/IBM/Binaries/logs/connections_install.rsp",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": "/opt/IBM/Binaries/cnx",
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "warn": true
+        }
+    },
+    "msg": "non-zero return code",
+    "rc": 1,
+    "start": "2019-02-22 11:49:22.768112",
+    "stderr": "CRIMA1076E ERROR: Error during \"post-install configure\" phase:\n  CRIMA1076E ERROR: Error executing the /opt/IBM/Connections/bin/uninstall-launcher.sh command: status=2. \n   For more information, see the agent log file: /var/ibm/InstallationManager/logs/native/20190222_1154.log\n\n  Explanation: The installation operation failed due to an error executing the exec command. An issue has occurred with the package that cannot be resolved by Installation Manager.\n\n  User Action: Identify the package that has the issue. Contact IBM Support.\n  CRIMA1076E ERROR: Error executing the /opt/IBM/Connections/bin/post-install-launcher.sh command: status=2. \n   For more information, see the agent log file: /var/ibm/InstallationManager/logs/native/20190222_1150.log\n\n  Explanation: The installation operation failed due to an error executing the exec command. An issue has occurred with the package that cannot be resolved by Installation Manager.\n\n  User Action: Identify the package that has the issue. Contact IBM Support.",
+    "stderr_lines": [
+        "CRIMA1076E ERROR: Error during \"post-install configure\" phase:",
+        "  CRIMA1076E ERROR: Error executing the /opt/IBM/Connections/bin/uninstall-launcher.sh command: status=2. ",
+        "   For more information, see the agent log file: /var/ibm/InstallationManager/logs/native/20190222_1154.log",
+        "",
+        "  Explanation: The installation operation failed due to an error executing the exec command. An issue has occurred with the package that cannot be resolved by Installation Manager.",
+        "",
+        "  User Action: Identify the package that has the issue. Contact IBM Support.",
+        "  CRIMA1076E ERROR: Error executing the /opt/IBM/Connections/bin/post-install-launcher.sh command: status=2. ",
+        "   For more information, see the agent log file: /var/ibm/InstallationManager/logs/native/20190222_1150.log",
+        "",
+        "  Explanation: The installation operation failed due to an error executing the exec command. An issue has occurred with the package that cannot be resolved by Installation Manager.",
+        "",
+        "  User Action: Identify the package that has the issue. Contact IBM Support."
+    ],
+    "stdout": "Preparing IBM Connections\n(100% of < 1 MB at 61 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 2924 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 35 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 247 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 2924 KB/sec; 0 seconds remain)\nInitialize for eclipse\nPre-configuring com.ibm.connections.licensePanel\nPre-configuring com.ibm.connections.wasPanel\nPre-configuring com.ibm.connections.ccmPanel\nPre-configuring com.ibm.connections.topologyPanel\nPre-configuring com.ibm.connections.databasePanel\nPre-configuring com.ibm.connections.webServerPanel\nPre-configuring com.ibm.connections.cognosPanel\nPre-configuring com.ibm.connections.contentStorePanel\nPre-configuring com.ibm.connections.notificationPanel\nPre-configuring com.ibm.connections.userMappingPanel\nPre-install for eclipse\nInstalling com.ibm.connections.licensePanel\nInstalling com.ibm.connections.wasPanel\nInstalling com.ibm.connections.ccmPanel\nInstalling com.ibm.connections.topologyPanel\nInstalling com.ibm.connections.databasePanel\nInstalling com.ibm.connections.webServerPanel\nInstalling com.ibm.connections.cognosPanel\nInstalling com.ibm.connections.contentStorePanel\nInstalling com.ibm.connections.notificationPanel\nInstalling com.ibm.connections.userMappingPanel\nPost-install for eclipse\nConfiguring com.ibm.connections.licensePanel\nConfiguring com.ibm.connections.wasPanel\nConfiguring com.ibm.connections.ccmPanel\nConfiguring com.ibm.connections.topologyPanel\nConfiguring com.ibm.connections.databasePanel\nConfiguring com.ibm.connections.webServerPanel\nConfiguring com.ibm.connections.cognosPanel\nConfiguring com.ibm.connections.contentStorePanel\nConfiguring com.ibm.connections.notificationPanel\nConfiguring com.ibm.connections.userMappingPanel\nComplete for eclipse\nResolving the references in \"IBM Connections\".\nGetting file names from com.ibm.connections_6.0.0.0_20180330_1357.offering.\nProcessing com.ibm.connections.content_6.0.0.0_20180330_1357.su.\nProcessing com.ibm.connections.main_6.0.0.0_20180330_1357.assembly.\nGetting file names from com.ibm.connections_6.0.0.0_20180330_1357.offering.\nComputing feature dependencies of IBM Connections.\nmain\nCommon\nFiles\nHomepage\nNews\nPush Notification\nSearch\nRich Text Editors\nWidget Container\nActivities\nBlogs\nBookmarks\nCommunities\nForums\nMetrics\nMobile\nModeration\nProfiles\nWikis\nIBM Connections Content Manager\nPreparing IBM Connections\nPreparing IBM Connections  (100% of < 1 MB at 247 KB/sec; 0 seconds remain)\nPreparing IBM Connections\nPreparing IBM Connections  (100% of < 1 MB at 2924 KB/sec; 0 seconds remain)\nPreparing IBM Connections\nPreparing IBM Connections  (100% of < 1 MB at 107 KB/sec; 0 seconds remain)\nPreparing IBM Connections\nPreparing IBM Connections  (100% of < 1 MB at 247 KB/sec; 0 seconds remain)\nPreparing IBM Connections\nPreparing IBM Connections  (100% of < 1 MB at 2924 KB/sec; 0 seconds remain)\nPreparing IBM Connections\nPreparing IBM Connections Initialize for eclipse\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.licensePanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.wasPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.ccmPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.topologyPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.databasePanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.webServerPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.cognosPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.contentStorePanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.notificationPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-configuring com.ibm.connections.userMappingPanel\nPreparing IBM Connections\nPreparing IBM Connections Pre-install for eclipse\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.licensePanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.wasPanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.ccmPanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.topologyPanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.databasePanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.webServerPanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.cognosPanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.contentStorePanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.notificationPanel\nPreparing IBM Connections\nPreparing IBM Connections Installing com.ibm.connections.userMappingPanel\nPreparing IBM Connections\nPreparing IBM Connections Post-install for eclipse\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.licensePanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.wasPanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.ccmPanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.topologyPanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.databasePanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.webServerPanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.cognosPanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.contentStorePanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.notificationPanel\nPreparing IBM Connections\nPreparing IBM Connections Configuring com.ibm.connections.userMappingPanel\nPreparing IBM Connections\nPreparing IBM Connections Complete for eclipse\nPreparing IBM Connections\nAnalyzing IBM Connections\nProcessing com.ibm.connections.main\nProcessing com.ibm.connections.content\nCalculating requirements and dependencies.\nComputing prerequisite plan\nInstalling\nExtracting metadata replacements.\nPreparing metadata replacements.\nPerforming metadata replacements.\n(100% of < 1 MB at 223 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 8789 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 53 KB/sec; 0 seconds remain)\nCollecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections\n(100% of < 1 MB at 175 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 1459 KB/sec; 0 seconds remain)\nCollecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections\n(0% of 1 MB)\n(100% of 1 MB at 11553 KB/sec; 0 seconds remain)\nCollecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections\n(100% of < 1 MB at 293 KB/sec; 0 seconds remain)\nCollecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections\nRetrieving files. 0 KB of 1.4 GB (1%) completed.\nRetrieving files. 135 MB of 1.4 GB (10%) completed.\nRetrieving files. 448 MB of 1.4 GB (31%) completed.\nRetrieving files. 722 MB of 1.4 GB (49%) completed.\nRetrieving files. 993 MB of 1.4 GB (68%) completed.\nRetrieving files. 1.2 GB of 1.4 GB (82%) completed.\nRetrieving files. 1.3 GB of 1.4 GB (94%) completed.\n.\nRetrieving files. 1.4 GB of 1.4 GB (99%) completed.\nVerifying.\n(100% of < 1 MB at 7533 KB/sec; 0 seconds remain)\n(0% of 1 MB)\n(100% of 1 MB at 12035 KB/sec; 0 seconds remain)\nSaving package metadata.\n(100% of < 1 MB at 335 KB/sec; 0 seconds remain)\n(100% of < 1 MB at 9612 KB/sec; 0 seconds remain)\n(0% of 1 MB)\n(100% of 1 MB at 12043 KB/sec; 0 seconds remain)\nInitialize for native\nInitialize for ant\nPre-configuring connectionsSQL_iu\nPre-configuring appendPropertyFile_iu\nPre-configuring utility_iu\nPre-configuring postInstallLauncher_iu\nPre-configuring unzip_iu\nPre-configuring unzipVersionNews_iu\nPre-configuring unzipVersionSearch_iu\nPre-configuring unzipVersionProfiles_iu\nPre-configuring unzipVersionActivities_iu\nPre-configuring unzipVersionBlogs_iu\nPre-configuring unzipVersionCommunities_iu\nPre-configuring unzipupdateInstaller_iu\nPre-configuring unzipMigrationTool_iu\nPre-configuring unzipVersionFolder_iu\nPre-configuring unzipVersionDogear_iu\nPre-configuring unzipVersionFiles_iu\nPre-configuring unzipVersionForums_iu\nPre-configuring unzipVersionHomepage_iu\nPre-configuring unzipVersionMetrics_iu\nPre-configuring unzipVersionWikis_iu\nPre-configuring unzipVersionMobile_iu\nPre-configuring unzipVersionModeration_iu\nPre-configuring jython_uninstaller_LA\nPre-configuring setConfig_iu\nPre-configuring product_common_iu\nPre-configuring product_news_iu\nPre-configuring product_search_iu\nPre-configuring product_profiles_iu\nPre-configuring product_activities_iu\nPre-configuring product_blogs_iu\nPre-configuring product_rte_iu\nPre-configuring product_communities_iu\nPre-configuring product_dogear_iu\nPre-configuring product_files_iu\nPre-configuring product_pushNotification_iu\nPre-configuring product_forums_iu\nPre-configuring product_homepage_iu\nPre-configuring product_metrics_iu\nPre-configuring product_wikis_iu\nPre-configuring product_mobile_iu\nPre-configuring product_widgetContainer_iu\nPre-configuring product_moderation_iu\nPre-configuring jython_installer_LA\nPre-install for native\nPre-install for ant\nInstalling connectionsSQL_iu\nExtracting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458 (0% of 13 MB)\nExtracting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458 (94% of 13 MB at 12335 KB/sec; 0 seconds remain)\nExtracting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458 (98% of 13 MB at 12176 KB/sec; 0 seconds remain)\nBacking up connections.sql/activities/db2\nBacking up connections.sql/activities/lib\nBacking up connections.sql/activities/oracle\nBacking up connections.sql/activities/shared\nBacking up connections.sql/activities/sqlserver\nBacking up connections.sql/blogs/db2\nBacking up connections.sql/blogs/oracle\nBacking up connections.sql/blogs/sqlserver\nBacking up connections.sql/cognos/db2\nBacking up connections.sql/cognos/oracle\nBacking up connections.sql/cognos/sqlserver\nBacking up connections.sql/communities/db2\nBacking up connections.sql/communities/oracle\nBacking up connections.sql/communities/sqlserver\nBacking up connections.sql/dogear/db2\nBacking up connections.sql/dogear/oracle\nBacking up connections.sql/dogear/sqlserver\nBacking up connections.sql/files/db2\nBacking up connections.sql/files/oracle\nBacking up connections.sql/files/sqlserver\nBacking up connections.sql/forum/db2/JapanMigration\nBacking up connections.sql/forum/db2\nBacking up connections.sql/forum/db2/smartcloud\nBacking up connections.sql/forum/db2/train4Migration\nBacking up connections.sql/forum/db2\nBacking up connections.sql/forum/oracle\nBacking up connections.sql/forum/sqlserver\nBacking up connections.sql/homepage/db2\nBacking up connections.sql/homepage/db2_smartcloud\nBacking up connections.sql/homepage/migration.lib\nBacking up connections.sql/homepage/oracle\nBacking up connections.sql/homepage/sqlserver\nBacking up connections.sql/library.gcd/db2\nBacking up connections.sql/library.gcd/oracle\nBacking up connections.sql/library.gcd/sqlserver\nBacking up connections.sql/library.os/db2\nBacking up connections.sql/library.os/oracle\nBacking up connections.sql/library.os/sqlserver\nBacking up connections.sql/metrics/db2\nBacking up connections.sql/metrics/oracle\nBacking up connections.sql/metrics/sqlserver\nBacking up connections.sql/mobile/db2\nBacking up connections.sql/mobile/oracle\nBacking up connections.sql/mobile/sqlserver\nBacking up connections.sql/profiles/db2\nBacking up connections.sql/profiles/migrate.lib\nBacking up connections.sql/profiles/oracle\nBacking up connections.sql/profiles/sqlserver\nBacking up connections.sql/pushnotification/db2\nBacking up connections.sql/pushnotification/oracle\nBacking up connections.sql/pushnotification/sqlserver\nBacking up connections.sql/wikis/db2\nBacking up connections.sql/wikis/oracle\nBacking up connections.sql/wikis/sqlserver\nBacking up\nInstalling appendPropertyFile_iu\nExtracting zip appendPropertyFile 1.0.0.b8594676211c734fe2ba7b7a11d71ab0\nExtracting zip appendPropertyFile 1.0.0.b8594676211c734fe2ba7b7a11d71ab0 (100% of < 1 MB)\nInstalling utility_iu\nExtracting zip utility 1.0.0.eb2b17bc2e9e93052532039526534255\nExtracting zip utility 1.0.0.eb2b17bc2e9e93052532039526534255 (100% of < 1 MB at 15410 KB/sec; 0 seconds remain)\nInstalling postInstallLauncher_iu\nExtracting zip postInstallLauncher 1.0.0.d40f5a4ba572e27e5b395d7814c7bd03\nExtracting zip postInstallLauncher 1.0.0.d40f5a4ba572e27e5b395d7814c7bd03 (100% of < 1 MB at 6006 KB/sec; 0 seconds remain)\nInstalling unzip_iu\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (0% of 1367 MB)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (2% of 1367 MB at 37294 KB/sec; 36 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (3% of 1367 MB at 22606 KB/sec; 59 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (4% of 1367 MB at 20184 KB/sec; 1:06 minutes remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (6% of 1367 MB at 21190 KB/sec; 1:02 minutes remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (7% of 1367 MB at 21539 KB/sec; 1:00 minutes remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (9% of 1367 MB at 21705 KB/sec; 58 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (12% of 1367 MB at 24755 KB/sec; 49 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (19% of 1367 MB at 33287 KB/sec; 34 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (25% of 1367 MB at 40381 KB/sec; 25 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (32% of 1367 MB at 46070 KB/sec; 20 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (39% of 1367 MB at 50048 KB/sec; 16 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (46% of 1367 MB at 53719 KB/sec; 14 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (52% of 1367 MB at 57086 KB/sec; 11 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (59% of 1367 MB at 59638 KB/sec; 9 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (66% of 1367 MB at 62283 KB/sec; 7 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (73% of 1367 MB at 64217 KB/sec; 5 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (80% of 1367 MB at 66173 KB/sec; 4 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (87% of 1367 MB at 68090 KB/sec; 2 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (93% of 1367 MB at 69142 KB/sec; 1 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (98% of 1367 MB at 68955 KB/sec; 0 seconds remain)\nExtracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (99% of 1367 MB at 68851 KB/sec; 0 seconds remain)\nBacking up bin\nBacking up lib\nBacking up lib/filenet/CE_config\nBacking up lib/filenet/CE_config/unix\nBacking up lib/filenet/CE_config/windows\nBacking up lib/filenet\nBacking up lib/filenet/FNCS_config\nBacking up lib/filenet/FNCS_config/unix\nBacking up lib/filenet/FNCS_config/windows\nBacking up lib/filenet\nBacking up lib\nBacking up xkit\nBacking up xkit/LotusConnections-config.mt\nBacking up xkit/LotusConnections-config.sc\nBacking up xkit/LotusConnections-config\nBacking up xkit/LotusConnections-config/cognos/Models/AuditCube\nBacking up xkit/LotusConnections-config/cognos/Models/MetricsCubeDS\nBacking up xkit/LotusConnections-config/cognos/Models/MetricsDBQuery\nBacking up xkit/LotusConnections-config/cognos/Models/TrxCube\nBacking up xkit/LotusConnections-config\nBacking up xkit/LotusConnections-config/extern\nBacking up xkit/LotusConnections-config\nBacking up xkit/LotusConnections-config/metrics\nBacking up xkit/LotusConnections-config\nBacking up xkit/LotusConnections-config/profiles-extensions\nBacking up xkit/LotusConnections-config\nBacking up xkit/LotusConnections-config/profiles/templates\nBacking up xkit/LotusConnections-config/profiles/templates/resources/nls\nBacking up xkit/LotusConnections-config/profiles/templates\nBacking up xkit/LotusConnections-config\nBacking up xkit/activities.provision.web\nBacking up xkit/bin_lc_admin\nBacking up xkit/blogs.provision.web\nBacking up xkit/ci\nBacking up xkit/cognos/BI-Customization/JAR\nBacking up xkit/cognos/BI-Customization/WebContent\nBacking up xkit/cognos/BI-Customization/WebContent/metrics/reports/images\nBacking up xkit/cognos/BI-Customization\nBacking up xkit/cognos/install/MetricsPkg\nBacking up xkit/cognos/install/bin\nBacking up xkit/cognos/install\nBacking up xkit/cognos/install/configurationTemplate\nBacking up xkit/cognos/install/g11n\nBacking up xkit/cognos/install/lib\nBacking up xkit/cognos/install/models\nBacking up xkit/cognos/install\nBacking up xkit/common.provision.web\nBacking up xkit/communities.provision.web\nBacking up xkit/concerto\nBacking up xkit/configuration/recommend\nBacking up xkit/configuration/update\nBacking up xkit/connections.sql/activities/db2\nBacking up xkit/connections.sql/activities/db2/fixup\nBacking up xkit/connections.sql/activities/db2\nBacking up xkit/connections.sql/activities/lib\nBacking up xkit/connections.sql/activities/oracle\nBacking up xkit/connections.sql/activities/oracle/fixup\nBacking up xkit/connections.sql/activities/oracle\nBacking up xkit/connections.sql/activities/shared\nBacking up xkit/connections.sql/activities/sqlserver\nBacking up xkit/connections.sql/activities/sqlserver/fixup\nBacking up xkit/connections.sql/activities/sqlserver\nBacking up xkit/connections.sql/blogs/db2\nBacking up xkit/connections.sql/blogs/db2/fixup\nBacking up xkit/connections.sql/blogs/db2\nBacking up xkit/connections.sql/blogs/oracle\nBacking up xkit/connections.sql/blogs/oracle/fixup\nBacking up xkit/connections.sql/blogs/oracle\nBacking up xkit/connections.sql/blogs/sqlserver\nBacking up xkit/connections.sql/blogs/sqlserver/fixup\nBacking up xkit/connections.sql/blogs/sqlserver\nBacking up xkit/connections.sql/cognos/db2\nBacking up xkit/connections.sql/cognos/oracle\nBacking up xkit/connections.sql/cognos/sqlserver\nBacking up xkit/connections.sql/communities/db2\nBacking up xkit/connections.sql/communities/db2/fixup\nBacking up xkit/connections.sql/communities/db2\nBacking up xkit/connections.sql/communities/oracle\nBacking up xkit/connections.sql/communities/oracle/fixup\nBacking up xkit/connections.sql/communities/oracle\nBacking up xkit/connections.sql/communities/sqlserver\nBacking up xkit/connections.sql/communities/sqlserver/fixup\nBacking up xkit/connections.sql/communities/sqlserver\nBacking up xkit/connections.sql/dogear/db2\nBacking up xkit/connections.sql/dogear/db2/fixup\nBacking up xkit/connections.sql/dogear/db2\nBacking up xkit/connections.sql/dogear/oracle\nBacking up xkit/connections.sql/dogear/oracle/fixup\nBacking up xkit/connections.sql/dogear/oracle\nBacking up xkit/connections.sql/dogear/sqlserver\nBacking up xkit/connections.sql/dogear/sqlserver/fixup\nBacking up xkit/connections.sql/dogear/sqlserver\nBacking up xkit/connections.sql/files/db2\nBacking up xkit/connections.sql/files/db2/fixup\nBacking up xkit/connections.sql/files/db2\nBacking up xkit/connections.sql/files/oracle\nBacking up xkit/connections.sql/files/oracle/fixup\nBacking up xkit/connections.sql/files/oracle\nBacking up xkit/connections.sql/files/sqlserver\nBacking up xkit/connections.sql/files/sqlserver/fixup\nBacking up xkit/connections.sql/files/sqlserver\nBacking up xkit/connections.sql/forum/db2/JapanMigration\nBacking up xkit/connections.sql/forum/db2\nBacking up xkit/connections.sql/forum/db2/fixup\nBacking up xkit/connections.sql/forum/db2\nBacking up xkit/connections.sql/forum/db2/smartcloud\nBacking up xkit/connections.sql/forum/db2/train4Migration\nBacking up xkit/connections.sql/forum/db2\nBacking up xkit/connections.sql/forum/oracle\nBacking up xkit/connections.sql/forum/oracle/fixup\nBacking up xkit/connections.sql/forum/oracle\nBacking up xkit/connections.sql/forum/sqlserver\nBacking up xkit/connections.sql/forum/sqlserver/fixup\nBacking up xkit/connections.sql/forum/sqlserver\nBacking up xkit/connections.sql/homepage/db2\nBacking up xkit/connections.sql/homepage/db2/fixup\nBacking up xkit/connections.sql/homepage/db2\nBacking up xkit/connections.sql/homepage/db2_smartcloud\nBacking up xkit/connections.sql/homepage/db2_smartcloud/fixup\nBacking up xkit/connections.sql/homepage/db2_smartcloud\nBacking up xkit/connections.sql/homepage/migration.lib\nBacking up xkit/connections.sql/homepage/oracle\nBacking up xkit/connections.sql/homepage/oracle/fixup\nBacking up xkit/connections.sql/homepage/oracle\nBacking up xkit/connections.sql/homepage/sqlserver\nBacking up xkit/connections.sql/homepage/sqlserver/fixup\nBacking up xkit/connections.sql/homepage/sqlserver\nBacking up xkit/connections.sql/library.gcd/db2\nBacking up xkit/connections.sql/library.gcd/oracle\nBacking up xkit/connections.sql/library.gcd/sqlserver\nBacking up xkit/connections.sql/library.os/db2\nBacking up xkit/connections.sql/library.os/oracle\nBacking up xkit/connections.sql/library.os/sqlserver\nBacking up xkit/connections.sql/metrics/db2\nBacking up xkit/connections.sql/metrics/db2/fixup\nBacking up xkit/connections.sql/metrics/db2\nBacking up xkit/connections.sql/metrics/oracle\nBacking up xkit/connections.sql/metrics/oracle/fixup\nBacking up xkit/connections.sql/metrics/oracle\nBacking up xkit/connections.sql/metrics/sqlserver\nBacking up xkit/connections.sql/metrics/sqlserver/fixup\nBacking up xkit/connections.sql/metrics/sqlserver\nBacking up xkit/connections.sql/mobile/db2\nBacking up xkit/connections.sql/mobile/db2/fixup\nBacking up xkit/connections.sql/mobile/db2\nBacking up xkit/connections.sql/mobile/oracle\nBacking up xkit/connections.sql/mobile/oracle/fixup\nBacking up xkit/connections.sql/mobile/oracle\nBacking up xkit/connections.sql/mobile/sqlserver\nBacking up xkit/connections.sql/mobile/sqlserver/fixup\nBacking up xkit/connections.sql/mobile/sqlserver\nBacking up xkit/connections.sql/profiles/db2\nBacking up xkit/connections.sql/profiles/db2/fixup\nBacking up xkit/connections.sql/profiles/db2\nBacking up xkit/connections.sql/profiles/migrate.lib\nBacking up xkit/connections.sql/profiles/oracle\nBacking up xkit/connections.sql/profiles/oracle/fixup\nBacking up xkit/connections.sql/profiles/oracle\nBacking up xkit/connections.sql/profiles/sqlserver\nBacking up xkit/connections.sql/profiles/sqlserver/fixup\nBacking up xkit/connections.sql/profiles/sqlserver\nBacking up xkit/connections.sql/pushnotification/db2\nBacking up xkit/connections.sql/pushnotification/db2/fixup\nBacking up xkit/connections.sql/pushnotification/db2\nBacking up xkit/connections.sql/pushnotification/oracle\nBacking up xkit/connections.sql/pushnotification/oracle/fixup\nBacking up xkit/connections.sql/pushnotification/oracle\nBacking up xkit/connections.sql/pushnotification/sqlserver\nBacking up xkit/connections.sql/pushnotification/sqlserver/fixup\nBacking up xkit/connections.sql/pushnotification/sqlserver\nBacking up xkit/connections.sql/wikis/db2\nBacking up xkit/connections.sql/wikis/db2/fixup\nBacking up xkit/connections.sql/wikis/db2\nBacking up xkit/connections.sql/wikis/oracle\nBacking up xkit/connections.sql/wikis/oracle/fixup\nBacking up xkit/connections.sql/wikis/oracle\nBacking up xkit/connections.sql/wikis/sqlserver\nBacking up xkit/connections.sql/wikis/sqlserver/fixup\nBacking up xkit/connections.sql/wikis/sqlserver\nBacking up xkit/customization/strings\nBacking up xkit/dcs/stellent/AIX_64/oiexport\nBacking up xkit/dcs/stellent/Linux_64/oiexport\nBacking up xkit/dcs/stellent/Windows_64/oiexport\nBacking up xkit/dcs/stellent/Zlinux/oiexport\nBacking up xkit/dictionaries\nBacking up xkit/dogear.provision.web\nBacking up xkit/filenetConfig\nBacking up xkit/files.provision.web\nBacking up xkit/forums.provision.web\nBacking up xkit/help/Activities\nBacking up xkit/help/Communities\nBacking up xkit/help/Files\nBacking up xkit/help/News\nBacking up xkit/homepage.provision.web\nBacking up xkit/ihs/mod_ibm_local_redirect\nBacking up xkit/ihs/mod_ibm_local_redirect/aix_ppc32-ap20\nBacking up xkit/ihs/mod_ibm_local_redirect/aix_ppc32-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/aix_ppc64-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_390-ap20\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_amd64-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_ia32-ap20\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_ia32-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_ppc32-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_ppc64-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_s390-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_s390_64-ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/linux_x86_64_ap22\nBacking up xkit/ihs/mod_ibm_local_redirect/win_ia32-ap20\nBacking up xkit/ihs/mod_ibm_local_redirect/win_ia32-ap22\nBacking up xkit/ihs/mod_ibm_upload\nBacking up xkit/ihs/mod_ibm_upload/ihs.aix.ppc32\nBacking up xkit/ihs/mod_ibm_upload/ihs.aix.ppc64\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.amd64\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.ia32\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.ppc32\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.ppc64\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.s390\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.s390_64\nBacking up xkit/ihs/mod_ibm_upload/ihs.linux.x86_64\nBacking up xkit/ihs/mod_ibm_upload/ihs.win.ia32\nBacking up xkit/installableApps\nBacking up xkit/lafiles\nBacking up xkit/metrics.provision.web\nBacking up xkit/migration\nBacking up xkit/moderation.provision.web\nBacking up xkit/news.provision.web\nBacking up xkit/notifications/activities\nBacking up xkit/notifications/activities/resources/nls\nBacking up xkit/notifications/blogs\nBacking up xkit/notifications/blogs/resources/nls\nBacking up xkit/notifications/blogs\nBacking up xkit/notifications/bookmarks\nBacking up xkit/notifications/bookmarks/resources/nls\nBacking up xkit/notifications/communities\nBacking up xkit/notifications/communities/resources/nls\nBacking up xkit/notifications/files\nBacking up xkit/notifications/files/resources/nls\nBacking up xkit/notifications/files\nBacking up xkit/notifications/moderation\nBacking up xkit/notifications/moderation/resources/nls\nBacking up xkit/notifications/news/aggregated\nBacking up xkit/notifications/news\nBacking up xkit/notifications/news/resources/nls\nBacking up xkit/notifications/news\nBacking up xkit/notifications/profiles\nBacking up xkit/notifications/profiles/resources/nls\nBacking up xkit/notifications/resources\nBacking up xkit/notifications/resources/images\nBacking up xkit/notifications/resources/nls\nBacking up xkit/notifications/wikis\nBacking up xkit/notifications/wikis/resources/nls\nBacking up xkit/oauth20\nBacking up xkit/profiles.provision.web\nBacking up xkit\nBacking up xkit/wikis.provision.web\nBacking up\nExtracting zip connections.swidtag 1.0.0.b0e7a0cafaa932bb5aa45f80720f7f55\nExtracting zip connections.swidtag 1.0.0.b0e7a0cafaa932bb5aa45f80720f7f55 (84% of < 1 MB at 1257 KB/sec; 0 seconds remain)\nInstalling unzipVersionNews_iu\nExtracting zip connVersion_news 1.0.0.6576e7255af90ac91fad1193fa7097b5\nExtracting zip connVersion_news 1.0.0.6576e7255af90ac91fad1193fa7097b5 (92% of < 1 MB at 1714 KB/sec; 0 seconds remain)\nInstalling unzipVersionSearch_iu\nExtracting zip connVersion_search 1.0.0.4f81c71a238f238a6fcfa0746802492c\nExtracting zip connVersion_search 1.0.0.4f81c71a238f238a6fcfa0746802492c (97% of < 1 MB at 935 KB/sec; 0 seconds remain)\nInstalling unzipVersionProfiles_iu\nExtracting zip connVersion_profiles 1.0.0.9489fa17fed41fbea46dec91661cf4d0\nExtracting zip connVersion_profiles 1.0.0.9489fa17fed41fbea46dec91661cf4d0 (97% of < 1 MB at 940 KB/sec; 0 seconds remain)\nInstalling unzipVersionActivities_iu\nExtracting zip connVersion_activities 1.0.0.f1c3393adc496e38c8a235961ee8be53\nExtracting zip connVersion_activities 1.0.0.f1c3393adc496e38c8a235961ee8be53 (96% of < 1 MB at 946 KB/sec; 0 seconds remain)\nInstalling unzipVersionBlogs_iu\nExtracting zip connVersion_blogs 1.0.0.26d038e0638b9b022ddd1e3b304a9fd9\nExtracting zip connVersion_blogs 1.0.0.26d038e0638b9b022ddd1e3b304a9fd9 (97% of < 1 MB)\nInstalling unzipVersionCommunities_iu\nExtracting zip connVersion_communities 1.0.0.45a1ccaa4f614bc35ad3c6f3f1e460d2\nExtracting zip connVersion_communities 1.0.0.45a1ccaa4f614bc35ad3c6f3f1e460d2 (96% of < 1 MB at 948 KB/sec; 0 seconds remain)\nInstalling unzipupdateInstaller_iu\nExtracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (0% of 94 MB)\nExtracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (34% of 94 MB at 33271 KB/sec; 1 seconds remain)\nExtracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (67% of 94 MB at 32497 KB/sec; 0 seconds remain)\nExtracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (99% of 94 MB at 36798 KB/sec; 0 seconds remain)\nBacking up updateInstaller/bin\nBacking up updateInstaller/config\nBacking up updateInstaller/earLauncher\nBacking up updateInstaller/jvm/aix/docs\nBacking up updateInstaller/jvm/aix/docs/content/en\nBacking up updateInstaller/jvm/aix/docs/content\nBacking up updateInstaller/jvm/aix/docs\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/ar\nBacking up updateInstaller/jvm/aix/docs/launchpad/bg\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/cs\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/de\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/en\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/es\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/fr\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/images\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/it\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/ja\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/ko\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/pl\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/pt_br\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/ru\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/tr\nBacking up updateInstaller/jvm/aix/docs/launchpad/content\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/zh\nBacking up updateInstaller/jvm/aix/docs/launchpad/content/zh_TW\nBacking up updateInstaller/jvm/aix/docs/launchpad/cs\nBacking up updateInstaller/jvm/aix/docs/launchpad/da\nBacking up updateInstaller/jvm/aix/docs/launchpad/de\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/diskinfo\nBacking up updateInstaller/jvm/aix/docs/launchpad/el\nBacking up updateInstaller/jvm/aix/docs/launchpad/en/codepages/437\nBacking up updateInstaller/jvm/aix/docs/launchpad/en\nBacking up updateInstaller/jvm/aix/docs/launchpad/es\nBacking up updateInstaller/jvm/aix/docs/launchpad/fi\nBacking up updateInstaller/jvm/aix/docs/launchpad/fr\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/he\nBacking up updateInstaller/jvm/aix/docs/launchpad/hr\nBacking up updateInstaller/jvm/aix/docs/launchpad/hu\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/it\nBacking up updateInstaller/jvm/aix/docs/launchpad/ja\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/ko\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/nl\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/no\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/pl\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/pt\nBacking up updateInstaller/jvm/aix/docs/launchpad/pt_BR\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/ro\nBacking up updateInstaller/jvm/aix/docs/launchpad/ru\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/sk\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/expressLaunchpadModernSkin\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/expressLaunchpadModernSkin/images\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/expressLaunchpadModernSkin\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/unittest\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/unittest/en\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/unittest/fb\nBacking up updateInstaller/jvm/aix/docs/launchpad/skins/unittest\nBacking up updateInstaller/jvm/aix/docs/launchpad/sl\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/aixppc\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/hpuxia64\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/hpuxparisc\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/linuxppc\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/linuxs390\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/linuxx86\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/sunsparc\nBacking up updateInstaller/jvm/aix/docs/launchpad/splash/sunx86\nBacking up updateInstaller/jvm/aix/docs/launchpad/sv\nBacking up updateInstaller/jvm/aix/docs/launchpad/tr\nBacking up updateInstaller/jvm/aix/docs/launchpad\nBacking up updateInstaller/jvm/aix/docs/launchpad/zh\nBacking up updateInstaller/jvm/aix/docs/launchpad/zh_TW\nBacking up updateInstaller/jvm/aix/jre/bin\nBacking up updateInstaller/jvm/aix/jre/bin/classic\nBacking up updateInstaller/jvm/aix/jre/bin\nBacking up updateInstaller/jvm/aix/jre/bin/j9vm\nBacking up updateInstaller/jvm/aix/jre/bin\nBacking up updateInstaller/jvm/aix/jre/javaws\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/audio\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/cmm\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/deploy\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/applications\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/16x16/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/16x16/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/48x48/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/48x48/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/16x16/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/16x16/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/48x48/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/48x48/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/16x16/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/16x16/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/48x48/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/48x48/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/16x16/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/16x16/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/48x48/apps\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/48x48/mimetypes\nBacking up updateInstaller/jvm/aix/jre/lib/desktop/mime/packages\nBacking up updateInstaller/jvm/aix/jre/lib/ext\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/fonts\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/im\nBacking up updateInstaller/jvm/aix/jre/lib/images/cursors\nBacking up updateInstaller/jvm/aix/jre/lib/images/icons\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/locale/de/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/es/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/fr/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/it/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/ja/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/ko.UTF-8/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/ko/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/sv/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/zh.GBK/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/zh/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/zh_HK.BIG5HK/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/zh_TW.BIG5/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib/locale/zh_TW/LC_MESSAGES\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/management\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/oblique-fonts\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/classic\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/compressedrefs\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/compressedrefs/jclSC160\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/compressedrefs\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/default\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/default/jclSC160\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/default\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/headless\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/j9vm\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/motif21\nBacking up updateInstaller/jvm/aix/jre/lib/ppc64/xawt\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/security\nBacking up updateInstaller/jvm/aix/jre/lib\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Africa\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America/Argentina\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America/Indiana\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America/Kentucky\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America/North_Dakota\nBacking up updateInstaller/jvm/aix/jre/lib/zi/America\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Antarctica\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Asia\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Atlantic\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Australia\nBacking up updateInstaller/jvm/aix/jre/lib/zi\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Etc\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Europe\nBacking up updateInstaller/jvm/aix/jre/lib/zi\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Indian\nBacking up updateInstaller/jvm/aix/jre/lib/zi\nBacking up updateInstaller/jvm/aix/jre/lib/zi/Pacific\nBacking up updateInstaller/jvm/aix/jre/lib/zi/SystemV\nBacking up updateInstaller/jvm/aix/jre/lib/zi\nBacking up updateInstaller/jvm/aix/jre/plugin/desktop\nBacking up updateInstaller/jvm/aix/jre/plugin/ppc64/ns7\nBacking up updateInstaller/jvm/aix\nBacking up updateInstaller/lib\nBacking up updateInstaller\nBacking up updateInstaller/version\nBacking up\nInstalling unzipMigrationTool_iu\nExtracting zip migration 1.0.0.f11a30489bc5fd4e58d73f268359f20b\nExtracting zip migration 1.0.0.f11a30489bc5fd4e58d73f268359f20b (98% of < 1 MB at 17990 KB/sec; 0 seconds remain)\nBacking up migration/lib\nBacking up migration\nBacking up migration/properties\nBacking up migration/scripts/jacl\nBacking up migration/scripts\nBacking up migration\nBacking up migration/xslt/50_55\nBacking up migration/xslt/55_60\nBacking up\nInstalling unzipVersionFolder_iu\nExtracting zip connVersion 1.0.0.5dfced693bcf30c4e2684f6354af4ab3\nExtracting zip connVersion 1.0.0.5dfced693bcf30c4e2684f6354af4ab3 (91% of < 1 MB at 2993 KB/sec; 0 seconds remain)\nBacking up dtd\nBacking up\nInstalling unzipVersionDogear_iu\nExtracting zip connVersion_dogear 1.0.0.05d5a57d837425cbfb43c9d1841084a4\nExtracting zip connVersion_dogear 1.0.0.05d5a57d837425cbfb43c9d1841084a4 (97% of < 1 MB at 935 KB/sec; 0 seconds remain)\nInstalling unzipVersionFiles_iu\nExtracting zip connVersion_files 1.0.0.30493373373aeb04d64c96b1f2b83b57\nExtracting zip connVersion_files 1.0.0.30493373373aeb04d64c96b1f2b83b57 (97% of < 1 MB)\nInstalling unzipVersionForums_iu\nExtracting zip connVersion_forums 1.0.0.4c3322893ce7e1ce91001e16d902f74b\nExtracting zip connVersion_forums 1.0.0.4c3322893ce7e1ce91001e16d902f74b (97% of < 1 MB at 932 KB/sec; 0 seconds remain)\nInstalling unzipVersionHomepage_iu\nExtracting zip connVersion_homepage 1.0.0.531ce636f408b43e0d5891697cb63e04\nExtracting zip connVersion_homepage 1.0.0.531ce636f408b43e0d5891697cb63e04 (96% of < 1 MB at 941 KB/sec; 0 seconds remain)\nInstalling unzipVersionMetrics_iu\nExtracting zip connVersion_metrics 1.0.0.c2c6e5864f420989b4d3153e699e44b4\nExtracting zip connVersion_metrics 1.0.0.c2c6e5864f420989b4d3153e699e44b4 (97% of < 1 MB)\nInstalling unzipVersionWikis_iu\nExtracting zip connVersion_wikis 1.0.0.5579f3ecbf920bbd658835ad3f233f1d\nExtracting zip connVersion_wikis 1.0.0.5579f3ecbf920bbd658835ad3f233f1d (97% of < 1 MB at 931 KB/sec; 0 seconds remain)\nInstalling unzipVersionMobile_iu\nExtracting zip connVersion_mobile 1.0.0.ffd5223ce19316dacda605c631d6d0b0\nExtracting zip connVersion_mobile 1.0.0.ffd5223ce19316dacda605c631d6d0b0 (97% of < 1 MB)\nInstalling unzipVersionModeration_iu\nExtracting zip connVersion_moderation 1.0.0.05d943fde5ee0b8fb139b64118553e97\nExtracting zip connVersion_moderation 1.0.0.05d943fde5ee0b8fb139b64118553e97 (96% of < 1 MB at 944 KB/sec; 0 seconds remain)\nInstalling jython_uninstaller_LA\nInstalling setConfig_iu\nInstalling product_common_iu\nInstalling product_news_iu\nInstalling product_search_iu\nInstalling product_profiles_iu\nInstalling product_activities_iu\nInstalling product_blogs_iu\nInstalling product_rte_iu\nInstalling product_communities_iu\nInstalling product_dogear_iu\nInstalling product_files_iu\nInstalling product_pushNotification_iu\nInstalling product_forums_iu\nInstalling product_homepage_iu\nInstalling product_metrics_iu\nInstalling product_wikis_iu\nInstalling product_mobile_iu\nInstalling product_widgetContainer_iu\nInstalling product_moderation_iu\nInstalling jython_installer_LA\nPost-install for native\nPost-install for ant\nConfiguring connectionsSQL_iu\nConfiguring appendPropertyFile_iu\nConfiguring utility_iu\nConfiguring postInstallLauncher_iu\nConfiguring unzip_iu\nConfiguring unzipVersionNews_iu\nConfiguring unzipVersionSearch_iu\nConfiguring unzipVersionProfiles_iu\nConfiguring unzipVersionActivities_iu\nConfiguring unzipVersionBlogs_iu\nConfiguring unzipVersionCommunities_iu\nConfiguring unzipupdateInstaller_iu\nConfiguring unzipMigrationTool_iu\nConfiguring unzipVersionFolder_iu\nConfiguring unzipVersionDogear_iu\nConfiguring unzipVersionFiles_iu\nConfiguring unzipVersionForums_iu\nConfiguring unzipVersionHomepage_iu\nConfiguring unzipVersionMetrics_iu\nConfiguring unzipVersionWikis_iu\nConfiguring unzipVersionMobile_iu\nConfiguring unzipVersionModeration_iu\nConfiguring jython_uninstaller_LA\nConfiguring setConfig_iu\nConfiguring product_common_iu\nUpdating cfg.py for Common\nUpdating cfg.py for Common (cluster info)\nConfiguring product_news_iu\nUpdating cfg.py for News\nUpdating cfg.py for News (cluster info)\nConfiguring product_search_iu\nUpdating cfg.py for Search\nUpdating cfg.py for Search (cluster info)\nConfiguring product_profiles_iu\nUpdating cfg.py for Profiles\nUpdating cfg.py for Profiles (cluster info)\nConfiguring product_activities_iu\nUpdating cfg.py for Activities\nUpdating cfg.py for Activities (cluster info)\nConfiguring product_blogs_iu\nUpdating cfg.py for Blogs\nUpdating cfg.py for Blogs (cluster info)\nConfiguring product_rte_iu\nUpdating cfg.py for RTE\nUpdating cfg.py for RTE (cluster info)\nConfiguring product_communities_iu\nUpdating cfg.py for Communities\nUpdating cfg.py for Communities (cluster info)\nConfiguring product_dogear_iu\nUpdating cfg.py for Bookmarks\nUpdating cfg.py for Bookmarks (cluster info)\nConfiguring product_files_iu\nUpdating cfg.py for Files\nUpdating cfg.py for Files (cluster info)\nConfiguring product_pushNotification_iu\nUpdating cfg.py for pushNotification\nUpdating cfg.py for pushNotification (cluster info)\nConfiguring product_forums_iu\nUpdating cfg.py for Forums\nUpdating cfg.py for Forums (cluster info)\nConfiguring product_homepage_iu\nUpdating cfg.py for Homepage\nUpdating cfg.py for Homepage (cluster info)\nConfiguring product_metrics_iu\nUpdating cfg.py for Metrics\nUpdating cfg.py for Metrics (cluster info)\nConfiguring product_wikis_iu\nUpdating cfg.py for Wikis\nUpdating cfg.py for Wikis (cluster info)\nConfiguring product_mobile_iu\nUpdating cfg.py for Mobile\nUpdating cfg.py for Mobile (cluster info)\nConfiguring product_widgetContainer_iu\nUpdating cfg.py for widgetContainer (cluster info)\nConfiguring product_moderation_iu\nUpdating cfg.py for Moderation\nUpdating cfg.py for Moderation (cluster info)\nConfiguring jython_installer_LA\n[ Deploying application to WebSphere, it may take a while. ]\n.\nCleaning up saved files.\nCleaning up saved files. Cleaning up saved files.\nCleaning up saved files.\nCleaning up saved files.  (100% of < 1 MB at 335 KB/sec; 0 seconds remain)\nCleaning up saved files.\nCleaning up saved files.  (100% of < 1 MB at 3604 KB/sec; 0 seconds remain)\nCleaning up saved files.\nCleaning up saved files.  (0% of 1 MB)\nCleaning up saved files.  (100% of 1 MB at 13138 KB/sec; 0 seconds remain)\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_wikis 1.0.0.5579f3ecbf920bbd658835ad3f233f1d.\nCleaning up saved files.\nCleaning up saved files. Deleting xml file im-install-cfg_0.0.0.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_blogs 1.0.0.26d038e0638b9b022ddd1e3b304a9fd9.\nCleaning up saved files.\nCleaning up saved files. Deleting jar file com.ibm.connections.resultPanel_6.0.0.0_CR1_20180330_1357.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_search 1.0.0.4f81c71a238f238a6fcfa0746802492c.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_profiles 1.0.0.9489fa17fed41fbea46dec91661cf4d0.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion 1.0.0.5dfced693bcf30c4e2684f6354af4ab3.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_files 1.0.0.30493373373aeb04d64c96b1f2b83b57.\nCleaning up saved files.\nCleaning up saved files. Deleting zip utility 1.0.0.eb2b17bc2e9e93052532039526534255.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_communities 1.0.0.45a1ccaa4f614bc35ad3c6f3f1e460d2.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_forums 1.0.0.4c3322893ce7e1ce91001e16d902f74b.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connections.swidtag 1.0.0.b0e7a0cafaa932bb5aa45f80720f7f55.\nCleaning up saved files.\nCleaning up saved files. Deleting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319.\nCleaning up saved files.\nCleaning up saved files. Deleting zip postInstallLauncher 1.0.0.d40f5a4ba572e27e5b395d7814c7bd03.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_mobile 1.0.0.ffd5223ce19316dacda605c631d6d0b0.\nCleaning up saved files.\nCleaning up saved files. Deleting zip migration 1.0.0.f11a30489bc5fd4e58d73f268359f20b.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_metrics 1.0.0.c2c6e5864f420989b4d3153e699e44b4.\nCleaning up saved files.\nCleaning up saved files. Deleting zip appendPropertyFile 1.0.0.b8594676211c734fe2ba7b7a11d71ab0.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_moderation 1.0.0.05d943fde5ee0b8fb139b64118553e97.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_activities 1.0.0.f1c3393adc496e38c8a235961ee8be53.\nCleaning up saved files.\nCleaning up saved files. Deleting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_dogear 1.0.0.05d5a57d837425cbfb43c9d1841084a4.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_news 1.0.0.6576e7255af90ac91fad1193fa7097b5.\nCleaning up saved files.\nCleaning up saved files. Deleting zip connVersion_homepage 1.0.0.531ce636f408b43e0d5891697cb63e04.\nCleaning up saved files.\nCleaning up saved files.  (100% of < 1 MB at 5243 KB/sec; 0 seconds remain)\nCleaning up saved files.\nCleaning up saved files.  (0% of 1 MB)\nCleaning up saved files.  (100% of 1 MB at 6495 KB/sec; 0 seconds remain)\nCleaning up saved files.",
+    "stdout_lines": [
+        "Preparing IBM Connections",
+        "(100% of < 1 MB at 61 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 2924 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 35 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 247 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 2924 KB/sec; 0 seconds remain)",
+        "Initialize for eclipse",
+        "Pre-configuring com.ibm.connections.licensePanel",
+        "Pre-configuring com.ibm.connections.wasPanel",
+        "Pre-configuring com.ibm.connections.ccmPanel",
+        "Pre-configuring com.ibm.connections.topologyPanel",
+        "Pre-configuring com.ibm.connections.databasePanel",
+        "Pre-configuring com.ibm.connections.webServerPanel",
+        "Pre-configuring com.ibm.connections.cognosPanel",
+        "Pre-configuring com.ibm.connections.contentStorePanel",
+        "Pre-configuring com.ibm.connections.notificationPanel",
+        "Pre-configuring com.ibm.connections.userMappingPanel",
+        "Pre-install for eclipse",
+        "Installing com.ibm.connections.licensePanel",
+        "Installing com.ibm.connections.wasPanel",
+        "Installing com.ibm.connections.ccmPanel",
+        "Installing com.ibm.connections.topologyPanel",
+        "Installing com.ibm.connections.databasePanel",
+        "Installing com.ibm.connections.webServerPanel",
+        "Installing com.ibm.connections.cognosPanel",
+        "Installing com.ibm.connections.contentStorePanel",
+        "Installing com.ibm.connections.notificationPanel",
+        "Installing com.ibm.connections.userMappingPanel",
+        "Post-install for eclipse",
+        "Configuring com.ibm.connections.licensePanel",
+        "Configuring com.ibm.connections.wasPanel",
+        "Configuring com.ibm.connections.ccmPanel",
+        "Configuring com.ibm.connections.topologyPanel",
+        "Configuring com.ibm.connections.databasePanel",
+        "Configuring com.ibm.connections.webServerPanel",
+        "Configuring com.ibm.connections.cognosPanel",
+        "Configuring com.ibm.connections.contentStorePanel",
+        "Configuring com.ibm.connections.notificationPanel",
+        "Configuring com.ibm.connections.userMappingPanel",
+        "Complete for eclipse",
+        "Resolving the references in \"IBM Connections\".",
+        "Getting file names from com.ibm.connections_6.0.0.0_20180330_1357.offering.",
+        "Processing com.ibm.connections.content_6.0.0.0_20180330_1357.su.",
+        "Processing com.ibm.connections.main_6.0.0.0_20180330_1357.assembly.",
+        "Getting file names from com.ibm.connections_6.0.0.0_20180330_1357.offering.",
+        "Computing feature dependencies of IBM Connections.",
+        "main",
+        "Common",
+        "Files",
+        "Homepage",
+        "News",
+        "Push Notification",
+        "Search",
+        "Rich Text Editors",
+        "Widget Container",
+        "Activities",
+        "Blogs",
+        "Bookmarks",
+        "Communities",
+        "Forums",
+        "Metrics",
+        "Mobile",
+        "Moderation",
+        "Profiles",
+        "Wikis",
+        "IBM Connections Content Manager",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections  (100% of < 1 MB at 247 KB/sec; 0 seconds remain)",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections  (100% of < 1 MB at 2924 KB/sec; 0 seconds remain)",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections  (100% of < 1 MB at 107 KB/sec; 0 seconds remain)",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections  (100% of < 1 MB at 247 KB/sec; 0 seconds remain)",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections  (100% of < 1 MB at 2924 KB/sec; 0 seconds remain)",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Initialize for eclipse",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.licensePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.wasPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.ccmPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.topologyPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.databasePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.webServerPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.cognosPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.contentStorePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.notificationPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-configuring com.ibm.connections.userMappingPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Pre-install for eclipse",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.licensePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.wasPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.ccmPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.topologyPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.databasePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.webServerPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.cognosPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.contentStorePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.notificationPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Installing com.ibm.connections.userMappingPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Post-install for eclipse",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.licensePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.wasPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.ccmPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.topologyPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.databasePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.webServerPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.cognosPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.contentStorePanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.notificationPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Configuring com.ibm.connections.userMappingPanel",
+        "Preparing IBM Connections",
+        "Preparing IBM Connections Complete for eclipse",
+        "Preparing IBM Connections",
+        "Analyzing IBM Connections",
+        "Processing com.ibm.connections.main",
+        "Processing com.ibm.connections.content",
+        "Calculating requirements and dependencies.",
+        "Computing prerequisite plan",
+        "Installing",
+        "Extracting metadata replacements.",
+        "Preparing metadata replacements.",
+        "Performing metadata replacements.",
+        "(100% of < 1 MB at 223 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 8789 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 53 KB/sec; 0 seconds remain)",
+        "Collecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections",
+        "(100% of < 1 MB at 175 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 1459 KB/sec; 0 seconds remain)",
+        "Collecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections",
+        "(0% of 1 MB)",
+        "(100% of 1 MB at 11553 KB/sec; 0 seconds remain)",
+        "Collecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections",
+        "(100% of < 1 MB at 293 KB/sec; 0 seconds remain)",
+        "Collecting: /opt/IBM/Binaries/cnx/IBM_Connections_Install/IBMConnections",
+        "Retrieving files. 0 KB of 1.4 GB (1%) completed.",
+        "Retrieving files. 135 MB of 1.4 GB (10%) completed.",
+        "Retrieving files. 448 MB of 1.4 GB (31%) completed.",
+        "Retrieving files. 722 MB of 1.4 GB (49%) completed.",
+        "Retrieving files. 993 MB of 1.4 GB (68%) completed.",
+        "Retrieving files. 1.2 GB of 1.4 GB (82%) completed.",
+        "Retrieving files. 1.3 GB of 1.4 GB (94%) completed.",
+        ".",
+        "Retrieving files. 1.4 GB of 1.4 GB (99%) completed.",
+        "Verifying.",
+        "(100% of < 1 MB at 7533 KB/sec; 0 seconds remain)",
+        "(0% of 1 MB)",
+        "(100% of 1 MB at 12035 KB/sec; 0 seconds remain)",
+        "Saving package metadata.",
+        "(100% of < 1 MB at 335 KB/sec; 0 seconds remain)",
+        "(100% of < 1 MB at 9612 KB/sec; 0 seconds remain)",
+        "(0% of 1 MB)",
+        "(100% of 1 MB at 12043 KB/sec; 0 seconds remain)",
+        "Initialize for native",
+        "Initialize for ant",
+        "Pre-configuring connectionsSQL_iu",
+        "Pre-configuring appendPropertyFile_iu",
+        "Pre-configuring utility_iu",
+        "Pre-configuring postInstallLauncher_iu",
+        "Pre-configuring unzip_iu",
+        "Pre-configuring unzipVersionNews_iu",
+        "Pre-configuring unzipVersionSearch_iu",
+        "Pre-configuring unzipVersionProfiles_iu",
+        "Pre-configuring unzipVersionActivities_iu",
+        "Pre-configuring unzipVersionBlogs_iu",
+        "Pre-configuring unzipVersionCommunities_iu",
+        "Pre-configuring unzipupdateInstaller_iu",
+        "Pre-configuring unzipMigrationTool_iu",
+        "Pre-configuring unzipVersionFolder_iu",
+        "Pre-configuring unzipVersionDogear_iu",
+        "Pre-configuring unzipVersionFiles_iu",
+        "Pre-configuring unzipVersionForums_iu",
+        "Pre-configuring unzipVersionHomepage_iu",
+        "Pre-configuring unzipVersionMetrics_iu",
+        "Pre-configuring unzipVersionWikis_iu",
+        "Pre-configuring unzipVersionMobile_iu",
+        "Pre-configuring unzipVersionModeration_iu",
+        "Pre-configuring jython_uninstaller_LA",
+        "Pre-configuring setConfig_iu",
+        "Pre-configuring product_common_iu",
+        "Pre-configuring product_news_iu",
+        "Pre-configuring product_search_iu",
+        "Pre-configuring product_profiles_iu",
+        "Pre-configuring product_activities_iu",
+        "Pre-configuring product_blogs_iu",
+        "Pre-configuring product_rte_iu",
+        "Pre-configuring product_communities_iu",
+        "Pre-configuring product_dogear_iu",
+        "Pre-configuring product_files_iu",
+        "Pre-configuring product_pushNotification_iu",
+        "Pre-configuring product_forums_iu",
+        "Pre-configuring product_homepage_iu",
+        "Pre-configuring product_metrics_iu",
+        "Pre-configuring product_wikis_iu",
+        "Pre-configuring product_mobile_iu",
+        "Pre-configuring product_widgetContainer_iu",
+        "Pre-configuring product_moderation_iu",
+        "Pre-configuring jython_installer_LA",
+        "Pre-install for native",
+        "Pre-install for ant",
+        "Installing connectionsSQL_iu",
+        "Extracting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458 (0% of 13 MB)",
+        "Extracting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458 (94% of 13 MB at 12335 KB/sec; 0 seconds remain)",
+        "Extracting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458 (98% of 13 MB at 12176 KB/sec; 0 seconds remain)",
+        "Backing up connections.sql/activities/db2",
+        "Backing up connections.sql/activities/lib",
+        "Backing up connections.sql/activities/oracle",
+        "Backing up connections.sql/activities/shared",
+        "Backing up connections.sql/activities/sqlserver",
+        "Backing up connections.sql/blogs/db2",
+        "Backing up connections.sql/blogs/oracle",
+        "Backing up connections.sql/blogs/sqlserver",
+        "Backing up connections.sql/cognos/db2",
+        "Backing up connections.sql/cognos/oracle",
+        "Backing up connections.sql/cognos/sqlserver",
+        "Backing up connections.sql/communities/db2",
+        "Backing up connections.sql/communities/oracle",
+        "Backing up connections.sql/communities/sqlserver",
+        "Backing up connections.sql/dogear/db2",
+        "Backing up connections.sql/dogear/oracle",
+        "Backing up connections.sql/dogear/sqlserver",
+        "Backing up connections.sql/files/db2",
+        "Backing up connections.sql/files/oracle",
+        "Backing up connections.sql/files/sqlserver",
+        "Backing up connections.sql/forum/db2/JapanMigration",
+        "Backing up connections.sql/forum/db2",
+        "Backing up connections.sql/forum/db2/smartcloud",
+        "Backing up connections.sql/forum/db2/train4Migration",
+        "Backing up connections.sql/forum/db2",
+        "Backing up connections.sql/forum/oracle",
+        "Backing up connections.sql/forum/sqlserver",
+        "Backing up connections.sql/homepage/db2",
+        "Backing up connections.sql/homepage/db2_smartcloud",
+        "Backing up connections.sql/homepage/migration.lib",
+        "Backing up connections.sql/homepage/oracle",
+        "Backing up connections.sql/homepage/sqlserver",
+        "Backing up connections.sql/library.gcd/db2",
+        "Backing up connections.sql/library.gcd/oracle",
+        "Backing up connections.sql/library.gcd/sqlserver",
+        "Backing up connections.sql/library.os/db2",
+        "Backing up connections.sql/library.os/oracle",
+        "Backing up connections.sql/library.os/sqlserver",
+        "Backing up connections.sql/metrics/db2",
+        "Backing up connections.sql/metrics/oracle",
+        "Backing up connections.sql/metrics/sqlserver",
+        "Backing up connections.sql/mobile/db2",
+        "Backing up connections.sql/mobile/oracle",
+        "Backing up connections.sql/mobile/sqlserver",
+        "Backing up connections.sql/profiles/db2",
+        "Backing up connections.sql/profiles/migrate.lib",
+        "Backing up connections.sql/profiles/oracle",
+        "Backing up connections.sql/profiles/sqlserver",
+        "Backing up connections.sql/pushnotification/db2",
+        "Backing up connections.sql/pushnotification/oracle",
+        "Backing up connections.sql/pushnotification/sqlserver",
+        "Backing up connections.sql/wikis/db2",
+        "Backing up connections.sql/wikis/oracle",
+        "Backing up connections.sql/wikis/sqlserver",
+        "Backing up",
+        "Installing appendPropertyFile_iu",
+        "Extracting zip appendPropertyFile 1.0.0.b8594676211c734fe2ba7b7a11d71ab0",
+        "Extracting zip appendPropertyFile 1.0.0.b8594676211c734fe2ba7b7a11d71ab0 (100% of < 1 MB)",
+        "Installing utility_iu",
+        "Extracting zip utility 1.0.0.eb2b17bc2e9e93052532039526534255",
+        "Extracting zip utility 1.0.0.eb2b17bc2e9e93052532039526534255 (100% of < 1 MB at 15410 KB/sec; 0 seconds remain)",
+        "Installing postInstallLauncher_iu",
+        "Extracting zip postInstallLauncher 1.0.0.d40f5a4ba572e27e5b395d7814c7bd03",
+        "Extracting zip postInstallLauncher 1.0.0.d40f5a4ba572e27e5b395d7814c7bd03 (100% of < 1 MB at 6006 KB/sec; 0 seconds remain)",
+        "Installing unzip_iu",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (0% of 1367 MB)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (2% of 1367 MB at 37294 KB/sec; 36 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (3% of 1367 MB at 22606 KB/sec; 59 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (4% of 1367 MB at 20184 KB/sec; 1:06 minutes remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (6% of 1367 MB at 21190 KB/sec; 1:02 minutes remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (7% of 1367 MB at 21539 KB/sec; 1:00 minutes remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (9% of 1367 MB at 21705 KB/sec; 58 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (12% of 1367 MB at 24755 KB/sec; 49 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (19% of 1367 MB at 33287 KB/sec; 34 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (25% of 1367 MB at 40381 KB/sec; 25 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (32% of 1367 MB at 46070 KB/sec; 20 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (39% of 1367 MB at 50048 KB/sec; 16 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (46% of 1367 MB at 53719 KB/sec; 14 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (52% of 1367 MB at 57086 KB/sec; 11 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (59% of 1367 MB at 59638 KB/sec; 9 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (66% of 1367 MB at 62283 KB/sec; 7 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (73% of 1367 MB at 64217 KB/sec; 5 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (80% of 1367 MB at 66173 KB/sec; 4 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (87% of 1367 MB at 68090 KB/sec; 2 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (93% of 1367 MB at 69142 KB/sec; 1 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (98% of 1367 MB at 68955 KB/sec; 0 seconds remain)",
+        "Extracting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2 (99% of 1367 MB at 68851 KB/sec; 0 seconds remain)",
+        "Backing up bin",
+        "Backing up lib",
+        "Backing up lib/filenet/CE_config",
+        "Backing up lib/filenet/CE_config/unix",
+        "Backing up lib/filenet/CE_config/windows",
+        "Backing up lib/filenet",
+        "Backing up lib/filenet/FNCS_config",
+        "Backing up lib/filenet/FNCS_config/unix",
+        "Backing up lib/filenet/FNCS_config/windows",
+        "Backing up lib/filenet",
+        "Backing up lib",
+        "Backing up xkit",
+        "Backing up xkit/LotusConnections-config.mt",
+        "Backing up xkit/LotusConnections-config.sc",
+        "Backing up xkit/LotusConnections-config",
+        "Backing up xkit/LotusConnections-config/cognos/Models/AuditCube",
+        "Backing up xkit/LotusConnections-config/cognos/Models/MetricsCubeDS",
+        "Backing up xkit/LotusConnections-config/cognos/Models/MetricsDBQuery",
+        "Backing up xkit/LotusConnections-config/cognos/Models/TrxCube",
+        "Backing up xkit/LotusConnections-config",
+        "Backing up xkit/LotusConnections-config/extern",
+        "Backing up xkit/LotusConnections-config",
+        "Backing up xkit/LotusConnections-config/metrics",
+        "Backing up xkit/LotusConnections-config",
+        "Backing up xkit/LotusConnections-config/profiles-extensions",
+        "Backing up xkit/LotusConnections-config",
+        "Backing up xkit/LotusConnections-config/profiles/templates",
+        "Backing up xkit/LotusConnections-config/profiles/templates/resources/nls",
+        "Backing up xkit/LotusConnections-config/profiles/templates",
+        "Backing up xkit/LotusConnections-config",
+        "Backing up xkit/activities.provision.web",
+        "Backing up xkit/bin_lc_admin",
+        "Backing up xkit/blogs.provision.web",
+        "Backing up xkit/ci",
+        "Backing up xkit/cognos/BI-Customization/JAR",
+        "Backing up xkit/cognos/BI-Customization/WebContent",
+        "Backing up xkit/cognos/BI-Customization/WebContent/metrics/reports/images",
+        "Backing up xkit/cognos/BI-Customization",
+        "Backing up xkit/cognos/install/MetricsPkg",
+        "Backing up xkit/cognos/install/bin",
+        "Backing up xkit/cognos/install",
+        "Backing up xkit/cognos/install/configurationTemplate",
+        "Backing up xkit/cognos/install/g11n",
+        "Backing up xkit/cognos/install/lib",
+        "Backing up xkit/cognos/install/models",
+        "Backing up xkit/cognos/install",
+        "Backing up xkit/common.provision.web",
+        "Backing up xkit/communities.provision.web",
+        "Backing up xkit/concerto",
+        "Backing up xkit/configuration/recommend",
+        "Backing up xkit/configuration/update",
+        "Backing up xkit/connections.sql/activities/db2",
+        "Backing up xkit/connections.sql/activities/db2/fixup",
+        "Backing up xkit/connections.sql/activities/db2",
+        "Backing up xkit/connections.sql/activities/lib",
+        "Backing up xkit/connections.sql/activities/oracle",
+        "Backing up xkit/connections.sql/activities/oracle/fixup",
+        "Backing up xkit/connections.sql/activities/oracle",
+        "Backing up xkit/connections.sql/activities/shared",
+        "Backing up xkit/connections.sql/activities/sqlserver",
+        "Backing up xkit/connections.sql/activities/sqlserver/fixup",
+        "Backing up xkit/connections.sql/activities/sqlserver",
+        "Backing up xkit/connections.sql/blogs/db2",
+        "Backing up xkit/connections.sql/blogs/db2/fixup",
+        "Backing up xkit/connections.sql/blogs/db2",
+        "Backing up xkit/connections.sql/blogs/oracle",
+        "Backing up xkit/connections.sql/blogs/oracle/fixup",
+        "Backing up xkit/connections.sql/blogs/oracle",
+        "Backing up xkit/connections.sql/blogs/sqlserver",
+        "Backing up xkit/connections.sql/blogs/sqlserver/fixup",
+        "Backing up xkit/connections.sql/blogs/sqlserver",
+        "Backing up xkit/connections.sql/cognos/db2",
+        "Backing up xkit/connections.sql/cognos/oracle",
+        "Backing up xkit/connections.sql/cognos/sqlserver",
+        "Backing up xkit/connections.sql/communities/db2",
+        "Backing up xkit/connections.sql/communities/db2/fixup",
+        "Backing up xkit/connections.sql/communities/db2",
+        "Backing up xkit/connections.sql/communities/oracle",
+        "Backing up xkit/connections.sql/communities/oracle/fixup",
+        "Backing up xkit/connections.sql/communities/oracle",
+        "Backing up xkit/connections.sql/communities/sqlserver",
+        "Backing up xkit/connections.sql/communities/sqlserver/fixup",
+        "Backing up xkit/connections.sql/communities/sqlserver",
+        "Backing up xkit/connections.sql/dogear/db2",
+        "Backing up xkit/connections.sql/dogear/db2/fixup",
+        "Backing up xkit/connections.sql/dogear/db2",
+        "Backing up xkit/connections.sql/dogear/oracle",
+        "Backing up xkit/connections.sql/dogear/oracle/fixup",
+        "Backing up xkit/connections.sql/dogear/oracle",
+        "Backing up xkit/connections.sql/dogear/sqlserver",
+        "Backing up xkit/connections.sql/dogear/sqlserver/fixup",
+        "Backing up xkit/connections.sql/dogear/sqlserver",
+        "Backing up xkit/connections.sql/files/db2",
+        "Backing up xkit/connections.sql/files/db2/fixup",
+        "Backing up xkit/connections.sql/files/db2",
+        "Backing up xkit/connections.sql/files/oracle",
+        "Backing up xkit/connections.sql/files/oracle/fixup",
+        "Backing up xkit/connections.sql/files/oracle",
+        "Backing up xkit/connections.sql/files/sqlserver",
+        "Backing up xkit/connections.sql/files/sqlserver/fixup",
+        "Backing up xkit/connections.sql/files/sqlserver",
+        "Backing up xkit/connections.sql/forum/db2/JapanMigration",
+        "Backing up xkit/connections.sql/forum/db2",
+        "Backing up xkit/connections.sql/forum/db2/fixup",
+        "Backing up xkit/connections.sql/forum/db2",
+        "Backing up xkit/connections.sql/forum/db2/smartcloud",
+        "Backing up xkit/connections.sql/forum/db2/train4Migration",
+        "Backing up xkit/connections.sql/forum/db2",
+        "Backing up xkit/connections.sql/forum/oracle",
+        "Backing up xkit/connections.sql/forum/oracle/fixup",
+        "Backing up xkit/connections.sql/forum/oracle",
+        "Backing up xkit/connections.sql/forum/sqlserver",
+        "Backing up xkit/connections.sql/forum/sqlserver/fixup",
+        "Backing up xkit/connections.sql/forum/sqlserver",
+        "Backing up xkit/connections.sql/homepage/db2",
+        "Backing up xkit/connections.sql/homepage/db2/fixup",
+        "Backing up xkit/connections.sql/homepage/db2",
+        "Backing up xkit/connections.sql/homepage/db2_smartcloud",
+        "Backing up xkit/connections.sql/homepage/db2_smartcloud/fixup",
+        "Backing up xkit/connections.sql/homepage/db2_smartcloud",
+        "Backing up xkit/connections.sql/homepage/migration.lib",
+        "Backing up xkit/connections.sql/homepage/oracle",
+        "Backing up xkit/connections.sql/homepage/oracle/fixup",
+        "Backing up xkit/connections.sql/homepage/oracle",
+        "Backing up xkit/connections.sql/homepage/sqlserver",
+        "Backing up xkit/connections.sql/homepage/sqlserver/fixup",
+        "Backing up xkit/connections.sql/homepage/sqlserver",
+        "Backing up xkit/connections.sql/library.gcd/db2",
+        "Backing up xkit/connections.sql/library.gcd/oracle",
+        "Backing up xkit/connections.sql/library.gcd/sqlserver",
+        "Backing up xkit/connections.sql/library.os/db2",
+        "Backing up xkit/connections.sql/library.os/oracle",
+        "Backing up xkit/connections.sql/library.os/sqlserver",
+        "Backing up xkit/connections.sql/metrics/db2",
+        "Backing up xkit/connections.sql/metrics/db2/fixup",
+        "Backing up xkit/connections.sql/metrics/db2",
+        "Backing up xkit/connections.sql/metrics/oracle",
+        "Backing up xkit/connections.sql/metrics/oracle/fixup",
+        "Backing up xkit/connections.sql/metrics/oracle",
+        "Backing up xkit/connections.sql/metrics/sqlserver",
+        "Backing up xkit/connections.sql/metrics/sqlserver/fixup",
+        "Backing up xkit/connections.sql/metrics/sqlserver",
+        "Backing up xkit/connections.sql/mobile/db2",
+        "Backing up xkit/connections.sql/mobile/db2/fixup",
+        "Backing up xkit/connections.sql/mobile/db2",
+        "Backing up xkit/connections.sql/mobile/oracle",
+        "Backing up xkit/connections.sql/mobile/oracle/fixup",
+        "Backing up xkit/connections.sql/mobile/oracle",
+        "Backing up xkit/connections.sql/mobile/sqlserver",
+        "Backing up xkit/connections.sql/mobile/sqlserver/fixup",
+        "Backing up xkit/connections.sql/mobile/sqlserver",
+        "Backing up xkit/connections.sql/profiles/db2",
+        "Backing up xkit/connections.sql/profiles/db2/fixup",
+        "Backing up xkit/connections.sql/profiles/db2",
+        "Backing up xkit/connections.sql/profiles/migrate.lib",
+        "Backing up xkit/connections.sql/profiles/oracle",
+        "Backing up xkit/connections.sql/profiles/oracle/fixup",
+        "Backing up xkit/connections.sql/profiles/oracle",
+        "Backing up xkit/connections.sql/profiles/sqlserver",
+        "Backing up xkit/connections.sql/profiles/sqlserver/fixup",
+        "Backing up xkit/connections.sql/profiles/sqlserver",
+        "Backing up xkit/connections.sql/pushnotification/db2",
+        "Backing up xkit/connections.sql/pushnotification/db2/fixup",
+        "Backing up xkit/connections.sql/pushnotification/db2",
+        "Backing up xkit/connections.sql/pushnotification/oracle",
+        "Backing up xkit/connections.sql/pushnotification/oracle/fixup",
+        "Backing up xkit/connections.sql/pushnotification/oracle",
+        "Backing up xkit/connections.sql/pushnotification/sqlserver",
+        "Backing up xkit/connections.sql/pushnotification/sqlserver/fixup",
+        "Backing up xkit/connections.sql/pushnotification/sqlserver",
+        "Backing up xkit/connections.sql/wikis/db2",
+        "Backing up xkit/connections.sql/wikis/db2/fixup",
+        "Backing up xkit/connections.sql/wikis/db2",
+        "Backing up xkit/connections.sql/wikis/oracle",
+        "Backing up xkit/connections.sql/wikis/oracle/fixup",
+        "Backing up xkit/connections.sql/wikis/oracle",
+        "Backing up xkit/connections.sql/wikis/sqlserver",
+        "Backing up xkit/connections.sql/wikis/sqlserver/fixup",
+        "Backing up xkit/connections.sql/wikis/sqlserver",
+        "Backing up xkit/customization/strings",
+        "Backing up xkit/dcs/stellent/AIX_64/oiexport",
+        "Backing up xkit/dcs/stellent/Linux_64/oiexport",
+        "Backing up xkit/dcs/stellent/Windows_64/oiexport",
+        "Backing up xkit/dcs/stellent/Zlinux/oiexport",
+        "Backing up xkit/dictionaries",
+        "Backing up xkit/dogear.provision.web",
+        "Backing up xkit/filenetConfig",
+        "Backing up xkit/files.provision.web",
+        "Backing up xkit/forums.provision.web",
+        "Backing up xkit/help/Activities",
+        "Backing up xkit/help/Communities",
+        "Backing up xkit/help/Files",
+        "Backing up xkit/help/News",
+        "Backing up xkit/homepage.provision.web",
+        "Backing up xkit/ihs/mod_ibm_local_redirect",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/aix_ppc32-ap20",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/aix_ppc32-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/aix_ppc64-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_390-ap20",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_amd64-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_ia32-ap20",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_ia32-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_ppc32-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_ppc64-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_s390-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_s390_64-ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/linux_x86_64_ap22",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/win_ia32-ap20",
+        "Backing up xkit/ihs/mod_ibm_local_redirect/win_ia32-ap22",
+        "Backing up xkit/ihs/mod_ibm_upload",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.aix.ppc32",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.aix.ppc64",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.amd64",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.ia32",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.ppc32",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.ppc64",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.s390",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.s390_64",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.linux.x86_64",
+        "Backing up xkit/ihs/mod_ibm_upload/ihs.win.ia32",
+        "Backing up xkit/installableApps",
+        "Backing up xkit/lafiles",
+        "Backing up xkit/metrics.provision.web",
+        "Backing up xkit/migration",
+        "Backing up xkit/moderation.provision.web",
+        "Backing up xkit/news.provision.web",
+        "Backing up xkit/notifications/activities",
+        "Backing up xkit/notifications/activities/resources/nls",
+        "Backing up xkit/notifications/blogs",
+        "Backing up xkit/notifications/blogs/resources/nls",
+        "Backing up xkit/notifications/blogs",
+        "Backing up xkit/notifications/bookmarks",
+        "Backing up xkit/notifications/bookmarks/resources/nls",
+        "Backing up xkit/notifications/communities",
+        "Backing up xkit/notifications/communities/resources/nls",
+        "Backing up xkit/notifications/files",
+        "Backing up xkit/notifications/files/resources/nls",
+        "Backing up xkit/notifications/files",
+        "Backing up xkit/notifications/moderation",
+        "Backing up xkit/notifications/moderation/resources/nls",
+        "Backing up xkit/notifications/news/aggregated",
+        "Backing up xkit/notifications/news",
+        "Backing up xkit/notifications/news/resources/nls",
+        "Backing up xkit/notifications/news",
+        "Backing up xkit/notifications/profiles",
+        "Backing up xkit/notifications/profiles/resources/nls",
+        "Backing up xkit/notifications/resources",
+        "Backing up xkit/notifications/resources/images",
+        "Backing up xkit/notifications/resources/nls",
+        "Backing up xkit/notifications/wikis",
+        "Backing up xkit/notifications/wikis/resources/nls",
+        "Backing up xkit/oauth20",
+        "Backing up xkit/profiles.provision.web",
+        "Backing up xkit",
+        "Backing up xkit/wikis.provision.web",
+        "Backing up",
+        "Extracting zip connections.swidtag 1.0.0.b0e7a0cafaa932bb5aa45f80720f7f55",
+        "Extracting zip connections.swidtag 1.0.0.b0e7a0cafaa932bb5aa45f80720f7f55 (84% of < 1 MB at 1257 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionNews_iu",
+        "Extracting zip connVersion_news 1.0.0.6576e7255af90ac91fad1193fa7097b5",
+        "Extracting zip connVersion_news 1.0.0.6576e7255af90ac91fad1193fa7097b5 (92% of < 1 MB at 1714 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionSearch_iu",
+        "Extracting zip connVersion_search 1.0.0.4f81c71a238f238a6fcfa0746802492c",
+        "Extracting zip connVersion_search 1.0.0.4f81c71a238f238a6fcfa0746802492c (97% of < 1 MB at 935 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionProfiles_iu",
+        "Extracting zip connVersion_profiles 1.0.0.9489fa17fed41fbea46dec91661cf4d0",
+        "Extracting zip connVersion_profiles 1.0.0.9489fa17fed41fbea46dec91661cf4d0 (97% of < 1 MB at 940 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionActivities_iu",
+        "Extracting zip connVersion_activities 1.0.0.f1c3393adc496e38c8a235961ee8be53",
+        "Extracting zip connVersion_activities 1.0.0.f1c3393adc496e38c8a235961ee8be53 (96% of < 1 MB at 946 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionBlogs_iu",
+        "Extracting zip connVersion_blogs 1.0.0.26d038e0638b9b022ddd1e3b304a9fd9",
+        "Extracting zip connVersion_blogs 1.0.0.26d038e0638b9b022ddd1e3b304a9fd9 (97% of < 1 MB)",
+        "Installing unzipVersionCommunities_iu",
+        "Extracting zip connVersion_communities 1.0.0.45a1ccaa4f614bc35ad3c6f3f1e460d2",
+        "Extracting zip connVersion_communities 1.0.0.45a1ccaa4f614bc35ad3c6f3f1e460d2 (96% of < 1 MB at 948 KB/sec; 0 seconds remain)",
+        "Installing unzipupdateInstaller_iu",
+        "Extracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (0% of 94 MB)",
+        "Extracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (34% of 94 MB at 33271 KB/sec; 1 seconds remain)",
+        "Extracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (67% of 94 MB at 32497 KB/sec; 0 seconds remain)",
+        "Extracting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319 (99% of 94 MB at 36798 KB/sec; 0 seconds remain)",
+        "Backing up updateInstaller/bin",
+        "Backing up updateInstaller/config",
+        "Backing up updateInstaller/earLauncher",
+        "Backing up updateInstaller/jvm/aix/docs",
+        "Backing up updateInstaller/jvm/aix/docs/content/en",
+        "Backing up updateInstaller/jvm/aix/docs/content",
+        "Backing up updateInstaller/jvm/aix/docs",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/ar",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/bg",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/cs",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/de",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/en",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/es",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/fr",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/images",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/it",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/ja",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/ko",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/pl",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/pt_br",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/ru",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/tr",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/zh",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/content/zh_TW",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/cs",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/da",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/de",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/diskinfo",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/el",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/en/codepages/437",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/en",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/es",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/fi",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/fr",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/he",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/hr",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/hu",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/it",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/ja",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/ko",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/nl",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/no",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/pl",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/pt",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/pt_BR",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/ro",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/ru",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/sk",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/expressLaunchpadModernSkin",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/expressLaunchpadModernSkin/images",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/expressLaunchpadModernSkin",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/unittest",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/unittest/en",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/unittest/fb",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/skins/unittest",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/sl",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/aixppc",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/hpuxia64",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/hpuxparisc",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/linuxppc",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/linuxs390",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/linuxx86",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/sunsparc",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/splash/sunx86",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/sv",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/tr",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/zh",
+        "Backing up updateInstaller/jvm/aix/docs/launchpad/zh_TW",
+        "Backing up updateInstaller/jvm/aix/jre/bin",
+        "Backing up updateInstaller/jvm/aix/jre/bin/classic",
+        "Backing up updateInstaller/jvm/aix/jre/bin",
+        "Backing up updateInstaller/jvm/aix/jre/bin/j9vm",
+        "Backing up updateInstaller/jvm/aix/jre/bin",
+        "Backing up updateInstaller/jvm/aix/jre/javaws",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/audio",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/cmm",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/deploy",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/applications",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/16x16/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/16x16/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/48x48/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrastInverse/48x48/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/16x16/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/16x16/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/48x48/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/HighContrast/48x48/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/16x16/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/16x16/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/48x48/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/LowContrast/48x48/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/16x16/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/16x16/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/48x48/apps",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/icons/hicolor/48x48/mimetypes",
+        "Backing up updateInstaller/jvm/aix/jre/lib/desktop/mime/packages",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ext",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/fonts",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/im",
+        "Backing up updateInstaller/jvm/aix/jre/lib/images/cursors",
+        "Backing up updateInstaller/jvm/aix/jre/lib/images/icons",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/de/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/es/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/fr/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/it/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/ja/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/ko.UTF-8/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/ko/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/sv/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/zh.GBK/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/zh/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/zh_HK.BIG5HK/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/zh_TW.BIG5/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib/locale/zh_TW/LC_MESSAGES",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/management",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/oblique-fonts",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/classic",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/compressedrefs",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/compressedrefs/jclSC160",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/compressedrefs",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/default",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/default/jclSC160",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/default",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/headless",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/j9vm",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/motif21",
+        "Backing up updateInstaller/jvm/aix/jre/lib/ppc64/xawt",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/security",
+        "Backing up updateInstaller/jvm/aix/jre/lib",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Africa",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America/Argentina",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America/Indiana",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America/Kentucky",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America/North_Dakota",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/America",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Antarctica",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Asia",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Atlantic",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Australia",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Etc",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Europe",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Indian",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/Pacific",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi/SystemV",
+        "Backing up updateInstaller/jvm/aix/jre/lib/zi",
+        "Backing up updateInstaller/jvm/aix/jre/plugin/desktop",
+        "Backing up updateInstaller/jvm/aix/jre/plugin/ppc64/ns7",
+        "Backing up updateInstaller/jvm/aix",
+        "Backing up updateInstaller/lib",
+        "Backing up updateInstaller",
+        "Backing up updateInstaller/version",
+        "Backing up",
+        "Installing unzipMigrationTool_iu",
+        "Extracting zip migration 1.0.0.f11a30489bc5fd4e58d73f268359f20b",
+        "Extracting zip migration 1.0.0.f11a30489bc5fd4e58d73f268359f20b (98% of < 1 MB at 17990 KB/sec; 0 seconds remain)",
+        "Backing up migration/lib",
+        "Backing up migration",
+        "Backing up migration/properties",
+        "Backing up migration/scripts/jacl",
+        "Backing up migration/scripts",
+        "Backing up migration",
+        "Backing up migration/xslt/50_55",
+        "Backing up migration/xslt/55_60",
+        "Backing up",
+        "Installing unzipVersionFolder_iu",
+        "Extracting zip connVersion 1.0.0.5dfced693bcf30c4e2684f6354af4ab3",
+        "Extracting zip connVersion 1.0.0.5dfced693bcf30c4e2684f6354af4ab3 (91% of < 1 MB at 2993 KB/sec; 0 seconds remain)",
+        "Backing up dtd",
+        "Backing up",
+        "Installing unzipVersionDogear_iu",
+        "Extracting zip connVersion_dogear 1.0.0.05d5a57d837425cbfb43c9d1841084a4",
+        "Extracting zip connVersion_dogear 1.0.0.05d5a57d837425cbfb43c9d1841084a4 (97% of < 1 MB at 935 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionFiles_iu",
+        "Extracting zip connVersion_files 1.0.0.30493373373aeb04d64c96b1f2b83b57",
+        "Extracting zip connVersion_files 1.0.0.30493373373aeb04d64c96b1f2b83b57 (97% of < 1 MB)",
+        "Installing unzipVersionForums_iu",
+        "Extracting zip connVersion_forums 1.0.0.4c3322893ce7e1ce91001e16d902f74b",
+        "Extracting zip connVersion_forums 1.0.0.4c3322893ce7e1ce91001e16d902f74b (97% of < 1 MB at 932 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionHomepage_iu",
+        "Extracting zip connVersion_homepage 1.0.0.531ce636f408b43e0d5891697cb63e04",
+        "Extracting zip connVersion_homepage 1.0.0.531ce636f408b43e0d5891697cb63e04 (96% of < 1 MB at 941 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionMetrics_iu",
+        "Extracting zip connVersion_metrics 1.0.0.c2c6e5864f420989b4d3153e699e44b4",
+        "Extracting zip connVersion_metrics 1.0.0.c2c6e5864f420989b4d3153e699e44b4 (97% of < 1 MB)",
+        "Installing unzipVersionWikis_iu",
+        "Extracting zip connVersion_wikis 1.0.0.5579f3ecbf920bbd658835ad3f233f1d",
+        "Extracting zip connVersion_wikis 1.0.0.5579f3ecbf920bbd658835ad3f233f1d (97% of < 1 MB at 931 KB/sec; 0 seconds remain)",
+        "Installing unzipVersionMobile_iu",
+        "Extracting zip connVersion_mobile 1.0.0.ffd5223ce19316dacda605c631d6d0b0",
+        "Extracting zip connVersion_mobile 1.0.0.ffd5223ce19316dacda605c631d6d0b0 (97% of < 1 MB)",
+        "Installing unzipVersionModeration_iu",
+        "Extracting zip connVersion_moderation 1.0.0.05d943fde5ee0b8fb139b64118553e97",
+        "Extracting zip connVersion_moderation 1.0.0.05d943fde5ee0b8fb139b64118553e97 (96% of < 1 MB at 944 KB/sec; 0 seconds remain)",
+        "Installing jython_uninstaller_LA",
+        "Installing setConfig_iu",
+        "Installing product_common_iu",
+        "Installing product_news_iu",
+        "Installing product_search_iu",
+        "Installing product_profiles_iu",
+        "Installing product_activities_iu",
+        "Installing product_blogs_iu",
+        "Installing product_rte_iu",
+        "Installing product_communities_iu",
+        "Installing product_dogear_iu",
+        "Installing product_files_iu",
+        "Installing product_pushNotification_iu",
+        "Installing product_forums_iu",
+        "Installing product_homepage_iu",
+        "Installing product_metrics_iu",
+        "Installing product_wikis_iu",
+        "Installing product_mobile_iu",
+        "Installing product_widgetContainer_iu",
+        "Installing product_moderation_iu",
+        "Installing jython_installer_LA",
+        "Post-install for native",
+        "Post-install for ant",
+        "Configuring connectionsSQL_iu",
+        "Configuring appendPropertyFile_iu",
+        "Configuring utility_iu",
+        "Configuring postInstallLauncher_iu",
+        "Configuring unzip_iu",
+        "Configuring unzipVersionNews_iu",
+        "Configuring unzipVersionSearch_iu",
+        "Configuring unzipVersionProfiles_iu",
+        "Configuring unzipVersionActivities_iu",
+        "Configuring unzipVersionBlogs_iu",
+        "Configuring unzipVersionCommunities_iu",
+        "Configuring unzipupdateInstaller_iu",
+        "Configuring unzipMigrationTool_iu",
+        "Configuring unzipVersionFolder_iu",
+        "Configuring unzipVersionDogear_iu",
+        "Configuring unzipVersionFiles_iu",
+        "Configuring unzipVersionForums_iu",
+        "Configuring unzipVersionHomepage_iu",
+        "Configuring unzipVersionMetrics_iu",
+        "Configuring unzipVersionWikis_iu",
+        "Configuring unzipVersionMobile_iu",
+        "Configuring unzipVersionModeration_iu",
+        "Configuring jython_uninstaller_LA",
+        "Configuring setConfig_iu",
+        "Configuring product_common_iu",
+        "Updating cfg.py for Common",
+        "Updating cfg.py for Common (cluster info)",
+        "Configuring product_news_iu",
+        "Updating cfg.py for News",
+        "Updating cfg.py for News (cluster info)",
+        "Configuring product_search_iu",
+        "Updating cfg.py for Search",
+        "Updating cfg.py for Search (cluster info)",
+        "Configuring product_profiles_iu",
+        "Updating cfg.py for Profiles",
+        "Updating cfg.py for Profiles (cluster info)",
+        "Configuring product_activities_iu",
+        "Updating cfg.py for Activities",
+        "Updating cfg.py for Activities (cluster info)",
+        "Configuring product_blogs_iu",
+        "Updating cfg.py for Blogs",
+        "Updating cfg.py for Blogs (cluster info)",
+        "Configuring product_rte_iu",
+        "Updating cfg.py for RTE",
+        "Updating cfg.py for RTE (cluster info)",
+        "Configuring product_communities_iu",
+        "Updating cfg.py for Communities",
+        "Updating cfg.py for Communities (cluster info)",
+        "Configuring product_dogear_iu",
+        "Updating cfg.py for Bookmarks",
+        "Updating cfg.py for Bookmarks (cluster info)",
+        "Configuring product_files_iu",
+        "Updating cfg.py for Files",
+        "Updating cfg.py for Files (cluster info)",
+        "Configuring product_pushNotification_iu",
+        "Updating cfg.py for pushNotification",
+        "Updating cfg.py for pushNotification (cluster info)",
+        "Configuring product_forums_iu",
+        "Updating cfg.py for Forums",
+        "Updating cfg.py for Forums (cluster info)",
+        "Configuring product_homepage_iu",
+        "Updating cfg.py for Homepage",
+        "Updating cfg.py for Homepage (cluster info)",
+        "Configuring product_metrics_iu",
+        "Updating cfg.py for Metrics",
+        "Updating cfg.py for Metrics (cluster info)",
+        "Configuring product_wikis_iu",
+        "Updating cfg.py for Wikis",
+        "Updating cfg.py for Wikis (cluster info)",
+        "Configuring product_mobile_iu",
+        "Updating cfg.py for Mobile",
+        "Updating cfg.py for Mobile (cluster info)",
+        "Configuring product_widgetContainer_iu",
+        "Updating cfg.py for widgetContainer (cluster info)",
+        "Configuring product_moderation_iu",
+        "Updating cfg.py for Moderation",
+        "Updating cfg.py for Moderation (cluster info)",
+        "Configuring jython_installer_LA",
+        "[ Deploying application to WebSphere, it may take a while. ]",
+        ".",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Cleaning up saved files.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files.  (100% of < 1 MB at 335 KB/sec; 0 seconds remain)",
+        "Cleaning up saved files.",
+        "Cleaning up saved files.  (100% of < 1 MB at 3604 KB/sec; 0 seconds remain)",
+        "Cleaning up saved files.",
+        "Cleaning up saved files.  (0% of 1 MB)",
+        "Cleaning up saved files.  (100% of 1 MB at 13138 KB/sec; 0 seconds remain)",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_wikis 1.0.0.5579f3ecbf920bbd658835ad3f233f1d.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting xml file im-install-cfg_0.0.0.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connections.sql 1.0.0.880b68fd3f0cdc6ccf1e286ee1b6a458.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_blogs 1.0.0.26d038e0638b9b022ddd1e3b304a9fd9.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting jar file com.ibm.connections.resultPanel_6.0.0.0_CR1_20180330_1357.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_search 1.0.0.4f81c71a238f238a6fcfa0746802492c.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_profiles 1.0.0.9489fa17fed41fbea46dec91661cf4d0.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion 1.0.0.5dfced693bcf30c4e2684f6354af4ab3.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_files 1.0.0.30493373373aeb04d64c96b1f2b83b57.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip utility 1.0.0.eb2b17bc2e9e93052532039526534255.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_communities 1.0.0.45a1ccaa4f614bc35ad3c6f3f1e460d2.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_forums 1.0.0.4c3322893ce7e1ce91001e16d902f74b.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connections.swidtag 1.0.0.b0e7a0cafaa932bb5aa45f80720f7f55.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip lcui 1.0.0.66a6eecbeea4cbe7027a12f4a7b17319.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip postInstallLauncher 1.0.0.d40f5a4ba572e27e5b395d7814c7bd03.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_mobile 1.0.0.ffd5223ce19316dacda605c631d6d0b0.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip migration 1.0.0.f11a30489bc5fd4e58d73f268359f20b.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_metrics 1.0.0.c2c6e5864f420989b4d3153e699e44b4.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip appendPropertyFile 1.0.0.b8594676211c734fe2ba7b7a11d71ab0.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_moderation 1.0.0.05d943fde5ee0b8fb139b64118553e97.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_activities 1.0.0.f1c3393adc496e38c8a235961ee8be53.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip product_common 1.0.0.e2ac004334ac32bc991f2ec6d91952e2.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_dogear 1.0.0.05d5a57d837425cbfb43c9d1841084a4.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_news 1.0.0.6576e7255af90ac91fad1193fa7097b5.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files. Deleting zip connVersion_homepage 1.0.0.531ce636f408b43e0d5891697cb63e04.",
+        "Cleaning up saved files.",
+        "Cleaning up saved files.  (100% of < 1 MB at 5243 KB/sec; 0 seconds remain)",
+        "Cleaning up saved files.",
+        "Cleaning up saved files.  (0% of 1 MB)",
+        "Cleaning up saved files.  (100% of 1 MB at 6495 KB/sec; 0 seconds remain)",
+        "Cleaning up saved files."
+    ]
+}
+	to retry, use: --limit @/Users/ebasso/Home/BB-AVP-Activities/z2019/100-C6-MigracaoConsolidado/ansible-ibm-websphere/playbooks/ibm-connections6.retry
+
+PLAY RECAP *******************************************************************************************************************************************************
+dxl1scb00153.dispositivos.bb.com.br : ok=18   changed=5    unreachable=0    failed=1   
+

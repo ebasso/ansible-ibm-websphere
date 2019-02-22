@@ -1,6 +1,4 @@
 ---
-#- name:         show the groups the host(s) are in
-#  debug:        msg="{{group_names}}"
 - name:          Check Vars
   include_tasks: check_vars.yml
 
@@ -10,7 +8,8 @@
 - name:          Define Vars
   include_tasks: define_vars.yml
 
-#- include_tasks: generate_response_file.yml
+#- include_tasks: download_extract_connections.yml
+#  when:          version_already_installed.rc != 0
 
 - include_tasks: install_connections.yml
   when:          version_already_installed.rc != 0

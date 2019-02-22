@@ -25,7 +25,12 @@ __cnx_files:
   - { file_name: 'CNCTNS_V6.0_IFR1_LNX_ML.tar', check_sum: '5415ea36c80d03fa4bbb73d259ea841bfd9e3b5918169268a709aedea4eaa434' }
 #  - { file_name: 'CNCTNS_V6.0_IFR1WLNX,_AIX_ML.tar', check_sum: 'bce56543996922064ec9bf939de6c3685e2f65a572c214ab1df528acadd766da' }
 
-__cnx_fixes_files:
+__cnx_fixes_version_latest: "CR4"
+__cnx_fixes_files_latest:
+  - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
+
+__cnx_fixes_version_cr3: "CR3"
+__cnx_fixes_files_cr3:
   - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
   - { file_name: 'IC60_CR3_LO94106.jar', check_sum: '4e76612efed46568a0f73102fb8790a7d078d58606265a8895fd6e344b4cd80c' }
   - { file_name: 'IC60_CR3_LO94115.jar', check_sum: 'b66c60728efd36706fbeada2c846b76bba21b253be201edd97641b11078483ef' }
@@ -73,7 +78,7 @@ __cnx_deploy:
 __db_username:           "{{ db_username  | default('LCUSER') }}"
 __db_password:           "{{ db_password }}"
 __db_hostname:           "{{ db_hostname }}"
-__db_port:               "{{ db_username  | default('50000') }}"
+__db_port:               "{{ db_port  | default('50000') }}"
 __db_jdbc_file:          "{{ db_jdbc_file  | default('/opt/IBM/db2/V11.1/java') }}"
 __db_type:               "{{ db_type  | default('DB2') }}"
 #db_vendor:              "oracle"
@@ -91,9 +96,9 @@ __cnx_db_info:
   - { app: 'mobile', 'name': "{{ mobile_db.name | default('MOBILE') }}", server: '{{ mobile_db.server  | default( __db_hostname ) }}', 'port': '{{ mobile_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ mobile_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ mobile_db.type  | default(  __db_type ) }}', 'user': '{{ mobile_db.user  | default(  __db_username ) }}', 'pw': '{{ mobile_db.pw  | default(  __db_password ) }}' }
   - { app: 'news', 'name': "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', 'port': '{{ homepage_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ homepage_db.type  | default(  __db_type ) }}', 'user': '{{ homepage_db.user  | default(  __db_username ) }}', 'pw': '{{ homepage_db.pw  | default(  __db_password ) }}' }
   - { app: 'profiles', 'name': "{{ profiles_db.name | default('PEOPLEDB') }}", server: '{{ profiles_db.server  | default( __db_hostname ) }}', 'port': '{{ profiles_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ profiles_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ profiles_db.type  | default(  __db_type ) }}', 'user': '{{ profiles_db.user  | default(  __db_username ) }}', 'pw': '{{ profiles_db.pw  | default(  __db_password ) }}' }
-  - { app: 'push', 'name': "{{ push_db.name | default('PNS') }}", server: '{{ push_db.server  | default( __db_hostname ) }}', 'port': '{{ push_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ push_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ push_db.type  | default(  __db_type ) }}', 'user': '{{ push_db.user  | default(  __db_username ) }}', 'pw': '{{ push_db.pw  | default(  __db_password ) }}' }
+  - { app: 'pushNotification', 'name': "{{ push_db.name | default('PNS') }}", server: '{{ push_db.server  | default( __db_hostname ) }}', 'port': '{{ push_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ push_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ push_db.type  | default(  __db_type ) }}', 'user': '{{ push_db.user  | default(  __db_username ) }}', 'pw': '{{ push_db.pw  | default(  __db_password ) }}' }
   - { app: 'search', 'name': "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', 'port': '{{ homepage_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ homepage_db.type  | default(  __db_type ) }}', 'user': '{{ homepage_db.user  | default(  __db_username ) }}', 'pw': '{{ homepage_db.pw  | default(  __db_password ) }}' }
-  - { app: 'xcc', 'name': "{{ xcc_db.name | default('XCC') }}", server: '{{ xcc_db.server  | default( __db_hostname ) }}', 'port': '{{ xcc_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ xcc_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ xcc_db.type  | default(  __db_type ) }}', 'user': '{{ xcc_db.user  | default(  __db_username ) }}', 'pw': '{{ xcc_db.pw  | default(  __db_password ) }}' }
+  - { app: 'icec', 'name': "{{ icec_db.name | default('XCC') }}", server: '{{ icec_db.server  | default( __db_hostname ) }}', 'port': '{{ icec_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ icec_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ icec_db.type  | default(  __db_type ) }}', 'user': '{{ icec_db.user  | default(  __db_username ) }}', 'pw': '{{ icec_db.pw  | default(  __db_password ) }}' }
   - { app: 'wikis', 'name': "{{ wikis_db.name | default('WIKIS') }}", server: '{{ wikis_db.server  | default( __db_hostname ) }}', 'port': '{{ wikis_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ wikis_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ wikis_db.type  | default(  __db_type ) }}', 'user': '{{ wikis_db.user  | default(  __db_username ) }}', 'pw': '{{ wikis_db.pw  | default(  __db_password ) }}' }
 
 
@@ -114,4 +119,3 @@ __ccm_deploy:
 __ccm_db_info:
   - { app: 'ccm.gcd', 'name': "{{ __ccm_fgncd_db.name | default('FNGCD') }}", server: '{{ __ccm_fgncd_db.server  | default( __db_hostname ) }}', 'port': '{{ __ccm_fgncd_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ __ccm_fgncd_db.jdbc_file  | default( __db_jdbc_file ) }}', 'type': '{{ __ccm_fgncd_db.type  | default(  __db_type ) }}', 'user': '{{ __ccm_fgncd_db.user  | default(  __db_username ) }}', 'pw': '{{ __ccm_fgncd_db.pw  | default(  __db_password ) }}' }
   - { app: 'ccm.objstore', 'name': "{{ __ccm_fnos_db.name | default('FNOS') }}", server: '{{ __ccm_fnos_db.server  | default( __db_hostname ) }}', 'port': '{{ __ccm_fnos_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ __ccm_fnos_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ __ccm_fnos_db.type  | default(  __db_type ) }}', 'user': '{{ __ccm_fnos_db.user  | default(  __db_username ) }}', 'pw': '{{ __ccm_fnos_db.pw  | default(  __db_password ) }}' }
-
