@@ -1,0 +1,44 @@
+# How to run
+#
+# ansible --list-hosts was-nodes
+#
+# ansible -k was-nodes -m ping
+#
+# ansible-playbook -i hosts.c55.hm -k ansible-ibm-websphere/playbooks/was-profile-cleanup-logs.yml
+
+[dmgr]
+pxl1scb00311.dispositivos.bb.com.br
+
+[was-servers]
+##CCT-1
+#pxl1scb00300.dispositivos.bb.com.br servers="['clCommon_server0','clNews_server0','clHomepage_server0','clWidgets_server0','clRTE_server0','clSearch_server0','clMetrics_server0','clActivities_server0','clBlogs_server0','clForum_server0','clDogear_server0','clCommunities_server0','clWikis_server0','clMobile_server0','clModeration_server0']"
+#pxl1scb00301.dispositivos.bb.com.br servers="['clCommon_server1','clNews_server1','clHomepage_server1','clWidgets_server1','clRTE_server1','clSearch_server1','clMetrics_server1','clActivities_server1','clBlogs_server1','clForum_server1','clDogear_server1','clCommunities_server1','clWikis_server1','clMobile_server1','clModeration_server1']"
+#pxl1scb00302.dispositivos.bb.com.br servers="['clCommon_server2','clNews_server2','clHomepage_server2','clWidgets_server2','clRTE_server2','clSearch_server2','clMetrics_server2','clActivities_server2','clBlogs_server2','clForum_server2','clDogear_server2','clCommunities_server2','clWikis_server2','clMobile_server2','clModeration_server2']"
+#pxl1scb00303.dispositivos.bb.com.br servers="['clCommon_server3','clNews_server3','clHomepage_server3','clWidgets_server3','clRTE_server3','clSearch_server3','clMetrics_server3','clActivities_server3','clBlogs_server3','clForum_server3','clDogear_server3','clCommunities_server3','clWikis_server3','clMobile_server3','clModeration_server3']"
+#pxl1scb00304.dispositivos.bb.com.br servers="['clProfiles_server4','clFiles_server4','clViewer_server4','clCCM_server4']"
+pxl1scb00305.dispositivos.bb.com.br servers="['clProfiles_server5','clFiles_server5','clViewer_server5','clCCM_server5']"
+#pxl1scb00310.dispositivos.bb.com.br servers="['febserver']"
+#pxl1scb00312.dispositivos.bb.com.br servers="['cogserver']"
+
+## CCT-2
+#pxl1scb00003.dispositivos.bb.com.br servers="[]"
+#pxl1scb00004.dispositivos.bb.com.br servers="['clActivities_server4','clCommon_server4','clCommunities_server4','clHomepage_server4','clMetrics_server4','clPush_server4','clRTE_server4','clWidgets_server4','clWikis_server4']"
+#pxl1scb00005.dispositivos.bb.com.br servers="['clActivities_server5','clBlogs_server5','clCommunities_server5','clDogear_server5','clForum_server5','clHomepage_server5','clMobile_server5','clNews_server5','clPush_server5','clSearch_server5','clWidgets_server5']"
+#pxl1scb00006.dispositivos.bb.com.br servers="['clBlogs_server6','clCommon_server6','clFiles_server6','clForum_server6','clMetrics_server6','clMobile_server6','clModeration_server6','clNews_server6','clProfiles_server6','clRTE_server6','clSearch_server6','clViewer_server6','clWikis_server6']"
+#pxl1scb00007.dispositivos.bb.com.br servers="[]"
+
+[dmgr:vars]
+iim_repository_url=http://172.17.202.237/installation
+was_repository_url=http://172.17.202.237/was/8.5.5
+was_fixes_repository_url=http://172.17.202.237/was/8.5.5
+was_version="8.5.5012.20170627_1018"
+was_username=wsadmin
+was_password=gesit174
+
+[was-servers:vars]
+iim_repository_url=http://172.17.202.237/installation
+was_repository_url=http://172.17.202.237/was/8.5.5
+was_fixes_repository_url=http://172.17.202.237/was/8.5.5
+was_version="8.5.5012.20170627_1018"
+was_username=wsadmin
+was_password=gesit174

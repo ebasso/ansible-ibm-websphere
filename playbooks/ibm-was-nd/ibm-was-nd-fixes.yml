@@ -25,7 +25,7 @@
 
 - hosts:                    was-servers
   become:                   true
-  serial:                   1
+  serial:                   2
   vars:
     was_fp_version:       "8.5.5012.20170627_1018"
   roles:
