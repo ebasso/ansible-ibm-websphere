@@ -1,108 +1,35 @@
 ---
-__profile_name:          "{{ profile_name | default('Dmgr01') }}"
-__was_cellname:          "{{ was_cellname | default('ConnectionsCell') }}"
-__tmp_dir:               "{{ tmp_dir | default('/opt/IBM/Binaries') }}/cnx"
-__logs_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
-__iim_install_location:  "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
-__was_install_location:  "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
-__imshared_location:     "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
-__now:                   "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+__profile_name:              "{{ profile_name | default('Dmgr01') }}"
+__was_cellname:              "{{ was_cellname | default('ConnectionsCell') }}"
+__tmp_dir:                   "{{ tmp_dir | default('/opt/IBM/Binaries') }}"
+__logs_dir:                  "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
+__iim_install_location:      "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
+__was_install_location:      "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__imshared_location:         "{{ imshared_location  | default('/opt/IBM/IMShared') }}"
+__now:                       "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
 
-__rsp_file:              "{{ __logs_dir }}/connections_install.rsp"
-__log_file:              "{{ __logs_dir }}/cnx6_install.{{ __now }}.log"
-__tpl_file:              "LC.rsp.j2"
+__rsp_file:                  "{{ __logs_dir }}/connections_install.rsp"
+__log_file:                  "{{ __logs_dir }}/cnx6_install.{{ __now }}.log"
+__tpl_file:                  "LC.rsp.j2"
 
-__cnx_install_location:  "{{ cnx_install_location  | default('/opt/IBM/Connections') }}"
-__cnx_tmp_dir:           "{{ cnx_tmp_dir  | default('/opt/IBM/STTempDir') }}"
-__cnx_shared_area:       "{{ cnx_shared_area  | default('/opt/IBM/SharedArea') }}"
-__cnx_message_store:     "{{ cnx_message_store  | default('/opt/IBM/MessageStore') }}"
+__cnx_install_location:      "{{ cnx_install_location  | default('/opt/IBM/Connections') }}"
+__cnx_tmp_dir:               "{{ cnx_tmp_dir  | default('/opt/IBM/CnxTempDir') }}"
+__cnx_shared_area:           "{{ cnx_shared_area  | default('/opt/IBM/SharedArea') }}"
+__cnx_message_store:         "{{ cnx_message_store  | default('/opt/IBM/MessageStore') }}"
 
-__this_version:         "{{ cnx_version | default('6.0.0.0_20180330_1357') }}"
-__product_id:           "\"id='com.ibm.connections'\""
-__version_check:        "Installed com.ibm.connections.6.0.0.0_20180330_1357"
+__this_version:              "{{ cnx_version | default('6.0.0.0_20180927_0113') }}"
+__product_id:                "\"id='com.ibm.connections'\""
+__version_check:             "Installed com.ibm.connections.6.0.0.0_20180927_0113"
 
+# Connections Files
 __cnx_files:
   - { file_name: 'CNCTNS_V6.0_IFR1_LNX_ML.tar', check_sum: '5415ea36c80d03fa4bbb73d259ea841bfd9e3b5918169268a709aedea4eaa434' }
 #  - { file_name: 'CNCTNS_V6.0_IFR1WLNX,_AIX_ML.tar', check_sum: 'bce56543996922064ec9bf939de6c3685e2f65a572c214ab1df528acadd766da' }
 
-__cnx_fixes_version_latest: "CR4"
+__cnx_fixes_version_latest:  "CR4"
 __cnx_fixes_files_latest:
-  - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
+  - { file_name: '6.0.0.0-IC-Multi-CR4-LO94111.zip', check_sum: '08877c603892374f906e65c79b181a381a47c6552a7987630eb0646b2dc1ad71' }
 
-__cnx_fixes_version_cr3: "CR3"
-__cnx_fixes_files_cr3:
-  - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
-  - { file_name: 'IC60_CR3_LO94106.jar', check_sum: '4e76612efed46568a0f73102fb8790a7d078d58606265a8895fd6e344b4cd80c' }
-  - { file_name: 'IC60_CR3_LO94115.jar', check_sum: 'b66c60728efd36706fbeada2c846b76bba21b253be201edd97641b11078483ef' }
-  - { file_name: 'LO94099.zip', check_sum: '159295b33c4c14d97e0771ca18227586f24366af6f41e4f284ed4a30f08d6969' }
-
-__cnx_deploy_type:       "{{ cnx_deploy_type | default('large') }}"
-#__cnx_deploy_type:      "small"
-#__cnx_deploy_type:      "medium"
-
-__cnx_hosts:             "{{ groups['connections-servers'] }}"
-__cnx_domainname:        "{{ cnx_domainname }}"
-__smtp_hostname:         "{{ smtp_hostname }}"
-__smtp_port:             "{{ smtp_port  | default('25') }}"
-
-# deve ser definida por set_facts
-__was_encoded_password:  "WAS_ENCODED_PASSWORD"
-__db_encoded_password:   "DB_ENCODED_PASSWORD"
-__ccm_encoded_password:  "CCM_ENCODED_PASSWORD"
-
-#__large_deploy:
-__cnx_deploy:
-  - { name: 'activities',  cluster_name: "{{ activities_app.cluster_name  | default('clActivites') }}",  nodes: "{{ activities_app.nodes | default( cnx_node_list ) }}"}
-  - { name: 'blogs',  cluster_name: "{{ blogs_app.cluster_name  | default('clBlogs') }}",  nodes: "{{ blogs_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'dogear',  cluster_name: "{{ dogear_app.cluster_name  | default('clDogear') }}",  nodes: "{{ dogear_app.nodes | default( cnx_node_list ) }}"}
-  - { name: 'communities',  cluster_name: "{{ communities_app.cluster_name  | default('clCommunities') }}",  nodes: "{{ communities_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'files',  cluster_name: "{{ files_app.cluster_name  | default('clFiles') }}",  nodes: "{{ files_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'forums',  cluster_name: "{{ forums_app.cluster_name  | default('clForums') }}",  nodes: "{{ forums_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'homepage',  cluster_name: "{{ homepage_app.cluster_name  | default('clHomepage') }}",  nodes: "{{ homepage_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'metrics',  cluster_name: "{{ metrics_app.cluster_name  | default('clMetrics') }}",  nodes: "{{ metrics_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'mobile',  cluster_name: "{{ mobile_app.cluster_name  | default('clMobile') }}",  nodes: "{{ mobile_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'moderation',  cluster_name: "{{ moderation_app.cluster_name  | default('clModeration') }}",  nodes: "{{ moderation_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'news',  cluster_name: "{{ news_app.cluster_name  | default('clNews') }}",  nodes: "{{ news_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'profiles',  cluster_name: "{{ profiles_app.cluster_name  | default('clProfiles') }}",  nodes: "{{ profiles_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'search',  cluster_name: "{{ search_app.cluster_name  | default('clSearch') }}",  nodes: "{{ search_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'wikis',  cluster_name: "{{ wikis_app.cluster_name  | default('clWikis') }}",  nodes: "{{ wikis_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'rte',  cluster_name: "{{ rte_app.cluster_name  | default('clRte') }}",  nodes: "{{ rte_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'common',  cluster_name: "{{ common_app.cluster_name  | default('clCommon') }}",  nodes: "{{ common_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'widgetContainer',  cluster_name: "{{ widgets_app.cluster_name  | default('clWidgets') }}",  nodes: "{{ widgets_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'pushNotification',  cluster_name: "{{ push_app.cluster_name  | default('clPush') }}",  nodes: "{{ push_app.nodes  | default( cnx_node_list ) }}"}
-
-
-#__small_deploy:
-#  - { application: activities, clusterName: ICCluster, first_nodeName: _node01, serverInfo: }
-
-__db_username:           "{{ db_username  | default('LCUSER') }}"
-__db_password:           "{{ db_password }}"
-__db_hostname:           "{{ db_hostname }}"
-__db_port:               "{{ db_port  | default('50000') }}"
-__db_jdbc_file:          "{{ db_jdbc_file  | default('/opt/IBM/db2/V11.1/java') }}"
-__db_type:               "{{ db_type  | default('DB2') }}"
-#db_vendor:              "oracle"
-#db_vendor:              "sqlserver"
-
-__cnx_db_info:
-  - { app: 'activities', 'name': "{{ activities_db.name | default('OPNACT') }}", server: '{{ activities_db.server  | default( __db_hostname ) }}', 'port': '{{ activities_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ activities_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ activities_db.type  | default(  __db_type ) }}', 'user': '{{ activities_db.user  | default(  __db_username ) }}', 'pw': '{{ activities_db.pw  | default(  __db_password ) }}' }
-  - { app: 'blogs', 'name': "{{ blogs_db.name | default('BLOGS') }}", server: '{{ blogs_db.server  | default( __db_hostname ) }}', 'port': '{{ blogs_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ blogs_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ blogs_db.type  | default(  __db_type ) }}', 'user': '{{ blogs_db.user  | default(  __db_username ) }}', 'pw': '{{ blogs_db.pw  | default(  __db_password ) }}' }
-  - { app: 'communities', 'name': "{{ communities_db.name | default('SNCOMM') }}", server: '{{ communities_db.server  | default( __db_hostname ) }}', 'port': '{{ communities_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ communities_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ communities_db.type  | default(  __db_type ) }}', 'user': '{{ communities_db.user  | default(  __db_username ) }}', 'pw': '{{ communities_db.pw  | default(  __db_password ) }}' }
-  - { app: 'dogear', 'name': "{{ dogear_db.name | default('DOGEAR') }}", server: '{{ dogear_db.server  | default( __db_hostname ) }}', 'port': '{{ dogear_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ dogear_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ dogear_db.type  | default(  __db_type ) }}', 'user': '{{ dogear_db.user  | default(  __db_username ) }}', 'pw': '{{ dogear_db.pw  | default(  __db_password ) }}' }
-  - { app: 'files', 'name': "{{ files_db.name | default('FILES') }}", server: '{{ files_db.server  | default( __db_hostname ) }}', 'port': '{{ files_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ files_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ files_db.type  | default(  __db_type ) }}', 'user': '{{ files_db.user  | default(  __db_username ) }}', 'pw': '{{ files_db.pw  | default(  __db_password ) }}' }
-  - { app: 'forums', 'name': "{{ forums_db.name | default('FORUMS') }}", server: '{{ forums_db.server  | default( __db_hostname ) }}', 'port': '{{ forums_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ forums_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ forums_db.type  | default(  __db_type ) }}', 'user': '{{ forums_db.user  | default(  __db_username ) }}', 'pw': '{{ forums_db.pw  | default(  __db_password ) }}' }
-  - { app: 'homepage', 'name': "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', 'port': '{{ homepage_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ homepage_db.type  | default(  __db_type ) }}', 'user': '{{ homepage_db.user  | default(  __db_username ) }}', 'pw': '{{ homepage_db.pw  | default(  __db_password ) }}' }
-  - { app: 'metrics', 'name': "{{ metrics_db.name | default('METRICS') }}", server: '{{ metrics_db.server  | default( __db_hostname ) }}', 'port': '{{ metrics_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ metrics_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ metrics_db.type  | default(  __db_type ) }}', 'user': '{{ metrics_db.user  | default(  __db_username ) }}', 'pw': '{{ metrics_db.pw  | default(  __db_password ) }}' }
-  - { app: 'mobile', 'name': "{{ mobile_db.name | default('MOBILE') }}", server: '{{ mobile_db.server  | default( __db_hostname ) }}', 'port': '{{ mobile_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ mobile_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ mobile_db.type  | default(  __db_type ) }}', 'user': '{{ mobile_db.user  | default(  __db_username ) }}', 'pw': '{{ mobile_db.pw  | default(  __db_password ) }}' }
-  - { app: 'news', 'name': "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', 'port': '{{ homepage_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ homepage_db.type  | default(  __db_type ) }}', 'user': '{{ homepage_db.user  | default(  __db_username ) }}', 'pw': '{{ homepage_db.pw  | default(  __db_password ) }}' }
-  - { app: 'profiles', 'name': "{{ profiles_db.name | default('PEOPLEDB') }}", server: '{{ profiles_db.server  | default( __db_hostname ) }}', 'port': '{{ profiles_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ profiles_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ profiles_db.type  | default(  __db_type ) }}', 'user': '{{ profiles_db.user  | default(  __db_username ) }}', 'pw': '{{ profiles_db.pw  | default(  __db_password ) }}' }
-  - { app: 'pushNotification', 'name': "{{ push_db.name | default('PNS') }}", server: '{{ push_db.server  | default( __db_hostname ) }}', 'port': '{{ push_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ push_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ push_db.type  | default(  __db_type ) }}', 'user': '{{ push_db.user  | default(  __db_username ) }}', 'pw': '{{ push_db.pw  | default(  __db_password ) }}' }
-  - { app: 'search', 'name': "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', 'port': '{{ homepage_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ homepage_db.type  | default(  __db_type ) }}', 'user': '{{ homepage_db.user  | default(  __db_username ) }}', 'pw': '{{ homepage_db.pw  | default(  __db_password ) }}' }
-  - { app: 'icec', 'name': "{{ icec_db.name | default('XCC') }}", server: '{{ icec_db.server  | default( __db_hostname ) }}', 'port': '{{ icec_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ icec_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ icec_db.type  | default(  __db_type ) }}', 'user': '{{ icec_db.user  | default(  __db_username ) }}', 'pw': '{{ icec_db.pw  | default(  __db_password ) }}' }
-  - { app: 'wikis', 'name': "{{ wikis_db.name | default('WIKIS') }}", server: '{{ wikis_db.server  | default( __db_hostname ) }}', 'port': '{{ wikis_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ wikis_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ wikis_db.type  | default(  __db_type ) }}', 'user': '{{ wikis_db.user  | default(  __db_username ) }}', 'pw': '{{ wikis_db.pw  | default(  __db_password ) }}' }
-
-
-# DO NOT CHANGE THIS ORDER
 __ccm_files:
   - { file_name: '5.2.1-P8CPE-LINUX.BIN', check_sum: '456b7d36cde1cf174f8893999b034f49ac2b0558b96e8160a8197fcf916c3e3d' }
   - { file_name: '5.2.1.7-P8CPE-LINUX-FP007.BIN', check_sum: 'e877c6a7acabad3f9107d1266f51407dbbba5d8cd721e29aaad5f1b41c83f0ad' }
@@ -110,12 +37,114 @@ __ccm_files:
   - { file_name: 'IBM_CONTENT_NAVIGATOR-2.0.3-LINUX.bin', check_sum: 'b4f58d8933e2283610802aa7645c10e9c950b0e92a254954dcf306d672bda8e3' }
   - { file_name: 'IBM_CONTENT_NAVIGATOR-2.0.3.8-FP008-LINUX.bin', check_sum: 'b644367b609d9aed89d04c81f360c0b5f3d45125612cfd166e471b677da317a2' }
 
-__ccm_app: "{{ ccm_app  | default( {} ) }}"
-__ccm_fgncd_db: "{{ ccm_fgncd_db  | default( {} ) }}"
-__ccm_fnos_db: "{{ ccm_fnos_db  | default( {} ) }}"
+
+__cnx_fixes_version:         "{{ cnx_fixes_version | default( __cnx_fixes_version_latest ) }}"
+__cnx_fixes_files:           "{{ cnx_fixes_files | default( __cnx_fixes_files_latest ) }}"
+#__version_check:            "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
+#__product_id:               "\"id='com.ibm.websphere.ND.v85' version='{{ __this_version }}'\""
+
+__cnx_deploy_type:           "{{ cnx_deploy_type | default('large') }}"
+#__cnx_deploy_type:          "small"
+#__cnx_deploy_type:          "medium"
+
+__cnx_hosts:                 "{{ groups['connections-servers'] }}"
+__cnx_domainname:            "{{ cnx_domainname }}"
+__smtp_hostname:             "{{ smtp_hostname }}"
+__smtp_port:                 "{{ smtp_port  | default('25') }}"
+
+
+__db_username:               "{{ db_username  | default('LCUSER') }}"
+__db_password:               "{{ db_password }}"
+__db_hostname:               "{{ db_hostname }}"
+__db_port:                   "{{ db_port  | default('50000') }}"
+__db_jdbc_file:              "{{ db_jdbc_file  | default('/opt/IBM/db2/V11.1/java') }}"
+__db_type:                   "{{ db_type  | default('DB2') }}"
+#db_vendor:                  "oracle"
+#db_vendor:                  "sqlserver"
+
+#__small_deploy:
+#  - { application: activities, clusterName: ICCluster, first_nodeName: _node01, serverInfo: }
+
+# deve ser definida por set_facts
+__was_encoded_password:      "WAS_ENCODED_PASSWORD"
+__xor_encoded_password:      "XOR_ENCODED_PASSWORD"
+__db_encoded_password:       "DB_ENCODED_PASSWORD"
+__ccm_encoded_password:      "CCM_ENCODED_PASSWORD"
+
+__activities_app:            "{{ activities_app  | default( {} ) }}"
+__blogs_app:                 "{{ blogs_app  | default( {} ) }}"
+__dogear_app:                "{{ dogear_app  | default( {} ) }}"
+__communities_app:           "{{ communities_app  | default( {} ) }}"
+__files_app:                 "{{ files_app  | default( {} ) }}"
+__forums_app:                "{{ forums_app  | default( {} ) }}"
+__homepage_app:              "{{ homepage_app  | default( {} ) }}"
+__metrics_app:               "{{ metrics_app  | default( {} ) }}"
+__mobile_app:                "{{ mobile_app  | default( {} ) }}"
+__moderation_app:            "{{ moderation_app  | default( {} ) }}"
+__news_app:                  "{{ news_app  | default( {} ) }}"
+__profiles_app:              "{{ profiles_app  | default( {} ) }}"
+__search_app:                "{{ search_app  | default( {} ) }}"
+__wikis_app:                 "{{ wikis_app  | default( {} ) }}"
+__rte_app:                   "{{ rte_app  | default( {} ) }}"
+__common_app:                "{{ common_app  | default( {} ) }}"
+__widgets_app:               "{{ widgets_app  | default( {} ) }}"
+__push_app:                  "{{ push_app  | default( {} ) }}"
+
+#__large_deploy:
+__cnx_deploy:
+  - { name: 'activities',  cluster_name: "{{ __activities_app.cluster_name  | default('clActivites') }}",  nodes: "{{ __activities_app.nodes | default( cnx_node_list ) }}"}
+  - { name: 'blogs',  cluster_name: "{{ __blogs_app.cluster_name  | default('clBlogs') }}",  nodes: "{{ __blogs_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'dogear',  cluster_name: "{{ __dogear_app.cluster_name  | default('clDogear') }}",  nodes: "{{ __dogear_app.nodes | default( cnx_node_list ) }}"}
+  - { name: 'communities',  cluster_name: "{{ __communities_app.cluster_name  | default('clCommunities') }}",  nodes: "{{ __communities_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'files',  cluster_name: "{{ __files_app.cluster_name  | default('clFiles') }}",  nodes: "{{ __files_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'forums',  cluster_name: "{{ __forums_app.cluster_name  | default('clForums') }}",  nodes: "{{ __forums_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'homepage',  cluster_name: "{{ __homepage_app.cluster_name  | default('clHomepage') }}",  nodes: "{{ __homepage_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'metrics',  cluster_name: "{{ __metrics_app.cluster_name  | default('clMetrics') }}",  nodes: "{{ __metrics_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'mobile',  cluster_name: "{{ __mobile_app.cluster_name  | default('clMobile') }}",  nodes: "{{ __mobile_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'moderation',  cluster_name: "{{ __moderation_app.cluster_name  | default('clModeration') }}",  nodes: "{{ __moderation_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'news',  cluster_name: "{{ __news_app.cluster_name  | default('clNews') }}",  nodes: "{{ __news_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'profiles',  cluster_name: "{{ __profiles_app.cluster_name  | default('clProfiles') }}",  nodes: "{{ __profiles_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'search',  cluster_name: "{{ __search_app.cluster_name  | default('clSearch') }}",  nodes: "{{ __search_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'wikis',  cluster_name: "{{ __wikis_app.cluster_name  | default('clWikis') }}",  nodes: "{{ __wikis_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'rte',  cluster_name: "{{ __rte_app.cluster_name  | default('clRte') }}",  nodes: "{{ __rte_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'common',  cluster_name: "{{ __common_app.cluster_name  | default('clCommon') }}",  nodes: "{{ __common_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'widgetContainer',  cluster_name: "{{ __widgets_app.cluster_name  | default('clWidgets') }}",  nodes: "{{ __widgets_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'pushNotification',  cluster_name: "{{ __push_app.cluster_name  | default('clPush') }}",  nodes: "{{ __push_app.nodes  | default( cnx_node_list ) }}"}
+
+__cnx_db_info:
+  - { app: 'activities', name: "{{ activities_db.name | default('OPNACT') }}", server: '{{ activities_db.server  | default( __db_hostname ) }}', port: '{{ activities_db.port  | default(  __db_port ) }}', jdbc_file: '{{ activities_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ activities_db.type  | default(  __db_type ) }}', user: '{{ activities_db.user  | default(  __db_username ) }}', pw: '{{ activities_db.pw  | default(  __db_password ) }}' }
+  - { app: 'blogs', name: "{{ blogs_db.name | default('BLOGS') }}", server: '{{ blogs_db.server  | default( __db_hostname ) }}', port: '{{ blogs_db.port  | default(  __db_port ) }}', jdbc_file: '{{ blogs_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ blogs_db.type  | default(  __db_type ) }}', user: '{{ blogs_db.user  | default(  __db_username ) }}', pw: '{{ blogs_db.pw  | default(  __db_password ) }}' }
+  - { app: 'communities', name: "{{ communities_db.name | default('SNCOMM') }}", server: '{{ communities_db.server  | default( __db_hostname ) }}', port: '{{ communities_db.port  | default(  __db_port ) }}', jdbc_file: '{{ communities_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ communities_db.type  | default(  __db_type ) }}', user: '{{ communities_db.user  | default(  __db_username ) }}', pw: '{{ communities_db.pw  | default(  __db_password ) }}' }
+  - { app: 'dogear', name: "{{ dogear_db.name | default('DOGEAR') }}", server: '{{ dogear_db.server  | default( __db_hostname ) }}', port: '{{ dogear_db.port  | default(  __db_port ) }}', jdbc_file: '{{ dogear_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ dogear_db.type  | default(  __db_type ) }}', user: '{{ dogear_db.user  | default(  __db_username ) }}', pw: '{{ dogear_db.pw  | default(  __db_password ) }}' }
+  - { app: 'files', name: "{{ files_db.name | default('FILES') }}", server: '{{ files_db.server  | default( __db_hostname ) }}', port: '{{ files_db.port  | default(  __db_port ) }}', jdbc_file: '{{ files_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ files_db.type  | default(  __db_type ) }}', user: '{{ files_db.user  | default(  __db_username ) }}', pw: '{{ files_db.pw  | default(  __db_password ) }}' }
+  - { app: 'forums', name: "{{ forums_db.name | default('FORUMS') }}", server: '{{ forums_db.server  | default( __db_hostname ) }}', port: '{{ forums_db.port  | default(  __db_port ) }}', jdbc_file: '{{ forums_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ forums_db.type  | default(  __db_type ) }}', user: '{{ forums_db.user  | default(  __db_username ) }}', pw: '{{ forums_db.pw  | default(  __db_password ) }}' }
+  - { app: 'homepage', name: "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', port: '{{ homepage_db.port  | default(  __db_port ) }}', jdbc_file: '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ homepage_db.type  | default(  __db_type ) }}', user: '{{ homepage_db.user  | default(  __db_username ) }}', pw: '{{ homepage_db.pw  | default(  __db_password ) }}' }
+  - { app: 'metrics', name: "{{ metrics_db.name | default('METRICS') }}", server: '{{ metrics_db.server  | default( __db_hostname ) }}', port: '{{ metrics_db.port  | default(  __db_port ) }}', jdbc_file: '{{ metrics_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ metrics_db.type  | default(  __db_type ) }}', user: '{{ metrics_db.user  | default(  __db_username ) }}', pw: '{{ metrics_db.pw  | default(  __db_password ) }}' }
+  - { app: 'mobile', name: "{{ mobile_db.name | default('MOBILE') }}", server: '{{ mobile_db.server  | default( __db_hostname ) }}', port: '{{ mobile_db.port  | default(  __db_port ) }}', jdbc_file: '{{ mobile_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ mobile_db.type  | default(  __db_type ) }}', user: '{{ mobile_db.user  | default(  __db_username ) }}', pw: '{{ mobile_db.pw  | default(  __db_password ) }}' }
+  - { app: 'news', name: "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', port: '{{ homepage_db.port  | default(  __db_port ) }}', jdbc_file: '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ homepage_db.type  | default(  __db_type ) }}', user: '{{ homepage_db.user  | default(  __db_username ) }}', pw: '{{ homepage_db.pw  | default(  __db_password ) }}' }
+  - { app: 'profiles', name: "{{ profiles_db.name | default('PEOPLEDB') }}", server: '{{ profiles_db.server  | default( __db_hostname ) }}', port: '{{ profiles_db.port  | default(  __db_port ) }}', jdbc_file: '{{ profiles_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ profiles_db.type  | default(  __db_type ) }}', user: '{{ profiles_db.user  | default(  __db_username ) }}', pw: '{{ profiles_db.pw  | default(  __db_password ) }}' }
+  - { app: 'pushNotification', name: "{{ push_db.name | default('PNS') }}", server: '{{ push_db.server  | default( __db_hostname ) }}', port: '{{ push_db.port  | default(  __db_port ) }}', jdbc_file: '{{ push_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ push_db.type  | default(  __db_type ) }}', user: '{{ push_db.user  | default(  __db_username ) }}', pw: '{{ push_db.pw  | default(  __db_password ) }}' }
+  - { app: 'search', name: "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', port: '{{ homepage_db.port  | default(  __db_port ) }}', jdbc_file: '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ homepage_db.type  | default(  __db_type ) }}', user: '{{ homepage_db.user  | default(  __db_username ) }}', pw: '{{ homepage_db.pw  | default(  __db_password ) }}' }
+  - { app: 'icec', name: "{{ icec_db.name | default('XCC') }}", server: '{{ icec_db.server  | default( __db_hostname ) }}', port: '{{ icec_db.port  | default(  __db_port ) }}', jdbc_file: '{{ icec_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ icec_db.type  | default(  __db_type ) }}', user: '{{ icec_db.user  | default(  __db_username ) }}', pw: '{{ icec_db.pw  | default(  __db_password ) }}' }
+  - { app: 'wikis', name: "{{ wikis_db.name | default('WIKIS') }}", server: '{{ wikis_db.server  | default( __db_hostname ) }}', port: '{{ wikis_db.port  | default(  __db_port ) }}', jdbc_file: '{{ wikis_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ wikis_db.type  | default(  __db_type ) }}', user: '{{ wikis_db.user  | default(  __db_username ) }}', pw: '{{ wikis_db.pw  | default(  __db_password ) }}' }
+
+
+# DO NOT CHANGE THIS ORDER
+__ccm_app:                   "{{ ccm_app  | default( {} ) }}"
+__ccm_fgncd_db:              "{{ ccm_fgncd_db  | default( {} ) }}"
+__ccm_fnos_db:               "{{ ccm_fnos_db  | default( {} ) }}"
 
 __ccm_deploy:
   - { name: 'ccm',  cluster_name: "{{ __ccm_app.cluster_name  | default('clCCM') }}",  nodes: "{{ __ccm_app.nodes  | default( cnx_node_list ) }}"}
+
 __ccm_db_info:
-  - { app: 'ccm.gcd', 'name': "{{ __ccm_fgncd_db.name | default('FNGCD') }}", server: '{{ __ccm_fgncd_db.server  | default( __db_hostname ) }}', 'port': '{{ __ccm_fgncd_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ __ccm_fgncd_db.jdbc_file  | default( __db_jdbc_file ) }}', 'type': '{{ __ccm_fgncd_db.type  | default(  __db_type ) }}', 'user': '{{ __ccm_fgncd_db.user  | default(  __db_username ) }}', 'pw': '{{ __ccm_fgncd_db.pw  | default(  __db_password ) }}' }
-  - { app: 'ccm.objstore', 'name': "{{ __ccm_fnos_db.name | default('FNOS') }}", server: '{{ __ccm_fnos_db.server  | default( __db_hostname ) }}', 'port': '{{ __ccm_fnos_db.port  | default(  __db_port ) }}', 'jdbc_file': '{{ __ccm_fnos_db.jdbc_file  | default(  __db_jdbc_file ) }}', 'type': '{{ __ccm_fnos_db.type  | default(  __db_type ) }}', 'user': '{{ __ccm_fnos_db.user  | default(  __db_username ) }}', 'pw': '{{ __ccm_fnos_db.pw  | default(  __db_password ) }}' }
+  - { app: 'ccm.gcd', name: "{{ __ccm_fgncd_db.name | default('FNGCD') }}", server: '{{ __ccm_fgncd_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fgncd_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fgncd_db.jdbc_file  | default( __db_jdbc_file ) }}', type: '{{ __ccm_fgncd_db.type  | default(  __db_type ) }}', user: '{{ __ccm_fgncd_db.user  | default(  __db_username ) }}', pw: '{{ __ccm_fgncd_db.pw  | default(  __db_password ) }}' }
+  - { app: 'ccm.objstore', name: "{{ __ccm_fnos_db.name | default('FNOS') }}", server: '{{ __ccm_fnos_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fnos_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fnos_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ __ccm_fnos_db.type  | default(  __db_type ) }}', user: '{{ __ccm_fnos_db.user  | default(  __db_username ) }}', pw: '{{ __ccm_fnos_db.pw  | default(  __db_password ) }}' }
+
+# OLDER VERSIONS
+__cnx_fixes_version_cr3:     "CR3"
+__cnx_fixes_files_cr3:
+  - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
+  - { file_name: 'IC60_CR3_LO94106.jar', check_sum: '4e76612efed46568a0f73102fb8790a7d078d58606265a8895fd6e344b4cd80c' }
+  - { file_name: 'IC60_CR3_LO94115.jar', check_sum: 'b66c60728efd36706fbeada2c846b76bba21b253be201edd97641b11078483ef' }
+  - { file_name: 'LO94099.zip', check_sum: '159295b33c4c14d97e0771ca18227586f24366af6f41e4f284ed4a30f08d6969' }

@@ -14,7 +14,7 @@
     src:                "{{ __tpl_file }}"
     dest:               "{{ __rsp_file }}"
 
-- name:                 "Add TLS Signer Certificate for AD to Cell Default Trust Store"
+- name:                 "Full Synchronize with nodes"
   command:
     chdir={{ __bin_dir }}
     {{ __bin_dir }}/wsadmin.sh -lang jython -port 8879 -username {{ __was_username }} -password {{ __was_password }} -f {{ __rsp_file }} {{ __cluster_name }}

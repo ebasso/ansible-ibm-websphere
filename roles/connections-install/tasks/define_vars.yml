@@ -1,20 +1,12 @@
 ---
-#- name:             Is Sametime Console?
-#  set_fact:
-#    __rsp_file:     "{{ __logs_dir }}/install_stconsole.rsp"
-#    __log_file:     "{{ __logs_dir }}/install_stconsole.{{ __now }}.log"
-#    __tpl_file:     "install_stconsole.rsp.j2"
-#    __this_version: "{{ system_console_version }}"
-#    __this_files:   "{{ system_console_files }}"
-#    __product_id:   "\"id='com.ibm.lotus.sametime.systemconsoleserver' version='{{ system_console_version }}'\""
-#  when:             "'system-console' in group_names"
-#
-
-#
-#- debug: var=__this_version
-##__version_check:   "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
-
 - name:              Is Product already Installed?
   command:           "egrep {{ __product_id }} /var/ibm/InstallationManager/installed.xml"
   register:          version_already_installed
   ignore_errors:     true
+
+- name:              "Use Fix Pack 6.0.3 CR3?"
+  set_fact:
+    __cnx_fixes_files: "{{ __cnx_fixes_files_cr3 }}"
+    __version_check:   "Updated to com.ibm.connections{{ __cnx_fixes_version }}"
+    __product_id:      "\"id='com.ibm.connections' version='{{ __cnx_fixes_version }}'\""
+  when:              ( __cnx_fixes_version == __cnx_fixes_version_cr3 )

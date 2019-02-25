@@ -24,26 +24,6 @@
     - was_password is defined and was_password != ''
     msg: "Set the value of 'was_password' in the inventory file."
 
-#- name: db_username should be defined
-#  assert:
-#    that:
-#    - db_username is defined and db_username != ''
-#    msg: "Set the value of 'db_username' in the inventory file."
-#  when: "'system-console' in group_names"
-#
-#- name: db_password should be defined
-#  assert:
-#    that:
-#    - db_password is defined and db_password != ''
-#    msg: "Set the value of 'db_password' in the inventory file."
-#  when: "'system-console' in group_names"
-
-- name: cnx_domainname should be defined
-  assert:
-    that:
-    - cnx_domainname is defined and cnx_domainname != ''
-    msg: "Set the value of 'cnx_domainname' in the inventory file."
-
 - name: cnx_domainname should be defined
   assert:
     that:

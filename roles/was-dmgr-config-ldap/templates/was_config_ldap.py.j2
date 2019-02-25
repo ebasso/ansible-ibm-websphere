@@ -20,6 +20,8 @@ AdminTask.addIdMgrLDAPGroupMemberAttr('[-id {{ ldap_repo }} -name uniquemember -
 AdminTask.deleteIdMgrLDAPGroupMemberAttr('[-id {{ ldap_repo }} -name member]')
 AdminTask.setIdMgrLDAPGroupConfig('[-id {{ ldap_repo }} -name ibm-allGroups -scope direct]')
 
+AdminTask.updateIdMgrRealm(['-name defaultWIMFileBasedRealm -allowOperationIfReposDown true']) 
+
 #Save and Synchronise
 AdminConfig.save()
 AdminNodeManagement.syncActiveNodes()

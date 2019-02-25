@@ -1,23 +1,34 @@
 ---
+- name:              Encode Password XOR
+  command:  
+    chdir={{__was_install_location}}/bin
+    "echo 'xpw={{ was_password }}' > {{__logs_dir}}/xor.props && ./PropFilePasswordEncoder.sh {{__logs_dir}}/xor.props xpw && cat {{__logs_dir}}/xor.props | awk -F= '{ printf $2 }"
+  register:          __xor_encoded_password
+  changed_when:      ( __xor_encoded_password.rc == 0)
+
+#
+#- debug: var=__xor_encoded_password
+##__version_check:   "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
+
 - name:              Encode WAS Password
-  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }}"
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }} -silent -noSplash"
   register:          __was_encoded_password
   changed_when:      ( __was_encoded_password.rc == 0)
 
 - name:              Encode DB Passwords
-  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ item.pw }}"
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ item.pw }} -silent -noSplash"
   register:          __cnx_db_info_results
   #changed_when:      ( item.encoded_pw.rc == 0)
   with_items:        "{{ __cnx_db_info }}"
 
 - name:              Encode CCM Password 
-  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }}"
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }} -silent -noSplash"
   register:          __ccm_encoded_password
   changed_when:      ( __ccm_encoded_password.rc == 0)
   when:              ( ccm_install is defined )
 
 - name:              Encode DB Passwords for CCM
-  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ item.pw }}"
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ item.pw }} -silent -noSplash"
   register:          __ccm_db_info_results
   with_items:        "{{ __ccm_db_info }}"
   when:              ( ccm_install is defined )
@@ -35,16 +46,26 @@
     backup:          yes
   ignore_errors:     true
 
+- name:              Change SOAP request timeout
+  replace:
+    path:            "{{ __was_install_location }}/profiles/{{ __profile_name }}/properties/soap.client.props"
+    regexp:          '(\s*)com.ibm.SOAP.requestTimeout=180(\s*)'
+    replace:         '\1com.ibm.SOAP.requestTimeout=600\2'
+    backup:          yes
+  ignore_errors:     true
+
 - name:              Install Connections Software
   command:
-    chdir={{ __tmp_dir }}
+    chdir={{ __tmp_dir }}/cnx
     {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}
   register:          cout
 #  changed_when:      ( cout.stdout.find(__version_check) != -1)
-#
-##- debug:            var=cout
-#
+
+
 #- name:              Cleanup Binaries directory
 #  file:
 #    state:           absent
-#    path:            "{{ __tmp_dir }}"
+#    path:            "{{ __tmp_dir }}/{{ items }}"
+#  with_items:
+#    - cnx
+#    - cnx-cr

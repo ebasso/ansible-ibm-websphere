@@ -1,4 +1,16 @@
 #Configure Applicaton Security
-AdminTask.configureAdminWIMUserRegistry('[-verifyRegistry true ]') 
+AdminTask.setGlobalSecurity ('[-enabled true]')
+params = []
+params.append(["enabled", "true"])
+#print "Enable application security."
+params.append( ["appEnabled", "true"] )
+#params.append(["enforceJava2Security", "false"])
+#userreg = AdminConfig.list('WIMUserRegistry')
+#params.append(["activeUserRegistry", userreg])
+#ltpa = AdminConfig.list("LTPA")
+#params.append(["activeAuthMechanism", ltpa])
+sec = AdminConfig.list("Security")
+AdminConfig.modify(sec, params)
+
 AdminConfig.save()
 # End of File

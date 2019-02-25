@@ -7,7 +7,7 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 |-------------------------------|----------------|--------------------------------------------------------------|
 | ibm-was-nd-complete.yml       | Complete       | Install IBM HTTP Server - 8.5.5.14  |
 | ibm-http-server-complete.yml  | Complete       | Install IBM WebSphere Application Server - Network Deployment - 8.5.5.14  |
-| ibm-connections6.yml          | In Development | Install IBM Connections 6   |
+| ibm-connections6.yml          | Complete       | Install IBM Connections 6   |
 
 # Roles
 
@@ -29,6 +29,8 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 | was-dmgr-config-ldap            | Configure LDAP Repository (Server must be started) |
 | was-dmgr-config-webserver       | Configure WebServers on DMGR |
 | was-dmgr-create-profile         | Create a profile for Deployment Manager |
+| was-dmgr-enable-app-sec         | Enable application security  |
+| was-dmgr-full-sync-nodes        | Do a Full Synchronize with nodes  |
 | was-dmgr-import-tls-cert        | Add TLS Signer Certificate to Cell Default Trust Store (Server must be started)|
 | was-dmgr-restart                | Restart Deployment Manager |
 | was-dmgr-start                  | Start Deployment Manager |
@@ -95,8 +97,7 @@ ansible-playbooks -i environments/hosts.development -u <username> -k playbooks/i
 
 # For other versions of IIM, WAS and WAS fixes
 
-1) If you are using a different Fix Pack than FP 14, you must change
-generate sha256 hashes.
+1) If you are using a different Fix Pack than FP 14, you must change generate sha256 hashes.
 
 ```
 Example: sha256sum  8.5.5-WS-WAS-FP09-part1.zip

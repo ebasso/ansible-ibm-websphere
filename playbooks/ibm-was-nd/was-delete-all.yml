@@ -1,6 +1,6 @@
 # Delete directories - BE CAREFULL
 #
-# ansible-playbook -i environments/hosts.development -u <username> -k playbooks/was-delete-all.yml
+# ansible-playbook -i environments/hosts.development -u <username> -k playbooks/ibm-was-nd/was-delete-all.yml
 ---
 - hosts:                    dmgr,was-servers
   become:                   true
@@ -17,18 +17,19 @@
         path:                "{{ item }}"
         state:               absent
       with_items:
-      - /var/ibm
-      - /opt/IBM/Binaries
-      - /opt/IBM/InstallationManager
-      - /opt/IBM/WebSphere
-      - /opt/IBM/IMShared
-      - /etc/.ibm
+        - /var/ibm
+        - /opt/IBM/Binaries
+        - /opt/IBM/InstallationManager
+        - /opt/IBM/WebSphere
+        - /opt/IBM/IMShared
+        - /etc/.ibm
 
     - name:        Delete Connections directory
-      command:       killall -9 java
-      register:      cout
+      file:
+        path:                "{{ item }}"
+        state:               absent
       with_items:
-      - "/opt/IBM/Connections"
+        - "/opt/IBM/Connections"
       ignore_errors: true
 
 - hosts:                    ihs-servers
@@ -46,11 +47,11 @@
         path:                "{{ item }}"
         state:               absent
       with_items:
-      - /var/ibm
-      - /opt/IBM/Binaries
-      - /opt/IBM/InstallationManager
-      - /opt/IBM/HTTPServer
-      - /opt/IBM/WebSphere
-      - /opt/IBM/IMShared
-      - /etc/.ibm
-      - /root/.ibm
+        - /var/ibm
+        - /opt/IBM/Binaries
+        - /opt/IBM/InstallationManager
+        - /opt/IBM/HTTPServer
+        - /opt/IBM/WebSphere
+        - /opt/IBM/IMShared
+        - /etc/.ibm
+        - /root/.ibm

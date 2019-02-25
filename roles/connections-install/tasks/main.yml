@@ -8,8 +8,9 @@
 - name:          Define Vars
   include_tasks: define_vars.yml
 
-#- include_tasks: download_extract_connections.yml
-#  when:          version_already_installed.rc != 0
+- name:          Download and Extract Connections Files
+  include_tasks: download_extract_connections.yml
+  when:          version_already_installed.rc != 0
 
 - include_tasks: install_connections.yml
   when:          version_already_installed.rc != 0

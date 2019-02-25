@@ -14,8 +14,10 @@
     <data key='user.job' value='INSTALL'/>
     <data key='user.lcinstallscript.path' value='/tmp/LCInstallScript'/>
     <data key='user.nodeslist' value='{% for node in cnx_node_list %}{{ node }}-node,{% endfor %}'/>
-    <data key='user.nodesHostnamelist' value='{% for node in cnx_hostname_list %}{{ node }},{% endfor %}'/>
     <data key='user.nodeAgentList' value='{% for node in cnx_node_list %}{{ node }}-node:true;{% endfor %}'/>
+    <!-- <data key='user.nodesServerlist' value='Node01:server1,webserver1;'/> -->
+    <data key='user.nodesHostnamelist' value='{% for node in cnx_hostname_list %}{{ node }},{% endfor %}'/>
+    <data key='user.isGUIMode' value='F'/>
     <data key='user.was.install.location' value='{{ __was_install_location }}'/>
     <data key='user.was.install.location.configproperties' value='{{ __was_install_location }}'/>
     <data key='user.was.install.location.win32format' value='{{ __was_install_location }}'/>
@@ -29,7 +31,6 @@
     <data key='user.was.domainName' value='{{ __cnx_domainname }}'/>
     <data key='user.was.adminuser.id' value='{{ was_username }}'/>
     <data key='user.was.adminuser.password' value='{{ __was_encoded_password.stdout | trim }}'/>
-    <data key='user.was.adminuser.xor.encrypted.password' value='{{ __xor_encoded_password.stdout | trim }}'/>
 {% for app in __cnx_deploy %}
     <data key='user.{{ app.name }}.adminuser.id' value='{{ was_username }}'/>
     <data key='user.{{ app.name }}.adminuser.password' value='{{ __was_encoded_password.stdout | trim }}'/>
@@ -48,8 +49,30 @@
     <data key='user.ccm.existingDeployment' value='false'/>
     <data key='user.ccm.userName' value='{{ was_username }}'/>
     <data key='user.ccm.password' value='{{ __was_encoded_password.stdout | trim }}'/>
+    <!-- Set to 'true' to use existing FileNet deployment -->
+    <!-- Note: 'user.ccm.existingDeployment' in below section can only be set to 'true'. 'false' is not supported. -->
+    <!-- Please enable below settings by removing the comment, and also comment out above settings for new FileNet deployment -->
+    <!-- <data key='user.ccm.existingDeployment' value='true'/> <data key='user.ccm.userName' value='"filenetAdmin": wasadmin'/> <data key='user.ccm.password' value='"filenetAdminPassword":password'/> -->
 {% endif %}
+    <!-- Specify cluster parameters for each application. For example, shown below are the News cluster parameters -->
+    <!-- small:All applications are installed in one cluster; medium:The applications are installed in several clusters; large:Each application is installed in its own cluster -->
     <data key='user.deployment.type' value='{{ __cnx_deploy_type }}'/>
+    <!-- Specify the cluster, node and server parameters for each application. -->
+    <!-- The format is {applicationName}.{nodeName}.Servername=server name. If you use multiple nodes for an application, use the semicolon character(";") to separate them. For example, news.node1.ServerName=server1;news.node2.ServerName=server2; -->
+    <!-- Specify whether to use an existing cluster
+    <data key='user.activities.clusterExist' value='false'/>
+    -->
+    <!-- Cluster name
+    <data key='user.activities.clusterName' value='ICCluster'/>
+    -->
+    <!-- Specify the name of the first federated node(alphabetical order) to deploy the application on.
+    <data key='user.activities.firstNodeName' value='Node01'/>
+    -->
+    <!-- Specify the node and server parameters for each application. -->
+    <!-- The format is {applicationName}.{nodeName}.Servername=server name. If you use multiple nodes for an application, use the semicolon character(";") to separate them. For example, news.node1.ServerName=server1;news.node2.ServerName=server2;
+    <data key='user.activities.serverInfo' value='activities.Node01.ServerName=ICCluster_server1;'/>
+    <data key='user.activities.clusterInfo' value='[{&quot;node&quot;: &quot;Node01&quot;, &quot;name&quot;: &quot;ICCluster_server1&quot;},]'/>
+    -->
 {% for app in __cnx_deploy %}
     <data key='user.{{ app.name }}.clusterExist' value='false'/>
     <data key='user.{{ app.name }}.clusterName' value='{{ app.cluster_name }}'/>
@@ -64,19 +87,24 @@
     <data key='user.{{ app.name }}.clusterName' value='{{ app.cluster_name }}'/>
     <data key='user.{{ app.name }}.firstNodeName' value='{{ app.nodes[0] }}-node'/>
     <data key='user.{{ app.name }}.secondaryNodesNames' value='{% for node in app.nodes[1:] %}{{ node }}-node,{% endfor %}'/>
-    <data key='user.{{ app.name }}.serverInfo' value='{% for node in app.nodes %}{{ app.name }}.{{ node }}-node.ServerName={{ app.cluster_name }}-{{ node }};{% endfor %}'/>
+    <data key='user.{{ app.name }}.serverInfo' value='{% for node in app.nodes %}{{ app.name }}.{{ node }}-node.ServerName={{ app.cluster_name }}-{{ node }},{% endfor %}'/>
     <data key='user.{{ app.name }}.clusterInfo' value='[{% for node in app.nodes %}{&quot;node&quot;: &quot;{{ node }}-node&quot;, &quot;name&quot;: &quot;{{ app.cluster_name }}-{{ node }}&quot;},{% endfor %}]'/>
   {% endfor %}
 {% endif %}
-    <data key='user.database.type' value='{{ __db_type }}'/>
+    <!-- Specifies the database parameters for each application.-->
+    <!-- The settings for the different database types are:-->
+    <!-- dbType:DB2; -->
+    <!-- dbType:oracle; -->
+    <!-- dbType:sqlserver; -->
+    <!-- Specify the database parameters, including database connection properties, for each application. For example, shown below are the Activities database parameters. -->
 {% for db in __cnx_db_info_results.results %}
-    <data key='user.{{ db.item.app }}.dbType' value='{{ db.item.type }}'/>
-    <data key='user.{{ db.item.app }}.jdbcLibraryPath' value='{{ db.item.jdbc_file }}'/>
     <data key='user.{{ db.item.app }}.dbHostName' value='{{ db.item.server }}'/>
     <data key='user.{{ db.item.app }}.dbPort' value='{{ db.item.port }}'/>
+    <data key='user.{{ db.item.app }}.jdbcLibraryPath' value='{{ db.item.jdbc_file }}'/>
     <data key='user.{{ db.item.app }}.dbName' value='{{ db.item.name }}'/>
     <data key='user.{{ db.item.app }}.dbUser' value='{{ db.item.user }}'/>
     <data key='user.{{ db.item.app }}.dbUserPassword' value='{{ db.stdout | trim }}'/>
+    <data key='user.{{ db.item.app }}.dbType' value='{{ db.item.type }}'/>
 {% endfor %}
 {% if ccm_install is defined %}
   {% for db in __ccm_db_info_results.results %}
@@ -89,6 +117,10 @@
     <data key='user.{{ db.item.app }}.dbType' value='{{ db.item.type }}'/>
   {% endfor %}
 {% endif %}
+    <!--
+    <data key='user.web.server.name' value='webserver1'/>
+    <data key='user.web.server.node' value='Node01'/>
+    -->
     <data key='user.contentStore.local.path' value='{{ __cnx_install_location }}/data/local'/>
     <data key='user.contentStore.shared.path' value='{{ __cnx_shared_area }}'/>
     <data key='user.contentStore.shared.path.configproperties' value='{{ __cnx_shared_area }}/ccm'/>
@@ -100,6 +132,7 @@
     <data key='user.fncs.install.location' value='{{ __cnx_install_location }}/FNCS'/>
     <data key='user.connections.install.location.win32format' value='{{ __cnx_install_location }}'/>
 {% endif %}
+    <data key='user.notification.replyto.enabled' value='false'/>
     <data key='user.notification.enabled' value='true'/>
     <data key='user.notification.useJavaMailProvider' value='true'/>
     <data key='user.notification.host' value='{{ __smtp_hostname }}'/>
@@ -109,10 +142,14 @@
     <data key='user.notification.password.key.value' value='&quot;password&quot;:&quot;&quot;,'/>
     <data key='user.notification.protocol.key.value' value='&quot;protocol&quot;:&quot;smtp&quot;,'/>
     <data key='user.notification.ssl.enabled' value='false'/>
-    <data key='user.notification.replyto.enabled' value='false'/>
+    <!-- Sepecify the usermapping
+    <data key='user.user.mapping.administrative.users' value='ajones1'/>
+    <data key='user.user.mapping.global.moderater.users' value='ajones2'/>
+    -->
   </profile>
+  <!-- Specify name and version data for IBM Installation Manager and IBM Connections, and specify which applications to install. -->
   <install>
-    <!-- IBM Connections 6.0.0.0_CR3 -->
+    <!-- IBM Connections 6.0.0.0 -->
     <offering profile='IBM Connections' id='com.ibm.connections'
       version='{{ __this_version }}'
       features='main,common,files,homepage,news,pushNotification,search,rte,widgetContainer,activities,blogs,dogear,communities,forums,metrics,mobile,moderation,profiles,wikis,icec{% if ccm_install is defined %},ccm{% endif %}'/>
