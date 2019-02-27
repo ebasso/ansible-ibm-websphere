@@ -13,7 +13,7 @@
 
 - name:          Install pre-requisites Yum
   yum:
-    name: ['nfs-utils'] 
+    name: ['nfs-utils', 'gtk2', 'libXtst', 'xorg-x11-fonts-Type1', 'psmisc', 'glibc.i686', 'gtk2.i686', 'libXtst.i686', 'libXft.i686', 'compat-libstdc++-33.i686'] 
     state: present
   when:
     - ansible_os_family == "RedHat"

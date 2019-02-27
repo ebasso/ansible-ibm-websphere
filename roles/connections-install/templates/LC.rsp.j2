@@ -12,7 +12,7 @@
   <profile id='IBM Connections' installLocation='{{ __cnx_install_location }}'>
     <data key='cic.selector.arch' value='x86_64'/>
     <data key='user.job' value='INSTALL'/>
-    <data key='user.lcinstallscript.path' value='/tmp/LCInstallScript'/>
+    <data key='user.lcinstallscript.path' value='{{ __tmp_dir }}/CTemp/LCInstallScript'/>
     <data key='user.nodeslist' value='{% for node in cnx_node_list %}{{ node }}-node,{% endfor %}'/>
     <data key='user.nodesHostnamelist' value='{% for node in cnx_hostname_list %}{{ node }},{% endfor %}'/>
     <data key='user.nodeAgentList' value='{% for node in cnx_node_list %}{{ node }}-node:true;{% endfor %}'/>
@@ -44,7 +44,7 @@
     <data key='user.ccm.fncs.installer' value='{{ __ccm_files[3].file_name }}'/>
     <data key='user.ccm.fncs.fp.installer' value='{{ __ccm_files[4].file_name }}'/>
     <data key='user.ccm.anonymous.user' value='anonymousfn'/>
-    <data key='user.ccm.anonymous.password' value='{{ __ccm_encoded_password.stdout | trim }}'/>
+    <data key='user.ccm.anonymous.password' value='31Ce4oFsC0Qsch6I33VxhQ=='/>
     <data key='user.ccm.existingDeployment' value='false'/>
     <data key='user.ccm.userName' value='{{ was_username }}'/>
     <data key='user.ccm.password' value='{{ __was_encoded_password.stdout | trim }}'/>

@@ -1,14 +1,10 @@
 ---
 - name:              Encode Password XOR
-  command:  
-    chdir={{__was_install_location}}/bin
-    "echo 'xpw={{ was_password }}' > {{__logs_dir}}/xor.props && ./PropFilePasswordEncoder.sh {{__logs_dir}}/xor.props xpw && cat {{__logs_dir}}/xor.props | awk -F= '{ printf $2 }"
+  shell:             "echo \"xpw={{ was_password }}\" > {{__logs_dir}}/xor.props && {{__was_install_location}}/bin/PropFilePasswordEncoder.sh {{__logs_dir}}/xor.props xpw > /dev/null && cat {{__logs_dir}}/xor.props | awk -F= '{ printf $2\"=\"}'"
   register:          __xor_encoded_password
   changed_when:      ( __xor_encoded_password.rc == 0)
 
-#
 #- debug: var=__xor_encoded_password
-##__version_check:   "Updated to com.ibm.websphere.ND.v85_{{ __this_version }}"
 
 - name:              Encode WAS Password
   command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }} -silent -noSplash"
@@ -26,6 +22,8 @@
   register:          __ccm_encoded_password
   changed_when:      ( __ccm_encoded_password.rc == 0)
   when:              ( ccm_install is defined )
+
+- debug: var=__ccm_encoded_password
 
 - name:              Encode DB Passwords for CCM
   command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ item.pw }} -silent -noSplash"

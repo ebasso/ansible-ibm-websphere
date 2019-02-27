@@ -92,24 +92,24 @@ __push_app:                  "{{ push_app  | default( {} ) }}"
 
 #__large_deploy:
 __cnx_deploy:
-  - { name: 'activities',  cluster_name: "{{ __activities_app.cluster_name  | default('clActivites') }}",  nodes: "{{ __activities_app.nodes | default( cnx_node_list ) }}"}
-  - { name: 'blogs',  cluster_name: "{{ __blogs_app.cluster_name  | default('clBlogs') }}",  nodes: "{{ __blogs_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'dogear',  cluster_name: "{{ __dogear_app.cluster_name  | default('clDogear') }}",  nodes: "{{ __dogear_app.nodes | default( cnx_node_list ) }}"}
-  - { name: 'communities',  cluster_name: "{{ __communities_app.cluster_name  | default('clCommunities') }}",  nodes: "{{ __communities_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'files',  cluster_name: "{{ __files_app.cluster_name  | default('clFiles') }}",  nodes: "{{ __files_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'forums',  cluster_name: "{{ __forums_app.cluster_name  | default('clForums') }}",  nodes: "{{ __forums_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'homepage',  cluster_name: "{{ __homepage_app.cluster_name  | default('clHomepage') }}",  nodes: "{{ __homepage_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'metrics',  cluster_name: "{{ __metrics_app.cluster_name  | default('clMetrics') }}",  nodes: "{{ __metrics_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'mobile',  cluster_name: "{{ __mobile_app.cluster_name  | default('clMobile') }}",  nodes: "{{ __mobile_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'moderation',  cluster_name: "{{ __moderation_app.cluster_name  | default('clModeration') }}",  nodes: "{{ __moderation_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'news',  cluster_name: "{{ __news_app.cluster_name  | default('clNews') }}",  nodes: "{{ __news_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'profiles',  cluster_name: "{{ __profiles_app.cluster_name  | default('clProfiles') }}",  nodes: "{{ __profiles_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'search',  cluster_name: "{{ __search_app.cluster_name  | default('clSearch') }}",  nodes: "{{ __search_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'wikis',  cluster_name: "{{ __wikis_app.cluster_name  | default('clWikis') }}",  nodes: "{{ __wikis_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'rte',  cluster_name: "{{ __rte_app.cluster_name  | default('clRte') }}",  nodes: "{{ __rte_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'common',  cluster_name: "{{ __common_app.cluster_name  | default('clCommon') }}",  nodes: "{{ __common_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'widgetContainer',  cluster_name: "{{ __widgets_app.cluster_name  | default('clWidgets') }}",  nodes: "{{ __widgets_app.nodes  | default( cnx_node_list ) }}"}
-  - { name: 'pushNotification',  cluster_name: "{{ __push_app.cluster_name  | default('clPush') }}",  nodes: "{{ __push_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'activities', cluster_name: "{{ __activities_app.cluster_name  | default('clActivites') }}",  nodes: "{{ __activities_app.nodes | default( cnx_node_list ) }}"}
+  - { name: 'blogs', cluster_name: "{{ __blogs_app.cluster_name  | default('clBlogs') }}",  nodes: "{{ __blogs_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'dogear', cluster_name: "{{ __dogear_app.cluster_name  | default('clDogear') }}",  nodes: "{{ __dogear_app.nodes | default( cnx_node_list ) }}"}
+  - { name: 'communities', cluster_name: "{{ __communities_app.cluster_name  | default('clCommunities') }}",  nodes: "{{ __communities_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'files', cluster_name: "{{ __files_app.cluster_name  | default('clFiles') }}",  nodes: "{{ __files_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'forums', cluster_name: "{{ __forums_app.cluster_name  | default('clForums') }}",  nodes: "{{ __forums_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'homepage', cluster_name: "{{ __homepage_app.cluster_name  | default('clHomepage') }}",  nodes: "{{ __homepage_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'metrics', cluster_name: "{{ __metrics_app.cluster_name  | default('clMetrics') }}",  nodes: "{{ __metrics_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'mobile', cluster_name: "{{ __mobile_app.cluster_name  | default('clMobile') }}",  nodes: "{{ __mobile_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'moderation', cluster_name: "{{ __moderation_app.cluster_name  | default('clModeration') }}",  nodes: "{{ __moderation_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'news', cluster_name: "{{ __news_app.cluster_name  | default('clNews') }}",  nodes: "{{ __news_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'profiles', cluster_name: "{{ __profiles_app.cluster_name  | default('clProfiles') }}",  nodes: "{{ __profiles_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'search', cluster_name: "{{ __search_app.cluster_name  | default('clSearch') }}",  nodes: "{{ __search_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'wikis', cluster_name: "{{ __wikis_app.cluster_name  | default('clWikis') }}",  nodes: "{{ __wikis_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'rte', cluster_name: "{{ __rte_app.cluster_name  | default('clRte') }}",  nodes: "{{ __rte_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'common', cluster_name: "{{ __common_app.cluster_name  | default('clCommon') }}",  nodes: "{{ __common_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'widgetContainer', cluster_name: "{{ __widgets_app.cluster_name  | default('clWidgets') }}",  nodes: "{{ __widgets_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'pushNotification', cluster_name: "{{ __push_app.cluster_name  | default('clPush') }}",  nodes: "{{ __push_app.nodes  | default( cnx_node_list ) }}"}
 
 __cnx_db_info:
   - { app: 'activities', name: "{{ activities_db.name | default('OPNACT') }}", server: '{{ activities_db.server  | default( __db_hostname ) }}', port: '{{ activities_db.port  | default(  __db_port ) }}', jdbc_file: '{{ activities_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ activities_db.type  | default(  __db_type ) }}', user: '{{ activities_db.user  | default(  __db_username ) }}', pw: '{{ activities_db.pw  | default(  __db_password ) }}' }
@@ -135,11 +135,11 @@ __ccm_fgncd_db:              "{{ ccm_fgncd_db  | default( {} ) }}"
 __ccm_fnos_db:               "{{ ccm_fnos_db  | default( {} ) }}"
 
 __ccm_deploy:
-  - { name: 'ccm',  cluster_name: "{{ __ccm_app.cluster_name  | default('clCCM') }}",  nodes: "{{ __ccm_app.nodes  | default( cnx_node_list ) }}"}
+  - { name: 'ccm', cluster_name: "{{ __ccm_app.cluster_name  | default('clCCM') }}", nodes: "{{ __ccm_app.nodes  | default( cnx_node_list ) }}"}
 
 __ccm_db_info:
-  - { app: 'ccm.gcd', name: "{{ __ccm_fgncd_db.name | default('FNGCD') }}", server: '{{ __ccm_fgncd_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fgncd_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fgncd_db.jdbc_file  | default( __db_jdbc_file ) }}', type: '{{ __ccm_fgncd_db.type  | default(  __db_type ) }}', user: '{{ __ccm_fgncd_db.user  | default(  __db_username ) }}', pw: '{{ __ccm_fgncd_db.pw  | default(  __db_password ) }}' }
-  - { app: 'ccm.objstore', name: "{{ __ccm_fnos_db.name | default('FNOS') }}", server: '{{ __ccm_fnos_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fnos_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fnos_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ __ccm_fnos_db.type  | default(  __db_type ) }}', user: '{{ __ccm_fnos_db.user  | default(  __db_username ) }}', pw: '{{ __ccm_fnos_db.pw  | default(  __db_password ) }}' }
+  - { app: 'ccm.gcd', name: "{{ __ccm_fgncd_db.name | default('FNGCD') }}", server: '{{ __ccm_fgncd_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fgncd_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fgncd_db.jdbc_file  | default( __db_jdbc_file ) }}', type: '{{ __ccm_fgncd_db.type  | default( __db_type ) }}', user: '{{ __ccm_fgncd_db.user  | default( __db_username ) }}', pw: '{{ __ccm_fgncd_db.pw  | default( __db_password ) }}' }
+  - { app: 'ccm.objstore', name: "{{ __ccm_fnos_db.name | default('FNOS') }}", server: '{{ __ccm_fnos_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fnos_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fnos_db.jdbc_file  | default( __db_jdbc_file ) }}', type: '{{ __ccm_fnos_db.type  | default( __db_type ) }}', user: '{{ __ccm_fnos_db.user  | default( __db_username ) }}', pw: '{{ __ccm_fnos_db.pw  | default( __db_password ) }}' }
 
 # OLDER VERSIONS
 __cnx_fixes_version_cr3:     "CR3"

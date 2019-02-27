@@ -61,9 +61,41 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 2) Copy files to Web Server
 
+Example of my repository
+```
+-- installation
+    |-- agent.installer.linux.gtk.x86_64_1.8.9001.20180709_1302.zip
+-- was
+    |-- 8.5.5
+    |   |-- 8.0.5.17-WS-IBMWASJAVA-Linux.zip
+    |   |-- 8.5.5-WS-WAS-FP014-part1.zip
+    |   |-- 8.5.5-WS-WAS-FP014-part2.zip
+    |   |-- 8.5.5-WS-WAS-FP014-part3.zip
+    |   |-- 8.5.5-WS-WASSupplements-FP014-part1.zip
+    |   |-- 8.5.5-WS-WASSupplements-FP014-part2.zip
+    |   |-- 8.5.5-WS-WASSupplements-FP014-part3.zip
+-- connections
+    |-- 6.0
+    |   |-- 5.2.1-P8CPE-CLIENT-LINUX.BIN
+    |   |-- 5.2.1-P8CPE-LINUX.BIN
+    |   |-- 5.2.1.7-P8CPE-CLIENT-LINUX-FP007.BIN
+    |   |-- 5.2.1.7-P8CPE-LINUX-FP007.BIN
+    |   |-- 6.0.0.0-IC-Multi-CR4-LO94111.zip
+    |   |-- CNCTNS_V6.0_IFR1WLNX,_AIX_ML.tar
+    |   |-- CNCTNS_V6.0_IFR1_LNX_ML.tar
+    |   |-- CR3
+    |   |   |-- 6.0.0.0-IC-Multi-CR3-LO94022.zip
+    |   |   |-- IC60_CR3_LO94106.jar
+    |   |   |-- IC60_CR3_LO94115.jar
+    |   |   `-- LO94099.zip
+    |   |-- IBM_CONTENT_NAVIGATOR-2.0.3-LINUX.bin
+    |   |-- IBM_CONTENT_NAVIGATOR-2.0.3.8-FP008-LINUX.bin
+    |   |-- IC-ComponentPack-6.0.0.7.zip
+    |   `-- IC-CustomizerLite-1.0.zip
+```
 ## Configure Ansible hosts file
 
-3) Change you ansible host file like **hosts.example**
+Change you ansible host file like **hosts.example**
 
 
 ## Cloning ansible-ibm-websphere from git

@@ -5,12 +5,14 @@
   with_items:
     - "cnx"
     - "cnx-cr"
+    - "CTemp"
 
 - name:              Create Binaries directory
   file:              path={{ __tmp_dir }}/{{ item }} state=directory mode=0755
   with_items:
     - "cnx"
     - "cnx-cr"
+    - "CTemp"
 
 - name:              Create Logs directory
   file:              path={{ __logs_dir }} state=directory mode=0755
