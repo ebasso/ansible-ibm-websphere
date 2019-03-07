@@ -90,7 +90,7 @@ mobile_db={ 'server': 'db2srv1-mobile.company.com' }
 profiles_db={ 'server': 'db2srv1-peopledb.company.com' }
 push_db={ 'server': 'db2srv1-people.company.com' }
 wikis_db={ 'server': 'db2srv1-wikis.company.com' }
-xcc_db={ 'server': 'db2srv1-xcc.company.com' }
+icec_db={ 'server': 'db2srv1-xcc.company.com' }
 #
 #ccm_install=true
 #ccm_app={ 'name':'ccm', 'cluster_name': 'clCcm', 'nodes': ['dxl1scb00151','dxl1scb00152'] }

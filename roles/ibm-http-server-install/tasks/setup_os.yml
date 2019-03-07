@@ -7,7 +7,7 @@
 
 - name:          Install pre-requisites Zypper
   zypper:
-    name: ['glibc-32bit'] 
+    name: ['glibc-32bit','libgcc_s1-32bit'] 
     state: present
   when: ansible_os_family == "Suse"
 
