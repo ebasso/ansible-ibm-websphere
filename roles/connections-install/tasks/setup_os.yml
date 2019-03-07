@@ -5,11 +5,11 @@
 #    state: present
 #  when: ansible_os_family == "Debian"
 #
-#- name:          Install pre-requisites Zypper
-#  zypper:
-#    name: ['unzip', 'tar', 'wget'] 
-#    state: present
-#  when: ansible_os_family == "Suse"
+- name:          Install pre-requisites Zypper
+  zypper:
+    name: ['glibc-32bit','libgtk-2_0-0-32bit'] 
+    state: present
+  when: ansible_os_family == "Suse"
 
 - name:          Install pre-requisites Yum
   yum:
