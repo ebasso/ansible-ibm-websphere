@@ -1,4 +1,3 @@
-# check_openshift.yml
 ---
 - name: cnx_repository_url should be defined
   assert:
@@ -23,6 +22,12 @@
     that:
     - was_password is defined and was_password != ''
     msg: "Set the value of 'was_password' in the inventory file."
+
+- name: was_domainname should be defined
+  assert:
+    that:
+    - was_domainname is defined and was_domainname != ''
+    msg: "Set the value of 'was_domainname' in the inventory file."
 
 - name: cnx_domainname should be defined
   assert:

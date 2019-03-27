@@ -30,6 +30,10 @@
         state:               absent
       with_items:
         - "/opt/IBM/Connections"
+        - "/opt/IBM/CTemp"
+        - "/var/.com.zerog.registry.xml"
+        - "/root/.InstallAnywhere"
+        - "/root/.java"
       ignore_errors: true
 
 - hosts:                    ihs-servers
