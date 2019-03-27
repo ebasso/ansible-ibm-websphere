@@ -47,7 +47,7 @@
 #  become:                  true
 #  roles:
 #    - roles/was-dmgr-config-webserver
-#
+
 - name:                    Setup Connections
   hosts:                   dmgr
   become:                  true

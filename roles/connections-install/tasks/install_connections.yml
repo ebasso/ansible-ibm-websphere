@@ -18,7 +18,7 @@
   with_items:        "{{ __cnx_db_info }}"
 
 - name:              Encode CCM Password 
-  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ was_password }} -silent -noSplash"
+  command:           "{{ __iim_install_location }}/eclipse/tools/imutilsc encryptString {{ ccm_password }} -silent -noSplash"
   register:          __ccm_encoded_password
   changed_when:      ( __ccm_encoded_password.rc == 0)
   when:              ( ccm_install is defined )

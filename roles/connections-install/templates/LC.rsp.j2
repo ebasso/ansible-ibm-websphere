@@ -26,7 +26,7 @@
     <data key='user.was.profileName' value='{{ __profile_name }}'/>
     <data key='user.was.dmCellName' value='{{ __was_cellname }}'/>
     <data key='user.was.dmHostname' value='{{ dmgr_hostname }}'/>
-    <data key='user.was.domainName' value='{{ __cnx_domainname }}'/>
+    <data key='user.was.domainName' value='{{ __was_domainname }}'/>
     <data key='user.was.adminuser.id' value='{{ was_username }}'/>
     <data key='user.was.adminuser.password' value='{{ __was_encoded_password.stdout | trim }}'/>
     <data key='user.was.adminuser.xor.encrypted.password' value='{{ __xor_encoded_password.stdout | trim }}'/>
@@ -35,19 +35,19 @@
     <data key='user.{{ app.name }}.adminuser.password' value='{{ __was_encoded_password.stdout | trim }}'/>
 {% endfor %}
 {% if ccm_install is defined %}
+    <data key='user.ccm.adminuser.id' value='{{ was_username }}'/>
+    <data key='user.ccm.adminuser.password' value='{{ __was_encoded_password.stdout | trim }}'/>
     <data key='user.ccm.install.now' value='true'/>
+    <data key='user.ccm.existingDeployment' value='false'/>
     <data key='user.ccm.installers.original.path' value='{{ __tmp_dir }}/cnx'/>
     <data key='user.ccm.installers.path' value='{{ __tmp_dir }}/cnx'/>
+    <data key='user.ccm.anonymous.user' value='anonymousfn'/>
+    <data key='user.ccm.anonymous.password' value='{{ __ccm_encoded_password.stdout | trim }}'/>
     <data key='user.ccm.ce.installer' value='{{ __ccm_files[0].file_name }}'/>
     <data key='user.ccm.ce.fp.installer' value='{{ __ccm_files[1].file_name }}'/>
     <data key='user.ccm.ceclient.installer' value='{{ __ccm_files[2].file_name }}'/>
     <data key='user.ccm.fncs.installer' value='{{ __ccm_files[3].file_name }}'/>
     <data key='user.ccm.fncs.fp.installer' value='{{ __ccm_files[4].file_name }}'/>
-    <data key='user.ccm.anonymous.user' value='anonymousfn'/>
-    <data key='user.ccm.anonymous.password' value='31Ce4oFsC0Qsch6I33VxhQ=='/>
-    <data key='user.ccm.existingDeployment' value='false'/>
-    <data key='user.ccm.userName' value='{{ was_username }}'/>
-    <data key='user.ccm.password' value='{{ __was_encoded_password.stdout | trim }}'/>
 {% endif %}
     <data key='user.deployment.type' value='{{ __cnx_deploy_type }}'/>
 {% for app in __cnx_deploy %}
@@ -55,17 +55,19 @@
     <data key='user.{{ app.name }}.clusterName' value='{{ app.cluster_name }}'/>
     <data key='user.{{ app.name }}.firstNodeName' value='{{ app.nodes[0] }}-node'/>
     <data key='user.{{ app.name }}.secondaryNodesNames' value='{% for node in app.nodes[1:] %}{{ node }}-node,{% endfor %}'/>
-    <data key='user.{{ app.name }}.serverInfo' value='{% for node in app.nodes %}{{ app.name }}.{{ node }}-node.ServerName={{ app.cluster_name }}-{{ node }},{% endfor %}'/>
+    <data key='user.{{ app.name }}.serverInfo' value='{% for node in app.nodes %}{{ app.name }}.{{ node }}-node.ServerName={{ app.cluster_name }}-{{ node }};{% endfor %}'/>
     <data key='user.{{ app.name }}.clusterInfo' value='[{% for node in app.nodes %}{&quot;node&quot;: &quot;{{ node }}-node&quot;, &quot;name&quot;: &quot;{{ app.cluster_name }}-{{ node }}&quot;},{% endfor %}]'/>
 {% endfor %}
 {% if ccm_install is defined %}
   {% for app in __ccm_deploy %}
-    <data key='user.{{ app.name }}.clusterExist' value='false'/>
-    <data key='user.{{ app.name }}.clusterName' value='{{ app.cluster_name }}'/>
-    <data key='user.{{ app.name }}.firstNodeName' value='{{ app.nodes[0] }}-node'/>
-    <data key='user.{{ app.name }}.secondaryNodesNames' value='{% for node in app.nodes[1:] %}{{ node }}-node,{% endfor %}'/>
-    <data key='user.{{ app.name }}.serverInfo' value='{% for node in app.nodes %}{{ app.name }}.{{ node }}-node.ServerName={{ app.cluster_name }}-{{ node }};{% endfor %}'/>
-    <data key='user.{{ app.name }}.clusterInfo' value='[{% for node in app.nodes %}{&quot;node&quot;: &quot;{{ node }}-node&quot;, &quot;name&quot;: &quot;{{ app.cluster_name }}-{{ node }}&quot;},{% endfor %}]'/>
+    <data key='user.ccm.serverName' value='{{ app.cluster_name }}-{{ app.nodes[0] }}'/>
+    <data key='user.ccm.clusterExist' value='false'/>
+    <data key='user.ccm.clusterName' value='{{ app.cluster_name }}'/>
+    <data key='user.ccm.firstNodeName' value='{{ app.nodes[0] }}-node'/>
+    <data key='user.ccm.secondaryNodesNames' value='{% for node in app.nodes[1:] %}{{ node }}-node,{% endfor %}'/>
+    <data key='user.ccm.serverInfo' value='{% for node in app.nodes %}{{ app.name }}.{{ node }}-node.ServerName={{ app.cluster_name }}-{{ node }};{% endfor %}'/>
+    <data key='user.ccm.clusterInfo' value='[{% for node in app.nodes %}{&quot;node&quot;: &quot;{{ node }}-node&quot;, &quot;name&quot;: &quot;{{ app.cluster_name }}-{{ node }}&quot;},{% endfor %}]'/>
+    <data key='user.ccm.cluster.key.value' value='&quot;{{ app.cluster_name }}&quot; : [{% for node in app.nodes %}{&quot;node&quot;: &quot;{{ node }}-node&quot;, &quot;name&quot;: &quot;{{ app.cluster_name }}-{{ node }}&quot;},{% endfor %}],'/>
   {% endfor %}
 {% endif %}
     <data key='user.database.type' value='{{ __db_type }}'/>
@@ -79,6 +81,8 @@
     <data key='user.{{ db.item.app }}.dbUserPassword' value='{{ db.stdout | trim }}'/>
 {% endfor %}
 {% if ccm_install is defined %}
+    <data key='user.ccm.jdbcLibraryPath' value='{{ __db_jdbc_file }}'/>
+    <data key='user.ccm.dbType' value='{{ __db_type }}'/>
   {% for db in __ccm_db_info_results.results %}
     <data key='user.{{ db.item.app }}.dbHostName' value='{{ db.item.server }}'/>
     <data key='user.{{ db.item.app }}.dbPort' value='{{ db.item.port }}'/>
@@ -94,12 +98,13 @@
     <data key='user.contentStore.shared.path.configproperties' value='{{ __cnx_shared_area }}/ccm'/>
     <data key='user.messageStore.shared.path' value='{{ __cnx_message_store }}'/>
     <data key='user.connections.install.location' value='{{ __cnx_install_location }}'/>
+    <data key='user.connections.install.location.win32format' value='{{ __cnx_install_location }}'/>
 {% if ccm_install is defined %}
     <data key='user.ce.install.location' value='{{ __cnx_install_location }}/FileNet/ContentEngine'/>
     <data key='user.ceclient.install.location' value='{{ __cnx_install_location }}/FileNet/CEClient'/>
     <data key='user.fncs.install.location' value='{{ __cnx_install_location }}/FNCS'/>
-    <data key='user.connections.install.location.win32format' value='{{ __cnx_install_location }}'/>
 {% endif %}
+    <data key='user.notification.replyto.enabled' value='false'/>
     <data key='user.notification.enabled' value='true'/>
     <data key='user.notification.useJavaMailProvider' value='true'/>
     <data key='user.notification.host' value='{{ __smtp_hostname }}'/>
@@ -109,7 +114,6 @@
     <data key='user.notification.password.key.value' value='&quot;password&quot;:&quot;&quot;,'/>
     <data key='user.notification.protocol.key.value' value='&quot;protocol&quot;:&quot;smtp&quot;,'/>
     <data key='user.notification.ssl.enabled' value='false'/>
-    <data key='user.notification.replyto.enabled' value='false'/>
   </profile>
   <install>
     <!-- IBM Connections 6.0.0.0_CR3 -->

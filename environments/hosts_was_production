@@ -6,15 +6,10 @@
 srv000.company.com
 
 [was-servers]
-srv001.company.com
-srv002.company.com
-srv003.company.com
-srv004.company.com
-
-[connections6-pink]
-srv005.company.com
-srv006.company.com
-srv007.company.com
+srv001.company.com servers="['server1']"
+srv002.company.com servers="['server2']"
+srv003.company.com servers="['server3']"
+srv004.company.com servers="['server4']"
 
 [ihs-servers]
 srv010.company.com
@@ -30,11 +25,14 @@ was_username=wsadmin
 was_password=<CHANGE_PASSWORD>
 #
 dmgr_hostname=srv000.company.com
+was_domain_name=.company.com
 domain_name=.company.com
 #
 ihs_password=<CHANGE_PASSWORD>
 
 [dmgr:vars]
+#was_version="8.5.5012.20170627_1018"
+#profile_name=Dmgr01
 ldap_server=ldapserver.company.com
 ldap_alias=ldapserver
 ldap_repo=LDAP_PRODUCTION
@@ -43,6 +41,7 @@ ldap_bind_pass=<CHANGE_PASSWORD>
 ldap_realm=ou=users,o=company
 
 [was-servers:vars]
+#was_version="8.5.5012.20170627_1018"
 profile_name=AppSrv01
 
 [ihs-servers:vars]
