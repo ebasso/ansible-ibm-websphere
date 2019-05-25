@@ -17,9 +17,9 @@ __cnx_tmp_dir:               "{{ cnx_tmp_dir  | default('/opt/IBM/CnxTempDir') }
 __cnx_shared_area:           "{{ cnx_shared_area  | default('/opt/IBM/SharedArea') }}"
 __cnx_message_store:         "{{ cnx_message_store  | default('/opt/IBM/MessageStore') }}"
 
-__this_version:              "{{ cnx_version | default('6.0.0.0_20180927_0113') }}"
+__this_version:              "{{ cnx_version | default('6.0.0.0_20190131_2215') }}"
 __product_id:                "\"id='com.ibm.connections'\""
-__version_check:             "Installed com.ibm.connections.6.0.0.0_20180927_0113"
+__version_check:             "Installed com.ibm.connections.6.0.0.0_20190131_2215"
 
 # Connections Files
 __cnx_files:
@@ -120,7 +120,7 @@ __cnx_db_info:
   - { app: 'profiles', name: "{{ profiles_db.name | default('PEOPLEDB') }}", server: '{{ profiles_db.server  | default( __db_hostname ) }}', port: '{{ profiles_db.port  | default(  __db_port ) }}', jdbc_file: '{{ profiles_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ profiles_db.type  | default(  __db_type ) }}', user: '{{ profiles_db.user  | default(  __db_username ) }}', pw: '{{ profiles_db.pw  | default(  __db_password ) }}' }
   - { app: 'wikis', name: "{{ wikis_db.name | default('WIKIS') }}", server: '{{ wikis_db.server  | default( __db_hostname ) }}', port: '{{ wikis_db.port  | default(  __db_port ) }}', jdbc_file: '{{ wikis_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ wikis_db.type  | default(  __db_type ) }}', user: '{{ wikis_db.user  | default(  __db_username ) }}', pw: '{{ wikis_db.pw  | default(  __db_password ) }}' }
   - { app: 'files', name: "{{ files_db.name | default('FILES') }}", server: '{{ files_db.server  | default( __db_hostname ) }}', port: '{{ files_db.port  | default(  __db_port ) }}', jdbc_file: '{{ files_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ files_db.type  | default(  __db_type ) }}', user: '{{ files_db.user  | default(  __db_username ) }}', pw: '{{ files_db.pw  | default(  __db_password ) }}' }
-  - { app: 'forums', name: "{{ forums_db.name | default('FORUMS') }}", server: '{{ forums_db.server  | default( __db_hostname ) }}', port: '{{ forums_db.port  | default(  __db_port ) }}', jdbc_file: '{{ forums_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ forums_db.type  | default(  __db_type ) }}', user: '{{ forums_db.user  | default(  __db_username ) }}', pw: '{{ forums_db.pw  | default(  __db_password ) }}' }
+  - { app: 'forums', name: "{{ forums_db.name | default('FORUM') }}", server: '{{ forums_db.server  | default( __db_hostname ) }}', port: '{{ forums_db.port  | default(  __db_port ) }}', jdbc_file: '{{ forums_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ forums_db.type  | default(  __db_type ) }}', user: '{{ forums_db.user  | default(  __db_username ) }}', pw: '{{ forums_db.pw  | default(  __db_password ) }}' }
   - { app: 'news', name: "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', port: '{{ homepage_db.port  | default(  __db_port ) }}', jdbc_file: '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ homepage_db.type  | default(  __db_type ) }}', user: '{{ homepage_db.user  | default(  __db_username ) }}', pw: '{{ homepage_db.pw  | default(  __db_password ) }}' }
   - { app: 'search', name: "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', port: '{{ homepage_db.port  | default(  __db_port ) }}', jdbc_file: '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ homepage_db.type  | default(  __db_type ) }}', user: '{{ homepage_db.user  | default(  __db_username ) }}', pw: '{{ homepage_db.pw  | default(  __db_password ) }}' }
   - { app: 'homepage', name: "{{ homepage_db.name | default('HOMEPAGE') }}", server: '{{ homepage_db.server  | default( __db_hostname ) }}', port: '{{ homepage_db.port  | default(  __db_port ) }}', jdbc_file: '{{ homepage_db.jdbc_file  | default(  __db_jdbc_file ) }}', type: '{{ homepage_db.type  | default(  __db_type ) }}', user: '{{ homepage_db.user  | default(  __db_username ) }}', pw: '{{ homepage_db.pw  | default(  __db_password ) }}' }
@@ -145,6 +145,8 @@ __ccm_db_info:
 
 # OLDER VERSIONS
 __cnx_fixes_version_cr3:     "CR3"
+__cnx_version_cr3: "6.0.0.0_20180927_0113"
+__cnx_version_check_cr3:             "Installed com.ibm.connections.6.0.0.0_20180927_0113"
 __cnx_fixes_files_cr3:
   - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
   - { file_name: 'IC60_CR3_LO94106.jar', check_sum: '4e76612efed46568a0f73102fb8790a7d078d58606265a8895fd6e344b4cd80c' }

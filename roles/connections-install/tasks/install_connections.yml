@@ -52,10 +52,15 @@
     backup:          yes
   ignore_errors:     true
 
+# Changed for shell for CCM
 - name:              Install Connections Software
-  command:
-    chdir={{ __tmp_dir }}/cnx
+  shell: |
+    mkdir -p /opt/IBM/CTemp
+    export IATEMPDIR=/opt/IBM/CTemp
+    export CHECK_DISK_SPACE=OFF
     {{ __iim_install_location }}/eclipse/tools/imcl -acceptLicense -sVP -log {{ __log_file }} input {{ __rsp_file }}
+  environment:
+    IATEMPDIR: "/opt/IBM/CTemp"
   register:          cout
 #  changed_when:      ( cout.stdout.find(__version_check) != -1)
 

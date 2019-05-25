@@ -7,7 +7,7 @@
 
 - name:          Install pre-requisites Zypper
   zypper:
-    name: ['unzip', 'tar', 'wget'] 
+    name: ['unzip', 'tar', 'wget','libgtk-2_0-0'] 
     state: present
   when: ansible_os_family == "Suse"
 

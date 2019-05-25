@@ -6,7 +6,15 @@
 
 - name:              "Use Fix Pack 6.0.3 CR3?"
   set_fact:
-    __cnx_fixes_files: "{{ __cnx_fixes_files_cr3 }}"
-    __version_check:   "Updated to com.ibm.connections{{ __cnx_fixes_version }}"
-    __product_id:      "\"id='com.ibm.connections' version='{{ __cnx_fixes_version }}'\""
+#    __cnx_fixes_files: "{{ __cnx_fixes_files_cr3 }}"
+    __this_version:    "6.0.0.0_20180927_0113"
+    __version_check:   "Updated to com.ibm.connections.6.0.0.0_20180927_0113"
+    __product_id:      "\"id='com.ibm.connections' version='6.0.0.0_20180927_0113'\""
   when:              ( __cnx_fixes_version == __cnx_fixes_version_cr3 )
+
+#  __cnx_version_cr3: "6.0.0.0_20180927_0113"
+#__cnx_version_check_cr3:             "Installed com.ibm.connections.6.0.0.0_20180927_0113"
+
+#__this_version:              "{{ cnx_version | default('6.0.0.0_20190131_2215') }}"
+#__product_id:                "\"id='com.ibm.connections'\""
+#__version_check:             "Installed com.ibm.connections.6.0.0.0_20190131_2215"
