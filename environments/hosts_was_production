@@ -5,13 +5,13 @@
 [dmgr]
 srv000.company.com
 
-[was-servers]
+[was_servers]
 srv001.company.com servers="['server1']"
 srv002.company.com servers="['server2']"
 srv003.company.com servers="['server3']"
 srv004.company.com servers="['server4']"
 
-[ihs-servers]
+[ihs_servers]
 srv010.company.com
 srv011.company.com
 
@@ -20,6 +20,7 @@ iim_repository_url=http://192.168.1.150/installation
 was_repository_url=http://192.168.1.150/was/8.5.5
 was_fixes_repository_url=http://192.168.1.150/was/8.5.5
 ihs_repository_url=http://192.168.1.150/was/8.5.5
+ihs_fixes_repository_url=http://192.168.1.150/was/8.5.5/FP15
 #
 was_username=wsadmin
 was_password=<CHANGE_PASSWORD>
@@ -40,10 +41,10 @@ ldap_bind_user=uid=ldapusr,ou=users,o=company
 ldap_bind_pass=<CHANGE_PASSWORD>
 ldap_realm=ou=users,o=company
 
-[was-servers:vars]
+[was_servers:vars]
 #was_version="8.5.5012.20170627_1018"
 profile_name=AppSrv01
 
-[ihs-servers:vars]
+[ihs_servers:vars]
 ihs_username=ihsadmin
 ihs_password=<CHANGE_PASSWORD>

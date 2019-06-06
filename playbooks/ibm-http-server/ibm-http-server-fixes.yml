@@ -3,7 +3,7 @@
 # Variables used in this playbook that can be setup at hosts fil
 ---
 - name:                    Install IBM HTTP Server Fixes
-  hosts:                   ihs-servers
+  hosts:                   ihs_servers
   become:                  true
   vars:
     __repository_url:      "{{ ihs_repository_url }}"

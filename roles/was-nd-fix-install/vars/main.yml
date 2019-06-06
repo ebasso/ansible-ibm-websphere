@@ -9,11 +9,11 @@ __rsp_file:             "{{ __logs_dir }}/was_nd_fixes.rsp"
 __log_file:             "{{ __logs_dir }}/was_nd_fixes_install.{{ __now }}.log"
 __tpl_file:             "was_nd_fixes.rsp.j2"
 
-__was_fp_version_latest:  "8.5.5014.20180802_1018"
+__was_fp_version_latest:  "8.5.5015.20190128_1828"
 __was_fp_files_latest:
-  - { file_name: 8.5.5-WS-WAS-FP014-part1.zip, check_sum: 6f473676fa53cd04a9661284622f85fb997a1156eff277c58a4065708e9d920d }
-  - { file_name: 8.5.5-WS-WAS-FP014-part2.zip, check_sum: 8c632afc96d6a8e318576fc2450616d310035cbcb01eae7713780b0ff39a1930 }
-  - { file_name: 8.5.5-WS-WAS-FP014-part3.zip, check_sum: 4af2506f368055d98748b3c5d8933a79cbc8de3c0d9493e2a5b51814e98bc15f }
+  - { file_name: 8.5.5-WS-WAS-FP015-part1.zip, check_sum: 1449ad29cd12b320838569e4b25654f38ce8dc189aa6a58aa38c67cf46276855 }
+  - { file_name: 8.5.5-WS-WAS-FP015-part2.zip, check_sum: dd2e04dfdecd5269aab8ab1d7330f248d376ab996290bd39ad28029f5c5755b5 }
+  - { file_name: 8.5.5-WS-WAS-FP015-part3.zip, check_sum: 3376fc6ee2e9c320cd99803fa87611424ab4316542bf4fddab60e805e4dd323a }
 
 __this_version:         "{{ was_fp_version | default( __was_fp_version_latest ) }}"
 __this_files:           "{{ was_fp_files | default( __was_fp_files_latest ) }}"
@@ -24,6 +24,12 @@ __iim_product_id:       "\"id='com.ibm.cic.agent\""
 __was_product_id:       "\"id='com.ibm.websphere.ND.v85'\""
 
 ## Old Versions
+__was_fp_version_fp14:  "8.5.5014.20180802_1018"
+__was_fp_files_fp14:
+  - { file_name: 8.5.5-WS-WAS-FP014-part1.zip, check_sum: 6f473676fa53cd04a9661284622f85fb997a1156eff277c58a4065708e9d920d }
+  - { file_name: 8.5.5-WS-WAS-FP014-part2.zip, check_sum: 8c632afc96d6a8e318576fc2450616d310035cbcb01eae7713780b0ff39a1930 }
+  - { file_name: 8.5.5-WS-WAS-FP014-part3.zip, check_sum: 4af2506f368055d98748b3c5d8933a79cbc8de3c0d9493e2a5b51814e98bc15f }
+
 __was_fp_version_fp12:  "8.5.5012.20170627_1018"
 __was_fp_files_fp12:
   - { file_name: 8.5.5-WS-WAS-FP012-part1.zip, check_sum: 149483f668dc4617982e5d8fda98e686e7903510bcc13d562f41979bc1e93e68 }

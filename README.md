@@ -139,10 +139,10 @@ and set variables:
 4) Change you ansible host file like
 
 ```
-[was-servers]
+[was_servers]
 was1.company.com
 
-[was-servers:vars]
+[was_servers:vars]
 ...
 was_version="8.5.5009.20160225_0435"
 ```

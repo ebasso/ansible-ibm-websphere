@@ -4,7 +4,7 @@
 #
 ---
 - name:                     Stop WAS Servers
-  hosts:                    was-servers
+  hosts:                    was_servers
   serial:                   1  # run sequentially
   become:                   true
   vars:

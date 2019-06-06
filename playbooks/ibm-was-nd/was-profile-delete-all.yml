@@ -4,7 +4,7 @@
 #
 ---
 - name:                     DeleteAll WAS Profile
-  hosts:                    dmgr,was-servers
+  hosts:                    dmgr,was_servers
   become:                   true
   vars:
     #__profile_name:         "{{ profile_name | default('AppSrv01') }}"

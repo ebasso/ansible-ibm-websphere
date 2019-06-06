@@ -2,7 +2,7 @@
 #
 # ansible-playbook -i environments/hosts.development -u <username> -k playbooks/ibm-was-nd/was-delete-all.yml
 ---
-- hosts:                    dmgr,was-servers
+- hosts:                    dmgr,was_servers
   become:                   true
   tasks:
     - name:          KillAll Java
@@ -36,7 +36,7 @@
         - "/root/.java"
       ignore_errors: true
 
-- hosts:                    ihs-servers
+- hosts:                    ihs_servers
   become:                   true
   tasks:
     - name:          KillAll Java

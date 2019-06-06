@@ -4,7 +4,7 @@
 #  ansible-playbook -i hosts.connections -u <USER> -k ansible-ibm-websphere/playbooks/was-backup-dir-pre-fixes.yml
 ---
 - name:              Backup WebSphere DMGR and Nodes pre Fixes
-  hosts:             dmgr, was-servers
+  hosts:             dmgr, was_servers
   become:            true
   vars:
     #__ibm_dir:       "{{ ibm_dir | default('/opt/IBM') }}"

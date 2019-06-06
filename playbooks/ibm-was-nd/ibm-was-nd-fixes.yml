@@ -3,7 +3,7 @@
 # Variables used in this playbook that can be setup at hosts file.
 #
 ---
-- hosts:                    dmgr,was-servers
+- hosts:                    dmgr,was_servers
   become:                   true
   roles:
     - roles/was-profile-cleanup-logs
@@ -23,7 +23,7 @@
     - roles/was-nd-fix-install
     - roles/was-dmgr-start
 
-- hosts:                    was-servers
+- hosts:                    was_servers
   become:                   true
   serial:                   2
   vars:

@@ -1,5 +1,5 @@
 ---
-__repository_url:       "{{ ihs_repository_url }}"
+__repository_url:       "{{ ihs_fixes_repository_url }}"
 __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/wassup_fixes"
 __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
 __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"
@@ -12,11 +12,11 @@ __rsp_file:             "{{ __logs_dir }}/ihs_plg_wct_fixes.rsp"
 __log_file:             "{{ __logs_dir }}/ihs_fixes_install.{{ __now }}.log"
 __tpl_file:             "ihs_plg_wct_fixes.rsp.j2"
 
-__ihs_fp_version_latest: "8.5.5014.20180802_1018"
+__ihs_fp_version_latest: "8.5.5015.20190128_1828"
 __ihs_fp_files_latest:
-  - { file_name: 8.5.5-WS-WASSupplements-FP014-part1.zip, check_sum: 1e612c649db02c9841a2b79fe90a3cddf7269bc8a3f2675322b8e87891abe18e }
-  - { file_name: 8.5.5-WS-WASSupplements-FP014-part2.zip, check_sum: 9f2b82ced9f644eb5fee24ffd6a832768e622b7f042b8dd707ce3fa985f62f0b }
-  - { file_name: 8.5.5-WS-WASSupplements-FP014-part3.zip, check_sum: fdf736da2240f76f3b9b2c851450bbf79c87ed61f47e82e91162bc2749090cc9 }
+  - { file_name: 8.5.5-WS-WASSupplements-FP015-part1.zip, check_sum: a27e0d5acb4459dd64a511a96be75f5aa12571cae856ab5933768c70f516ab0a }
+  - { file_name: 8.5.5-WS-WASSupplements-FP015-part2.zip, check_sum: e1d2e4891b9e185a597b56ed00564ebe2dd8f380fdd9a0895f84da2386d29737 }
+  - { file_name: 8.5.5-WS-WASSupplements-FP015-part3.zip, check_sum: 972efc31c3c653413519a0d2cd47a0039efed4b3a7997af297839699b40d7c3d }
 
 __this_version:         "{{ ihs_version | default( __ihs_fp_version_latest ) }}"
 __this_files:           "{{ ihs_fp_files | default( __ihs_fp_files_latest ) }}"
@@ -28,6 +28,12 @@ __ihs_product_id:       "\"id='com.ibm.websphere.IHS.v85'\""
 
 
 # Old Versions
+__ihs_version_fp14: "8.5.5014.20180802_1018"
+__ihs_files_fp14:
+  - { file_name: 8.5.5-WS-WASSupplements-FP014-part1.zip, check_sum: 1e612c649db02c9841a2b79fe90a3cddf7269bc8a3f2675322b8e87891abe18e }
+  - { file_name: 8.5.5-WS-WASSupplements-FP014-part2.zip, check_sum: 9f2b82ced9f644eb5fee24ffd6a832768e622b7f042b8dd707ce3fa985f62f0b }
+  - { file_name: 8.5.5-WS-WASSupplements-FP014-part3.zip, check_sum: fdf736da2240f76f3b9b2c851450bbf79c87ed61f47e82e91162bc2749090cc9 }
+
 __ihs_version_fp12:      "8.5.5012.20170627_1018"
 __ihs_files_fp12:
   - { file_name: 8.5.5-WS-WASSupplements-FP012-part1.zip, check_sum: 64f9a15dbc04df19010dab0d89d7097c4cab29d7e46648f233fd712638a91b3a }

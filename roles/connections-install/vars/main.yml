@@ -17,18 +17,20 @@ __cnx_tmp_dir:               "{{ cnx_tmp_dir  | default('/opt/IBM/CnxTempDir') }
 __cnx_shared_area:           "{{ cnx_shared_area  | default('/opt/IBM/SharedArea') }}"
 __cnx_message_store:         "{{ cnx_message_store  | default('/opt/IBM/MessageStore') }}"
 
-__this_version:              "{{ cnx_version | default('6.0.0.0_20190131_2215') }}"
+__this_version:              "{{ cnx_version | default('6.0.0.0_20190523_1643') }}"
 __product_id:                "\"id='com.ibm.connections'\""
-__version_check:             "Installed com.ibm.connections.6.0.0.0_20190131_2215"
+__version_check:             "Installed com.ibm.connections.6.0.0.0_20190523_1643"
 
 # Connections Files
 __cnx_files:
   - { file_name: 'CNCTNS_V6.0_IFR1_LNX_ML.tar', check_sum: '5415ea36c80d03fa4bbb73d259ea841bfd9e3b5918169268a709aedea4eaa434' }
 #  - { file_name: 'CNCTNS_V6.0_IFR1WLNX,_AIX_ML.tar', check_sum: 'bce56543996922064ec9bf939de6c3685e2f65a572c214ab1df528acadd766da' }
 
-__cnx_fixes_version_latest:  "CR4"
+__cnx_fixes_version_latest:  "CR5"
 __cnx_fixes_files_latest:
-  - { file_name: '6.0.0.0-IC-Multi-CR4-LO94111.zip', check_sum: '08877c603892374f906e65c79b181a381a47c6552a7987630eb0646b2dc1ad71' }
+  - { file_name: '6.0.0.0-IC-Multi-CR5-LO94188.zip', check_sum: '7035c41250011ce691ba65f1c0e529e5419d97e9e550497717a5677a8799f25a' }
+  - { file_name: 'IC60_CR5_LO94194.jar', check_sum: '54d94b5bb4181f07d6e03b15b4eefcffa02a85c3bba434b1608d8e444d73f8c5' }
+  - { file_name: 'TinyEditorsForIC6_4.0.0.29.zip', check_sum: '2e959457468b14267b50b4c84e8ae66257e747bb0d0a54055cc38ca449b94b2c' }
 
 __ccm_files:
   - { file_name: '5.2.1-P8CPE-LINUX.BIN', check_sum: '456b7d36cde1cf174f8893999b034f49ac2b0558b96e8160a8197fcf916c3e3d' }
@@ -144,9 +146,15 @@ __ccm_db_info:
   - { app: 'ccm.objstore', name: "{{ __ccm_fnos_db.name | default('FNOS') }}", server: '{{ __ccm_fnos_db.server  | default( __db_hostname ) }}', port: '{{ __ccm_fnos_db.port  | default(  __db_port ) }}', jdbc_file: '{{ __ccm_fnos_db.jdbc_file  | default( __db_jdbc_file ) }}', type: '{{ __ccm_fnos_db.type  | default( __db_type ) }}', user: '{{ __ccm_fnos_db.user  | default( __db_username ) }}', pw: '{{ __ccm_fnos_db.pw  | default( __db_password ) }}' }
 
 # OLDER VERSIONS
+__cnx_fixes_version_cr4:  "CR4"
+__cnx_version_cr4:        "6.0.0.0_20190131_2215"
+__cnx_version_check_cr4:  "Installed com.ibm.connections.6.0.0.0_20190131_2215"
+__cnx_fixes_files_cr4:
+  - { file_name: '6.0.0.0-IC-Multi-CR4-LO94111.zip', check_sum: '08877c603892374f906e65c79b181a381a47c6552a7987630eb0646b2dc1ad71' }
+
 __cnx_fixes_version_cr3:     "CR3"
-__cnx_version_cr3: "6.0.0.0_20180927_0113"
-__cnx_version_check_cr3:             "Installed com.ibm.connections.6.0.0.0_20180927_0113"
+__cnx_version_cr3:           "6.0.0.0_20180927_0113"
+__cnx_version_check_cr3:     "Installed com.ibm.connections.6.0.0.0_20180927_0113"
 __cnx_fixes_files_cr3:
   - { file_name: '6.0.0.0-IC-Multi-CR3-LO94022.zip', check_sum: '3e9287fac1001e2535b89270450cd9fb59657e673869049cf9f4e05526cf2338' }
   - { file_name: 'IC60_CR3_LO94106.jar', check_sum: '4e76612efed46568a0f73102fb8790a7d078d58606265a8895fd6e344b4cd80c' }

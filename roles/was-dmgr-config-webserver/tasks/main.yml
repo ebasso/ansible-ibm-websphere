@@ -23,7 +23,7 @@
   register:             cout
   changed_when:         cout.rc == 0
 #  when:                 dmgr_is_running.stat.exists == false
-  loop:                 "{{ groups['ihs-servers'] }}"
+  loop:                 "{{ groups['ihs_servers'] }}"
 
 - name:                 "Create was-dmgr-config-webserver.success file"
   file:

@@ -1,7 +1,7 @@
 # Install Connections 6
 ---
 - name:                    Install WAS Servers
-  hosts:                   dmgr,was-servers
+  hosts:                   dmgr,was_servers
 #  serial:                  1
   become:                  true
   roles:
@@ -12,7 +12,7 @@
     - roles/db2-jdbc-driver-install
 
 - name:                    Install HTTP Servers
-  hosts:                   ihs-servers
+  hosts:                   ihs_servers
   become:                  true
   roles:
     - roles/installation-manager-install
@@ -35,7 +35,7 @@
     - roles/was-dmgr-restart
 
 - name:                    Setup WAS Nodes
-  hosts:                   was-servers
+  hosts:                   was_servers
   serial:                  1
   become:                  true
   roles:

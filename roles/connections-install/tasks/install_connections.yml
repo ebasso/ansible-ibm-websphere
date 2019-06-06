@@ -65,10 +65,10 @@
 #  changed_when:      ( cout.stdout.find(__version_check) != -1)
 
 
-#- name:              Cleanup Binaries directory
-#  file:
-#    state:           absent
-#    path:            "{{ __tmp_dir }}/{{ items }}"
-#  with_items:
-#    - cnx
-#    - cnx-cr
+- name:              Cleanup Binaries directory
+  file:
+    state:           absent
+    path:            "{{ __tmp_dir }}/{{ items }}"
+  with_items:
+    - cnx
+    - cnx-cr

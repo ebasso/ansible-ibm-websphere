@@ -4,6 +4,14 @@
   register:          version_already_installed
   ignore_errors:     true
 
+- name:              "Use Fix Pack 6.0.4 CR4?"
+  set_fact:
+#    __cnx_fixes_files: "{{ __cnx_fixes_files_cr3 }}"
+    __this_version:    "6.0.0.0_20190131_2215"
+    __version_check:   "Updated to com.ibm.connections.6.0.0.0_20190131_2215"
+    __product_id:      "\"id='com.ibm.connections' version='6.0.0.0_20190131_2215'\""
+  when:              ( __cnx_fixes_version == __cnx_fixes_version_cr4 )
+
 - name:              "Use Fix Pack 6.0.3 CR3?"
   set_fact:
 #    __cnx_fixes_files: "{{ __cnx_fixes_files_cr3 }}"

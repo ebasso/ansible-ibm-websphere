@@ -4,7 +4,7 @@
 #
 ---
 - name:                      Cleanup and Truncate files on Log directory
-  hosts:                     dmgr, was-servers
+  hosts:                     dmgr, was_servers
   serial:                    1  # run sequentially
   become:                    true
   vars:

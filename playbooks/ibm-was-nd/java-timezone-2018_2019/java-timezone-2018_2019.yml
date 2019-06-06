@@ -4,7 +4,7 @@
 #
 ---
 - name:             Atualiza Java Time Zone Table
-  hosts:            dmgr,was-servers
+  hosts:            dmgr,was_servers
   become:           true
   gather_facts:     no
   vars:

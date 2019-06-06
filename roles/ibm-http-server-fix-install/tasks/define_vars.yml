@@ -1,4 +1,11 @@
 ---
+- name:              Use Fix Pack 14?
+  set_fact:
+    __this_files:    "{{ __ihs_files_fp14 }}"
+    __version_check: "Updated to com.ibm.websphere.IHS.v85_{{ __this_version }}"
+    __product_id:    "\"id='com.ibm.websphere.IHS.v85' version='{{ __this_version }}'\""
+  when:              ( __this_version == __ihs_version_fp14 )
+
 - name:              Use Fix Pack 12?
   set_fact:
     __this_files:    "{{ __ihs_files_fp12 }}"
