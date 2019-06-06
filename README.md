@@ -5,14 +5,16 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 | Playbook name                 | Status         |           Description                                        |
 |-------------------------------|----------------|--------------------------------------------------------------|
-| ibm-was-nd-complete.yml       | Complete       | Install IBM HTTP Server - 8.5.5.14  |
-| ibm-http-server-complete.yml  | Complete       | Install IBM WebSphere Application Server - Network Deployment - 8.5.5.14  |
-| ibm-connections6.yml          | Complete       | Install IBM Connections 6   |
+| ibm-was-nd-complete.yml       | Complete       | Install IBM HTTP Server - 8.5.5.15  |
+| ibm-http-server-complete.yml  | Complete       | Install IBM WebSphere Application Server - Network Deployment - 8.5.5.15  |
+| ibm-connections6.yml          | Complete       | Install IBM Connections 6.0 CR5 |
 
 # Roles
 
 | Role name                       |            Description of Role                                          |
 |---------------------------------|-------------------------------------------------------------------------|
+| connections-install             | Install IBM Connections |
+| db2-jdbc-driver-install         | Deploy db2 jdbc driver |
 | ibm-http-adminctl-restart       | Restart IHS Admin Servers |
 | ibm-http-adminctl-start         | Start IHS Admin Servers |
 | ibm-http-adminctl-stop          | Stop IHS Admin Servers |
@@ -57,7 +59,7 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 
 * IBM Installation Manager 1.8.9.1 (agent.installer.linux.gtk.x86_64_1.8.9001.20180709_1302.zip)
 * IBM WebSphere Application Server 8.5.5
-* IBM WebSphere Application Server 8.5.5 Fix Pack 14
+* IBM WebSphere Application Server 8.5.5 Fix Pack 15
 
 2) Copy files to Web Server
 
@@ -67,13 +69,19 @@ Example of my repository
     |-- agent.installer.linux.gtk.x86_64_1.8.9001.20180709_1302.zip
 -- was
     |-- 8.5.5
-    |   |-- 8.0.5.17-WS-IBMWASJAVA-Linux.zip
-    |   |-- 8.5.5-WS-WAS-FP014-part1.zip
-    |   |-- 8.5.5-WS-WAS-FP014-part2.zip
-    |   |-- 8.5.5-WS-WAS-FP014-part3.zip
-    |   |-- 8.5.5-WS-WASSupplements-FP014-part1.zip
-    |   |-- 8.5.5-WS-WASSupplements-FP014-part2.zip
-    |   |-- 8.5.5-WS-WASSupplements-FP014-part3.zip
+    |   |-- WAS_ND_V8.5.5_1_OF_3.zip
+    |   |-- WAS_ND_V8.5.5_2_OF_3.zip
+    |   |-- WAS_ND_V8.5.5_3_OF_3.zip
+    |   |-- WAS_V8.5.5_SUPPL_1_OF_3.zip
+    |   |-- WAS_V8.5.5_SUPPL_2_OF_3.zip
+    |   |-- WAS_V8.5.5_SUPPL_3_OF_3.zip
+    |   |-- FP15
+    |   |   |-- 8.5.5-WS-WAS-FP014-part1.zip
+    |   |   |-- 8.5.5-WS-WAS-FP014-part2.zip
+    |   |   |-- 8.5.5-WS-WAS-FP014-part3.zip
+    |   |   |-- 8.5.5-WS-WASSupplements-FP014-part1.zip
+    |   |   |-- 8.5.5-WS-WASSupplements-FP014-part2.zip
+    |   |   `-- 8.5.5-WS-WASSupplements-FP014-part3.zip
 -- connections
     |-- 6.0
     |   |-- 5.2.1-P8CPE-CLIENT-LINUX.BIN
@@ -83,11 +91,10 @@ Example of my repository
     |   |-- 6.0.0.0-IC-Multi-CR4-LO94111.zip
     |   |-- CNCTNS_V6.0_IFR1WLNX,_AIX_ML.tar
     |   |-- CNCTNS_V6.0_IFR1_LNX_ML.tar
-    |   |-- CR3
-    |   |   |-- 6.0.0.0-IC-Multi-CR3-LO94022.zip
-    |   |   |-- IC60_CR3_LO94106.jar
-    |   |   |-- IC60_CR3_LO94115.jar
-    |   |   `-- LO94099.zip
+    |   |-- CR5
+    |   |   |-- 6.0.0.0-IC-Multi-CR5-LO94188.zip
+    |   |   |-- IC60_CR5_LO94194.jar
+    |   |   `-- TinyEditorsForIC6_4.0.0.29.zip
     |   |-- IBM_CONTENT_NAVIGATOR-2.0.3-LINUX.bin
     |   |-- IBM_CONTENT_NAVIGATOR-2.0.3.8-FP008-LINUX.bin
     |   |-- IC-ComponentPack-6.0.0.7.zip
@@ -129,7 +136,7 @@ ansible-playbooks -i environments/hosts.development -u <username> -k playbooks/i
 
 # For other versions of IIM, WAS and WAS fixes
 
-1) If you are using a different Fix Pack than FP 14, you must change generate sha256 hashes.
+1) If you are using a different Fix Pack than FP 15, you must change generate sha256 hashes.
 
 ```
 Example: sha256sum  8.5.5-WS-WAS-FP09-part1.zip
