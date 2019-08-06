@@ -1,0 +1,9 @@
+---
+- name:          Backup Connections Directories
+  command:       cp {{ __ihs_install_location }}/conf/httpd.conf {{ __ihs_install_location }}/conf/httpd.conf_{{ __now }}
+
+- name:                 "Generate Response file"
+  template:
+    src:                "httpd.conf.j2"
+    dest:               "{{ __ihs_install_location }}/conf/httpd.conf"
+#  when:                 plugin_already_configured.stat.exists == false

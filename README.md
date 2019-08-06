@@ -19,6 +19,7 @@ Ansible playbooks for IBM WebSphere Application Server, Connections 6 and others
 | ibm-http-adminctl-start         | Start IHS Admin Servers |
 | ibm-http-adminctl-stop          | Stop IHS Admin Servers |
 | ibm-http-config-plgwct          | Configure HTTP Plugin |
+| ibm-http-httpdconf              | Configure httpd.conf |
 | ibm-http-server-fix-install     | Install IBM HTTP Server Fixes |
 | ibm-http-server-install         | Install IBM HTTP Server |
 | ibm-http-server-restart         | Restart IBM HTTP Server Servers |

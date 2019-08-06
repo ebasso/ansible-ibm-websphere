@@ -1,0 +1,8 @@
+---
+__profile_name:         "{{ profile_name | default('AppSrv01') }}"
+__svc_name:             "nodeagent"
+__was_install_location: "{{ was_install_location  | default('/opt/IBM/WebSphere/AppServer') }}"
+__was_nodename:         "{{ was_nodename | default( __default_nodename ) }}"
+__was_hostname:         "{{ inventory_hostname }}"
+__was_username:         "{{ was_username }}"
+__was_password:         "{{ was_password }}"

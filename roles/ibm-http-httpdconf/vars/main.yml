@@ -1,0 +1,14 @@
+---
+__ihs_install_location: "{{ ihs_install_location  | default('/opt/IBM/HTTPServer') }}"
+__now:                  "{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
+
+__ihs_hostname:          "{{ inventory_hostname_short }}"
+__ihs_hostname_fqdn:     "{{ inventory_hostname }}"
+
+
+__sharedarea : "{{ sharedarea  | default('/opt/IBM/SharedArea') }}"
+
+__ssh_keyfile : "{{ ssh_keyfile  | default('connections.company.com') }}"
+__cnx_fqdn : "{{ cnx_fqdn  | default('connections.company.com') }}"
+__cnx_domain : "{{ cnx_domain  | default('company.com') }}"
+

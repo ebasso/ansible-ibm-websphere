@@ -1,0 +1,18 @@
+[Unit]
+Description="Deployment Manager"
+Requires=network.service
+After=network-online.target
+
+[Service]
+ExecStart={{ __was_install_location }}/profiles/{{ __profile_name }}/bin/startManager.sh
+ExecStop={{ __was_install_location }}/profiles/{{ __profile_name }}/bin/stopManager.sh -username {{ __was_username }} -password {{ __was_password }}
+PIDFile={{ __was_install_location }}/profiles/{{ __profile_name }}/logs/dmgr/dmgr.pid
+Type=forking
+Restart=no
+TimeoutStartSec=6000
+TimemoutStopSec=600
+#LimitNOFILE=60000
+#LimitNPROC=12500
+
+[Install]
+WantedBy=multi-user.target

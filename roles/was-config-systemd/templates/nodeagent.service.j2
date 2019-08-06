@@ -1,0 +1,18 @@
+[Unit]
+Description="Node Agent"
+Requires=network.service
+After=network-online.target
+
+[Service]
+ExecStart={{ __was_install_location }}/profiles/{{ __profile_name }}/bin/startNode.sh
+ExecStop={{ __was_install_location }}/profiles/{{ __profile_name }}/bin/stopNode.sh -username {{ __was_username }} -password {{ __was_password }}
+PIDFile={{ __was_install_location }}/profiles/{{ __profile_name }}/logs/nodeagent/nodeagent.pid
+Type=forking
+Restart=no
+TimeoutStartSec=6000
+TimeoutStopSec=600
+#LimitNOFILE=60000
+#LimitNPROC=12500
+
+[Install]
+WantedBy=multi-user.target

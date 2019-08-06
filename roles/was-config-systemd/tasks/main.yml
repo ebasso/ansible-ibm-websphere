@@ -1,0 +1,25 @@
+---
+- name: Set facts for dmgr
+  set_fact:
+    __profile_name: "Dmgr01"
+    __svc_name:     "dmgr"
+  when: inventory_hostname in groups["dmgr"]
+
+- name:                 "Verifiy if Profile already exists"
+  stat:
+    path:               "{{ __was_install_location }}/profiles/{{ __profile_name }}"
+  register:             profile_already_exists
+
+- name:                 "Generate Systemd"
+  template:
+    src:                "{{ __svc_name }}.service.j2"
+    dest:               "/etc/systemd/system/{{ __svc_name }}.service"
+  when:                 profile_already_exists.stat.exists == true
+
+- name: restart was daemon
+  systemd:
+    name: "{{ __svc_name }}"
+#    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  when:                 profile_already_exists.stat.exists == true

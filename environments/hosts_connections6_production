@@ -46,6 +46,7 @@ was_password=<CHANGE_PASSWORD>
 dmgr_hostname=srv000.company.com
 ihs_password=<CHANGE_PASSWORD>
 cnx_domainname=.company.com
+cnx_fqdn=connections.company.com
 smtp_hostname=smtp.company.com
 #
 #

@@ -1,0 +1,7 @@
+---
+- name:                    Config WAS on Systemd
+  hosts:                   dmgr,was_servers
+#  serial:                  1
+  become:                  true
+  roles:
+    - roles/was-config-systemd
