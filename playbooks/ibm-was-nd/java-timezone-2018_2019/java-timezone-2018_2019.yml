@@ -8,8 +8,7 @@
   become:           true
   gather_facts:     no
   vars:
-    repository_url: "https://colabrepo.servicos.bb.com.br/was/"
-    #repository_url: "http://172.17.202.237/was/"
+    repository_url: "http://192.168.0.1/java/"
     file_name:      "jtzu-1.7.18e.zip"
     __tmp_dir:      "/tmp"
 
