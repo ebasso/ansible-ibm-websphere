@@ -1,0 +1,101 @@
+# Install Connections 6
+#
+# ansible-playbook -i environments/hosts.local -u <usuario> -k playbooks/java-timezone-2018_2019.yml
+#
+---
+- name:             Atualiza Java Time Zone Table
+  hosts:            dmgr,was_servers
+  become:           true
+  gather_facts:     no
+  vars:
+    repository_url: "http://192.168.0.1/java/"
+    file_name:      "jtzu-1.7.19c.zip"
+    jtzu_version:   "jtzu-1.7.19c"
+    __tmp_dir:      "/tmp"
+
+  tasks:
+    - name:          Create Temp directory
+      file:
+        path:       "{{ __tmp_dir }}/{{ jtzu_version }}/"
+        state:      directory
+        mode:       0755
+
+    - name:         Download Files
+      get_url:
+        url:        "{{ repository_url }}/{{ file_name }}"
+        dest:       "{{ __tmp_dir }}/{{ file_name }}"
+        mode:       0755
+
+    - name:         Extract Files
+      unarchive:
+        src:        "{{ __tmp_dir }}/{{ file_name }}"
+        dest:       "{{ __tmp_dir }}/{{ jtzu_version }}/"
+        copy:       no
+        mode:       0755
+
+    - name:         "Generate DirectorySearch.txt"
+      shell: |
+        echo '+/opt/IBM/WebSphere/AppServer/' > {{ __tmp_dir }}/{{ jtzu_version}}/DirectorySearch.txt
+#      template:
+#        src:        "DirectorySearch.txt.j2"
+#        dest:       "{{ __tmp_dir }}/{{ jtzu_version}}/DirectorySearch.txt"
+
+    - name:         "Generate runjtzuenv_discover_only"
+      shell: |
+        echo '#set java path up to the Jre in JAVA_HOME
+        JAVA_HOME=/opt/IBM/WebSphere/AppServer/java
+
+        #set NOGUI
+        NOGUI=true
+
+        #set DISCOVERONLY
+        DISCOVERONLY=true
+
+        #set SILENTPATCH
+        SILENTPATCH=false
+
+        #set BACKWARDCOMPATIBILITY
+        BACKWARDCOMPATIBILITY=false' > {{ __tmp_dir }}/{{ jtzu_version}}/runjtzuenv.sh
+#      template:
+#        src:        "runjtzuenv_discover_only.sh.j2"
+#        dest:       "{{ __tmp_dir }}/{{ jtzu_version}}/runjtzuenv.sh"
+
+    - name:         "Run runjtzu.sh"
+      command:
+        chdir={{ __tmp_dir }}/{{ jtzu_version }}
+        {{ __tmp_dir }}/{{ jtzu_version }}/runjtzu.sh
+      register:     cout
+
+    #- debug:       msg={{ cout }}
+
+    - name:         "Generate runjtzuenv_apply_fix"
+      shell: |
+        echo '#set java path up to the Jre in JAVA_HOME
+        JAVA_HOME=/opt/IBM/WebSphere/AppServer/java
+
+        #set NOGUI
+        NOGUI=true
+
+        #set DISCOVERONLY
+        DISCOVERONLY=false
+
+        #set SILENTPATCH
+        SILENTPATCH=false
+
+        #set BACKWARDCOMPATIBILITY
+        BACKWARDCOMPATIBILITY=false' > {{ __tmp_dir }}/{{ jtzu_version}}/runjtzuenv.sh
+#      template:
+#        src:        "runjtzuenv_apply_fix.sh.j2"
+#        dest:       "{{ __tmp_dir }}/{{ jtzu_version }}/runjtzuenv.sh"
+#      #changed_when: (cout.stdout.find('tzdata2018e') != -1)
+
+    - name:         "Run runjtzu.sh"
+      shell:        "{{ __tmp_dir }}/{{ jtzu_version }}/runjtzu.sh"
+      args:
+        chdir:      "{{ __tmp_dir }}/{{ jtzu_version }}"
+      register:     cout
+      changed_when:  cout.rc == 0
+      failed_when:   cout.rc != 0
+      #changed_when: (cout.stdout.find('tzdata2018e') != -1)
+
+    - debug:       msg={{ cout }}
