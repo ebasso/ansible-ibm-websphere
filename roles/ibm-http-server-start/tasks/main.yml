@@ -15,7 +15,7 @@
   shell:         ps -p `cat "{{ __ihs_install_location }}/logs/httpd.pid"`
   register:      ihs_is_running
   ignore_errors: true
-  when:          (ihs_start.rc is defined) and (ihs_start.rc == 0)s
+  when:          (ihs_start.rc is defined) and (ihs_start.rc == 0)
 
 - name:          Wait 10 seconds for ihs to activate
   pause:
