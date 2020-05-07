@@ -9,11 +9,11 @@ __rsp_file:             "{{ __logs_dir }}/was_nd_fixes.rsp"
 __log_file:             "{{ __logs_dir }}/was_nd_fixes_install.{{ __now }}.log"
 __tpl_file:             "was_nd_fixes.rsp.j2"
 
-__was_fp_version_latest:  "8.5.5015.20190128_1828"
+__was_fp_version_latest:  "8.5.5017.20200205_1450"
 __was_fp_files_latest:
-  - { file_name: 8.5.5-WS-WAS-FP015-part1.zip, check_sum: 1449ad29cd12b320838569e4b25654f38ce8dc189aa6a58aa38c67cf46276855 }
-  - { file_name: 8.5.5-WS-WAS-FP015-part2.zip, check_sum: dd2e04dfdecd5269aab8ab1d7330f248d376ab996290bd39ad28029f5c5755b5 }
-  - { file_name: 8.5.5-WS-WAS-FP015-part3.zip, check_sum: 3376fc6ee2e9c320cd99803fa87611424ab4316542bf4fddab60e805e4dd323a }
+  - { file_name: 8.5.5-WS-WAS-FP017-part1.zip, check_sum: f86e59f659c5a67fac52bfd514277f3e22b06122fec7b9efc74ff576a37aa4a1 }
+  - { file_name: 8.5.5-WS-WAS-FP017-part2.zip, check_sum: 9207f95e92a861a97b5a765e7da3bba9651a0f4b7ab9dab903152589ca15575b }
+  - { file_name: 8.5.5-WS-WAS-FP017-part3.zip, check_sum: ef7521feec369122cecee153fdb4c55299cb0adc76a66415d0f8959431eb6adb }
 
 __this_version:         "{{ was_fp_version | default( __was_fp_version_latest ) }}"
 __this_files:           "{{ was_fp_files | default( __was_fp_files_latest ) }}"
@@ -24,6 +24,24 @@ __iim_product_id:       "\"id='com.ibm.cic.agent\""
 __was_product_id:       "\"id='com.ibm.websphere.ND.v85'\""
 
 ## Old Versions
+__was_fp_version_fp17:  "8.5.5017.20200205_1450"
+__was_fp_files_fp17:
+  - { file_name: 8.5.5-WS-WAS-FP017-part1.zip, check_sum: f86e59f659c5a67fac52bfd514277f3e22b06122fec7b9efc74ff576a37aa4a1 }
+  - { file_name: 8.5.5-WS-WAS-FP017-part2.zip, check_sum: 9207f95e92a861a97b5a765e7da3bba9651a0f4b7ab9dab903152589ca15575b }
+  - { file_name: 8.5.5-WS-WAS-FP017-part3.zip, check_sum: ef7521feec369122cecee153fdb4c55299cb0adc76a66415d0f8959431eb6adb }
+
+__was_fp_version_fp16:  "8.5.5016.20190801_0951"
+__was_fp_files_fp16:
+  - { file_name: 8.5.5-WS-WAS-FP016-part1.zip, check_sum: ef3e69bbea33f9d14f7997babea01e02b892e9b94677537a1c138a481d9cc80b }
+  - { file_name: 8.5.5-WS-WAS-FP016-part2.zip, check_sum: 5b7fc93373dfb0e3cfff7ac0e0aff296fbfc4b7e7121a55501b07c193b88d2b0 }
+  - { file_name: 8.5.5-WS-WAS-FP016-part3.zip, check_sum: 3376fc6ee2e9c320cd99803fa87611424ab4316542bf4fddab60e805e4dd323a }
+
+__was_fp_version_fp15:  "8.5.5015.20190128_1828"
+__was_fp_files_fp15:
+  - { file_name: 8.5.5-WS-WAS-FP015-part1.zip, check_sum: 1449ad29cd12b320838569e4b25654f38ce8dc189aa6a58aa38c67cf46276855 }
+  - { file_name: 8.5.5-WS-WAS-FP015-part2.zip, check_sum: dd2e04dfdecd5269aab8ab1d7330f248d376ab996290bd39ad28029f5c5755b5 }
+  - { file_name: 8.5.5-WS-WAS-FP015-part3.zip, check_sum: 3376fc6ee2e9c320cd99803fa87611424ab4316542bf4fddab60e805e4dd323a }
+
 __was_fp_version_fp14:  "8.5.5014.20180802_1018"
 __was_fp_files_fp14:
   - { file_name: 8.5.5-WS-WAS-FP014-part1.zip, check_sum: 6f473676fa53cd04a9661284622f85fb997a1156eff277c58a4065708e9d920d }
